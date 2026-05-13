@@ -98,6 +98,18 @@ export default async function AccountPage() {
           </h2>
           <div className="grid grid-cols-1 gap-3">
             <AccountLink
+              href="/siparisler"
+              icon={<ShoppingBag size={18} />}
+              title="Geçmiş Siparişlerim"
+              desc="Tüm siparişlerinizi görüntüleyin"
+            />
+            <AccountLink
+              href="/favori-markalar"
+              icon={<Sparkles size={18} />}
+              title="Favori Markalarım"
+              desc="Takip ettiğiniz markalar"
+            />
+            <AccountLink
               href="/kombin"
               icon={<Sparkles size={18} />}
               title="Kombin Öner"

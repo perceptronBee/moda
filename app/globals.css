@@ -29,6 +29,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* iOS Safari mobilde input < 16px olduğunda otomatik zoom yapar — önle */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Dokunmatik için min hit target — küçük butonları kazara basmayı önler */
+@media (max-width: 767px) {
+  button,
+  [role="button"],
+  a.btn,
+  input[type="submit"] {
+    min-height: 40px;
+  }
+}
+
+
 .font-display {
   font-family: var(--font-display);
   font-weight: 400;
@@ -64,6 +89,4 @@ body {
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-}
+

@@ -1,0 +1,2893 @@
+[
+  {
+    "id": "LCW-4314470",
+    "name": "Siyah Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4314470/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4314470/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4314470/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4314470/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-siyah-o-4314470",
+    "color": "Siyah",
+    "baseName": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4314471",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-4314471/front.jpg"
+      },
+      {
+        "id": "LCW-4392493",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4392493/front.jpg"
+      },
+      {
+        "id": "LCW-4392494",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4392494/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4314471",
+    "name": "Ekru Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4314471/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4314471/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4314471/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4314471/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-ekru-o-4314471",
+    "color": "Ekru",
+    "baseName": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4314470",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4314470/front.jpg"
+      },
+      {
+        "id": "LCW-4392493",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4392493/front.jpg"
+      },
+      {
+        "id": "LCW-4392494",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4392494/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4392493",
+    "name": "Yeşil Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4392493/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4392493/back.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4392493/garmentBack.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4392493/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-yesil-o-4392493",
+    "color": "Yeşil",
+    "baseName": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4314470",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4314470/front.jpg"
+      },
+      {
+        "id": "LCW-4314471",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-4314471/front.jpg"
+      },
+      {
+        "id": "LCW-4392494",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4392494/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4392494",
+    "name": "Lacivert Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "price": 199.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4392494/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4392494/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4392494/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4392494/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-lacivert-o-4392494",
+    "color": "Lacivert",
+    "baseName": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4314470",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4314470/front.jpg"
+      },
+      {
+        "id": "LCW-4314471",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-4314471/front.jpg"
+      },
+      {
+        "id": "LCW-4392493",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4392493/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4827603",
+    "name": "Siyah %100 Pamuk Regular Fit Basic Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "back": "/products/lcwaikiki/lcw-4827603/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4827603/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4827603/garmentBack.jpg",
+      "front": "/products/lcwaikiki/lcw-4827603/front.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-siyah-o-4827603",
+    "color": "Siyah",
+    "baseName": "%100 Pamuk Regular Fit Basic Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827604",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827604/front.jpg"
+      },
+      {
+        "id": "LCW-4869998",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4869998/front.jpg"
+      },
+      {
+        "id": "LCW-5103298",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5103298/front.jpg"
+      },
+      {
+        "id": "LCW-5252114",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5252114/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4827604",
+    "name": "Lacivert %100 Pamuk Regular Fit Basic Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4827604/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4827604/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4827604/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-lacivert-o-4827604",
+    "color": "Lacivert",
+    "baseName": "%100 Pamuk Regular Fit Basic Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827603",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4827603/front.jpg"
+      },
+      {
+        "id": "LCW-4869998",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4869998/front.jpg"
+      },
+      {
+        "id": "LCW-5103298",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5103298/front.jpg"
+      },
+      {
+        "id": "LCW-5252114",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5252114/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4827618",
+    "name": "Polo Yaka Pike Erkek Tişört",
+    "price": 549.99,
+    "oldPrice": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4827618/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4827618/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4827618/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4827618/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-siyah-o-4827618-mix-match",
+    "baseName": "Polo Yaka Pike Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827619",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827619/front.jpg"
+      },
+      {
+        "id": "LCW-4827620",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4827620/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4827619",
+    "name": "Lacivert Polo Yaka Pike Erkek Tişört",
+    "price": 449.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4827619/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4827619/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4827619/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4827619/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-lacivert-o-4827619",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Pike Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827618",
+        "color": "Renk",
+        "photo": "/products/lcwaikiki/lcw-4827618/front.jpg"
+      },
+      {
+        "id": "LCW-4827620",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4827620/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4827620",
+    "name": "Beyaz Polo Yaka Pike Erkek Tişört",
+    "price": 449.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4827620/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4827620/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4827620/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4827620/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-beyaz-o-4827620",
+    "color": "Beyaz",
+    "baseName": "Polo Yaka Pike Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827618",
+        "color": "Renk",
+        "photo": "/products/lcwaikiki/lcw-4827618/front.jpg"
+      },
+      {
+        "id": "LCW-4827619",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827619/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4838443",
+    "name": "Yeşil Regular Fit Poplin Erkek Gömlek",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "back": "/products/lcwaikiki/lcw-4838443/back.jpg",
+      "front": "/products/lcwaikiki/lcw-4838443/front.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4838443/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-poplin-erkek-gomlek-yesil-o-4838443",
+    "color": "Yeşil",
+    "baseName": "Regular Fit Poplin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-4914264",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4914264/front.jpg"
+      },
+      {
+        "id": "LCW-5122158",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5122158/front.jpg"
+      },
+      {
+        "id": "LCW-5224519",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5224519/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4840164",
+    "name": "Siyah Polo Yaka Erkek Triko Tişört",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4840164/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4840164/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4840164/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4840164/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-siyah-o-4840164",
+    "color": "Siyah",
+    "baseName": "Polo Yaka Erkek Triko Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4840165",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4840165/front.jpg"
+      },
+      {
+        "id": "LCW-4840166",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4840166/front.jpg"
+      },
+      {
+        "id": "LCW-5103610",
+        "color": "Mavi",
+        "photo": "/products/lcwaikiki/lcw-5103610/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4840165",
+    "name": "Yeşil Polo Yaka Erkek Triko Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4840165/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4840165/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4840165/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4840165/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-yesil-o-4840165",
+    "color": "Yeşil",
+    "baseName": "Polo Yaka Erkek Triko Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4840164",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4840164/front.jpg"
+      },
+      {
+        "id": "LCW-4840166",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4840166/front.jpg"
+      },
+      {
+        "id": "LCW-5103610",
+        "color": "Mavi",
+        "photo": "/products/lcwaikiki/lcw-5103610/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4840166",
+    "name": "Lacivert Polo Yaka Erkek Triko Tişört",
+    "price": 599.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4840166/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4840166/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4840166/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4840166/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-lacivert-o-4840166",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Erkek Triko Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4840164",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4840164/front.jpg"
+      },
+      {
+        "id": "LCW-4840165",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4840165/front.jpg"
+      },
+      {
+        "id": "LCW-5103610",
+        "color": "Mavi",
+        "photo": "/products/lcwaikiki/lcw-5103610/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4864332",
+    "name": "Lacivert Polo Yaka Erkek Dokulu Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4864332/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4864332/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4864332/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-dokulu-tisort-lacivert-o-4864332",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Erkek Dokulu Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4864333",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4864333/front.jpg"
+      },
+      {
+        "id": "LCW-4864334",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-4864334/front.jpg"
+      },
+      {
+        "id": "LCW-5250454",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5250454/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4864333",
+    "name": "Haki Polo Yaka Erkek Dokulu Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4864333/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4864333/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4864333/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-dokulu-tisort-haki-o-4864333",
+    "color": "Haki",
+    "baseName": "Polo Yaka Erkek Dokulu Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4864332",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4864332/front.jpg"
+      },
+      {
+        "id": "LCW-4864334",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-4864334/front.jpg"
+      },
+      {
+        "id": "LCW-5250454",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5250454/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4864334",
+    "name": "Gri Polo Yaka Erkek Dokulu Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4864334/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4864334/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4864334/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-dokulu-tisort-gri-o-4864334",
+    "color": "Gri",
+    "baseName": "Polo Yaka Erkek Dokulu Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4864332",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4864332/front.jpg"
+      },
+      {
+        "id": "LCW-4864333",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4864333/front.jpg"
+      },
+      {
+        "id": "LCW-5250454",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5250454/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4869998",
+    "name": "Beyaz %100 Pamuk Regular Fit Basic Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4869998/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4869998/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4869998/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-4869998/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-beyaz-o-4869998",
+    "color": "Beyaz",
+    "baseName": "%100 Pamuk Regular Fit Basic Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827603",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4827603/front.jpg"
+      },
+      {
+        "id": "LCW-4827604",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827604/front.jpg"
+      },
+      {
+        "id": "LCW-5103298",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5103298/front.jpg"
+      },
+      {
+        "id": "LCW-5252114",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5252114/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4914264",
+    "name": "Haki Regular Fit Poplin Erkek Gömlek",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4914264/front.jpg",
+      "back": "/products/lcwaikiki/lcw-4914264/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-4914264/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-poplin-erkek-gomlek-haki-o-4914264",
+    "color": "Haki",
+    "baseName": "Regular Fit Poplin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-4838443",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4838443/front.jpg"
+      },
+      {
+        "id": "LCW-5122158",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5122158/front.jpg"
+      },
+      {
+        "id": "LCW-5224519",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5224519/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5032718",
+    "name": "Siyah Loose Fit Basic Kalın Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5032718/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5032718/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5032718/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5032718/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-siyah-o-5032718",
+    "color": "Siyah",
+    "baseName": "Loose Fit Basic Kalın Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5032722",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5032722/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5032722",
+    "name": "Beyaz Loose Fit Basic Kalın Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5032722/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5032722/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5032722/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5032722/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-beyaz-o-5032722",
+    "color": "Beyaz",
+    "baseName": "Loose Fit Basic Kalın Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5032718",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5032718/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5032723",
+    "name": "Mürdüm Loose Fit Basic Kalın Tişört",
+    "price": 329.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5032723/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5032723/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5032723/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-murdum-o-5032723",
+    "baseName": "Mürdüm Loose Fit Basic Kalın Tişört"
+  },
+  {
+    "id": "LCW-5061309",
+    "name": "Beyaz Loose Fit Basic Soft Touch Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5061309/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5061309/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5061309/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-beyaz-o-5061309",
+    "color": "Beyaz",
+    "baseName": "Loose Fit Basic Soft Touch Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5180311",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5180311/front.jpg"
+      },
+      {
+        "id": "LCW-5180315",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5180315/front.jpg"
+      },
+      {
+        "id": "LCW-5281241",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5281241/garmentFront.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5068678",
+    "name": "Lacivert Polo Yaka Erkek Tişört",
+    "price": 599.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5068678/front.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-lacivert-o-5068678",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5068680",
+    "name": "Siyah Polo Yaka Erkek Tişört",
+    "price": 599.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5068680/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5068680/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5068680/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-siyah-o-5068680",
+    "color": "Siyah",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5068684",
+    "name": "Beyaz Polo Yaka Erkek Tişört",
+    "price": 599.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5068684/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5068684/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5068684/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-beyaz-o-5068684",
+    "color": "Beyaz",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5082920",
+    "name": "Siyah Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5082920/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5082920/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5082920/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-siyah-o-5082920",
+    "color": "Siyah",
+    "baseName": "Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5082922",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5082922/front.jpg"
+      },
+      {
+        "id": "LCW-5319643",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5319643/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5082922",
+    "name": "Beyaz Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5082922/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5082922/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5082922/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-beyaz-o-5082922",
+    "color": "Beyaz",
+    "baseName": "Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5082920",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5082920/front.jpg"
+      },
+      {
+        "id": "LCW-5319643",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5319643/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5082924",
+    "name": "Mürdüm Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5082924/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5082924/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5082924/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-murdum-o-5082924",
+    "baseName": "Mürdüm Bisiklet Yaka Baskılı Penye Erkek Tişört"
+  },
+  {
+    "id": "LCW-5092681",
+    "name": "Antrasit Bisiklet Yaka Baskılı Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5092681/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5092681/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5092681/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-antrasit-o-5092681",
+    "color": "Antrasit",
+    "baseName": "Bisiklet Yaka Baskılı Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5092683",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5092683/front.jpg"
+      },
+      {
+        "id": "LCW-5092685",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5092685/front.jpg"
+      },
+      {
+        "id": "LCW-5278808",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5278808/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5092683",
+    "name": "Ekru Bisiklet Yaka Baskılı Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "garmentFront": "/products/lcwaikiki/lcw-5092683/garmentFront.jpeg",
+      "garmentBack": "/products/lcwaikiki/lcw-5092683/garmentBack.jpeg",
+      "front": "/products/lcwaikiki/lcw-5092683/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5092683/back.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-ekru-o-5092683",
+    "color": "Ekru",
+    "baseName": "Bisiklet Yaka Baskılı Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5092681",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5092681/front.jpg"
+      },
+      {
+        "id": "LCW-5092685",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5092685/front.jpg"
+      },
+      {
+        "id": "LCW-5278808",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5278808/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5092685",
+    "name": "Haki Bisiklet Yaka Baskılı Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5092685/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5092685/back.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-haki-o-5092685",
+    "color": "Haki",
+    "baseName": "Bisiklet Yaka Baskılı Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5092681",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5092681/front.jpg"
+      },
+      {
+        "id": "LCW-5092683",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5092683/front.jpg"
+      },
+      {
+        "id": "LCW-5278808",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5278808/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5103298",
+    "name": "Bordo %100 Pamuk Regular Fit Basic Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5103298/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5103298/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5103298/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5103298/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-bordo-o-5103298",
+    "color": "Bordo",
+    "baseName": "%100 Pamuk Regular Fit Basic Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827603",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4827603/front.jpg"
+      },
+      {
+        "id": "LCW-4827604",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827604/front.jpg"
+      },
+      {
+        "id": "LCW-4869998",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4869998/front.jpg"
+      },
+      {
+        "id": "LCW-5252114",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5252114/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5103610",
+    "name": "Mavi Polo Yaka Erkek Triko Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5103610/front.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5103610/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5103610/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-mavi-o-5103610",
+    "color": "Mavi",
+    "baseName": "Polo Yaka Erkek Triko Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4840164",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4840164/front.jpg"
+      },
+      {
+        "id": "LCW-4840165",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4840165/front.jpg"
+      },
+      {
+        "id": "LCW-4840166",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4840166/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117006",
+    "name": "Gri Polo Yaka Erkek Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117006/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117006/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117006/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-gri-o-5117006",
+    "color": "Gri",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117008",
+    "name": "Beyaz Polo Yaka Erkek Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117008/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117008/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117008/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5117008/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-beyaz-o-5117008",
+    "color": "Beyaz",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117011",
+    "name": "Lacivert Polo Yaka Erkek Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117011/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117011/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117011/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5117011/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-lacivert-o-5117011",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117013",
+    "name": "Siyah Polo Yaka Erkek Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117013/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117013/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117013/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-siyah-o-5117013",
+    "color": "Siyah",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5281193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117075",
+    "name": "Siyah Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "price": 799.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117075/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117075/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117075/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-siyah-o-5117075",
+    "color": "Siyah",
+    "baseName": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117077",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117077/front.jpg"
+      },
+      {
+        "id": "LCW-5263523",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5263523/front.jpg"
+      },
+      {
+        "id": "LCW-5287825",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5287825/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117077",
+    "name": "Beyaz Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "price": 799.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117077/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117077/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117077/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-beyaz-o-5117077",
+    "color": "Beyaz",
+    "baseName": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117075",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117075/front.jpg"
+      },
+      {
+        "id": "LCW-5263523",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5263523/front.jpg"
+      },
+      {
+        "id": "LCW-5287825",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5287825/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117238",
+    "name": "Beyaz Regular Fit Keten Karışımlı Erkek Gömlek",
+    "price": 899.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117238/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117238/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117238/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-beyaz-o-5117238",
+    "color": "Beyaz",
+    "baseName": "Regular Fit Keten Karışımlı Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117242",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5117242/front.jpg"
+      },
+      {
+        "id": "LCW-5117244",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117244/front.jpg"
+      },
+      {
+        "id": "LCW-5287833",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5287833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117242",
+    "name": "Yeşil Regular Fit Keten Karışımlı Erkek Gömlek",
+    "price": 899.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117242/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117242/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117242/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-yesil-o-5117242",
+    "color": "Yeşil",
+    "baseName": "Regular Fit Keten Karışımlı Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117238",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117238/front.jpg"
+      },
+      {
+        "id": "LCW-5117244",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117244/front.jpg"
+      },
+      {
+        "id": "LCW-5287833",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5287833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5117244",
+    "name": "Lacivert Regular Fit Keten Karışımlı Erkek Gömlek",
+    "price": 899.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5117244/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5117244/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5117244/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5117244/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-lacivert-o-5117244",
+    "color": "Lacivert",
+    "baseName": "Regular Fit Keten Karışımlı Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117238",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117238/front.jpg"
+      },
+      {
+        "id": "LCW-5117242",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5117242/front.jpg"
+      },
+      {
+        "id": "LCW-5287833",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5287833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5122158",
+    "name": "Siyah Regular Fit Poplin Erkek Gömlek",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5122158/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5122158/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5122158/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-poplin-erkek-gomlek-siyah-o-5122158",
+    "color": "Siyah",
+    "baseName": "Regular Fit Poplin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-4838443",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4838443/front.jpg"
+      },
+      {
+        "id": "LCW-4914264",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4914264/front.jpg"
+      },
+      {
+        "id": "LCW-5224519",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5224519/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5143781",
+    "name": "Petrol Regular Fit %100 Keten Erkek Gömlek",
+    "price": 1299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5143781/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5143781/back.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5143781/garmentBack.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5143781/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-100-keten-erkek-gomlek-petrol-o-5143781",
+    "baseName": "Petrol Regular Fit %100 Keten Erkek Gömlek"
+  },
+  {
+    "id": "LCW-5180311",
+    "name": "Siyah Loose Fit Basic Soft Touch Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5180311/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5180311/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5180311/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-siyah-o-5180311",
+    "color": "Siyah",
+    "baseName": "Loose Fit Basic Soft Touch Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5061309",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5061309/front.jpg"
+      },
+      {
+        "id": "LCW-5180315",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5180315/front.jpg"
+      },
+      {
+        "id": "LCW-5281241",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5281241/garmentFront.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5180315",
+    "name": "Kahverengi Loose Fit Basic Soft Touch Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5180315/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5180315/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5180315/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-kahverengi-o-5180315",
+    "color": "Kahverengi",
+    "baseName": "Loose Fit Basic Soft Touch Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5061309",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5061309/front.jpg"
+      },
+      {
+        "id": "LCW-5180311",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5180311/front.jpg"
+      },
+      {
+        "id": "LCW-5281241",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5281241/garmentFront.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5193732",
+    "name": "Beyaz Regular Fit %100 Keten Erkek Gömlek",
+    "price": 1299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5193732/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5193732/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5193732/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5193732/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-100-keten-erkek-gomlek-beyaz-o-5193732",
+    "color": "Beyaz",
+    "baseName": "Regular Fit %100 Keten Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5193735",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5193735/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5193735",
+    "name": "Kahverengi Regular Fit %100 Keten Erkek Gömlek",
+    "price": 1299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5193735/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5193735/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5193735/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5193735/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-100-keten-erkek-gomlek-kahverengi-o-5193735",
+    "color": "Kahverengi",
+    "baseName": "Regular Fit %100 Keten Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5193732",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5193732/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5203223",
+    "name": "Ekru Polo Yaka Strüktürlü Erkek Tişört",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5203223/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5203223/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5203223/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5203223/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-ekru-o-5203223",
+    "color": "Ekru",
+    "baseName": "Polo Yaka Strüktürlü Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5203225",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5203225/front.jpg"
+      },
+      {
+        "id": "LCW-5203226",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5203226/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5203224",
+    "name": "Sarı Polo Yaka Strüktürlü Erkek Tişört",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5203224/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5203224/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5203224/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5203224/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-sari-o-5203224",
+    "baseName": "Sarı Polo Yaka Strüktürlü Erkek Tişört"
+  },
+  {
+    "id": "LCW-5203225",
+    "name": "Kahverengi Polo Yaka Strüktürlü Erkek Tişört",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5203225/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5203225/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5203225/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5203225/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-kahverengi-o-5203225",
+    "color": "Kahverengi",
+    "baseName": "Polo Yaka Strüktürlü Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5203223",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5203223/front.jpg"
+      },
+      {
+        "id": "LCW-5203226",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5203226/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5203226",
+    "name": "Antrasit Polo Yaka Strüktürlü Erkek Tişört",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5203226/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5203226/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5203226/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5203226/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-antrasit-o-5203226",
+    "color": "Antrasit",
+    "baseName": "Polo Yaka Strüktürlü Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5203223",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5203223/front.jpg"
+      },
+      {
+        "id": "LCW-5203225",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5203225/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5214501",
+    "name": "Siyah Polo Yaka Penye Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5214501/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5214501/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5214501/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5214501/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-siyah-o-5214501",
+    "color": "Siyah",
+    "baseName": "Polo Yaka Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5214502",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5214502/front.jpg"
+      },
+      {
+        "id": "LCW-5214505",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5214505/front.jpg"
+      },
+      {
+        "id": "LCW-5214506",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5214506/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5214502",
+    "name": "Haki Polo Yaka Penye Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5214502/front.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5214502/garmentFront.jpg",
+      "back": "/products/lcwaikiki/lcw-5214502/back.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5214502/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-haki-o-5214502",
+    "color": "Haki",
+    "baseName": "Polo Yaka Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5214501",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5214501/front.jpg"
+      },
+      {
+        "id": "LCW-5214505",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5214505/front.jpg"
+      },
+      {
+        "id": "LCW-5214506",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5214506/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5214505",
+    "name": "Kahverengi Polo Yaka Penye Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5214505/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5214505/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5214505/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5214505/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-kahverengi-o-5214505",
+    "color": "Kahverengi",
+    "baseName": "Polo Yaka Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5214501",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5214501/front.jpg"
+      },
+      {
+        "id": "LCW-5214502",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5214502/front.jpg"
+      },
+      {
+        "id": "LCW-5214506",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5214506/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5214506",
+    "name": "Gri Polo Yaka Penye Erkek Tişört",
+    "price": 399.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5214506/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5214506/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5214506/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5214506/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-gri-o-5214506",
+    "color": "Gri",
+    "baseName": "Polo Yaka Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5214501",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5214501/front.jpg"
+      },
+      {
+        "id": "LCW-5214502",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5214502/front.jpg"
+      },
+      {
+        "id": "LCW-5214505",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5214505/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5224519",
+    "name": "Kahverengi Regular Fit Poplin Erkek Gömlek",
+    "price": 699.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5224519/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5224519/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5224519/garmentFront.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-poplin-erkek-gomlek-kahverengi-o-5224519",
+    "color": "Kahverengi",
+    "baseName": "Regular Fit Poplin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-4838443",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-4838443/front.jpg"
+      },
+      {
+        "id": "LCW-4914264",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4914264/front.jpg"
+      },
+      {
+        "id": "LCW-5122158",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5122158/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5227389",
+    "name": "Antrasit Polo Yaka Desenli Strüktürlü Erkek Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5227389/front.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5227389/garmentFront.jpg",
+      "back": "/products/lcwaikiki/lcw-5227389/back.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5227389/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-desenli-strukturlu-erkek-tisort-antrasit-o-5227389",
+    "color": "Antrasit",
+    "baseName": "Polo Yaka Desenli Strüktürlü Erkek Tişört"
+  },
+  {
+    "id": "LCW-5227390",
+    "name": "Ekru Polo Yaka Desenli Erkek Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5227390/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5227390/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5227390/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5227390/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-desenli-erkek-tisort-ekru-o-5227390",
+    "color": "Ekru",
+    "baseName": "Polo Yaka Desenli Erkek Tişört"
+  },
+  {
+    "id": "LCW-5227391",
+    "name": "Lacivert Polo Yaka Standart Fit Strüktürlü Erkek Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5227391/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5227391/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5227391/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5227391/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-standart-fit-strukturlu-erkek-tisort-lacivert-o-5227391",
+    "color": "Lacivert",
+    "baseName": "Polo Yaka Standart Fit Strüktürlü Erkek Tişört"
+  },
+  {
+    "id": "LCW-5243892",
+    "name": "İndigo Polo Yaka Erkek Tişört",
+    "price": 599.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5243892/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5243892/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5243892/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5243892/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-indigo-o-5243892",
+    "baseName": "İndigo Polo Yaka Erkek Tişört"
+  },
+  {
+    "id": "LCW-5250454",
+    "name": "Bordo Polo Yaka Erkek Dokulu Tişört",
+    "price": 549.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5250454/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5250454/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5250454/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5250454/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-dokulu-tisort-bordo-o-5250454",
+    "color": "Bordo",
+    "baseName": "Polo Yaka Erkek Dokulu Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4864332",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4864332/front.jpg"
+      },
+      {
+        "id": "LCW-4864333",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-4864333/front.jpg"
+      },
+      {
+        "id": "LCW-4864334",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-4864334/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5252114",
+    "name": "Gri %100 Pamuk Regular Fit Basic Tişört",
+    "price": 299.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5252114/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5252114/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5252114/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5252114/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-gri-o-5252114",
+    "color": "Gri",
+    "baseName": "%100 Pamuk Regular Fit Basic Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-4827603",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4827603/front.jpg"
+      },
+      {
+        "id": "LCW-4827604",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-4827604/front.jpg"
+      },
+      {
+        "id": "LCW-4869998",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-4869998/front.jpg"
+      },
+      {
+        "id": "LCW-5103298",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5103298/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5261672",
+    "name": "Mürdüm Polo Yaka Pike Erkek Tişört",
+    "price": 449.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5261672/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5261672/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5261672/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5261672/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-murdum-o-5261672",
+    "baseName": "Mürdüm Polo Yaka Pike Erkek Tişört"
+  },
+  {
+    "id": "LCW-5263523",
+    "name": "Kahverengi Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "price": 799.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5263523/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5263523/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5263523/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5263523/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-kahverengi-o-5263523",
+    "color": "Kahverengi",
+    "baseName": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117075",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117075/front.jpg"
+      },
+      {
+        "id": "LCW-5117077",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117077/front.jpg"
+      },
+      {
+        "id": "LCW-5287825",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5287825/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5278808",
+    "name": "Siyah Bisiklet Yaka Baskılı Erkek Tişört",
+    "price": 249.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5278808/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5278808/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5278808/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5278808/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-siyah-o-5278808",
+    "color": "Siyah",
+    "baseName": "Bisiklet Yaka Baskılı Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5092681",
+        "color": "Antrasit",
+        "photo": "/products/lcwaikiki/lcw-5092681/front.jpg"
+      },
+      {
+        "id": "LCW-5092683",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5092683/front.jpg"
+      },
+      {
+        "id": "LCW-5092685",
+        "color": "Haki",
+        "photo": "/products/lcwaikiki/lcw-5092685/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5281193",
+    "name": "Kahverengi Polo Yaka Erkek Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5281193/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5281193/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5281193/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5281193/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-kahverengi-o-5281193",
+    "color": "Kahverengi",
+    "baseName": "Polo Yaka Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5068678",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5068678/front.jpg"
+      },
+      {
+        "id": "LCW-5068680",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5068680/front.jpg"
+      },
+      {
+        "id": "LCW-5068684",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5068684/front.jpg"
+      },
+      {
+        "id": "LCW-5117006",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5117006/front.jpg"
+      },
+      {
+        "id": "LCW-5117008",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117008/front.jpg"
+      },
+      {
+        "id": "LCW-5117011",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117011/front.jpg"
+      },
+      {
+        "id": "LCW-5117013",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117013/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5281241",
+    "name": "Antrasit Loose Fit Basic Soft Touch Tişört",
+    "price": 499.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "garmentFront": "/products/lcwaikiki/lcw-5281241/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5281241/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-antrasit-o-5281241",
+    "color": "Antrasit",
+    "baseName": "Loose Fit Basic Soft Touch Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5061309",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5061309/front.jpg"
+      },
+      {
+        "id": "LCW-5180311",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5180311/front.jpg"
+      },
+      {
+        "id": "LCW-5180315",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5180315/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5287825",
+    "name": "Bordo Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "price": 799.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5287825/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5287825/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5287825/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5287825/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-bordo-o-5287825",
+    "color": "Bordo",
+    "baseName": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117075",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5117075/front.jpg"
+      },
+      {
+        "id": "LCW-5117077",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117077/front.jpg"
+      },
+      {
+        "id": "LCW-5263523",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5263523/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5287833",
+    "name": "Kahverengi Regular Fit Keten Karışımlı Erkek Gömlek",
+    "price": 899.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5287833/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5287833/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5287833/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5287833/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-kahverengi-o-5287833",
+    "color": "Kahverengi",
+    "baseName": "Regular Fit Keten Karışımlı Erkek Gömlek",
+    "colorVariants": [
+      {
+        "id": "LCW-5117238",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5117238/front.jpg"
+      },
+      {
+        "id": "LCW-5117242",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5117242/front.jpg"
+      },
+      {
+        "id": "LCW-5117244",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5117244/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5319643",
+    "name": "Kahverengi Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "price": 249.99,
+    "gender": "erkek",
+    "type": "ust-giyim",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5319643/front.jpg",
+      "back": "/products/lcwaikiki/lcw-5319643/back.jpg",
+      "garmentFront": "/products/lcwaikiki/lcw-5319643/garmentFront.jpg",
+      "garmentBack": "/products/lcwaikiki/lcw-5319643/garmentBack.jpg"
+    },
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-kahverengi-o-5319643",
+    "color": "Kahverengi",
+    "baseName": "Bisiklet Yaka Baskılı Penye Erkek Tişört",
+    "colorVariants": [
+      {
+        "id": "LCW-5082920",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5082920/front.jpg"
+      },
+      {
+        "id": "LCW-5082922",
+        "color": "Beyaz",
+        "photo": "/products/lcwaikiki/lcw-5082922/front.jpg"
+      }
+    ]
+  }
+]

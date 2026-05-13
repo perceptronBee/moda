@@ -41,6 +41,20 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# lib/products.generated.json — artık commit ediyoruz (Vercel deploy için)
+
+# Veri toplama araçları — sadece local geliştirmede kullanılıyor, deploy'a gerek yok
+tools/moda-extension/
+scripts/moda-helper.mjs
+scripts/scrape.mjs
+scripts/scraped-to-feeds.mjs
+scripts/seed-feeds.mjs
+scripts/_*.mjs
+
+# Ham scraped meta — kaynak veri, Vercel'e gerek yok (products.generated.json yeterli)
+data/scraped/
+data/feeds/
+
 # editor / OS
 .vscode/
 .idea/

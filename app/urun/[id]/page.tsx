@@ -1,8 +1,56 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductById, PRODUCTS, MAIN_NAV, TYPE_LABELS } from "@/lib/products";
-import { ArrowRight, Heart, Truck, RefreshCw, Sparkles } from "lucide-react";
+import { RETAILERS } from "@/lib/affiliate/retailers";
+import { ArrowRight, Heart, Sparkles } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
+
+function ProductPhoto({
+  src,
+  tone,
+  id,
+  alt,
+  tag,
+}: {
+  src?: string;
+  tone?: string;
+  id: string;
+  alt: string;
+  tag?: string;
+}) {
+  return (
+    <div
+      className="relative aspect-[3/4] overflow-hidden"
+      style={{ background: src ? "#f5f5f5" : tone }}
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center font-display text-[120px] text-white/15 pointer-events-none select-none">
+          {id}
+        </div>
+      )}
+      {tag && (
+        <span
+          className={`absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider px-3 py-1.5 ${
+            tag === "İndirim"
+              ? "bg-[var(--color-accent)] text-white"
+              : "bg-white text-[var(--color-fg)]"
+          }`}
+        >
+          {tag}
+        </span>
+      )}
+    </div>
+  );
+}
+import { ProductActions } from "@/components/ProductActions";
+import { ProductGallery } from "@/components/ProductGallery";
 
 export async function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
@@ -44,88 +92,148 @@ export default async function ProductDetail({
         <span className="text-[var(--color-fg)]">{typeLabel}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12">
-        {/* Image */}
-        <div
-          className="relative aspect-[3/4] overflow-hidden"
-          style={{ background: product.tone }}
-        >
-          {product.tag && (
-            <span
-              className={`absolute top-4 left-4 text-xs font-semibold uppercase tracking-wider px-3 py-1.5 ${
-                product.tag === "İndirim"
-                  ? "bg-[var(--color-accent)] text-white"
-                  : "bg-white text-[var(--color-fg)]"
-              }`}
-            >
-              {product.tag}
-            </span>
-          )}
-          <div className="absolute inset-0 flex items-center justify-center font-display text-[200px] text-white/15 pointer-events-none select-none">
-            {product.id}
-          </div>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6 sm:gap-8 lg:gap-12">
+        {/* Galeri — mobilde kaydırmalı, desktop'ta grid */}
+        <ProductGallery
+          photos={[
+            { src: product.photos?.front, label: product.tag ?? "Ön" },
+            ...(product.photos?.back ? [{ src: product.photos.back, label: "Arka" }] : []),
+            ...(product.photos?.garmentFront
+              ? [{ src: product.photos.garmentFront, label: "Ürün · Ön" }]
+              : []),
+            ...(product.photos?.garmentBack
+              ? [{ src: product.photos.garmentBack, label: "Ürün · Arka" }]
+              : []),
+          ]}
+          productId={product.id}
+          productName={product.name}
+          tone={product.tone}
+        />
 
-        {/* Info */}
-        <div className="flex flex-col gap-6">
+        {/* Info — mobilde önemli bilgiler önce, açıklama altta */}
+        <div className="flex flex-col gap-5">
           <div>
-            <p className="text-sm text-[var(--color-muted)] mb-2">{typeLabel}</p>
-            <h1 className="font-display text-3xl lg:text-4xl tracking-wide leading-tight">
+            <div className="flex items-center gap-3 mb-2">
+              <p className="text-sm text-[var(--color-muted)]">{typeLabel}</p>
+              {product.retailer && (
+                <>
+                  <span className="text-[var(--color-muted)]">·</span>
+                  <p className="text-sm font-medium">
+                    {RETAILERS[product.retailer].name}
+                  </p>
+                </>
+              )}
+            </div>
+            <h1 className="font-display text-xl sm:text-2xl lg:text-4xl tracking-wide leading-tight">
               {product.name}
             </h1>
           </div>
 
-          <div className="flex items-baseline gap-3 pb-6 border-b border-[var(--color-line)]">
+          <div className="flex items-baseline gap-3 pb-4 lg:pb-6 border-b border-[var(--color-line)]">
             <span
-              className={`text-3xl font-semibold ${hasDiscount ? "text-[var(--color-accent)]" : ""}`}
+              className={`text-2xl lg:text-3xl font-semibold ${hasDiscount ? "text-[var(--color-accent)]" : ""}`}
             >
               {product.price.toLocaleString("tr-TR")} TL
             </span>
             {hasDiscount && (
-              <span className="text-base text-[var(--color-muted)] line-through">
+              <span className="text-sm lg:text-base text-[var(--color-muted)] line-through">
                 {product.oldPrice!.toLocaleString("tr-TR")} TL
               </span>
             )}
           </div>
 
-          <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">
-            {product.description}
-          </p>
-
-          {/* Sizes */}
-          {product.sizes && (
+          {/* Renk varyantları — aynı baseName'e sahip ürünler */}
+          {product.colorVariants && product.colorVariants.length > 0 && (
             <div>
-              <div className="flex items-center justify-between mb-3">
-                <p className="text-sm font-medium">Beden Seçin</p>
-                <button className="text-xs underline text-[var(--color-muted)]">
-                  Beden Tablosu
-                </button>
+              <div className="flex items-center gap-2 mb-3">
+                <p className="text-sm font-medium">Renk</p>
+                {product.color && (
+                  <p className="text-xs text-[var(--color-muted)]">
+                    · {product.color}
+                  </p>
+                )}
               </div>
               <div className="flex flex-wrap gap-2">
-                {product.sizes.map((s) => (
-                  <button
-                    key={s}
-                    className="min-w-[52px] border border-[var(--color-line)] hover:border-[var(--color-fg)] px-4 py-2.5 text-sm transition-colors"
+                {/* Aktif renk */}
+                <div
+                  className="relative w-14 h-14 border-2 border-[var(--color-fg)] overflow-hidden"
+                  title={product.color ?? "Aktif"}
+                >
+                  {product.photos?.front ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={product.photos.front}
+                      alt={product.color ?? ""}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-[var(--color-bg-soft)]" />
+                  )}
+                </div>
+                {product.colorVariants.map((v) => (
+                  <Link
+                    key={v.id}
+                    href={`/urun/${v.id}`}
+                    title={v.color}
+                    className="relative w-14 h-14 border border-[var(--color-line)] hover:border-[var(--color-fg)] overflow-hidden transition-colors"
                   >
-                    {s}
-                  </button>
+                    {v.photo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={v.photo}
+                        alt={v.color}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-[var(--color-bg-soft)] flex items-center justify-center text-[10px]">
+                        {v.color.slice(0, 3)}
+                      </div>
+                    )}
+                  </Link>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Actions */}
-          <div className="flex gap-3">
-            <button className="flex-1 bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors font-medium py-4 text-sm tracking-wide">
-              SEPETE EKLE
-            </button>
-            <button
-              className="w-14 border border-[var(--color-line)] hover:border-[var(--color-fg)] flex items-center justify-center transition-colors"
-              aria-label="Favorilere ekle"
+          {/* Actions: beden seçici + sepete ekle (mobilde sticky alt bar) */}
+          <ProductActions
+            productId={product.id}
+            sizes={product.sizes}
+            price={product.price}
+            oldPrice={product.oldPrice}
+            productName={product.name}
+          />
+
+          {/* Açıklama */}
+          {product.description && (
+            <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">
+              {product.description}
+            </p>
+          )}
+
+          {/* Mağazada Satın Al (affiliate deeplink) */}
+          {product.deeplink && product.retailer && (
+            <a
+              href={product.deeplink}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="flex items-center justify-between border border-[var(--color-line)] hover:border-[var(--color-fg)] px-5 py-4 transition-colors group"
+              style={{ backgroundColor: "var(--color-bg-elev)" }}
             >
-              <Heart size={18} />
-            </button>
-          </div>
+              <div>
+                <p className="text-sm font-medium">
+                  {RETAILERS[product.retailer].name}'de Satın Al
+                </p>
+                <p className="text-xs text-[var(--color-muted)]">
+                  Mağaza sayfasına yönlendirilirsin
+                </p>
+              </div>
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </a>
+          )}
 
           {/* Kombin CTA */}
           <Link
@@ -147,17 +255,7 @@ export default async function ProductDetail({
             />
           </Link>
 
-          {/* Info badges */}
-          <div className="grid grid-cols-2 gap-3 text-xs pt-4 border-t border-[var(--color-line)]">
-            <div className="flex items-center gap-2 text-[var(--color-fg-soft)]">
-              <Truck size={16} />
-              <span>Ücretsiz Kargo (500 TL üzeri)</span>
-            </div>
-            <div className="flex items-center gap-2 text-[var(--color-fg-soft)]">
-              <RefreshCw size={16} />
-              <span>14 Gün İade Hakkı</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -175,7 +273,8 @@ export default async function ProductDetail({
         </section>
       )}
 
-      <div className="h-24" />
+      {/* Mobilde sticky alt bar yer kaplasın diye boşluk */}
+      <div className="h-24 lg:h-24 pb-20 lg:pb-0" />
     </div>
   );
 }
