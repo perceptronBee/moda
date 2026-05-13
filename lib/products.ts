@@ -1,3 +1,5 @@
+import type { RetailerSlug } from "@/lib/affiliate/retailers";
+
 export type Gender = "kadin" | "erkek" | "cocuk";
 export type ProductType =
   | "ust-giyim"
@@ -6,6 +8,17 @@ export type ProductType =
   | "ayakkabi"
   | "aksesuar";
 
+export type ProductPhotos = {
+  /** Modelin üzerinde, önden çekilmiş — UI kart + AI try-on için */
+  front: string;
+  /** Modelin üzerinde, arkadan çekilmiş — opsiyonel ikinci açı */
+  back?: string;
+  /** Kıyafet yalnız, önden — AI try-on için en temiz girdi */
+  garmentFront?: string;
+  /** Kıyafet yalnız, arkadan */
+  garmentBack?: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -13,10 +26,27 @@ export type Product = {
   oldPrice?: number;
   gender: Gender;
   type: ProductType;
-  tone: string;
+  /** Foto'lar — public/products/{id}/{view}.jpg veya CDN URL */
+  photos?: ProductPhotos;
+  /** Foto yoksa placeholder rengi */
+  tone?: string;
   tag?: string;
   description?: string;
   sizes?: string[];
+  /** Affiliate ağındaki perakendecinin slug'ı (lcwaikiki, defacto, ...) */
+  retailer?: RetailerSlug;
+  /** Perakendecideki ürünün direkt URL'i — "Mağazada Satın Al" butonu için */
+  deeplink?: string;
+  /** Bu ürünün rengi (renk varyantları için) */
+  color?: string;
+  /** Renk olmadan ürün adı — varyant gruplama anahtarı */
+  baseName?: string;
+  /** Aynı baseName'e sahip farklı renkler */
+  colorVariants?: Array<{
+    id: string;
+    color: string;
+    photo: string | null;
+  }>;
 };
 
 export const MAIN_NAV: { slug: Gender; label: string }[] = [
@@ -33,7 +63,12 @@ export const TYPE_LABELS: Record<ProductType, string> = {
   aksesuar: "Aksesuar",
 };
 
-export const PRODUCTS: Product[] = [
+/**
+ * MOCK katalog (eski hardcoded ürünler). Gerçek katalog
+ * `data/feeds/*.xml` dosyalarından `loadAllFeeds()` ile geliyor.
+ * Bunlar foto eklenmeden önceki placeholder'lar — fallback.
+ */
+const MOCK_PRODUCTS: Product[] = [
   {
     id: "01",
     name: "Oversize Keten Gömlek",
@@ -204,6 +239,18 @@ export const PRODUCTS: Product[] = [
     sizes: ["4-5", "6-7", "8-9", "10-11"],
   },
 ];
+
+/**
+ * Birleşik katalog. `lib/products.generated.json` build-time'da üretilir
+ * (`scripts/build-products.mjs` — `predev`/`prebuild` hook'larıyla otomatik).
+ * Saf JSON olduğu için client ve server iki taraftan da import edilebilir.
+ */
+import generated from "./products.generated.json";
+
+const FEED_PRODUCTS: Product[] = generated as Product[];
+
+export const PRODUCTS: Product[] =
+  FEED_PRODUCTS.length > 0 ? FEED_PRODUCTS : MOCK_PRODUCTS;
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);

@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { Search, User, ShoppingBag, Heart, LogOut } from "lucide-react";
+import { Search, User, LogOut } from "lucide-react";
 import { MAIN_NAV } from "@/lib/products";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "@/app/actions/auth";
+import { CartIcon } from "@/components/CartIcon";
+import { FavoriteIcon } from "@/components/FavoriteIcon";
+import { MobileMenu } from "@/components/MobileMenu";
 
 export async function Navbar() {
   let user: { id: string; email?: string } | null = null;
@@ -32,11 +35,11 @@ export async function Navbar() {
         borderColor: "var(--color-line)",
       }}
     >
-      <div className="flex items-center justify-between h-16 px-6 lg:px-10 gap-8">
+      <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-10 gap-4 md:gap-8">
         {/* Logo */}
         <Link
           href="/"
-          className="font-display text-3xl tracking-[0.15em] shrink-0 hover:opacity-70 transition-opacity"
+          className="font-display text-2xl md:text-3xl tracking-[0.15em] shrink-0 hover:opacity-70 transition-opacity"
         >
           MODA
         </Link>
@@ -76,7 +79,7 @@ export async function Navbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-5 shrink-0">
+        <div className="flex items-center gap-4 md:gap-5 shrink-0">
           {user ? (
             <>
               <Link
@@ -107,21 +110,15 @@ export async function Navbar() {
             </Link>
           )}
 
-          <button
-            type="button"
-            className="hidden md:flex items-center hover:text-[var(--color-accent)] transition-colors"
-            aria-label="Favoriler"
-          >
-            <Heart size={18} />
-          </button>
-          <Link
-            href="/sepet"
-            className="flex items-center gap-2 text-sm hover:text-[var(--color-accent)] transition-colors"
-          >
-            <ShoppingBag size={18} />
-            <span className="hidden sm:inline">Sepet</span>
-            <span className="text-[var(--color-muted)]">(0)</span>
-          </Link>
+          <span className="hidden md:flex"><FavoriteIcon /></span>
+          <CartIcon />
+
+          {/* Mobile hamburger */}
+          <MobileMenu
+            isLoggedIn={!!user}
+            displayName={displayName}
+            onLogout={logout}
+          />
         </div>
       </div>
     </header>

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "prod-1",
+    "brand": "COS",
+    "title": "Oversized Wool Coat",
+    "price": 3499.99,
+    "image_url": "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/cos-wool-coat",
+    "category": "Outerwear"
+  },
+  {
+    "id": "prod-2",
+    "brand": "Massimo Dutti",
+    "title": "Silk Blend Midi Dress",
+    "price": 2299.99,
+    "image_url": "https://images.unsplash.com/photo-1550639525-c97d455acf70?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/md-silk-dress",
+    "category": "Dresses"
+  },
+  {
+    "id": "prod-3",
+    "brand": "Zara Studio",
+    "title": "Leather Ankle Boots",
+    "price": 1899.99,
+    "image_url": "https://images.unsplash.com/photo-1608667508764-33cf0726b13a?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/zara-boots",
+    "category": "Shoes"
+  },
+  {
+    "id": "prod-4",
+    "brand": "COS",
+    "title": "Cashmere Turtleneck",
+    "price": 2899.99,
+    "image_url": "https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/cos-cashmere",
+    "category": "Knitwear"
+  },
+  {
+    "id": "prod-5",
+    "brand": "Massimo Dutti",
+    "title": "Tailored Wide-Leg Trousers",
+    "price": 1599.99,
+    "image_url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/md-trousers",
+    "category": "Trousers"
+  },
+  {
+    "id": "prod-6",
+    "brand": "Zara Studio",
+    "title": "Structured Blazer",
+    "price": 2499.99,
+    "image_url": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/zara-blazer",
+    "category": "Outerwear"
+  },
+  {
+    "id": "prod-7",
+    "brand": "COS",
+    "title": "Minimalist Leather Tote",
+    "price": 3199.99,
+    "image_url": "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/cos-tote",
+    "category": "Accessories"
+  },
+  {
+    "id": "prod-8",
+    "brand": "Massimo Dutti",
+    "title": "Ribbed Knit Polo",
+    "price": 1299.99,
+    "image_url": "https://images.unsplash.com/photo-1623114112814-118d77d70313?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/md-polo",
+    "category": "Knitwear"
+  },
+  {
+    "id": "prod-9",
+    "brand": "Zara Studio",
+    "title": "Pleated Midi Skirt",
+    "price": 1199.99,
+    "image_url": "https://images.unsplash.com/photo-1582142407894-ec85a1260a46?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/zara-skirt",
+    "category": "Skirts"
+  },
+  {
+    "id": "prod-10",
+    "brand": "COS",
+    "title": "Chunky Loafers",
+    "price": 2199.99,
+    "image_url": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/cos-loafers",
+    "category": "Shoes"
+  },
+  {
+    "id": "prod-11",
+    "brand": "Massimo Dutti",
+    "title": "Linen Blend Shirt",
+    "price": 1499.99,
+    "image_url": "https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/md-shirt",
+    "category": "Shirts"
+  },
+  {
+    "id": "prod-12",
+    "brand": "Zara Studio",
+    "title": "Asymmetric Evening Dress",
+    "price": 2799.99,
+    "image_url": "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=800&h=1200",
+    "product_url": "https://example.com/affiliate/zara-evening-dress",
+    "category": "Dresses"
+  }
+]

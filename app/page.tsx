@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/ProductCard";
 import { PRODUCTS, MAIN_NAV, getProductsByGender } from "@/lib/products";
-import { ArrowRight } from "lucide-react";
+import { RETAILERS } from "@/lib/affiliate/retailers";
+import { ArrowRight, Store } from "lucide-react";
 
 export default function HomePage() {
   const newArrivals = PRODUCTS.filter((p) => p.tag === "Yeni").slice(0, 4);
@@ -13,7 +14,7 @@ export default function HomePage() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-1 bg-[var(--color-line)]">
         <Link
           href="/kadin"
-          className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[480px] overflow-hidden group"
+          className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[480px] overflow-hidden group"
           style={{ background: "#9b9b9b" }}
         >
           <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 bg-gradient-to-t from-black/30 via-transparent to-transparent">
@@ -72,7 +73,7 @@ export default function HomePage() {
 
       {/* Yeni gelenler */}
       {newArrivals.length > 0 && (
-        <Section title="Yeni Gelenler" subtitle="Bu hafta eklenenler" href="/kadin">
+        <Section title="Yeni Gelenler" subtitle="Bu hafta eklenenler" href="/?tag=yeni">
           {newArrivals.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
@@ -85,13 +86,55 @@ export default function HomePage() {
           title="İndirim"
           subtitle="Sınırlı süreli fırsatlar"
           accent
-          href="/kadin"
+          href="/?tag=indirim"
         >
           {onSale.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </Section>
       )}
+
+      {/* Mağazalar — affiliate ağı vurgusu */}
+      <section className="px-4 sm:px-6 lg:px-10 py-12 max-w-7xl mx-auto w-full">
+        <div className="flex items-end justify-between mb-6">
+          <div>
+            <p className="meta mb-1">AFFILIATE NETWORK</p>
+            <h2 className="font-display text-2xl sm:text-3xl tracking-wide">
+              Mağazalarımız
+            </h2>
+          </div>
+          <Link
+            href="/affiliate"
+            className="text-sm hover:text-[var(--color-accent)] flex items-center gap-1"
+          >
+            API <ArrowRight size={14} />
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
+          {Object.values(RETAILERS).map((r) => {
+            const count = PRODUCTS.filter((p) => p.retailer === r.slug).length;
+            return (
+              <Link
+                key={r.slug}
+                href={`/magaza/${r.slug}`}
+                className="flex items-center justify-between border border-[var(--color-line)] hover:border-[var(--color-fg)] px-4 py-3 transition-colors group"
+                style={{ backgroundColor: "var(--color-bg-elev)" }}
+              >
+                <div className="min-w-0">
+                  <p className="text-sm font-medium truncate">{r.name}</p>
+                  <p className="text-[10px] text-[var(--color-muted)] uppercase tracking-wider mt-0.5">
+                    {count} ürün
+                  </p>
+                </div>
+                <Store
+                  size={14}
+                  className="text-[var(--color-muted)] shrink-0 ml-2 group-hover:text-[var(--color-fg)] transition-colors"
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Kategori vitrini */}
       <section className="px-6 lg:px-10 py-16 max-w-7xl mx-auto w-full">
