@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5278808",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-siyah-o-5278808",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5278808/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5278808/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5278808/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5278808/garmentBack.jpg"
+  },
+  "name": "Siyah Bisiklet Yaka Baskılı Erkek Tişört",
+  "priceText": "249.99",
+  "price": 249.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:25:28.724Z",
+  "_base": "Bisiklet Yaka Baskılı Erkek Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::bisiklet yaka erkek tişört"
+}

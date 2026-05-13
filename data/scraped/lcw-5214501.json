@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5214501",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-siyah-o-5214501",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5214501/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5214501/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5214501/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5214501/garmentBack.jpg"
+  },
+  "name": "Siyah Polo Yaka Penye Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:25:48.944Z",
+  "_base": "Polo Yaka Penye Erkek Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::polo yaka penye erkek tişört"
+}

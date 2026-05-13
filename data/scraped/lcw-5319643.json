@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5319643",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-kahverengi-o-5319643",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5319643/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5319643/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5319643/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5319643/garmentBack.jpg"
+  },
+  "name": "Kahverengi Bisiklet Yaka Baskılı Penye Erkek Tişört",
+  "priceText": "249.99",
+  "price": 249.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:23:24.640Z",
+  "_base": "Bisiklet Yaka Baskılı Penye Erkek Tişört",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::bisiklet yaka penye erkek tişört"
+}

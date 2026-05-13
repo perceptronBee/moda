@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5061309",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-beyaz-o-5061309",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5061309/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5061309/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5061309/garmentFront.jpg"
+  },
+  "name": "Beyaz Loose Fit Basic Soft Touch Tişört",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Soft Touch Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:09:54.248Z",
+  "_base": "Loose Fit Basic Soft Touch Tişört",
+  "_color": "Beyaz",
+  "_key": "lcwaikiki::soft touch tişört"
+}

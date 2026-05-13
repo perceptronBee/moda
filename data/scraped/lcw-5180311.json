@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5180311",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-siyah-o-5180311",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5180311/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5180311/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5180311/garmentFront.jpg"
+  },
+  "name": "Siyah Loose Fit Basic Soft Touch Tişört",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Soft Touch Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:10:14.747Z",
+  "_base": "Loose Fit Basic Soft Touch Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::soft touch tişört"
+}

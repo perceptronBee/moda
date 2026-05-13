@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5203225",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-kahverengi-o-5203225",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5203225/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5203225/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5203225/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5203225/garmentBack.jpg"
+  },
+  "name": "Kahverengi Polo Yaka Strüktürlü Erkek Tişört",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Strüktürlü Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:22:09.320Z",
+  "_base": "Polo Yaka Strüktürlü Erkek Tişört",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::polo yaka erkek tişört"
+}

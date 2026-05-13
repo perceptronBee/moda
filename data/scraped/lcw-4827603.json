@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4827603",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-siyah-o-4827603",
+  "photos": {
+    "back": "/products/lcwaikiki/lcw-4827603/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4827603/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4827603/garmentBack.jpg",
+    "front": "/products/lcwaikiki/lcw-4827603/front.jpg"
+  },
+  "name": "Siyah %100 Pamuk Regular Fit Basic Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek Tişört%100 Pamuk Regular Fit Basic Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T12:57:54.010Z",
+  "_base": "%100 Pamuk Regular Fit Basic Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::%100 pamuk tişört"
+}

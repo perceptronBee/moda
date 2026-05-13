@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5263523",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-kahverengi-o-5263523",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5263523/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5263523/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5263523/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5263523/garmentBack.jpg"
+  },
+  "name": "Kahverengi Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Resort Yaka Müslin Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:25:04.748Z",
+  "_base": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::resort yaka müslin erkek gömlek"
+}

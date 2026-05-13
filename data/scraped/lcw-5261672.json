@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5261672",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-murdum-o-5261672",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5261672/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5261672/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5261672/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5261672/garmentBack.jpg"
+  },
+  "name": "Mürdüm Polo Yaka Pike Erkek Tişört",
+  "priceText": "449.99",
+  "price": 449.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Pike Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:08:19.204Z",
+  "_base": "Polo Yaka Pike Erkek Tişört",
+  "_color": "Mürdüm",
+  "_key": "lcwaikiki::polo yaka pike erkek tişört"
+}

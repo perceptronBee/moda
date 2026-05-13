@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5214505",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-kahverengi-o-5214505",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5214505/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5214505/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5214505/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5214505/garmentBack.jpg"
+  },
+  "name": "Kahverengi Polo Yaka Penye Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:26:15.137Z",
+  "_base": "Polo Yaka Penye Erkek Tişört",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::polo yaka penye erkek tişört"
+}

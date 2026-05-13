@@ -10,7 +10,8 @@
     "start": "next start",
     "seed-products": "node scripts/build-products.mjs",
     "helper": "node scripts/moda-helper.mjs",
-    "scraped-to-feeds": "node scripts/scraped-to-feeds.mjs"
+    "scraped-to-feeds": "node scripts/scraped-to-feeds.mjs",
+    "sync": "git add public/products lib/products.generated.json data/scraped && git commit -m \"data: yeni urunler eklendi\" && git push"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",

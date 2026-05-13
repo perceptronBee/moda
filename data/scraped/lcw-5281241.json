@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5281241",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-antrasit-o-5281241",
+  "photos": {
+    "garmentFront": "/products/lcwaikiki/lcw-5281241/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5281241/garmentBack.jpg"
+  },
+  "name": "Antrasit Loose Fit Basic Soft Touch Tişört",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Soft Touch Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:10:37.847Z",
+  "_base": "Loose Fit Basic Soft Touch Tişört",
+  "_color": "Antrasit",
+  "_key": "lcwaikiki::soft touch tişört"
+}

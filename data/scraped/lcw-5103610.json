@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5103610",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-mavi-o-5103610",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5103610/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5103610/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5103610/garmentBack.jpg"
+  },
+  "name": "Mavi Polo Yaka Erkek Triko Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Triko Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:17:14.058Z",
+  "_base": "Polo Yaka Erkek Triko Tişört",
+  "_color": "Mavi",
+  "_key": "lcwaikiki::polo yaka erkek triko tişört"
+}

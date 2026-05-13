@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5224519",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-poplin-erkek-gomlek-kahverengi-o-5224519",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5224519/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5224519/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5224519/garmentFront.jpg"
+  },
+  "name": "Kahverengi Regular Fit Poplin Erkek Gömlek",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Poplin Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:28:48.077Z",
+  "_base": "Regular Fit Poplin Erkek Gömlek",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::poplin erkek gömlek"
+}

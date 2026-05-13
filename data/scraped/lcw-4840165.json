@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4840165",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-yesil-o-4840165",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4840165/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4840165/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4840165/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4840165/garmentBack.jpg"
+  },
+  "name": "Yeşil Polo Yaka Erkek Triko Tişört",
+  "priceText": "549.99",
+  "price": 549.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Triko Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:15:54.236Z",
+  "_base": "Polo Yaka Erkek Triko Tişört",
+  "_color": "Yeşil",
+  "_key": "lcwaikiki::polo yaka erkek triko tişört"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5032722",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-beyaz-o-5032722",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5032722/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5032722/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5032722/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5032722/garmentBack.jpg"
+  },
+  "name": "Beyaz Loose Fit Basic Kalın Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Kalın Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:25:36.168Z",
+  "_base": "Loose Fit Basic Kalın Tişört",
+  "_color": "Beyaz",
+  "_key": "lcwaikiki::kalın tişört"
+}

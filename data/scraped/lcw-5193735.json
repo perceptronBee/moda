@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5193735",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-100-keten-erkek-gomlek-kahverengi-o-5193735",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5193735/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5193735/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5193735/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5193735/garmentBack.jpg"
+  },
+  "name": "Kahverengi Regular Fit %100 Keten Erkek Gömlek",
+  "priceText": "1299.99",
+  "price": 1299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit %100 Keten Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:42:57.113Z"
+}

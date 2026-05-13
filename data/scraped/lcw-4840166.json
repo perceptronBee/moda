@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4840166",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-lacivert-o-4840166",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4840166/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4840166/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4840166/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4840166/garmentBack.jpg"
+  },
+  "name": "Lacivert Polo Yaka Erkek Triko Tişört",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Triko Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:15:38.553Z",
+  "_base": "Polo Yaka Erkek Triko Tişört",
+  "_color": "Lacivert",
+  "_key": "lcwaikiki::polo yaka erkek triko tişört"
+}

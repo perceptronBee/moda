@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5092683",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-ekru-o-5092683",
+  "photos": {
+    "garmentFront": "/products/lcwaikiki/lcw-5092683/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5092683/garmentBack.jpeg",
+    "front": "/products/lcwaikiki/lcw-5092683/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5092683/back.jpg"
+  },
+  "name": "Ekru Bisiklet Yaka Baskılı Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:29:33.522Z",
+  "_base": "Bisiklet Yaka Baskılı Erkek Tişört",
+  "_color": "Ekru",
+  "_key": "lcwaikiki::bisiklet yaka erkek tişört"
+}

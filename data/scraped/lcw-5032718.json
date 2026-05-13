@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5032718",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-siyah-o-5032718",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5032718/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5032718/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5032718/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5032718/garmentBack.jpg"
+  },
+  "name": "Siyah Loose Fit Basic Kalın Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Kalın Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:25:19.523Z",
+  "_base": "Loose Fit Basic Kalın Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::kalın tişört"
+}

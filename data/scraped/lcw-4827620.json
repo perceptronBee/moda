@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4827620",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-beyaz-o-4827620",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4827620/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4827620/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4827620/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4827620/garmentBack.jpg"
+  },
+  "name": "Beyaz Polo Yaka Pike Erkek Tişört",
+  "priceText": "449.99",
+  "price": 449.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Pike Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:08:45.956Z",
+  "_base": "Polo Yaka Pike Erkek Tişört",
+  "_color": "Beyaz",
+  "_key": "lcwaikiki::polo yaka pike erkek tişört"
+}

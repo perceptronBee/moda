@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4314470",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-siyah-o-4314470",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4314470/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4314470/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4314470/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4314470/garmentBack.jpg"
+  },
+  "name": "Siyah Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Kısa Kollu Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:32:38.482Z",
+  "_base": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::bisiklet yaka kısa kollu erkek tişört"
+}

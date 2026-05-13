@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5082922",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-penye-erkek-tisort-beyaz-o-5082922",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5082922/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5082922/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5082922/garmentFront.jpg"
+  },
+  "name": "Beyaz Bisiklet Yaka Baskılı Penye Erkek Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:22:56.903Z",
+  "_base": "Bisiklet Yaka Baskılı Penye Erkek Tişört",
+  "_color": "Beyaz",
+  "_key": "lcwaikiki::bisiklet yaka penye erkek tişört"
+}

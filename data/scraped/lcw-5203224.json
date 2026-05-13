@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5203224",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-sari-o-5203224",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5203224/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5203224/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5203224/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5203224/garmentBack.jpg"
+  },
+  "name": "Sarı Polo Yaka Strüktürlü Erkek Tişört",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Strüktürlü Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:18:01.145Z",
+  "_base": "Polo Yaka Strüktürlü Erkek Tişört",
+  "_color": "Sarı",
+  "_key": "lcwaikiki::polo yaka erkek tişört"
+}

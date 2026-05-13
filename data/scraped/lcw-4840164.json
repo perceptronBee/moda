@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4840164",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-triko-tisort-siyah-o-4840164",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4840164/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4840164/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4840164/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4840164/garmentBack.jpg"
+  },
+  "name": "Siyah Polo Yaka Erkek Triko Tişört",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Triko Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:16:56.969Z",
+  "_base": "Polo Yaka Erkek Triko Tişört",
+  "_color": "Siyah",
+  "_key": "lcwaikiki::polo yaka erkek triko tişört"
+}

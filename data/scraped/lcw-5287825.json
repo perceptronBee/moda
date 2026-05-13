@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5287825",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-bordo-o-5287825",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5287825/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5287825/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5287825/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5287825/garmentBack.jpg"
+  },
+  "name": "Bordo Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Resort Yaka Müslin Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:24:41.947Z",
+  "_base": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "_color": "Bordo",
+  "_key": "lcwaikiki::resort yaka müslin erkek gömlek"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5032723",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-kalin-tisort-murdum-o-5032723",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5032723/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5032723/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5032723/garmentFront.jpg"
+  },
+  "name": "Mürdüm Loose Fit Basic Kalın Tişört",
+  "priceText": "329.99",
+  "price": 329.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Kalın Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:26:13.133Z",
+  "_base": "Loose Fit Basic Kalın Tişört",
+  "_color": "Mürdüm",
+  "_key": "lcwaikiki::kalın tişört"
+}

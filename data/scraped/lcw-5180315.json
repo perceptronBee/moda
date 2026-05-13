@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5180315",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-basic-soft-touch-tisort-kahverengi-o-5180315",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5180315/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5180315/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5180315/garmentFront.jpg"
+  },
+  "name": "Kahverengi Loose Fit Basic Soft Touch Tişört",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtLoose Fit Basic Soft Touch Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:10:27.369Z",
+  "_base": "Loose Fit Basic Soft Touch Tişört",
+  "_color": "Kahverengi",
+  "_key": "lcwaikiki::soft touch tişört"
+}

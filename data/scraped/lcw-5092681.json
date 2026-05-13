@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5092681",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-antrasit-o-5092681",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5092681/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5092681/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5092681/garmentFront.jpg"
+  },
+  "name": "Antrasit Bisiklet Yaka Baskılı Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:29:49.282Z",
+  "_base": "Bisiklet Yaka Baskılı Erkek Tişört",
+  "_color": "Antrasit",
+  "_key": "lcwaikiki::bisiklet yaka erkek tişört"
+}

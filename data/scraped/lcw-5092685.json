@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5092685",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-baskili-erkek-tisort-haki-o-5092685",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5092685/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5092685/back.jpg"
+  },
+  "name": "Haki Bisiklet Yaka Baskılı Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Baskılı Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:29:05.968Z",
+  "_base": "Bisiklet Yaka Baskılı Erkek Tişört",
+  "_color": "Haki",
+  "_key": "lcwaikiki::bisiklet yaka erkek tişört"
+}

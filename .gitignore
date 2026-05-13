@@ -51,9 +51,9 @@ scripts/scraped-to-feeds.mjs
 scripts/seed-feeds.mjs
 scripts/_*.mjs
 
-# Ham scraped meta — kaynak veri, Vercel'e gerek yok (products.generated.json yeterli)
-data/scraped/
+# data/feeds/ helper tarafından üretiliyor — yedek için commit edilmiyor
 data/feeds/
+# data/scraped/ commit ediliyor — kaynak veri yedek olsun
 
 # editor / OS
 .vscode/

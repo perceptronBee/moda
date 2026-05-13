@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5117244",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-lacivert-o-5117244",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5117244/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5117244/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5117244/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5117244/garmentBack.jpg"
+  },
+  "name": "Lacivert Regular Fit Keten Karışımlı Erkek Gömlek",
+  "priceText": "899.99",
+  "price": 899.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Keten Karışımlı Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:31:14.786Z",
+  "_base": "Regular Fit Keten Karışımlı Erkek Gömlek",
+  "_color": "Lacivert",
+  "_key": "lcwaikiki::keten karışımlı erkek gömlek"
+}

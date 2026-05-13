@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5117077",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-resort-yaka-muslin-erkek-gomlek-beyaz-o-5117077",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5117077/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5117077/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5117077/garmentFront.jpg"
+  },
+  "name": "Beyaz Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Resort Yaka Müslin Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:24:27.514Z",
+  "_base": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
+  "_color": "Beyaz",
+  "_key": "lcwaikiki::resort yaka müslin erkek gömlek"
+}

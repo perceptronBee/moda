@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5227391",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-standart-fit-strukturlu-erkek-tisort-lacivert-o-5227391",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5227391/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5227391/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5227391/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5227391/garmentBack.jpg"
+  },
+  "name": "Lacivert Polo Yaka Standart Fit Strüktürlü Erkek Tişört",
+  "priceText": "549.99",
+  "price": 549.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Standart Fit Strüktürlü Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:33:34.335Z",
+  "_base": "Polo Yaka Standart Fit Strüktürlü Erkek Tişört",
+  "_color": "Lacivert",
+  "_key": "lcwaikiki::polo yaka erkek tişört"
+}

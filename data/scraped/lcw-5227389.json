@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5227389",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-desenli-strukturlu-erkek-tisort-antrasit-o-5227389",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5227389/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5227389/garmentFront.jpg",
+    "back": "/products/lcwaikiki/lcw-5227389/back.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5227389/garmentBack.jpg"
+  },
+  "name": "Antrasit Polo Yaka Desenli Strüktürlü Erkek Tişört",
+  "priceText": "549.99",
+  "price": 549.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Desenli Strüktürlü Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:35:05.092Z",
+  "_base": "Polo Yaka Desenli Strüktürlü Erkek Tişört",
+  "_color": "Antrasit",
+  "_key": "lcwaikiki::polo yaka erkek tişört"
+}

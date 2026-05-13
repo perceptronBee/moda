@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4314471",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-ekru-o-4314471",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4314471/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4314471/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4314471/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4314471/garmentBack.jpg"
+  },
+  "name": "Ekru Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Kısa Kollu Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:32:28.070Z",
+  "_base": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "_color": "Ekru",
+  "_key": "lcwaikiki::bisiklet yaka kısa kollu erkek tişört"
+}

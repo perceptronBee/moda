@@ -1,0 +1,20 @@
+{
+  "id": "LCW-5117242",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-keten-karisimli-erkek-gomlek-yesil-o-5117242",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5117242/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5117242/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5117242/garmentFront.jpg"
+  },
+  "name": "Yeşil Regular Fit Keten Karışımlı Erkek Gömlek",
+  "priceText": "899.99",
+  "price": 899.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Keten Karışımlı Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:31:27.576Z",
+  "_base": "Regular Fit Keten Karışımlı Erkek Gömlek",
+  "_color": "Yeşil",
+  "_key": "lcwaikiki::keten karışımlı erkek gömlek"
+}

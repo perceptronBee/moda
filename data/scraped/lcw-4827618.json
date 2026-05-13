@@ -1,0 +1,22 @@
+{
+  "id": "LCW-4827618",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-pike-erkek-tisort-siyah-o-4827618-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4827618/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4827618/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4827618/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4827618/garmentBack.jpg"
+  },
+  "name": "Polo Yaka Pike Erkek Tişört",
+  "priceText": "449,99 TL · 449,99 TL · 549,99 TL · 549,99 TL",
+  "price": 549.99,
+  "oldPrice": 549.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Pike Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:06:12.673Z",
+  "_base": "Polo Yaka Pike Erkek Tişört",
+  "_color": null,
+  "_key": "lcwaikiki::polo yaka pike erkek tişört"
+}

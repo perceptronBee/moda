@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5203223",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-strukturlu-erkek-tisort-ekru-o-5203223",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5203223/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5203223/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5203223/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5203223/garmentBack.jpg"
+  },
+  "name": "Ekru Polo Yaka Strüktürlü Erkek Tişört",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Strüktürlü Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:20:48.568Z",
+  "_base": "Polo Yaka Strüktürlü Erkek Tişört",
+  "_color": "Ekru",
+  "_key": "lcwaikiki::polo yaka erkek tişört"
+}

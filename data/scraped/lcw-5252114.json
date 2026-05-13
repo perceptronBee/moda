@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5252114",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/100-pamuk-regular-fit-basic-tisort-gri-o-5252114",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5252114/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5252114/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5252114/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5252114/garmentBack.jpg"
+  },
+  "name": "Gri %100 Pamuk Regular Fit Basic Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek Tişört%100 Pamuk Regular Fit Basic Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T12:47:04.829Z",
+  "_base": "%100 Pamuk Regular Fit Basic Tişört",
+  "_color": "Gri",
+  "_key": "lcwaikiki::%100 pamuk tişört"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "LCW-4864332",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-dokulu-tisort-lacivert-o-4864332",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4864332/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4864332/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4864332/garmentFront.jpg"
+  },
+  "name": "Lacivert Polo Yaka Erkek Dokulu Tişört",
+  "priceText": "549.99",
+  "price": 549.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Dokulu Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:38:29.676Z",
+  "_base": "Polo Yaka Erkek Dokulu Tişört",
+  "_color": "Lacivert",
+  "_key": "lcwaikiki::polo yaka erkek dokulu tişört"
+}

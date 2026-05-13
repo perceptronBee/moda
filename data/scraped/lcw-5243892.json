@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5243892",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-indigo-o-5243892",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5243892/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5243892/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5243892/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5243892/garmentBack.jpg"
+  },
+  "name": "İndigo Polo Yaka Erkek Tişört",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T13:24:31.962Z",
+  "_base": "İndigo Polo Yaka Erkek Tişört",
+  "_color": null,
+  "_key": "lcwaikiki::i̇ndigo polo yaka erkek tişört"
+}

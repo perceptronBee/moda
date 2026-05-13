@@ -1,0 +1,21 @@
+{
+  "id": "LCW-4392494",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-kisa-kollu-erkek-tisort-lacivert-o-4392494",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4392494/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4392494/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4392494/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4392494/garmentBack.jpg"
+  },
+  "name": "Lacivert Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "priceText": "199.99",
+  "price": 199.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Kısa Kollu Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:33:07.920Z",
+  "_base": "Bisiklet Yaka Kısa Kollu Erkek Tişört",
+  "_color": "Lacivert",
+  "_key": "lcwaikiki::bisiklet yaka kısa kollu erkek tişört"
+}

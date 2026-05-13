@@ -1,0 +1,21 @@
+{
+  "id": "LCW-5214502",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-penye-erkek-tisort-haki-o-5214502",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5214502/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5214502/garmentFront.jpg",
+    "back": "/products/lcwaikiki/lcw-5214502/back.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5214502/garmentBack.jpg"
+  },
+  "name": "Haki Polo Yaka Penye Erkek Tişört",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T17:27:01.281Z",
+  "_base": "Polo Yaka Penye Erkek Tişört",
+  "_color": "Haki",
+  "_key": "lcwaikiki::polo yaka penye erkek tişört"
+}
