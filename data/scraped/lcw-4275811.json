@@ -1,0 +1,18 @@
+{
+  "id": "LCW-4275811",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-sweatshirt-lacivert-o-4275811",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4275811/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4275811/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4275811/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4275811/garmentBack.jpg"
+  },
+  "name": "Lacivert Polo Yaka Erkek Sweatshirt",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtPolo Yaka Erkek Sweatshirt",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:57:03.074Z"
+}

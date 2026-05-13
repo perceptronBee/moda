@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5132105",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-pantolon-lacivert-o-5132105",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5132105/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5132105/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5132105/garmentFront.jpg"
+  },
+  "name": "Lacivert Standart Kalıp Erkek Pantolon",
+  "priceText": "649.99",
+  "price": 649.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonStandart Kalıp Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:10:25.086Z"
+}

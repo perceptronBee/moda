@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4920790",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-ceket-siyah-o-4920790",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4920790/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4920790/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4920790/garmentFront.jpg"
+  },
+  "name": "Siyah Standart Kalıp Erkek Ceket",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimCeketStandart Kalıp Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T20:51:45.272Z"
+}

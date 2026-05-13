@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5236974",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-pantolon-kahverengi-o-5236974",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5236974/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5236974/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5236974/garmentFront.jpg"
+  },
+  "name": "Kahverengi Standart Kalıp Erkek Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonStandart Kalıp Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:07:02.148Z"
+}

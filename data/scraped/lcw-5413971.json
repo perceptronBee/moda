@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5413971",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-erkek-ceket-siyah-o-5413971",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5413971/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5413971/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5413971/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5413971/garmentBack.jpg"
+  },
+  "name": "Siyah Regular Fit Erkek Ceket",
+  "priceText": "1999.99",
+  "price": 1999.99,
+  "breadcrumb": "Ana SayfaGiyimCeketRegular Fit Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T20:50:34.819Z"
+}

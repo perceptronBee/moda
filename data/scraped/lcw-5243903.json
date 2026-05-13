@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5243903",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-keten-gorunumlu-erkek-pantolon-lacivert-o-5243903-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5243903/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5243903/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5243903/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5243903/garmentBack.jpg"
+  },
+  "name": "Regular Fit Keten Görünümlü Erkek Pantolon Kombini | LCW",
+  "priceText": "899,99 TL · 899,99 TL · 799,99 TL · 799,99 TL",
+  "price": 899.99,
+  "oldPrice": 899.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonRegular Fit Keten Görünümlü Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:09:26.521Z"
+}

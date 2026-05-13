@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4921447",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-pantolon-bej-o-4921447",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4921447/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4921447/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4921447/garmentFront.jpg"
+  },
+  "name": "Bej Slim Fit Erkek Pantolon",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T20:23:43.717Z"
+}

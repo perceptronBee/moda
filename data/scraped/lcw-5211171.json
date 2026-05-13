@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5211171",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-erkek-penye-tisort-yesil-o-5211171",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5211171/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5211171/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5211171/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5211171/garmentBack.jpg"
+  },
+  "name": "Yeşil Bisiklet Yaka Erkek Penye Tişört",
+  "priceText": "359.99",
+  "price": 359.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Erkek Penye Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:32:22.491Z"
+}

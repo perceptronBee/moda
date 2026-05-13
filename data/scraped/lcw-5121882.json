@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5121882",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-armurlu-erkek-gomlek-mavi-o-5121882",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5121882/front.jpeg",
+    "back": "/products/lcwaikiki/lcw-5121882/back.jpeg",
+    "garmentFront": "/products/lcwaikiki/lcw-5121882/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5121882/garmentBack.jpg"
+  },
+  "name": "Mavi Regular Fit Armürlü Erkek Gömlek",
+  "priceText": "749.99",
+  "price": 749.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Armürlü Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:28:50.855Z"
+}

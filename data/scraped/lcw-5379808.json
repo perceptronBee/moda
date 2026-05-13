@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5379808",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-erkek-sort-siyah-o-5379808",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5379808/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5379808/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5379808/garmentBack.jpg"
+  },
+  "name": "Siyah Regular Fit Erkek Şort",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaGiyimŞortRegular Fit Erkek Şort",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T20:18:02.402Z"
+}

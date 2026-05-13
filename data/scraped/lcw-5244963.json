@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5244963",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-beyaz-o-5244963",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5244963/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5244963/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5244963/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5244963/garmentBack.jpg"
+  },
+  "name": "Beyaz Polo Yaka Erkek Tişört",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:22:54.626Z"
+}

@@ -5,7 +5,8 @@
   "photos": {
     "front": "/products/lcwaikiki/lcw-5117075/front.jpg",
     "back": "/products/lcwaikiki/lcw-5117075/back.jpg",
-    "garmentFront": "/products/lcwaikiki/lcw-5117075/garmentFront.jpg"
+    "garmentFront": "/products/lcwaikiki/lcw-5117075/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5117075/garmentBack.jpg"
   },
   "name": "Siyah Regular Fit Resort Yaka Müslin Erkek Gömlek",
   "priceText": "799.99",
@@ -13,7 +14,7 @@
   "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Resort Yaka Müslin Erkek Gömlek",
   "gender": "erkek",
   "category": "ust-giyim",
-  "updatedAt": "2026-05-13T17:24:14.790Z",
+  "updatedAt": "2026-05-13T19:18:30.200Z",
   "_base": "Regular Fit Resort Yaka Müslin Erkek Gömlek",
   "_color": "Siyah",
   "_key": "lcwaikiki::resort yaka müslin erkek gömlek"

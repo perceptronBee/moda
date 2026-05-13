@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5396212",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/baggy-fit-erkek-jean-pantolon-indigo-o-5396212",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5396212/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5396212/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5396212/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5396212/garmentBack.jpg"
+  },
+  "name": "İndigo Baggy Fit Erkek Jean Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek JeanBaggy Fit Erkek Jean Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:37:01.107Z"
+}

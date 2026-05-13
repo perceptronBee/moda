@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5196078",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-pantolon-bej-o-5196078",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5196078/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5196078/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5196078/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5196078/garmentBack.jpg"
+  },
+  "name": "Bej Standart Kalıp Erkek Pantolon",
+  "priceText": "649.99",
+  "price": 649.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonStandart Kalıp Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:09:49.503Z"
+}

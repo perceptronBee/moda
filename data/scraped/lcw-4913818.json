@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4913818",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-sort-indigo-o-4913818",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4913818/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4913818/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4913818/garmentFront.jpg"
+  },
+  "name": "İndigo Slim Fit Erkek Şort",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek Ev GiyimErkek PijamaErkek ŞortSlim Fit Erkek Şort",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:11:56.573Z"
+}

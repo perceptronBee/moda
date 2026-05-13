@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4912471",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kapusonlu-erkek-ceket-gri-o-4912471",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4912471/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4912471/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4912471/garmentFront.jpg"
+  },
+  "name": "Gri Kapüşonlu Erkek Ceket",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaGiyimCeketKapüşonlu Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:48:17.196Z"
+}

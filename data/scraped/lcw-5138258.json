@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5138258",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-sort-petrol-o-5138258",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5138258/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5138258/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5138258/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5138258/garmentBack.jpeg"
+  },
+  "name": "Petrol Standart Kalıp Erkek Şort",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaGiyimŞortStandart Kalıp Erkek Şort",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:24:31.683Z"
+}

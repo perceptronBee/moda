@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5097380",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-erkek-jean-gomlek-indigo-o-5097380",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5097380/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5097380/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5097380/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5097380/garmentBack.jpg"
+  },
+  "name": "İndigo Regular Fit Erkek Jean Gömlek",
+  "priceText": "1099.99",
+  "price": 1099.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Erkek Jean Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:25:48.245Z"
+}

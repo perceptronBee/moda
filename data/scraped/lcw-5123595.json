@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5123595",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-cizgili-erkek-gomlek-kahverengi-o-5123595",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5123595/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5123595/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5123595/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5123595/garmentBack.jpg"
+  },
+  "name": "Kahverengi Regular Fit Çizgili Erkek Gömlek",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek GömlekRegular Fit Çizgili Erkek Gömlek",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T19:10:49.219Z"
+}

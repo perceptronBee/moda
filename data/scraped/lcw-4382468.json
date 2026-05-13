@@ -1,0 +1,19 @@
+{
+  "id": "LCW-4382468",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/rahat-kalip-erkek-jean-ceket-siyah-o-4382468-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4382468/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4382468/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4382468/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4382468/garmentBack.jpg"
+  },
+  "name": "Rahat Kalıp Erkek Jean Ceket Kombini | LCW",
+  "priceText": "699,99 TL · 699,99 TL · 299,99 TL · 299,99 TL · 599,99 TL · 599,99 TL",
+  "price": 699.99,
+  "oldPrice": 699.99,
+  "breadcrumb": "Ana SayfaGiyimCeketRahat Kalıp Erkek Jean Ceket",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T20:51:15.488Z"
+}

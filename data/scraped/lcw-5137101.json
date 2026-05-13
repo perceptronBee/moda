@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5137101",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-erkek-kase-gomlek-ceket-kahverengi-o-5137101",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5137101/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5137101/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5137101/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5137101/garmentBack.jpg"
+  },
+  "name": "Kahverengi Regular Fit Erkek Kaşe Gömlek Ceket",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek CeketErkek Gömlek CeketRegular Fit Erkek Kaşe Gömlek Ceket",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T21:44:48.203Z"
+}

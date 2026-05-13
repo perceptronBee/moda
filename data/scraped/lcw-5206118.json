@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5206118",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-penye-erkek-tisort-murdum-o-5206118",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5206118/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5206118/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5206118/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5206118/garmentBack.jpeg"
+  },
+  "name": "Mürdüm Bisiklet Yaka Penye Erkek Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Penye Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:32:47.389Z"
+}

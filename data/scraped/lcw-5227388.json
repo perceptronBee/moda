@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5227388",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-sweatshirt-kahverengi-o-5227388",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5227388/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5227388/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5227388/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5227388/garmentBack.jpg"
+  },
+  "name": "Kahverengi Polo Yaka Erkek Sweatshirt",
+  "priceText": "359.99",
+  "price": 359.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtPolo Yaka Erkek Sweatshirt",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:51:35.399Z"
+}

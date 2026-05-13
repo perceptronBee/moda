@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4920792",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-ceket-bej-o-4920792",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4920792/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4920792/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4920792/garmentFront.jpg"
+  },
+  "name": "Bej Standart Kalıp Erkek Ceket",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaGiyimCeketStandart Kalıp Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T20:51:33.391Z"
+}

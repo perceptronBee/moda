@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5068328",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-sort-mavi-o-5068328",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5068328/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5068328/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5068328/garmentFront.jpg"
+  },
+  "name": "Mavi Slim Fit Erkek Şort",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaErkekErkek Ev GiyimErkek PijamaErkek ŞortSlim Fit Erkek Şort",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:11:33.864Z"
+}

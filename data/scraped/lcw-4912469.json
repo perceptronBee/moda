@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4912469",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kapusonlu-erkek-ceket-turuncu-o-4912469",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4912469/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4912469/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4912469/garmentFront.jpg"
+  },
+  "name": "Turuncu Kapüşonlu Erkek Ceket",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaGiyimCeketKapüşonlu Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:48:02.372Z"
+}

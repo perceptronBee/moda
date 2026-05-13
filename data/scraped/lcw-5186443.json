@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5186443",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-erkek-sweatshirt-yesil-o-5186443",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5186443/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5186443/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5186443/garmentFront.jpg"
+  },
+  "name": "Yeşil Bisiklet Yaka Erkek Sweatshirt",
+  "priceText": "279.99",
+  "price": 279.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtBisiklet Yaka Erkek Sweatshirt",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:54:38.569Z"
+}

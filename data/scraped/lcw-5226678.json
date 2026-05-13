@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5226678",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/dik-yaka-erkek-ceket-yesil-o-5226678",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5226678/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5226678/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5226678/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5226678/garmentBack.jpg"
+  },
+  "name": "Yeşil Dik Yaka Erkek Ceket",
+  "priceText": "1299.99",
+  "price": 1299.99,
+  "breadcrumb": "Ana SayfaGiyimCeketDik Yaka Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:45:56.472Z"
+}

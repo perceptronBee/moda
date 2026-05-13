@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4921444",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/erkek-deri-gorunumlu-ceket-gri-o-4921444",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4921444/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4921444/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4921444/garmentFront.jpg"
+  },
+  "name": "Gri Erkek Deri Görünümlü Ceket",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek Dış GiyimErkek Suni Deri MontErkek Deri Görünümlü Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T20:54:12.408Z"
+}

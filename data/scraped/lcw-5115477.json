@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5115477",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-spor-sort-gri-o-5115477",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5115477/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5115477/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5115477/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5115477/garmentBack.jpg"
+  },
+  "name": "Gri Standart Kalıp Erkek Spor Şort",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaSpor & OutdoorSpor GiyimErkek Spor GiyimStandart Kalıp Erkek Spor Şort",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:23:30.783Z"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5088303",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-sweatshirt-yesil-o-5088303",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5088303/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5088303/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5088303/garmentFront.jpg"
+  },
+  "name": "Yeşil Polo Yaka Erkek Sweatshirt",
+  "priceText": "329.99",
+  "price": 329.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtPolo Yaka Erkek Sweatshirt",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:51:14.365Z"
+}

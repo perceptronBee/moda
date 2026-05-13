@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5132469",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-viskon-erkek-pileli-pantolon-haki-o-5132469",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5132469/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5132469/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5132469/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5132469/garmentBack.jpeg"
+  },
+  "name": "Haki Regular Fit Viskon Erkek Pileli Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonRegular Fit Viskon Erkek Pileli Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:32:24.673Z"
+}

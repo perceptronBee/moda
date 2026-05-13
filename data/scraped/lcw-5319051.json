@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5319051",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-gabardin-erkek-pantolon-yesil-o-5319051",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5319051/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5319051/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5319051/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5319051/garmentBack.jpg"
+  },
+  "name": "Yeşil Slim Fit Gabardin Erkek Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Gabardin Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:33:18.811Z"
+}

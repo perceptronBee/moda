@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5199910",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/loose-fit-erkek-gabardin-gomlek-ceket-kahverengi-o-5199910",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5199910/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5199910/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5199910/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5199910/garmentBack.jpg"
+  },
+  "name": "Kahverengi Loose Fit Erkek Gabardin Gömlek Ceket",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek CeketErkek Gömlek CeketLoose Fit Erkek Gabardin Gömlek Ceket",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:26:06.493Z"
+}

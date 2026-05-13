@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5211322",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-pantolon-mavi-o-5211322",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5211322/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5211322/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5211322/garmentFront.jpg"
+  },
+  "name": "Mavi Standart Kalıp Erkek Pantolon",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonStandart Kalıp Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T19:07:36.795Z"
+}

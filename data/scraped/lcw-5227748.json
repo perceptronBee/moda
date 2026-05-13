@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5227748",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-ceket-bej-o-5227748-mix-match",
+  "photos": {
+    "garmentFront": "/products/lcwaikiki/lcw-5227748/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5227748/garmentBack.jpg",
+    "back": "/products/lcwaikiki/lcw-5227748/back.jpg",
+    "front": "/products/lcwaikiki/lcw-5227748/front.jpg"
+  },
+  "name": "Standart Kalıp Erkek Ceket Kombini | LCW",
+  "priceText": "1.199,99 TL699,99 TL−42% · 1.199,99 TL · 699,99 TL · 699,99 TL · 699,99 TL · −42% · 799,99 TL599,99 TL−25% · 799,99 TL",
+  "price": 1199.99,
+  "oldPrice": 1199.99,
+  "breadcrumb": "Ana SayfaGiyimCeketStandart Kalıp Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:45:43.286Z"
+}

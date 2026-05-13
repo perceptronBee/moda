@@ -1,0 +1,18 @@
+{
+  "id": "LCW-4911752",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/erkek-deri-gorunumlu-ceket-siyah-o-4911752",
+  "photos": {
+    "garmentBack": "/products/lcwaikiki/lcw-4911752/garmentBack.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4911752/garmentFront.jpg",
+    "back": "/products/lcwaikiki/lcw-4911752/back.jpg",
+    "front": "/products/lcwaikiki/lcw-4911752/front.jpg"
+  },
+  "name": "Siyah Erkek Deri Görünümlü Ceket",
+  "priceText": "1299.99",
+  "price": 1299.99,
+  "breadcrumb": "Ana SayfaGiyimCeketErkek Deri Görünümlü Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:49:08.554Z"
+}

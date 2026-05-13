@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5233572",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/gomlek-yaka-erkek-ceket-lacivert-o-5233572-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5233572/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5233572/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5233572/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5233572/garmentBack.jpeg"
+  },
+  "name": "Gömlek Yaka Erkek Ceket Kombini | LCW",
+  "priceText": "1.999,99 TL · 1.999,99 TL · 1.199,99 TL · 1.199,99 TL",
+  "price": 1999.99,
+  "oldPrice": 1999.99,
+  "breadcrumb": "Ana SayfaGiyimCeketGömlek Yaka Erkek Ceket",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T21:46:50.199Z"
+}

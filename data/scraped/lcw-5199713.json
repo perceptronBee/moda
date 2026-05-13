@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5199713",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-uzun-kollu-erkek-tisort-gri-o-5199713",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5199713/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5199713/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5199713/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5199713/garmentBack.jpg"
+  },
+  "name": "Gri Bisiklet Yaka Uzun Kollu Erkek Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtBisiklet Yaka Uzun Kollu Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T19:19:52.091Z"
+}

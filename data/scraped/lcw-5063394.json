@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5063394",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-fitilli-erkek-pantolon-yesil-o-5063394-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5063394/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5063394/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5063394/garmentFront.jpg"
+  },
+  "name": "Standart Kalıp Fitilli Erkek Pantolon Kombini | LCW",
+  "priceText": "1.199,99 TL999,99 TL−17% · 1.199,99 TL · 999,99 TL · 999,99 TL · 999,99 TL · −17% · 699,99 TL · 699,99 TL",
+  "price": 1199.99,
+  "oldPrice": 1199.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonStandart Kalıp Fitilli Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:30:25.351Z"
+}

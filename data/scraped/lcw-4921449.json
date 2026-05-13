@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4921449",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-pantolon-antrasit-o-4921449",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4921449/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4921449/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4921449/garmentFront.jpg"
+  },
+  "name": "Antrasit Slim Fit Erkek Pantolon",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T20:23:54.649Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5319055",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-pantolon-lacivert-o-5319055",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5319055/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5319055/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5319055/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5319055/garmentBack.jpg"
+  },
+  "name": "Lacivert Slim Fit Erkek Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:33:09.626Z"
+}

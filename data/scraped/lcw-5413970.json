@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5413970",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-erkek-ceket-bej-o-5413970",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5413970/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5413970/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5413970/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5413970/garmentBack.jpg"
+  },
+  "name": "Bej Regular Fit Erkek Ceket",
+  "priceText": "1999.99",
+  "price": 1999.99,
+  "breadcrumb": "Ana SayfaGiyimCeketRegular Fit Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T20:50:56.639Z"
+}

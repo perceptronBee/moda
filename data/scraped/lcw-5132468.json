@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5132468",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/regular-fit-viskon-erkek-pileli-pantolon-bej-o-5132468",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5132468/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5132468/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5132468/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5132468/garmentBack.jpeg"
+  },
+  "name": "Bej Regular Fit Viskon Erkek Pileli Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonRegular Fit Viskon Erkek Pileli Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:31:58.436Z"
+}

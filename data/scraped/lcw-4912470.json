@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4912470",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kapusonlu-erkek-ceket-haki-o-4912470",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4912470/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4912470/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4912470/garmentFront.jpg"
+  },
+  "name": "Haki Kapüşonlu Erkek Ceket",
+  "priceText": "799.99",
+  "price": 799.99,
+  "breadcrumb": "Ana SayfaGiyimCeketKapüşonlu Erkek Ceket",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-13T21:47:49.053Z"
+}

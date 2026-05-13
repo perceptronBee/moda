@@ -1,0 +1,17 @@
+{
+  "id": "LCW-4921445",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-pantolon-yesil-o-4921445",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4921445/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4921445/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4921445/garmentFront.jpg"
+  },
+  "name": "Yeşil Slim Fit Erkek Pantolon",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Erkek Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T20:24:10.212Z"
+}

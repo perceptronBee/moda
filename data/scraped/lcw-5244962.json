@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5244962",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/polo-yaka-erkek-tisort-yesil-o-5244962",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5244962/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5244962/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5244962/garmentBack.jpg"
+  },
+  "name": "Yeşil Polo Yaka Erkek Tişört",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek TişörtPolo Yaka Erkek Tişört",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T20:23:04.391Z"
+}

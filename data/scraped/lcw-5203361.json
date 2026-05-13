@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5203361",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-erkek-sweatshirt-gri-o-5203361",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5203361/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5203361/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5203361/garmentFront.jpg"
+  },
+  "name": "Gri Bisiklet Yaka Erkek Sweatshirt",
+  "priceText": "449.99",
+  "price": 449.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtBisiklet Yaka Erkek Sweatshirt",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-13T22:55:27.027Z"
+}

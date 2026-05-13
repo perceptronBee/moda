@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5319053",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/slim-fit-erkek-gabardin-pantolon-bej-o-5319053",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5319053/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5319053/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5319053/garmentFront.jpg"
+  },
+  "name": "Bej Slim Fit Erkek Gabardin Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimPantolonSlim Fit Erkek Gabardin Pantolon",
+  "gender": "erkek",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-13T22:32:59.896Z"
+}
