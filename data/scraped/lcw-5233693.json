@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5233693",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-mont-lacivert-o-5233693",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5233693/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5233693/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5233693/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5233693/garmentBack.jpeg"
+  },
+  "name": "Lacivert Standart Kalıp Erkek Mont",
+  "priceText": "1999.99",
+  "price": 1999.99,
+  "breadcrumb": "Ana SayfaGiyimDış GiyimStandart Kalıp Erkek Mont",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-16T22:38:19.143Z"
+}

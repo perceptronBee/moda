@@ -1,0 +1,18 @@
+{
+  "id": "LCW-4882004",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-gomlek-yaka-erkek-kase-mont-kahverengi-o-4882004",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4882004/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4882004/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4882004/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4882004/garmentBack.jpg"
+  },
+  "name": "Kahverengi Standart Kalıp Gömlek Yaka Erkek Kaşe Mont",
+  "priceText": "1199.99",
+  "price": 1199.99,
+  "breadcrumb": "Ana SayfaGiyimDış GiyimStandart Kalıp Gömlek Yaka Erkek Kaşe Mont",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-16T22:35:55.109Z"
+}

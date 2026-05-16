@@ -1,0 +1,18 @@
+{
+  "id": "LCW-4823168",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-kapitoneli-erkek-mont-siyah-o-4823168",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-4823168/front.jpg",
+    "back": "/products/lcwaikiki/lcw-4823168/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-4823168/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-4823168/garmentBack.jpg"
+  },
+  "name": "Siyah Standart Kalıp Kapitoneli Erkek Mont",
+  "priceText": "1799.99",
+  "price": 1799.99,
+  "breadcrumb": "Ana SayfaGiyimDış GiyimStandart Kalıp Kapitoneli Erkek Mont",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-16T22:32:26.007Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5233692",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/standart-kalip-erkek-mont-antrasit-o-5233692",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5233692/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5233692/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5233692/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5233692/garmentBack.jpeg"
+  },
+  "name": "Antrasit Standart Kalıp Erkek Mont",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaGiyimDış GiyimStandart Kalıp Erkek Mont",
+  "gender": "erkek",
+  "category": "dis-giyim",
+  "updatedAt": "2026-05-16T22:38:07.026Z"
+}
