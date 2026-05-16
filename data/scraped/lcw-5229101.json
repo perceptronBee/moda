@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5229101",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/wideleg-kadin-jean-pantolon-indigo-o-5229101",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5229101/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5229101/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5229101/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5229101/garmentBack.jpg"
+  },
+  "name": "İndigo Wideleg Kadın Jean Pantolon",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın JeanWideleg Kadın Jean Pantolon",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-14T18:37:46.102Z"
+}

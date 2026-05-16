@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5319379",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/armurlu-kadin-gomlek-bej-o-5319379",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5319379/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5319379/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5319379/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5319379/garmentBack.jpg"
+  },
+  "name": "Bej Armürlü Kadın Gömlek",
+  "priceText": "899.99",
+  "price": 899.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekArmürlü Kadın Gömlek",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:32:38.198Z"
+}

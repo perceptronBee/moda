@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5194930",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/desenli-saten-etek-siyah-o-5194930",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5194930/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5194930/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5194930/garmentFront.jpg"
+  },
+  "name": "Siyah Desenli Saten Etek",
+  "priceText": "399.99",
+  "price": 399.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekDesenli Saten Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:43:27.066Z"
+}

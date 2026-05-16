@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5111255",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/dokulu-kadin-gomlek-tunik-haki-o-5111255",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5111255/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5111255/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5111255/garmentFront.jpg"
+  },
+  "name": "Haki Dokulu Kadın Gömlek Tunik",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekDokulu Kadın Gömlek Tunik",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:28:13.363Z"
+}

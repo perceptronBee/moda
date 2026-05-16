@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5330745",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/beli-lastikli-dantelli-etek-kahverengi-o-5330745",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5330745/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5330745/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5330745/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5330745/garmentBack.jpg"
+  },
+  "name": "Kahverengi Beli Lastikli Dantelli Etek",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekBeli Lastikli Dantelli Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:23:46.980Z"
+}

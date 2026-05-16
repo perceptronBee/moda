@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5370992",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/oversize-kadin-gomlek-mavi-o-5370992",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5370992/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5370992/back.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5370992/garmentBack.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5370992/garmentFront.jpg"
+  },
+  "name": "Mavi Oversize Kadın Gömlek",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekOversize Kadın Gömlek",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:31:49.470Z"
+}

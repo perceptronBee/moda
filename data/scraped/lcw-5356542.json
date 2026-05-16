@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5356542",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/v-yaka-kadin-tisort-mor-o-5356542",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5356542/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5356542/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5356542/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5356542/garmentBack.jpg"
+  },
+  "name": "Mor V Yaka Kadın Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın Tişört | Body V Yaka Kadın Tişört",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T16:40:18.488Z"
+}

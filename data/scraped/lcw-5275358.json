@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5275358",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/basic-erkek-hoodie-antrasit-o-5275358",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5275358/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5275358/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5275358/garmentFront.jpg"
+  },
+  "name": "Antrasit Basic Erkek Hoodie",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtBasic Erkek Hoodie",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T09:50:54.021Z"
+}

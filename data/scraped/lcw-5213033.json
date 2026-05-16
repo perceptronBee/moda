@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5213033",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/bisiklet-yaka-kadin-atlet-beyaz-o-5213033",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5213033/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5213033/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5213033/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5213033/garmentBack.jpeg"
+  },
+  "name": "Beyaz Bisiklet Yaka Kadın Atlet",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın Kolsuz TişörtBisiklet Yaka Kadın Atlet",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T16:25:32.045Z"
+}

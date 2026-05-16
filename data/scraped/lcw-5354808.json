@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5354808",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/beli-lastikli-dantelli-etek-ekru-o-5354808",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5354808/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5354808/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5354808/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5354808/garmentBack.jpg"
+  },
+  "name": "Ekru Beli Lastikli Dantelli Etek",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekBeli Lastikli Dantelli Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:23:58.848Z"
+}

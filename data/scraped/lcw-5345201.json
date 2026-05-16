@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5345201",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/wideleg-kadin-jean-pantolon-beyaz-o-5345201",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5345201/front.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5345201/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5345201/garmentBack.jpg"
+  },
+  "name": "Beyaz Wideleg Kadın Jean Pantolon",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın JeanWideleg Kadın Jean Pantolon",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-14T18:53:00.796Z"
+}

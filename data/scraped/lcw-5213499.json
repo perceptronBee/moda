@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5213499",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/flare-kadin-jean-pantolon-indigo-o-5213499",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5213499/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5213499/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5213499/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5213499/garmentBack.jpg"
+  },
+  "name": "İndigo Flare Kadın Jean Pantolon",
+  "priceText": "899.99",
+  "price": 899.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın JeanFlare Kadın Jean Pantolon",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-14T19:21:22.726Z"
+}

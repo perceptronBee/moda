@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5398601",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/asimetrik-kesim-keten-karisimli-elbise-beyaz-o-5398601",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5398601/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5398601/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5398601/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5398601/garmentBack.jpg"
+  },
+  "name": "Beyaz Asimetrik Kesim Keten Karışımlı Elbise",
+  "priceText": "1299.99",
+  "price": 1299.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimElbiseAsimetrik Kesim Keten Karışımlı Elbise",
+  "gender": "kadin",
+  "updatedAt": "2026-05-14T17:21:46.158Z"
+}

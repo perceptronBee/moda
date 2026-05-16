@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5370991",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/oversize-kadin-gomlek-pembe-o-5370991",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5370991/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5370991/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5370991/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5370991/garmentBack.jpg"
+  },
+  "name": "Pembe Oversize Kadın Gömlek",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekOversize Kadın Gömlek",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:32:01.375Z"
+}

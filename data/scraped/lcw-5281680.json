@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5281680",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kadin-keten-gomlek-murdum-o-5281680",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5281680/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5281680/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5281680/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5281680/garmentBack.jpg"
+  },
+  "name": "Mürdüm Kadın Keten Gömlek",
+  "priceText": "1499.99",
+  "price": 1499.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekKadın Keten Gömlek",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:25:07.281Z"
+}

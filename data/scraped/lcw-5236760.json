@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5236760",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/v-yaka-dokulu-bluz-siyah-o-5236760-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5236760/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5236760/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5236760/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5236760/garmentBack.jpg"
+  },
+  "name": "V Yaka Dokulu Bluz Kombini | LCW",
+  "priceText": "449,99 TL · 449,99 TL · 599,99 TL · 599,99 TL",
+  "price": 599.99,
+  "oldPrice": 599.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın BluzV Yaka Dokulu Bluz",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:20:19.752Z"
+}

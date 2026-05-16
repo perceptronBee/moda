@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5353007",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/yuksek-bel-pileli-etek-beyaz-o-5353007",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5353007/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5353007/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5353007/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5353007/garmentBack.jpg"
+  },
+  "name": "Beyaz Yüksek Bel Pileli Etek",
+  "priceText": "699.99",
+  "price": 699.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekYüksek Bel Pileli Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:24:43.002Z"
+}

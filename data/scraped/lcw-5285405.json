@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5285405",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kacik-yaka-buzgulu-bluz-kahverengi-o-5285405",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5285405/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5285405/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5285405/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5285405/garmentBack.jpg"
+  },
+  "name": "Kahverengi Kaçık Yaka Büzgülü Bluz",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın BluzKaçık Yaka Büzgülü Bluz",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:05:51.536Z"
+}

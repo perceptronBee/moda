@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5283932",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/beli-baglamali-anvelop-etek-kahverengi-o-5283932",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5283932/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5283932/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5283932/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5283932/garmentBack.jpg"
+  },
+  "name": "Kahverengi Beli Bağlamalı Anvelop Etek",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekBeli Bağlamalı Anvelop Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:22:12.347Z"
+}

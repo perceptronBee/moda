@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5281675",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/dokulu-kadin-gomlek-tunik-mavi-o-5281675",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5281675/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5281675/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5281675/garmentFront.jpeg"
+  },
+  "name": "Mavi Dokulu Kadın Gömlek Tunik",
+  "priceText": "599.99",
+  "price": 599.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekDokulu Kadın Gömlek Tunik",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:27:35.863Z"
+}

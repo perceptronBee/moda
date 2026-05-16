@@ -1,0 +1,17 @@
+{
+  "id": "LCW-5135001",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/flare-kadin-jean-pantolon-gri-o-5135001",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5135001/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5135001/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5135001/garmentFront.jpg"
+  },
+  "name": "Gri Flare Kadın Jean Pantolon",
+  "priceText": "649.99",
+  "price": 649.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın JeanFlare Kadın Jean Pantolon",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-14T19:26:07.912Z"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "LCW-5281681",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kadin-keten-gomlek-lacivert-o-5281681-mix-match",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5281681/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5281681/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5281681/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5281681/garmentBack.jpg"
+  },
+  "name": "Kadın Keten Gömlek Kombini | LCW",
+  "priceText": "1.499,99 TL · 1.499,99 TL · 899,99 TL · 899,99 TL",
+  "price": 1499.99,
+  "oldPrice": 1499.99,
+  "breadcrumb": "Ana SayfaGiyimGömlekKadın Keten Gömlek",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:24:34.270Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5275357",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/basic-erkek-hoodie-indigo-o-5275357",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5275357/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5275357/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5275357/garmentFront.jpeg",
+    "garmentBack": "/products/lcwaikiki/lcw-5275357/garmentBack.jpeg"
+  },
+  "name": "İndigo Basic Erkek Hoodie",
+  "priceText": "499.99",
+  "price": 499.99,
+  "breadcrumb": "Ana SayfaErkekErkek GiyimErkek SweatshirtBasic Erkek Hoodie",
+  "gender": "erkek",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T09:50:43.411Z"
+}

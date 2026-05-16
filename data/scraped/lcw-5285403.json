@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5285403",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/kacik-yaka-buzgulu-bluz-lacivert-o-5285403",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5285403/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5285403/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5285403/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5285403/garmentBack.jpg"
+  },
+  "name": "Lacivert Kaçık Yaka Büzgülü Bluz",
+  "priceText": "999.99",
+  "price": 999.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın BluzKaçık Yaka Büzgülü Bluz",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T18:05:28.210Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5356543",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/v-yaka-kadin-tisort-yesil-o-5356543",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5356543/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5356543/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5356543/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5356543/garmentBack.jpg"
+  },
+  "name": "Yeşil V Yaka Kadın Tişört",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın Tişört | Body V Yaka Kadın Tişört",
+  "gender": "kadin",
+  "category": "ust-giyim",
+  "updatedAt": "2026-05-14T16:39:54.093Z"
+}

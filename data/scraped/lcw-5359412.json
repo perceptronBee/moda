@@ -1,0 +1,18 @@
+{
+  "id": "LCW-5359412",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/beli-kemerli-mini-etek-gri-o-5359412",
+  "photos": {
+    "front": "/products/lcwaikiki/lcw-5359412/front.jpg",
+    "back": "/products/lcwaikiki/lcw-5359412/back.jpg",
+    "garmentFront": "/products/lcwaikiki/lcw-5359412/garmentFront.jpg",
+    "garmentBack": "/products/lcwaikiki/lcw-5359412/garmentBack.jpg"
+  },
+  "name": "Gri Beli Kemerli Mini Etek",
+  "priceText": "299.99",
+  "price": 299.99,
+  "breadcrumb": "Ana SayfaKadınKadın GiyimKadın EtekBeli Kemerli Mini Etek",
+  "gender": "kadin",
+  "category": "alt-giyim",
+  "updatedAt": "2026-05-16T11:32:24.648Z"
+}
