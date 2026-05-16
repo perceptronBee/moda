@@ -4,13 +4,14 @@ import { ProductCard } from "@/components/ProductCard";
 import {
   MAIN_NAV,
   TYPE_LABELS,
+  VISIBLE_TYPES,
   getProductsByGenderAndType,
   type Gender,
   type ProductType,
 } from "@/lib/products";
 import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
 
-const VALID: Gender[] = ["kadin", "erkek", "cocuk"];
+const VALID: Gender[] = ["kadin", "erkek"];
 
 export function generateStaticParams() {
   return VALID.map((g) => ({ gender: g }));
@@ -40,10 +41,7 @@ export default async function GenderPage({
 
   const typeFilters: { slug: ProductType | "tumu"; label: string }[] = [
     { slug: "tumu", label: "Tümü" },
-    ...(Object.keys(TYPE_LABELS) as ProductType[]).map((t) => ({
-      slug: t,
-      label: TYPE_LABELS[t],
-    })),
+    ...VISIBLE_TYPES.map((t) => ({ slug: t, label: TYPE_LABELS[t] })),
   ];
 
   // URL helper: mevcut filtreleri korur, sadece istenen parametreyi günceller
@@ -107,7 +105,8 @@ export default async function GenderPage({
           })}
         </div>
 
-        {/* Mağaza filtreleri */}
+        {/* Mağaza filtreleri — birden fazla mağaza olduğunda gösterilir */}
+        {Object.values(RETAILERS).filter((r) => products.some((p) => p.retailer === r.slug)).length > 1 && (
         <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 border-t pt-3 border-[var(--color-line)]">
           <span className="meta whitespace-nowrap mr-1">MAĞAZA</span>
           <Link
@@ -137,6 +136,7 @@ export default async function GenderPage({
             );
           })}
         </div>
+        )}
       </div>
 
       {/* Grid */}

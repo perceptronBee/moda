@@ -52,7 +52,6 @@ export type Product = {
 export const MAIN_NAV: { slug: Gender; label: string }[] = [
   { slug: "kadin", label: "Kadın" },
   { slug: "erkek", label: "Erkek" },
-  { slug: "cocuk", label: "Çocuk" },
 ];
 
 export const TYPE_LABELS: Record<ProductType, string> = {
@@ -62,6 +61,14 @@ export const TYPE_LABELS: Record<ProductType, string> = {
   ayakkabi: "Ayakkabı",
   aksesuar: "Aksesuar",
 };
+
+// UI'da kullanılacak görünür type'lar (aksesuar şimdilik az → gizli)
+export const VISIBLE_TYPES: ProductType[] = [
+  "ust-giyim",
+  "alt-giyim",
+  "dis-giyim",
+  "ayakkabi",
+];
 
 /**
  * MOCK katalog (eski hardcoded ürünler). Gerçek katalog

@@ -10,18 +10,18 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero — simple promo */}
+      {/* Hero — Kadın + Erkek 50/50 */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-1 bg-[var(--color-line)]">
         <Link
           href="/kadin"
-          className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[480px] overflow-hidden group"
+          className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[520px] overflow-hidden group"
           style={{ background: "#9b9b9b" }}
         >
-          <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 bg-gradient-to-t from-black/30 via-transparent to-transparent">
+          <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 bg-gradient-to-t from-black/35 via-transparent to-transparent">
             <p className="text-white text-sm tracking-wider mb-2">
               YENİ SEZON
             </p>
-            <h2 className="font-display text-5xl lg:text-7xl text-white tracking-wide mb-4">
+            <h2 className="font-display text-6xl lg:text-8xl text-white tracking-wide mb-4">
               KADIN
             </h2>
             <span className="inline-flex items-center gap-2 text-white text-sm font-medium group-hover:gap-3 transition-all">
@@ -33,42 +33,26 @@ export default function HomePage() {
           </div>
         </Link>
 
-        <div className="grid grid-rows-2 gap-1 bg-[var(--color-line)]">
-          <Link
-            href="/erkek"
-            className="relative overflow-hidden group min-h-[240px]"
-            style={{ background: "#2a2a2a" }}
-          >
-            <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/40 via-transparent to-transparent">
-              <p className="text-white text-xs tracking-wider mb-1">
-                YENİ SEZON
-              </p>
-              <h2 className="font-display text-4xl lg:text-5xl text-white tracking-wide mb-2">
-                ERKEK
-              </h2>
-              <span className="inline-flex items-center gap-2 text-white text-sm group-hover:gap-3 transition-all">
-                İncele <ArrowRight size={14} />
-              </span>
-            </div>
-          </Link>
-          <Link
-            href="/cocuk"
-            className="relative overflow-hidden group min-h-[240px]"
-            style={{ background: "#c8c8c8" }}
-          >
-            <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/30 via-transparent to-transparent">
-              <p className="text-white text-xs tracking-wider mb-1">
-                YENİ SEZON
-              </p>
-              <h2 className="font-display text-4xl lg:text-5xl text-white tracking-wide mb-2">
-                ÇOCUK
-              </h2>
-              <span className="inline-flex items-center gap-2 text-white text-sm group-hover:gap-3 transition-all">
-                İncele <ArrowRight size={14} />
-              </span>
-            </div>
-          </Link>
-        </div>
+        <Link
+          href="/erkek"
+          className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[520px] overflow-hidden group"
+          style={{ background: "#2a2a2a" }}
+        >
+          <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 bg-gradient-to-t from-black/40 via-transparent to-transparent">
+            <p className="text-white text-sm tracking-wider mb-2">
+              YENİ SEZON
+            </p>
+            <h2 className="font-display text-6xl lg:text-8xl text-white tracking-wide mb-4">
+              ERKEK
+            </h2>
+            <span className="inline-flex items-center gap-2 text-white text-sm font-medium group-hover:gap-3 transition-all">
+              Koleksiyonu Keşfet <ArrowRight size={16} />
+            </span>
+          </div>
+          <div className="absolute right-6 top-6 font-display text-[120px] lg:text-[200px] text-white/10 leading-none pointer-events-none">
+            02
+          </div>
+        </Link>
       </section>
 
       {/* Yeni gelenler */}
@@ -93,83 +77,6 @@ export default function HomePage() {
           ))}
         </Section>
       )}
-
-      {/* Mağazalar — affiliate ağı vurgusu */}
-      <section className="px-4 sm:px-6 lg:px-10 py-12 max-w-7xl mx-auto w-full">
-        <div className="flex items-end justify-between mb-6">
-          <div>
-            <p className="meta mb-1">AFFILIATE NETWORK</p>
-            <h2 className="font-display text-2xl sm:text-3xl tracking-wide">
-              Mağazalarımız
-            </h2>
-          </div>
-          <Link
-            href="/affiliate"
-            className="text-sm hover:text-[var(--color-accent)] flex items-center gap-1"
-          >
-            API <ArrowRight size={14} />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
-          {Object.values(RETAILERS).map((r) => {
-            const count = PRODUCTS.filter((p) => p.retailer === r.slug).length;
-            return (
-              <Link
-                key={r.slug}
-                href={`/magaza/${r.slug}`}
-                className="flex items-center justify-between border border-[var(--color-line)] hover:border-[var(--color-fg)] px-4 py-3 transition-colors group"
-                style={{ backgroundColor: "var(--color-bg-elev)" }}
-              >
-                <div className="min-w-0">
-                  <p className="text-sm font-medium truncate">{r.name}</p>
-                  <p className="text-[10px] text-[var(--color-muted)] uppercase tracking-wider mt-0.5">
-                    {count} ürün
-                  </p>
-                </div>
-                <Store
-                  size={14}
-                  className="text-[var(--color-muted)] shrink-0 ml-2 group-hover:text-[var(--color-fg)] transition-colors"
-                />
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Kategori vitrini */}
-      <section className="px-6 lg:px-10 py-16 max-w-7xl mx-auto w-full">
-        <h2 className="font-display text-3xl tracking-wide mb-8">
-          Tüm Kategoriler
-        </h2>
-        <div className="grid grid-cols-3 gap-4 md:gap-6">
-          {MAIN_NAV.map((c) => {
-            const count = getProductsByGender(c.slug).length;
-            const tone =
-              c.slug === "kadin"
-                ? "#9b9b9b"
-                : c.slug === "erkek"
-                  ? "#2a2a2a"
-                  : "#c8c8c8";
-            return (
-              <Link
-                key={c.slug}
-                href={`/${c.slug}`}
-                className="group block"
-              >
-                <div
-                  className="aspect-square relative overflow-hidden mb-3"
-                  style={{ background: tone }}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center font-display text-5xl md:text-6xl text-white tracking-wide group-hover:scale-105 transition-transform">
-                    {c.label}
-                  </div>
-                </div>
-                <p className="meta text-center">{count} ÜRÜN</p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
 
       <div className="h-24" />
     </div>

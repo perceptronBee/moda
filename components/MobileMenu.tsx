@@ -16,8 +16,12 @@ import {
   Store,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { MAIN_NAV } from "@/lib/products";
+import { MAIN_NAV, PRODUCTS } from "@/lib/products";
 import { RETAILERS } from "@/lib/affiliate/retailers";
+
+const ACTIVE_RETAILERS = Object.values(RETAILERS).filter((r) =>
+  PRODUCTS.some((p) => p.retailer === r.slug),
+);
 
 type Props = {
   isLoggedIn: boolean;
@@ -193,25 +197,27 @@ export function MobileMenu({ isLoggedIn, displayName, onLogout }: Props) {
             </Link>
           </section>
 
-          {/* Mağazalar */}
-          <section
-            className="py-4 border-t"
-            style={{ borderColor: "var(--color-line)" }}
-          >
-            <p className="meta px-6 mb-3">MAĞAZALAR</p>
-            <div className="grid grid-cols-2 gap-2 px-6">
-              {Object.values(RETAILERS).map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/magaza/${r.slug}`}
-                  className="flex items-center gap-2 text-xs border border-[var(--color-line)] px-3 py-2.5 hover:border-[var(--color-fg)] transition-colors"
-                >
-                  <Store size={12} className="text-[var(--color-muted)]" />
-                  <span className="truncate">{r.name}</span>
-                </Link>
-              ))}
-            </div>
-          </section>
+          {/* Mağazalar — birden fazla aktif mağaza varsa */}
+          {ACTIVE_RETAILERS.length > 1 && (
+            <section
+              className="py-4 border-t"
+              style={{ borderColor: "var(--color-line)" }}
+            >
+              <p className="meta px-6 mb-3">MAĞAZALAR</p>
+              <div className="grid grid-cols-2 gap-2 px-6">
+                {ACTIVE_RETAILERS.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/magaza/${r.slug}`}
+                    className="flex items-center gap-2 text-xs border border-[var(--color-line)] px-3 py-2.5 hover:border-[var(--color-fg)] transition-colors"
+                  >
+                    <Store size={12} className="text-[var(--color-muted)]" />
+                    <span className="truncate">{r.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Kişisel link'ler */}
           {isLoggedIn && (
