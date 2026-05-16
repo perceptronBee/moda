@@ -45,7 +45,7 @@ export async function Navbar() {
         </Link>
 
         {/* Category nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {MAIN_NAV.map((c) => (
             <Link
               key={c.slug}
@@ -56,7 +56,13 @@ export async function Navbar() {
             </Link>
           ))}
           <Link
-            href="/?tag=indirim"
+            href="/yeni"
+            className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors"
+          >
+            Yeni
+          </Link>
+          <Link
+            href="/indirim"
             className="text-sm font-medium text-[var(--color-accent)] hover:opacity-70 transition-opacity"
           >
             İndirim

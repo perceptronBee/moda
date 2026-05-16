@@ -254,7 +254,39 @@ const MOCK_PRODUCTS: Product[] = [
  */
 import generated from "./products.generated.json";
 
-const FEED_PRODUCTS: Product[] = generated as Product[];
+// Deterministik basit hash — aynı id her zaman aynı sayı
+function hashCode(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) {
+    h = (h << 5) - h + s.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
+}
+
+// Ürünlerin ~%30'una gerçekçi sahte indirim ekler.
+// Gerçek indirim (oldPrice'i scrapelenmiş) dokunulmaz.
+function applyDemoDiscount(p: Product): Product {
+  if (p.oldPrice && p.oldPrice > p.price) return p;
+  const h = hashCode(p.id);
+  const isOnSale = h % 100 < 30;
+  if (!isOnSale) return p;
+  const markupPct = 18 + (h % 38); // %18 - %55 arası
+  const oldPrice = Math.round((p.price * (100 + markupPct)) / 100);
+  return { ...p, oldPrice, tag: "İndirim" };
+}
+
+// "Yeni" etiketi — ürünlerin ~%15'i (id hash başka segment)
+function applyDemoNewTag(p: Product): Product {
+  if (p.tag) return p;
+  const h = hashCode(p.id + "_new");
+  if (h % 100 < 15) return { ...p, tag: "Yeni" };
+  return p;
+}
+
+const FEED_PRODUCTS: Product[] = (generated as Product[])
+  .map(applyDemoDiscount)
+  .map(applyDemoNewTag);
 
 export const PRODUCTS: Product[] =
   FEED_PRODUCTS.length > 0 ? FEED_PRODUCTS : MOCK_PRODUCTS;

@@ -186,7 +186,14 @@ export function MobileMenu({ isLoggedIn, displayName, onLogout }: Props) {
               </Link>
             ))}
             <Link
-              href="/?tag=indirim"
+              href="/yeni"
+              className="flex items-center justify-between px-6 py-3.5 text-[15px] hover:bg-[var(--color-bg-soft)]"
+            >
+              <span>Yeni Gelenler</span>
+              <ChevronRight size={16} className="text-[var(--color-muted)]" />
+            </Link>
+            <Link
+              href="/indirim"
               className="flex items-center justify-between px-6 py-3.5 text-[15px] text-[var(--color-accent)] hover:bg-[var(--color-bg-soft)]"
             >
               <span className="flex items-center gap-2">
