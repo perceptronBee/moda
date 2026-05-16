@@ -1,5 +1,352 @@
 [
   {
+    "id": "LCW-3342496",
+    "name": "Siyah Sivri Burun Orta Kalın Topuklu Kadın Ayakkabı 38918",
+    "price": 2457.65,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3342496/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-orta-kalin-topuklu-kadin-ayakkabi-38918-siyah-o-3342496",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Orta Kalın Topuklu Kadın Ayakkabı 38918"
+  },
+  {
+    "id": "LCW-3348838",
+    "name": "Siyah Kadın Topuklu Ayakkabı 39120",
+    "price": 3198.85,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3348838/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-topuklu-ayakkabi-39120-siyah-o-3348838",
+    "color": "Siyah",
+    "baseName": "Kadın Topuklu Ayakkabı 39120"
+  },
+  {
+    "id": "LCW-3422865",
+    "name": "Kahverengi TABA-KAHVERENGİ  Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313",
+    "price": 2832.42,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3422865/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/taba-kahverengi-hakiki-deri-kut-burun-kisa-kalin-topuklu-puskullu-kadin-ayakkabi-13313-kahverengi-o-3422865",
+    "color": "Kahverengi",
+    "baseName": "TABA-KAHVERENGİ Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313"
+  },
+  {
+    "id": "LCW-3433864",
+    "name": "Gri GRİ  Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313",
+    "price": 3095.26,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3433864/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/gri-hakiki-deri-kut-burun-kisa-kalin-topuklu-puskullu-kadin-ayakkabi-13313-gri-o-3433864",
+    "color": "Gri",
+    "baseName": "GRİ Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313"
+  },
+  {
+    "id": "LCW-3802631",
+    "name": "R6542183 Bordo Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3802631/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/r6542183-bordo-kadin-topuklu-ayakkabi-bordo-o-3802631",
+    "color": "Bordo",
+    "baseName": "R6542183 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-3802632",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-3802632/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-3802632",
+    "name": "R6542183 Siyah Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3802632/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/r6542183-siyah-kadin-topuklu-ayakkabi-siyah-o-3802632",
+    "color": "Siyah",
+    "baseName": "R6542183 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-3802631",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-3802631/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-3857033",
+    "name": "Siyah SİYAH  Sivri Burun Kadeh Ökçe Arkası Açık Kadın Ayakkabı 38198",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3857033/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/siyah-sivri-burun-kadeh-okce-arkasi-acik-kadin-ayakkabi-38198-siyah-o-3857033",
+    "color": "Siyah",
+    "baseName": "SİYAH Sivri Burun Kadeh Ökçe Arkası Açık Kadın Ayakkabı 38198"
+  },
+  {
+    "id": "LCW-3927990",
+    "name": "S2414140 Siyah Kadın Dolgu Topuklu Ayakkabı",
+    "price": 999.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3927990/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/s2414140-siyah-kadin-dolgu-topuklu-ayakkabi-siyah-o-3927990",
+    "color": "Siyah",
+    "baseName": "S2414140 Kadın Dolgu Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3927991",
+    "name": "Bej S2414140 Ten Kadın Dolgu Topuklu Ayakkabı",
+    "price": 999.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3927991/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/s2414140-ten-kadin-dolgu-topuklu-ayakkabi-bej-o-3927991",
+    "color": "Bej",
+    "baseName": "S2414140 Ten Kadın Dolgu Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3927992",
+    "name": "Karışık S2414140 Renkli Kadın Dolgu Topuklu Ayakkabı",
+    "price": 999.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3927992/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/s2414140-renkli-kadin-dolgu-topuklu-ayakkabi-karisik-o-3927992",
+    "baseName": "Karışık S2414140 Renkli Kadın Dolgu Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3928545",
+    "name": "Gri S5180817 Gümüş Kadın Topuklu Ayakkabı",
+    "price": 1399.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3928545/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/s5180817-gumus-kadin-topuklu-ayakkabi-gri-o-3928545",
+    "color": "Gri",
+    "baseName": "S5180817 Gümüş Kadın Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3928546",
+    "name": "Sarı S5180817 Bronz Kadın Topuklu Ayakkabı",
+    "price": 1399.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3928546/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/s5180817-bronz-kadin-topuklu-ayakkabi-sari-o-3928546",
+    "baseName": "Sarı S5180817 Bronz Kadın Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3928653",
+    "name": "R6542183 Kırmızı Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3928653/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/r6542183-kirmizi-kadin-topuklu-ayakkabi-kirmizi-o-3928653",
+    "baseName": "R6542183 Kırmızı Kadın Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-3928706",
+    "name": "Bej R6542183 Ten Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3928706/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/r6542183-ten-kadin-topuklu-ayakkabi-bej-o-3928706",
+    "color": "Bej",
+    "baseName": "R6542183 Ten Kadın Topuklu Ayakkabı"
+  },
+  {
     "id": "LCW-3954551",
     "name": "AMIR I Kadın Sneaker Ayakkabı Gri",
     "price": 1399.9,
@@ -24,6 +371,92 @@
     "baseName": "AMIR I Kadın Sneaker Ayakkabı"
   },
   {
+    "id": "LCW-3966420",
+    "name": "Bej 6319 Kadın Terlik",
+    "price": 1169,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3966420/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/6319-kadin-terlik-bej-o-3966420",
+    "color": "Bej",
+    "baseName": "6319 Kadın Terlik",
+    "colorVariants": [
+      {
+        "id": "LCW-3966422",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-3966422/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-3966422",
+    "name": "Kahverengi 6319 Kadın Terlik",
+    "price": 1169,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3966422/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/6319-kadin-terlik-kahverengi-o-3966422",
+    "color": "Kahverengi",
+    "baseName": "6319 Kadın Terlik",
+    "colorVariants": [
+      {
+        "id": "LCW-3966420",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-3966420/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-3969047",
+    "name": "Lacivert KOYU LACİVERT  Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313",
+    "price": 3431.06,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-3969047/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/koyu-lacivert-hakiki-deri-kut-burun-kisa-kalin-topuklu-puskullu-kadin-ayakkabi-13313-lacivert-o-3969047",
+    "color": "Lacivert",
+    "baseName": "KOYU LACİVERT Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313"
+  },
+  {
     "id": "LCW-4008566",
     "name": "AMIR I Kadın Koşu ve Yürüyüş Ayakkabı Beyaz",
     "price": 1399.9,
@@ -46,6 +479,30 @@
     "deeplink": "https://www.lcw.com/amir-i-kadin-kosu-ve-yuruyus-ayakkabi-beyaz-beyaz-o-4008566",
     "color": "Beyaz",
     "baseName": "AMIR I Kadın Koşu ve Yürüyüş Ayakkabı"
+  },
+  {
+    "id": "LCW-4050505",
+    "name": "Siyah SİYAH MELANJ  Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313",
+    "price": 3541.92,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4050505/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/siyah-melanj-hakiki-deri-kut-burun-kisa-kalin-topuklu-puskullu-kadin-ayakkabi-13313-siyah-o-4050505",
+    "color": "Siyah",
+    "baseName": "SİYAH MELANJ Hakiki Deri Küt Burun Kısa Kalın Topuklu Püsküllü Kadın Ayakkabı 13313"
   },
   {
     "id": "LCW-4079979",
@@ -118,6 +575,47 @@
     "deeplink": "https://www.lcw.com/atomix-kadin-sneaker-ayakkabi-siyah-beyaz-siyah-o-4168431",
     "color": "Siyah",
     "baseName": "ATOMIX Kadın Sneaker Ayakkabı / Beyaz"
+  },
+  {
+    "id": "LCW-4268772",
+    "name": "Siyah Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4268772/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-rugan-kadin-topuklu-ayakkabi-siyah-o-4268772",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183561",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183561/front.jpg"
+      },
+      {
+        "id": "LCW-5280771",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280771/front.jpg"
+      },
+      {
+        "id": "LCW-5281761",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5281761/front.jpg"
+      }
+    ]
   },
   {
     "id": "LCW-4270363",
@@ -374,6 +872,37 @@
         "id": "LCW-5281193",
         "color": "Kahverengi",
         "photo": "/products/lcwaikiki/lcw-5281193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4273218",
+    "name": "Kahverengi Küt Burunlu Bantlı Kadın Topuklu Ayakkabı",
+    "price": 699.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4273218/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kut-burunlu-bantli-kadin-topuklu-ayakkabi-kahverengi-o-4273218",
+    "color": "Kahverengi",
+    "baseName": "Küt Burunlu Bantlı Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5186053",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186053/front.jpg"
       }
     ]
   },
@@ -739,6 +1268,37 @@
         "id": "LCW-5235007",
         "color": "Antrasit",
         "photo": "/products/lcwaikiki/lcw-5235007/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4278955",
+    "name": "Siyah Süet Kadın Topuklu Ayakkabı",
+    "price": 999.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4278955/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/suet-kadin-topuklu-ayakkabi-siyah-o-4278955",
+    "color": "Siyah",
+    "baseName": "Süet Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5234867",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5234867/front.jpg"
       }
     ]
   },
@@ -2024,6 +2584,150 @@
     "baseName": "Beli Lastikli Desenli Şifon Kadın Pileli Etek"
   },
   {
+    "id": "LCW-4514341",
+    "name": "Kadın Hakiki Deri Sandalet 1411008Z204 Siyah",
+    "price": 3499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514341/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411008z204-siyah-siyah-o-4514341",
+    "color": "Siyah",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411008Z204"
+  },
+  {
+    "id": "LCW-4514344",
+    "name": "Bej Kadın Hakiki Deri Sandalet 1411010Z421 Multi",
+    "price": 2249.98,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514344/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411010z421-multi-bej-o-4514344",
+    "color": "Bej",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411010Z421 Multi"
+  },
+  {
+    "id": "LCW-4514345",
+    "name": "Kahverengi Kadın Hakiki Deri Sandalet 1411010Z421 Taba",
+    "price": 2249.98,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514345/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411010z421-taba-kahverengi-o-4514345",
+    "color": "Kahverengi",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411010Z421 Taba"
+  },
+  {
+    "id": "LCW-4514374",
+    "name": "Kadın Hakiki Deri Sandalet 1411010Z821 Siyah",
+    "price": 2249.98,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514374/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411010z821-siyah-siyah-o-4514374",
+    "color": "Siyah",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411010Z821"
+  },
+  {
+    "id": "LCW-4514375",
+    "name": "Kahverengi Kadın Hakiki Deri Sandalet 1411010Z821 Taba",
+    "price": 2249.98,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514375/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411010z821-taba-kahverengi-o-4514375",
+    "color": "Kahverengi",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411010Z821 Taba"
+  },
+  {
+    "id": "LCW-4514561",
+    "name": "Kahverengi Kadın Hakiki Deri Sandalet 1411008Z204 Taba",
+    "price": 3499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4514561/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-sandalet-1411008z204-taba-kahverengi-o-4514561",
+    "color": "Kahverengi",
+    "baseName": "Kadın Hakiki Deri Sandalet 1411008Z204 Taba"
+  },
+  {
     "id": "LCW-4532382",
     "name": "İndigo Beli Lastikli Straight Fit Taşlı Kadın Jean Pantolon",
     "price": 549.99,
@@ -2083,6 +2787,30 @@
         "photo": "/products/lcwaikiki/lcw-5330603/front.jpg"
       }
     ]
+  },
+  {
+    "id": "LCW-4544672",
+    "name": "Kahverengi Kadın Hakiki Deri Topuklu Sandalet 141992Z61001 Kahve",
+    "price": 3749.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4544672/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-topuklu-sandalet-141992z61001-kahve-kahverengi-o-4544672",
+    "color": "Kahverengi",
+    "baseName": "Kadın Hakiki Deri Topuklu Sandalet 141992Z61001 Kahve"
   },
   {
     "id": "LCW-4549695",
@@ -2359,6 +3087,450 @@
     ]
   },
   {
+    "id": "LCW-4656541",
+    "name": "Mor Kadın ZÜMRÜT-SİYAH Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4656541/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-zumrut-siyah-sivri-burun-kadeh-okce-fiyonklu-arkasi-acik-ayakkabi-mor-o-4656541",
+    "color": "Mor",
+    "baseName": "Kadın ZÜMRÜT-SİYAH Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-4660041",
+    "name": "Beyaz Kadın BEYAZ-AÇIK GRİ Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4660041/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-beyaz-acik-gri-sivri-burun-kadeh-okce-fiyonklu-arkasi-acik-ayakkabi-beyaz-o-4660041",
+    "color": "Beyaz",
+    "baseName": "Kadın BEYAZ-AÇIK GRİ Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-4660045",
+    "name": "Ekru Kadın KREM Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4660045/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-krem-sivri-burun-kadeh-okce-fiyonklu-arkasi-acik-ayakkabi-ekru-o-4660045",
+    "color": "Krem",
+    "baseName": "Ekru Kadın Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-4754576",
+    "name": "U4804411 Siyah Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4754576/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4804411-siyah-kadin-topuklu-ayakkabi-siyah-o-4754576",
+    "color": "Siyah",
+    "baseName": "U4804411 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754577",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754577/front.jpg"
+      },
+      {
+        "id": "LCW-4793168",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4793168/front.jpg"
+      },
+      {
+        "id": "LCW-5330803",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5330803/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4754577",
+    "name": "U4804411 Bej Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4754577/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4804411-bej-kadin-topuklu-ayakkabi-bej-o-4754577",
+    "color": "Bej",
+    "baseName": "U4804411 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754576",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4754576/front.jpg"
+      },
+      {
+        "id": "LCW-4793168",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4793168/front.jpg"
+      },
+      {
+        "id": "LCW-5330803",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5330803/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4754592",
+    "name": "U4046035 Bordo Kadın Topuklu Ayakkabı",
+    "price": 1499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4754592/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4046035-bordo-kadin-topuklu-ayakkabi-bordo-o-4754592",
+    "color": "Bordo",
+    "baseName": "U4046035 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754595",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754595/front.jpg"
+      },
+      {
+        "id": "LCW-4754612",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4754612/front.jpg"
+      },
+      {
+        "id": "LCW-5330833",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5330833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4754595",
+    "name": "U4046035 Bej Kadın Topuklu Ayakkabı",
+    "price": 1499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4754595/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4046035-bej-kadin-topuklu-ayakkabi-bej-o-4754595",
+    "color": "Bej",
+    "baseName": "U4046035 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754592",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-4754592/front.jpg"
+      },
+      {
+        "id": "LCW-4754612",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4754612/front.jpg"
+      },
+      {
+        "id": "LCW-5330833",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5330833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4754612",
+    "name": "U4046035 Kahverengi Kadın Topuklu Ayakkabı",
+    "price": 1499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4754612/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4046035-kahverengi-kadin-topuklu-ayakkabi-kahverengi-o-4754612",
+    "color": "Kahverengi",
+    "baseName": "U4046035 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754592",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-4754592/front.jpg"
+      },
+      {
+        "id": "LCW-4754595",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754595/front.jpg"
+      },
+      {
+        "id": "LCW-5330833",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5330833/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-4755465",
+    "name": "U9967520 Siyah Kadın Dolgu Topuklu Ayakkabı",
+    "price": 1599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4755465/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u9967520-siyah-kadin-dolgu-topuklu-ayakkabi-siyah-o-4755465",
+    "color": "Siyah",
+    "baseName": "U9967520 Kadın Dolgu Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-4755693",
+    "name": "Kahverengi U9967520 Taba Kadın Dolgu Topuklu Ayakkabı",
+    "price": 1599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4755693/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u9967520-taba-kadin-dolgu-topuklu-ayakkabi-kahverengi-o-4755693",
+    "color": "Kahverengi",
+    "baseName": "U9967520 Taba Kadın Dolgu Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-4766425",
+    "name": "Sarı Çapraz Bantlı Kadın Sandalet",
+    "price": 599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4766425/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/capraz-bantli-kadin-sandalet-sari-o-4766425",
+    "baseName": "Sarı Çapraz Bantlı Kadın Sandalet"
+  },
+  {
+    "id": "LCW-4766426",
+    "name": "Beyaz Çapraz Bantlı Kadın Sandalet",
+    "price": 599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4766426/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/capraz-bantli-kadin-sandalet-beyaz-o-4766426",
+    "color": "Beyaz",
+    "baseName": "Çapraz Bantlı Kadın Sandalet"
+  },
+  {
+    "id": "LCW-4770491",
+    "name": "Siyah Taşlı Kadın Terlik",
+    "price": 699.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4770491/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/tasli-kadin-terlik-siyah-o-4770491",
+    "color": "Siyah",
+    "baseName": "Taşlı Kadın Terlik"
+  },
+  {
+    "id": "LCW-4775994",
+    "name": "Bej Kadın TEN Bantlı Kadeh Ökçe Sandalet",
+    "price": 2705.17,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4775994/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-ten-bantli-kadeh-okce-sandalet-bej-o-4775994",
+    "color": "Bej",
+    "baseName": "Kadın TEN Bantlı Kadeh Ökçe Sandalet"
+  },
+  {
+    "id": "LCW-4775995",
+    "name": "Mor Kadın ZÜMRÜT-SİYAH Bantlı Kadeh Ökçe Sandalet",
+    "price": 2705.17,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4775995/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-zumrut-siyah-bantli-kadeh-okce-sandalet-mor-o-4775995",
+    "color": "Mor",
+    "baseName": "Kadın ZÜMRÜT-SİYAH Bantlı Kadeh Ökçe Sandalet"
+  },
+  {
     "id": "LCW-4786933",
     "name": "Bej Bağcıklı Kadın Spor Ayakkabı",
     "price": 999.99,
@@ -2426,6 +3598,47 @@
     "deeplink": "https://www.lcw.com/beli-fermuarli-cicekli-mini-tup-etek-beyaz-o-4792312",
     "color": "Beyaz",
     "baseName": "Beli Fermuarlı Çiçekli Mini Tüp Etek"
+  },
+  {
+    "id": "LCW-4793168",
+    "name": "U4804411 Kahverengi Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4793168/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4804411-kahverengi-kadin-topuklu-ayakkabi-kahverengi-o-4793168",
+    "color": "Kahverengi",
+    "baseName": "U4804411 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754576",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4754576/front.jpg"
+      },
+      {
+        "id": "LCW-4754577",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754577/front.jpg"
+      },
+      {
+        "id": "LCW-5330803",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-5330803/front.jpg"
+      }
+    ]
   },
   {
     "id": "LCW-4801531",
@@ -3793,6 +5006,54 @@
         "photo": "/products/lcwaikiki/lcw-4881997/front.jpg"
       }
     ]
+  },
+  {
+    "id": "LCW-4883555",
+    "name": "Kahverengi Kadın ÇİKOLATA KAHVE Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4883555/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-cikolata-kahve-sivri-burun-kadeh-okce-fiyonklu-arkasi-acik-ayakkabi-kahverengi-o-4883555",
+    "color": "Kahverengi",
+    "baseName": "Kadın ÇİKOLATA KAHVE Sivri Burun Kadeh Ökçe Fiyonklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-4884122",
+    "name": "Kahverengi Deri Görünümlü Kadın Terlik",
+    "price": 599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-4884122/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-terlik-kahverengi-o-4884122",
+    "color": "Kahverengi",
+    "baseName": "Deri Görünümlü Kadın Terlik"
   },
   {
     "id": "LCW-4894328",
@@ -12435,6 +13696,388 @@
     ]
   },
   {
+    "id": "LCW-5183561",
+    "name": "Kahverengi Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5183561/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-rugan-kadin-topuklu-ayakkabi-kahverengi-o-5183561",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4268772",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4268772/front.jpg"
+      },
+      {
+        "id": "LCW-5280771",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280771/front.jpg"
+      },
+      {
+        "id": "LCW-5281761",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5281761/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5183650",
+    "name": "Kahverengi Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 899.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5183650/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-kahverengi-o-5183650",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5183651",
+    "name": "Kahverengi Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 699.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5183651/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-kahverengi-o-5183651",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5186050",
+    "name": "Bej Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5186050/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burunlu-kadin-topuklu-ayakkabi-bej-o-5186050",
+    "color": "Bej",
+    "baseName": "Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5186051",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5186051/front.jpg"
+      },
+      {
+        "id": "LCW-5347069",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347069/front.jpg"
+      },
+      {
+        "id": "LCW-5347070",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347070/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5186051",
+    "name": "Kahverengi Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5186051/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burunlu-kadin-topuklu-ayakkabi-kahverengi-o-5186051",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5186050",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5186050/front.jpg"
+      },
+      {
+        "id": "LCW-5347069",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347069/front.jpg"
+      },
+      {
+        "id": "LCW-5347070",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347070/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5186053",
+    "name": "Siyah Küt Burunlu Bantlı Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5186053/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kut-burunlu-bantli-kadin-topuklu-ayakkabi-siyah-o-5186053",
+    "color": "Siyah",
+    "baseName": "Küt Burunlu Bantlı Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4273218",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4273218/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5186054",
+    "name": "Siyah Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5186054/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-siyah-o-5186054",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5186102",
     "name": "Kahverengi Süet Görünümlü Kadın Spor Ayakkabı",
     "price": 1099.99,
@@ -17375,6 +19018,30 @@
     ]
   },
   {
+    "id": "LCW-5224081",
+    "name": "Siyah  Deri Görünümlü Çift Bantlı Kadın Terlik",
+    "price": 599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5224081/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-cift-bantli-kadin-terlik-siyah-o-5224081",
+    "color": "Siyah",
+    "baseName": "Deri Görünümlü Çift Bantlı Kadın Terlik"
+  },
+  {
     "id": "LCW-5224283",
     "name": "İndigo Mom Fit Kadın Jean Pantolon",
     "price": 549.99,
@@ -18972,6 +20639,86 @@
         "id": "LCW-5250194",
         "color": "Siyah",
         "photo": "/products/lcwaikiki/lcw-5250194/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5234682",
+    "name": "Mavi Kadın Hakiki Deri Topuklu Sandalet 151992Z64004 Buz",
+    "price": 3749.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "back": "/products/lcwaikiki/lcw-5234682/back.jpg",
+      "front": "/products/lcwaikiki/lcw-5234682/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-topuklu-sandalet-151992z64004-buz-mavi-o-5234682",
+    "color": "Mavi",
+    "baseName": "Kadın Hakiki Deri Topuklu Sandalet 151992Z64004 Buz"
+  },
+  {
+    "id": "LCW-5234866",
+    "name": "Siyah Hakiki Deri Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5234866/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/hakiki-deri-kadin-topuklu-ayakkabi-siyah-o-5234866",
+    "color": "Siyah",
+    "baseName": "Hakiki Deri Kadın Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5234867",
+    "name": "Kahverengi Süet Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5234867/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/suet-kadin-topuklu-ayakkabi-kahverengi-o-5234867",
+    "color": "Kahverengi",
+    "baseName": "Süet Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4278955",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4278955/front.jpg"
       }
     ]
   },
@@ -20671,6 +22418,68 @@
         "id": "LCW-5245908",
         "color": "Siyah",
         "photo": "/products/lcwaikiki/lcw-5245908/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5245977",
+    "name": "Bej Deri Görünümlü Kadın Sandalet",
+    "price": 899.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5245977/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-sandalet-bej-o-5245977",
+    "color": "Bej",
+    "baseName": "Deri Görünümlü Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5246068",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5246068/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5246068",
+    "name": "Kahverengi Deri Görünümlü Kadın Sandalet",
+    "price": 899.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5246068/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-sandalet-kahverengi-o-5246068",
+    "color": "Kahverengi",
+    "baseName": "Deri Görünümlü Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5245977",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5245977/front.jpg"
       }
     ]
   },
@@ -24180,6 +25989,129 @@
     ]
   },
   {
+    "id": "LCW-5280768",
+    "name": "Ekru Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5280768/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-topuklu-ayakkabi-ekru-o-5280768",
+    "color": "Ekru",
+    "baseName": "Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5280769",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280769/front.jpg"
+      },
+      {
+        "id": "LCW-5425192",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5425192/front.jpg"
+      },
+      {
+        "id": "LCW-5425193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5425193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5280769",
+    "name": "Siyah Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5280769/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-topuklu-ayakkabi-siyah-o-5280769",
+    "color": "Siyah",
+    "baseName": "Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5280768",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5280768/front.jpg"
+      },
+      {
+        "id": "LCW-5425192",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5425192/front.jpg"
+      },
+      {
+        "id": "LCW-5425193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5425193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5280771",
+    "name": "Siyah Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5280771/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-rugan-kadin-topuklu-ayakkabi-siyah-o-5280771",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4268772",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4268772/front.jpg"
+      },
+      {
+        "id": "LCW-5183561",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183561/front.jpg"
+      },
+      {
+        "id": "LCW-5281761",
+        "color": "Yeşil",
+        "photo": "/products/lcwaikiki/lcw-5281761/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5281063",
     "name": "Mor Bisiklet Yaka Kadın Tişört",
     "price": 249.99,
@@ -24743,6 +26675,47 @@
         "id": "LCW-5281678",
         "color": "Renk",
         "photo": "/products/lcwaikiki/lcw-5281678/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5281761",
+    "name": "Yeşil Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5281761/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-rugan-kadin-topuklu-ayakkabi-yesil-o-5281761",
+    "color": "Yeşil",
+    "baseName": "Sivri Burun Rugan Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4268772",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4268772/front.jpg"
+      },
+      {
+        "id": "LCW-5183561",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183561/front.jpg"
+      },
+      {
+        "id": "LCW-5280771",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280771/front.jpg"
       }
     ]
   },
@@ -25790,6 +27763,30 @@
         "photo": "/products/lcwaikiki/lcw-5356543/front.jpg"
       }
     ]
+  },
+  {
+    "id": "LCW-5285392",
+    "name": "Bej Kadın Hasır Terlik",
+    "price": 699.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5285392/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hasir-terlik-bej-o-5285392",
+    "color": "Bej",
+    "baseName": "Kadın Hasır Terlik"
   },
   {
     "id": "LCW-5285403",
@@ -27110,6 +29107,158 @@
     ]
   },
   {
+    "id": "LCW-5317019",
+    "name": "Siyah Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5317019/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-siyah-o-5317019",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5317022",
+    "name": "Kahverengi Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5317022/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-kahverengi-o-5317022",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5317435",
     "name": "Bej Beli Kemerli Kalem Etek",
     "price": 649.99,
@@ -27977,6 +30126,234 @@
     ]
   },
   {
+    "id": "LCW-5326764",
+    "name": "Kahverengi Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5326764/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-kahverengi-o-5326764",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5326765",
+    "name": "Lacivert Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5326765/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-lacivert-o-5326765",
+    "color": "Lacivert",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5326766",
+    "name": "Siyah Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5326766/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-siyah-o-5326766",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5328093",
     "name": "Kahverengi Bisiklet Yaka Leopar Desenli Bluz",
     "price": 699.99,
@@ -28719,6 +31096,112 @@
     ]
   },
   {
+    "id": "LCW-5330803",
+    "name": "U4804411 Bordo Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5330803/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4804411-bordo-kadin-topuklu-ayakkabi-bordo-o-5330803",
+    "color": "Bordo",
+    "baseName": "U4804411 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754576",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-4754576/front.jpg"
+      },
+      {
+        "id": "LCW-4754577",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754577/front.jpg"
+      },
+      {
+        "id": "LCW-4793168",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4793168/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5330812",
+    "name": "8922151908 Kahverengi Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5330812/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/8922151908-kahverengi-kadin-topuklu-ayakkabi-kahverengi-o-5330812",
+    "color": "Kahverengi",
+    "baseName": "8922151908 Kadın Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5330833",
+    "name": "U4046035 Siyah Kadın Topuklu Ayakkabı",
+    "price": 1499.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5330833/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/u4046035-siyah-kadin-topuklu-ayakkabi-siyah-o-5330833",
+    "color": "Siyah",
+    "baseName": "U4046035 Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-4754592",
+        "color": "Bordo",
+        "photo": "/products/lcwaikiki/lcw-4754592/front.jpg"
+      },
+      {
+        "id": "LCW-4754595",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-4754595/front.jpg"
+      },
+      {
+        "id": "LCW-4754612",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-4754612/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5330918",
     "name": "Çizgili Keten Karışımlı Kadın Pantolon Kombini | LCW",
     "price": 1799.99,
@@ -28767,6 +31250,68 @@
     "retailer": "lcwaikiki",
     "deeplink": "https://www.lcw.com/loose-fit-keten-karisimli-kadin-pileli-pantolon-beyaz-o-5330921-mix-match",
     "baseName": "Loose Fit Keten Karışımlı Kadın Pileli Pantolon Kombini | LCW"
+  },
+  {
+    "id": "LCW-5333232",
+    "name": "Siyah Rebeca Arkası Açık Sivri Burunlu Yüksek Topuklu Çiçek Desenli Kadın Ayakkabı",
+    "price": 2199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5333232/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/rebeca-arkasi-acik-sivri-burunlu-yuksek-topuklu-cicek-desenli-kadin-ayakkabi-siyah-o-5333232",
+    "color": "Siyah",
+    "baseName": "Rebeca Arkası Açık Sivri Burunlu Yüksek Topuklu Çiçek Desenli Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5333236",
+        "color": "Mavi",
+        "photo": "/products/lcwaikiki/lcw-5333236/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5333236",
+    "name": "Mavi Rebeca Arkası Açık Sivri Burunlu Yüksek Topuklu Çiçek Desenli Kadın Ayakkabı",
+    "price": 2199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5333236/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/rebeca-arkasi-acik-sivri-burunlu-yuksek-topuklu-cicek-desenli-kadin-ayakkabi-mavi-o-5333236",
+    "color": "Mavi",
+    "baseName": "Rebeca Arkası Açık Sivri Burunlu Yüksek Topuklu Çiçek Desenli Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5333232",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5333232/front.jpg"
+      }
+    ]
   },
   {
     "id": "LCW-5334159",
@@ -29200,6 +31745,30 @@
     "retailer": "lcwaikiki",
     "deeplink": "https://www.lcw.com/gomlek-yaka-kadin-jean-ceket-mavi-o-5338040-mix-match",
     "baseName": "Gömlek Yaka Kadın Jean Ceket Kombini | LCW"
+  },
+  {
+    "id": "LCW-5338984",
+    "name": "Siyah Kadın Topuklu/ Stiletto 230 42 Leather",
+    "price": 4199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5338984/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-topuklu-stiletto-230-42-leather-siyah-o-5338984",
+    "color": "Siyah",
+    "baseName": "Kadın Topuklu/ Stiletto 230 42 Leather"
   },
   {
     "id": "LCW-5340599",
@@ -29685,6 +32254,30 @@
     ]
   },
   {
+    "id": "LCW-5343082",
+    "name": "Kahverengi Kadın Topuklu/ Stiletto 2240 02 Napa Snake Leather",
+    "price": 4399,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5343082/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-topuklu-stiletto-2240-02-napa-snake-leather-kahverengi-o-5343082",
+    "color": "Kahverengi",
+    "baseName": "Kadın Topuklu/ Stiletto 2240 02 Napa Snake Leather"
+  },
+  {
     "id": "LCW-5344821",
     "name": "İndigo 750 Slim Fit Erkek Jean Pantolon",
     "price": 999.99,
@@ -30050,6 +32643,316 @@
     ]
   },
   {
+    "id": "LCW-5346793",
+    "name": "Siyah Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5346793/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-siyah-o-5346793",
+    "color": "Siyah",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5346794",
+    "name": "Bej Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5346794/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-bej-o-5346794",
+    "color": "Bej",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346795",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5346795/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5346795",
+    "name": "Kahverengi Sivri Burun Kadın Topuklu Ayakkabı",
+    "price": 1199.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5346795/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burun-kadin-topuklu-ayakkabi-kahverengi-o-5346795",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burun Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5183650",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183650/front.jpg"
+      },
+      {
+        "id": "LCW-5183651",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5183651/front.jpg"
+      },
+      {
+        "id": "LCW-5186054",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5186054/front.jpg"
+      },
+      {
+        "id": "LCW-5317019",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5317019/front.jpg"
+      },
+      {
+        "id": "LCW-5317022",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5317022/front.jpg"
+      },
+      {
+        "id": "LCW-5326764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5326764/front.jpg"
+      },
+      {
+        "id": "LCW-5326765",
+        "color": "Lacivert",
+        "photo": "/products/lcwaikiki/lcw-5326765/front.jpg"
+      },
+      {
+        "id": "LCW-5326766",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5326766/front.jpg"
+      },
+      {
+        "id": "LCW-5346793",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5346793/front.jpg"
+      },
+      {
+        "id": "LCW-5346794",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5346794/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5347069",
+    "name": "Kahverengi Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5347069/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burunlu-kadin-topuklu-ayakkabi-kahverengi-o-5347069",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5186050",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5186050/front.jpg"
+      },
+      {
+        "id": "LCW-5186051",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5186051/front.jpg"
+      },
+      {
+        "id": "LCW-5347070",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347070/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5347070",
+    "name": "Kahverengi Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5347070/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sivri-burunlu-kadin-topuklu-ayakkabi-kahverengi-o-5347070",
+    "color": "Kahverengi",
+    "baseName": "Sivri Burunlu Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5186050",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5186050/front.jpg"
+      },
+      {
+        "id": "LCW-5186051",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5186051/front.jpg"
+      },
+      {
+        "id": "LCW-5347069",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5347069/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5347157",
     "name": "Gri Bisiklet Yaka Desenli Bluz",
     "price": 399.99,
@@ -30405,6 +33308,37 @@
         "id": "LCW-5353198",
         "color": "Siyah",
         "photo": "/products/lcwaikiki/lcw-5353198/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5354200",
+    "name": "Siyah Perla Orta Topuklu Bilekten Bantlı Sivri Burunlu Kadın Ayakkabı",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5354200/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/perla-orta-topuklu-bilekten-bantli-sivri-burunlu-kadin-ayakkabi-siyah-o-5354200",
+    "color": "Siyah",
+    "baseName": "Perla Orta Topuklu Bilekten Bantlı Sivri Burunlu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391712",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5391712/front.jpg"
       }
     ]
   },
@@ -30833,6 +33767,114 @@
     "baseName": "Bisiklet Yaka Nakışlı Bluz"
   },
   {
+    "id": "LCW-5358660",
+    "name": "Siyah Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "price": 2259,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5358660/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/gisela-orta-topuklu-metal-zimbali-fiyonklu-arkasi-acik-kadin-ayakkabi-siyah-o-5358660",
+    "color": "Siyah",
+    "baseName": "Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5358662",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5358662/front.jpg"
+      },
+      {
+        "id": "LCW-5358664",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5358664/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5358662",
+    "name": "Kahverengi Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "price": 2259,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5358662/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/gisela-orta-topuklu-metal-zimbali-fiyonklu-arkasi-acik-kadin-ayakkabi-kahverengi-o-5358662",
+    "color": "Kahverengi",
+    "baseName": "Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5358660",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5358660/front.jpg"
+      },
+      {
+        "id": "LCW-5358664",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5358664/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5358664",
+    "name": "Ekru Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "price": 2259,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5358664/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/gisela-orta-topuklu-metal-zimbali-fiyonklu-arkasi-acik-kadin-ayakkabi-ekru-o-5358664",
+    "color": "Ekru",
+    "baseName": "Gisela Orta Topuklu Metal Zımbalı Fiyonklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5358660",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5358660/front.jpg"
+      },
+      {
+        "id": "LCW-5358662",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5358662/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5359411",
     "name": "Kahverengi Beli Kemerli Mini Etek",
     "price": 549.99,
@@ -31022,6 +34064,100 @@
     "deeplink": "https://www.lcw.com/kacik-yaka-cizgili-oversize-armurlu-bluz-beyaz-o-5359713",
     "color": "Beyaz",
     "baseName": "Kaçık Yaka Çizgili Oversize Armürlü Bluz"
+  },
+  {
+    "id": "LCW-5360892",
+    "name": "Ekru Dale Orta Topuklu Bilekten Bantlı Tokalı Kadın Sandalet",
+    "price": 2199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "back": "/products/lcwaikiki/lcw-5360892/back.jpg",
+      "front": "/products/lcwaikiki/lcw-5360892/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dale-orta-topuklu-bilekten-bantli-tokali-kadin-sandalet-ekru-o-5360892",
+    "color": "Ekru",
+    "baseName": "Dale Orta Topuklu Bilekten Bantlı Tokalı Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5478856",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5478856/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5361021",
+    "name": "Kahverengi Rhonda Orta Topuklu Günlük Astar Hakiki Deri Stiletto",
+    "price": 2369,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5361021/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/rhonda-orta-topuklu-gunluk-astar-hakiki-deri-stiletto-kahverengi-o-5361021",
+    "color": "Kahverengi",
+    "baseName": "Rhonda Orta Topuklu Günlük Astar Hakiki Deri Stiletto",
+    "colorVariants": [
+      {
+        "id": "LCW-5361032",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5361032/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5361032",
+    "name": "Siyah Rhonda Orta Topuklu Günlük Astar Hakiki Deri Stiletto",
+    "price": 2369,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5361032/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/rhonda-orta-topuklu-gunluk-astar-hakiki-deri-stiletto-siyah-o-5361032",
+    "color": "Siyah",
+    "baseName": "Rhonda Orta Topuklu Günlük Astar Hakiki Deri Stiletto",
+    "colorVariants": [
+      {
+        "id": "LCW-5361021",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5361021/front.jpg"
+      }
+    ]
   },
   {
     "id": "LCW-5361567",
@@ -31251,6 +34387,30 @@
         "photo": null
       }
     ]
+  },
+  {
+    "id": "LCW-5365816",
+    "name": "Kahverengi Nissie Yan Detaylı Bağcıklı Konforlu Taban Günlük Spor Kadın Sneaker Ayakkabı",
+    "price": 1899,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5365816/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/nissie-yan-detayli-bagcikli-konforlu-taban-gunluk-spor-kadin-sneaker-ayakkabi-kahverengi-o-5365816",
+    "color": "Kahverengi",
+    "baseName": "Nissie Yan Detaylı Bağcıklı Konforlu Taban Günlük Spor Kadın Sneaker Ayakkabı"
   },
   {
     "id": "LCW-5366847",
@@ -31754,6 +34914,54 @@
     "retailer": "lcwaikiki",
     "deeplink": "https://www.lcw.com/cizgili-kadin-gomlek-tunik-indigo-o-5376338",
     "baseName": "İndigo Çizgili Kadın Gömlek Tunik"
+  },
+  {
+    "id": "LCW-5377188",
+    "name": "Beyaz Kadın CANLI BEYAZ Sivri Burun Kadeh Ökçe Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5377188/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-canli-beyaz-sivri-burun-kadeh-okce-arkasi-acik-ayakkabi-beyaz-o-5377188",
+    "color": "Beyaz",
+    "baseName": "Kadın CANLI BEYAZ Sivri Burun Kadeh Ökçe Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5377191",
+    "name": "Kahverengi Kadın KAHVERENGİ Sivri Burun Kadeh Ökçe Arkası Açık Ayakkabı",
+    "price": 3099.38,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5377191/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-sivri-burun-kadeh-okce-arkasi-acik-ayakkabi-kahverengi-o-5377191",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ Sivri Burun Kadeh Ökçe Arkası Açık Ayakkabı"
   },
   {
     "id": "LCW-5379236",
@@ -32289,6 +35497,102 @@
     "baseName": "Barrel Fit Kadın Jean Pantolon Kombini | LCW"
   },
   {
+    "id": "LCW-5389872",
+    "name": "Kahverengi Kadın KAHVERENGİ Bantlı Kadeh Ökçe Sandalet",
+    "price": 2705.17,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5389872/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-bantli-kadeh-okce-sandalet-kahverengi-o-5389872",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ Bantlı Kadeh Ökçe Sandalet"
+  },
+  {
+    "id": "LCW-5390008",
+    "name": "Kahverengi Kadın KAHVERENGİ-TABA Tokalı Feta Dolgulu Ayakkabı",
+    "price": 2484.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5390008/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-taba-tokali-feta-dolgulu-ayakkabi-kahverengi-o-5390008",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ-TABA Tokalı Feta Dolgulu Ayakkabı"
+  },
+  {
+    "id": "LCW-5390009",
+    "name": "Siyah Kadın SİYAH MELANJ Tokalı Feta Dolgulu Ayakkabı",
+    "price": 2484.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5390009/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-melanj-tokali-feta-dolgulu-ayakkabi-siyah-o-5390009",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH MELANJ Tokalı Feta Dolgulu Ayakkabı"
+  },
+  {
+    "id": "LCW-5390011",
+    "name": "Kahverengi Kadın AÇIK KAHVERENGİ Tokalı Feta Dolgulu Ayakkabı",
+    "price": 2484.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5390011/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-acik-kahverengi-tokali-feta-dolgulu-ayakkabi-kahverengi-o-5390011",
+    "color": "Kahverengi",
+    "baseName": "Kadın AÇIK KAHVERENGİ Tokalı Feta Dolgulu Ayakkabı"
+  },
+  {
     "id": "LCW-5390510",
     "name": "İndigo Slim Fit Kadın Jean Şort Etek",
     "price": 999.99,
@@ -32476,6 +35780,279 @@
     "baseName": "Sarı Polo Yaka Kadın Tişört"
   },
   {
+    "id": "LCW-5391712",
+    "name": "Kahverengi Perla Orta Topuklu Bilekten Bantlı Sivri Burunlu Kadın Ayakkabı",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391712/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/perla-orta-topuklu-bilekten-bantli-sivri-burunlu-kadin-ayakkabi-kahverengi-o-5391712",
+    "color": "Kahverengi",
+    "baseName": "Perla Orta Topuklu Bilekten Bantlı Sivri Burunlu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5354200",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5354200/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5391764",
+    "name": "Kahverengi Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "price": 1799,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391764/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/flori-sivri-burunlu-orta-topuklu-arkasi-acik-kadin-ayakkabi-kahverengi-o-5391764",
+    "color": "Kahverengi",
+    "baseName": "Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391787",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5391787/front.jpg"
+      },
+      {
+        "id": "LCW-5427218",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5427218/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5391787",
+    "name": "Siyah Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "price": 1799,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391787/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/flori-sivri-burunlu-orta-topuklu-arkasi-acik-kadin-ayakkabi-siyah-o-5391787",
+    "color": "Siyah",
+    "baseName": "Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5391764/front.jpg"
+      },
+      {
+        "id": "LCW-5427218",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5427218/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5391817",
+    "name": "Siyah Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "price": 1729,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391817/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/esmerelda-sivri-burunlu-arkasi-bantli-orta-topuklu-kadin-ayakkabi-siyah-o-5391817",
+    "color": "Siyah",
+    "baseName": "Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5427204",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5427204/front.jpg"
+      },
+      {
+        "id": "LCW-5463826",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5463826/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5391836",
+    "name": "Siyah Dalia Orta Topuklu Bilekten Bantlı Kadın Sandalet",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391836/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dalia-orta-topuklu-bilekten-bantli-kadin-sandalet-siyah-o-5391836",
+    "color": "Siyah",
+    "baseName": "Dalia Orta Topuklu Bilekten Bantlı Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5391889",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5391889/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5391889",
+    "name": "Ekru Dalia Orta Topuklu Bilekten Bantlı Kadın Sandalet",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5391889/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dalia-orta-topuklu-bilekten-bantli-kadin-sandalet-ekru-o-5391889",
+    "color": "Ekru",
+    "baseName": "Dalia Orta Topuklu Bilekten Bantlı Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5391836",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5391836/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5392039",
+    "name": "Siyah Kadın SİYAH Orta Kalın Topuklu Arkası Açık Ayakkabı",
+    "price": 3198.85,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5392039/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-orta-kalin-topuklu-arkasi-acik-ayakkabi-siyah-o-5392039",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH Orta Kalın Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5392040",
+    "name": "Kahverengi Kadın KAHVERENGİ Orta Kalın Topuklu Arkası Açık Ayakkabı",
+    "price": 3198.85,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5392040/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-orta-kalin-topuklu-arkasi-acik-ayakkabi-kahverengi-o-5392040",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ Orta Kalın Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5392044",
+    "name": "Bej Kadın YENİ BEJ Orta Kalın Topuklu Arkası Açık Ayakkabı",
+    "price": 3198.85,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5392044/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-yeni-bej-orta-kalin-topuklu-arkasi-acik-ayakkabi-bej-o-5392044",
+    "color": "Bej",
+    "baseName": "Kadın YENİ BEJ Orta Kalın Topuklu Arkası Açık Ayakkabı"
+  },
+  {
     "id": "LCW-5392579",
     "name": "Straight Fit Kadın Jean Pantolon Kombini | LCW",
     "price": 1099.99,
@@ -32556,6 +36133,140 @@
     "deeplink": "https://www.lcw.com/bisiklet-yaka-firfirli-peplum-bluz-beyaz-o-5392666",
     "color": "Beyaz",
     "baseName": "Bisiklet Yaka Fırfırlı Peplum Bluz"
+  },
+  {
+    "id": "LCW-5393752",
+    "name": "Bej Kadın YENİ BEJ Dolgu Topuklu Arkası Açık Ayakkabı",
+    "price": 2263.06,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5393752/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-yeni-bej-dolgu-topuklu-arkasi-acik-ayakkabi-bej-o-5393752",
+    "color": "Bej",
+    "baseName": "Kadın YENİ BEJ Dolgu Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5393753",
+    "name": "Kahverengi Kadın KAHVERENGİ Dolgu Topuklu Arkası Açık Ayakkabı",
+    "price": 2263.06,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5393753/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-dolgu-topuklu-arkasi-acik-ayakkabi-kahverengi-o-5393753",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ Dolgu Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5393754",
+    "name": "Siyah Kadın SİYAH Dolgu Topuklu Arkası Açık Ayakkabı",
+    "price": 2263.06,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5393754/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-dolgu-topuklu-arkasi-acik-ayakkabi-siyah-o-5393754",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH Dolgu Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5394202",
+    "name": "Kahverengi Kadın KAHVERENGİ İnce Topuklu Arkası Açık Ayakkabı",
+    "price": 2826.75,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5394202/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-ince-topuklu-arkasi-acik-ayakkabi-kahverengi-o-5394202",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ İnce Topuklu Arkası Açık Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5399348",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5399348/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5394203",
+    "name": "Siyah Kadın SİYAH İnce Topuklu Arkası Açık Ayakkabı",
+    "price": 2826.75,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5394203/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-ince-topuklu-arkasi-acik-ayakkabi-siyah-o-5394203",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH İnce Topuklu Arkası Açık Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5399351",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5399351/front.jpg"
+      }
+    ]
   },
   {
     "id": "LCW-5395028",
@@ -32639,6 +36350,29 @@
         "photo": "/products/lcwaikiki/lcw-5383795/front.jpg"
       }
     ]
+  },
+  {
+    "id": "LCW-5397103",
+    "name": "Karışık Leopar Desenli Kadın Sandalet",
+    "price": 599.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5397103/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/leopar-desenli-kadin-sandalet-karisik-o-5397103",
+    "baseName": "Karışık Leopar Desenli Kadın Sandalet"
   },
   {
     "id": "LCW-5397385",
@@ -32890,6 +36624,116 @@
     "baseName": "Asimetrik Kesim Keten Karışımlı Elbise"
   },
   {
+    "id": "LCW-5399347",
+    "name": "Bej Kadın YENİ BEJ İnce Topuklu Arkası Açık Ayakkabı",
+    "price": 1968.33,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5399347/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-yeni-bej-ince-topuklu-arkasi-acik-ayakkabi-bej-o-5399347",
+    "color": "Bej",
+    "baseName": "Kadın YENİ BEJ İnce Topuklu Arkası Açık Ayakkabı"
+  },
+  {
+    "id": "LCW-5399348",
+    "name": "Kahverengi Kadın KAHVERENGİ İnce Topuklu Arkası Açık Ayakkabı",
+    "price": 1968.33,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5399348/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-ince-topuklu-arkasi-acik-ayakkabi-kahverengi-o-5399348",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ İnce Topuklu Arkası Açık Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5394202",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5394202/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5399351",
+    "name": "Siyah Kadın SİYAH İnce Topuklu Arkası Açık Ayakkabı",
+    "price": 1968.33,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5399351/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-ince-topuklu-arkasi-acik-ayakkabi-siyah-o-5399351",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH İnce Topuklu Arkası Açık Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5394203",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5394203/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5402955",
+    "name": "Bej Kadın AÇIK BEJ Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet",
+    "price": 4374.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5402955/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-acik-bej-cirt-bantli-kalin-topuklu-hakiki-deri-sandalet-bej-o-5402955",
+    "color": "Bej",
+    "baseName": "Kadın AÇIK BEJ Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet"
+  },
+  {
     "id": "LCW-5403628",
     "name": "İndigo Gömlek Yaka Kemerli Mini Jean Elbise",
     "price": 1499.99,
@@ -32910,6 +36754,162 @@
     "retailer": "lcwaikiki",
     "deeplink": "https://www.lcw.com/gomlek-yaka-kemerli-mini-jean-elbise-indigo-o-5403628",
     "baseName": "İndigo Gömlek Yaka Kemerli Mini Jean Elbise"
+  },
+  {
+    "id": "LCW-5404007",
+    "name": "Siyah Kadın SİYAH Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet",
+    "price": 4374.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5404007/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-cirt-bantli-kalin-topuklu-hakiki-deri-sandalet-siyah-o-5404007",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet"
+  },
+  {
+    "id": "LCW-5404042",
+    "name": "Bej Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "price": 1979,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5404042/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sheilah-platform-capraz-bantli-bilekten-bantli-kadin-topuklu-ayakkabi-bej-o-5404042",
+    "color": "Bej",
+    "baseName": "Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5404043",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5404043/front.jpg"
+      },
+      {
+        "id": "LCW-5404045",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5404045/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5404043",
+    "name": "Kahverengi Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "price": 1979,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5404043/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sheilah-platform-capraz-bantli-bilekten-bantli-kadin-topuklu-ayakkabi-kahverengi-o-5404043",
+    "color": "Kahverengi",
+    "baseName": "Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5404042",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5404042/front.jpg"
+      },
+      {
+        "id": "LCW-5404045",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5404045/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5404045",
+    "name": "Siyah Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "price": 1979,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5404045/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sheilah-platform-capraz-bantli-bilekten-bantli-kadin-topuklu-ayakkabi-siyah-o-5404045",
+    "color": "Siyah",
+    "baseName": "Sheilah Platform Çapraz Bantlı Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5404042",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5404042/front.jpg"
+      },
+      {
+        "id": "LCW-5404043",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5404043/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5404061",
+    "name": "Kahverengi Dalia Orta Topuklu Bilekten Bantlı Kadın Topuklu Ayakkabı",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5404061/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dalia-orta-topuklu-bilekten-bantli-kadin-topuklu-ayakkabi-kahverengi-o-5404061",
+    "color": "Kahverengi",
+    "baseName": "Dalia Orta Topuklu Bilekten Bantlı Kadın Topuklu Ayakkabı"
   },
   {
     "id": "LCW-5405763",
@@ -32966,6 +36966,30 @@
     "retailer": "lcwaikiki",
     "deeplink": "https://www.lcw.com/beli-lastikli-dokulu-klos-etek-murdum-o-5406245",
     "baseName": "Mürdüm Beli Lastikli Dokulu Kloş Etek"
+  },
+  {
+    "id": "LCW-5408864",
+    "name": "Kahverengi Kadın Topuklu / Stiletto 230 42 Leather",
+    "price": 4199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5408864/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-topuklu-stiletto-230-42-leather-kahverengi-o-5408864",
+    "color": "Kahverengi",
+    "baseName": "Kadın Topuklu / Stiletto 230 42 Leather"
   },
   {
     "id": "LCW-5413970",
@@ -33410,6 +37434,208 @@
     "baseName": "Dik Yaka Kadın Ceket"
   },
   {
+    "id": "LCW-5425192",
+    "name": "Bej Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5425192/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-topuklu-ayakkabi-bej-o-5425192",
+    "color": "Bej",
+    "baseName": "Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5280768",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5280768/front.jpg"
+      },
+      {
+        "id": "LCW-5280769",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280769/front.jpg"
+      },
+      {
+        "id": "LCW-5425193",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5425193/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5425193",
+    "name": "Kahverengi Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "price": 1299.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5425193/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/deri-gorunumlu-kadin-topuklu-ayakkabi-kahverengi-o-5425193",
+    "color": "Kahverengi",
+    "baseName": "Deri Görünümlü Kadın Topuklu Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5280768",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5280768/front.jpg"
+      },
+      {
+        "id": "LCW-5280769",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5280769/front.jpg"
+      },
+      {
+        "id": "LCW-5425192",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5425192/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5426726",
+    "name": "Siyah Willa Gladyatör Kadın Sabo Terlik",
+    "price": 1449,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5426726/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/willa-gladyator-kadin-sabo-terlik-siyah-o-5426726",
+    "color": "Siyah",
+    "baseName": "Willa Gladyatör Kadın Sabo Terlik"
+  },
+  {
+    "id": "LCW-5427102",
+    "name": "Kahverengi Willa Gladyatör Kadın Terlik",
+    "price": 1449,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5427102/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/willa-gladyator-kadin-terlik-kahverengi-o-5427102",
+    "color": "Kahverengi",
+    "baseName": "Willa Gladyatör Kadın Terlik"
+  },
+  {
+    "id": "LCW-5427204",
+    "name": "Kahverengi Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "price": 1729,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5427204/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/esmerelda-sivri-burunlu-arkasi-bantli-orta-topuklu-kadin-ayakkabi-kahverengi-o-5427204",
+    "color": "Kahverengi",
+    "baseName": "Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391817",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5391817/front.jpg"
+      },
+      {
+        "id": "LCW-5463826",
+        "color": "Bej",
+        "photo": "/products/lcwaikiki/lcw-5463826/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5427218",
+    "name": "Bej Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "price": 1799,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5427218/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/flori-sivri-burunlu-orta-topuklu-arkasi-acik-kadin-ayakkabi-bej-o-5427218",
+    "color": "Bej",
+    "baseName": "Flori Sivri Burunlu Orta Topuklu Arkası Açık Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391764",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5391764/front.jpg"
+      },
+      {
+        "id": "LCW-5391787",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5391787/front.jpg"
+      }
+    ]
+  },
+  {
     "id": "LCW-5431782",
     "name": "Bej Erkek Hasır Tabanlı Desenli Espadril",
     "price": 799.99,
@@ -33432,6 +37658,102 @@
     "deeplink": "https://www.lcw.com/erkek-hasir-tabanli-desenli-espadril-bej-o-5431782",
     "color": "Bej",
     "baseName": "Erkek Hasır Tabanlı Desenli Espadril"
+  },
+  {
+    "id": "LCW-5435518",
+    "name": "Levina Kadın Kumaş Topuklu Ayakkabı Siyah",
+    "price": 1598.49,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5435518/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/levina-kadin-kumas-topuklu-ayakkabi-siyah-siyah-o-5435518",
+    "color": "Siyah",
+    "baseName": "Levina Kadın Kumaş Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5435547",
+    "name": "Kahverengi Levina Kadın Kumaş Topuklu Ayakkabı Kahve",
+    "price": 1598.49,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5435547/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/levina-kadin-kumas-topuklu-ayakkabi-kahve-kahverengi-o-5435547",
+    "color": "Kahverengi",
+    "baseName": "Levina Kadın Kumaş Topuklu Ayakkabı Kahve"
+  },
+  {
+    "id": "LCW-5440331",
+    "name": "Sarı Kadın ALTIN Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet",
+    "price": 2362.54,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5440331/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-altin-bilekten-bagli-orta-kalin-topuklu-cift-bantli-sandalet-sari-o-5440331",
+    "color": "Altin",
+    "baseName": "Sarı Kadın Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet"
+  },
+  {
+    "id": "LCW-5440334",
+    "name": "Gri Kadın GÜMÜŞ Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet",
+    "price": 2362.54,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5440334/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-gumus-bilekten-bagli-orta-kalin-topuklu-cift-bantli-sandalet-gri-o-5440334",
+    "color": "Gri",
+    "baseName": "Kadın GÜMÜŞ Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet"
   },
   {
     "id": "LCW-5442442",
@@ -33770,6 +38092,54 @@
     "baseName": "PINEDA I Erkek Koşu & Yürüyüş Spor Ayakkabısı"
   },
   {
+    "id": "LCW-5453509",
+    "name": "Kahverengi Kadın KAHVERENGİ Hakiki Deri Sandalet",
+    "price": 4326.22,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5453509/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-kahverengi-hakiki-deri-sandalet-kahverengi-o-5453509",
+    "color": "Kahverengi",
+    "baseName": "Kadın KAHVERENGİ Hakiki Deri Sandalet"
+  },
+  {
+    "id": "LCW-5453512",
+    "name": "Kahverengi Kadın TÜTÜN KAHVE Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet",
+    "price": 4374.12,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5453512/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-tutun-kahve-cirt-bantli-kalin-topuklu-hakiki-deri-sandalet-kahverengi-o-5453512",
+    "color": "Kahverengi",
+    "baseName": "Kadın TÜTÜN KAHVE Cırt Bantlı Kalın Topuklu Hakiki Deri Sandalet"
+  },
+  {
     "id": "LCW-5460709",
     "name": "Bej Kadın Raw Doris 6s6-57 Straight Fit Yüksek Bel Denim Jean",
     "price": 1199.99,
@@ -33791,6 +38161,30 @@
     "deeplink": "https://www.lcw.com/kadin-raw-doris-6s6-57-straight-fit-yuksek-bel-denim-jean-bej-o-5460709",
     "color": "Bej",
     "baseName": "Kadın Raw Doris 6s6-57 Straight Fit Yüksek Bel Denim Jean"
+  },
+  {
+    "id": "LCW-5462356",
+    "name": "Siyah Kadın SİYAH-TAŞ Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet",
+    "price": 2362.54,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5462356/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-tas-bilekten-bagli-orta-kalin-topuklu-cift-bantli-sandalet-siyah-o-5462356",
+    "color": "Siyah",
+    "baseName": "Kadın SİYAH-TAŞ Bilekten Bağlı Orta Kalın Topuklu Çift Bantlı Sandalet"
   },
   {
     "id": "LCW-5462530",
@@ -33818,6 +38212,223 @@
     "baseName": "Erkek Sandalet 1137722 UFK 11377 FUSSB.VITELLO Safari"
   },
   {
+    "id": "LCW-5463762",
+    "name": "Siyah Claude Gladyatör Kadın Sandalet",
+    "price": 1579,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5463762/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/claude-gladyator-kadin-sandalet-siyah-o-5463762",
+    "color": "Siyah",
+    "baseName": "Claude Gladyatör Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5463789",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5463789/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5463789",
+    "name": "Kahverengi Claude Gladyatör Kadın Sandalet",
+    "price": 1579,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5463789/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/claude-gladyator-kadin-sandalet-kahverengi-o-5463789",
+    "color": "Kahverengi",
+    "baseName": "Claude Gladyatör Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5463762",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5463762/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5463826",
+    "name": "Bej Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "price": 1729,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5463826/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/esmerelda-sivri-burunlu-arkasi-bantli-orta-topuklu-kadin-ayakkabi-bej-o-5463826",
+    "color": "Bej",
+    "baseName": "Esmerelda Sivri Burunlu Arkası Bantlı Orta Topuklu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5391817",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5391817/front.jpg"
+      },
+      {
+        "id": "LCW-5427204",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5427204/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5469246",
+    "name": "Kahverengi Kadın KOYU KAHVE Hakiki Deri Sandalet",
+    "price": 4326.22,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5469246/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-koyu-kahve-hakiki-deri-sandalet-kahverengi-o-5469246",
+    "color": "Kahverengi",
+    "baseName": "Kadın KOYU KAHVE Hakiki Deri Sandalet"
+  },
+  {
+    "id": "LCW-5469347",
+    "name": "Sarı Kadın Gold Sivri Burunlu Metalik  İnce Topuklu Ayakkabı",
+    "price": 5698,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5469347/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-gold-sivri-burunlu-metalik-ince-topuklu-ayakkabi-sari-o-5469347",
+    "baseName": "Sarı Kadın Gold Sivri Burunlu Metalik  İnce Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5469348",
+    "name": "Gri Kadın Lame Sivri Burunlu Metalik  İnce Topuklu Ayakkabı",
+    "price": 5698,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5469348/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-lame-sivri-burunlu-metalik-ince-topuklu-ayakkabi-gri-o-5469348",
+    "color": "Gri",
+    "baseName": "Kadın Lame Sivri Burunlu Metalik İnce Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5469349",
+    "name": "Kadın Siyah Sivri Burunlu Metalik  İnce Topuklu Ayakkabı",
+    "price": 5698,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5469349/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-siyah-sivri-burunlu-metalik-ince-topuklu-ayakkabi-siyah-o-5469349",
+    "color": "Siyah",
+    "baseName": "Kadın Sivri Burunlu Metalik İnce Topuklu Ayakkabı"
+  },
+  {
+    "id": "LCW-5469497",
+    "name": "Kahverengi Kadın Hakiki Deri Topuklu Sandalet 161992Z64004 Taba",
+    "price": 3749.99,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5469497/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/kadin-hakiki-deri-topuklu-sandalet-161992z64004-taba-kahverengi-o-5469497",
+    "color": "Kahverengi",
+    "baseName": "Kadın Hakiki Deri Topuklu Sandalet 161992Z64004 Taba"
+  },
+  {
     "id": "LCW-5476469",
     "name": "Erkek Bej Spor Ayakkabı",
     "price": 4499.89,
@@ -33841,6 +38452,185 @@
     "deeplink": "https://www.lcw.com/erkek-bej-spor-ayakkabi-bej-o-5476469",
     "color": "Bej",
     "baseName": "Erkek Spor Ayakkabı"
+  },
+  {
+    "id": "LCW-5478796",
+    "name": "Gri Viv Sivri Burunlu Fileli Taşlı Orta Topuklu Kadın Ayakkabı",
+    "price": 1999,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478796/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/viv-sivri-burunlu-fileli-tasli-orta-topuklu-kadin-ayakkabi-gri-o-5478796",
+    "color": "Gri",
+    "baseName": "Viv Sivri Burunlu Fileli Taşlı Orta Topuklu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5478849",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5478849/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5478849",
+    "name": "Siyah Viv Sivri Burunlu Fileli Taşlı Orta Topuklu Kadın Ayakkabı",
+    "price": 1999,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478849/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/viv-sivri-burunlu-fileli-tasli-orta-topuklu-kadin-ayakkabi-siyah-o-5478849",
+    "color": "Siyah",
+    "baseName": "Viv Sivri Burunlu Fileli Taşlı Orta Topuklu Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5478796",
+        "color": "Gri",
+        "photo": "/products/lcwaikiki/lcw-5478796/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5478856",
+    "name": "Siyah Dale Orta Topuklu Bilekten Bantlı Tokalı Kadın Sandalet",
+    "price": 2199,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478856/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dale-orta-topuklu-bilekten-bantli-tokali-kadin-sandalet-siyah-o-5478856",
+    "color": "Siyah",
+    "baseName": "Dale Orta Topuklu Bilekten Bantlı Tokalı Kadın Sandalet",
+    "colorVariants": [
+      {
+        "id": "LCW-5360892",
+        "color": "Ekru",
+        "photo": "/products/lcwaikiki/lcw-5360892/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5478946",
+    "name": "Siyah Sharyl Süet Fileli Hakiki Deri Sivri Burunlu Düz Topuklu Günlük Kadın Ayakkabı",
+    "price": 2899,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478946/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sharyl-suet-fileli-hakiki-deri-sivri-burunlu-duz-topuklu-gunluk-kadin-ayakkabi-siyah-o-5478946",
+    "color": "Siyah",
+    "baseName": "Sharyl Süet Fileli Hakiki Deri Sivri Burunlu Düz Topuklu Günlük Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5478953",
+        "color": "Kahverengi",
+        "photo": "/products/lcwaikiki/lcw-5478953/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5478953",
+    "name": "Kahverengi Sharyl Süet Fileli Hakiki Deri Sivri Burunlu Düz Topuklu Günlük Kadın Ayakkabı",
+    "price": 2899,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478953/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/sharyl-suet-fileli-hakiki-deri-sivri-burunlu-duz-topuklu-gunluk-kadin-ayakkabi-kahverengi-o-5478953",
+    "color": "Kahverengi",
+    "baseName": "Sharyl Süet Fileli Hakiki Deri Sivri Burunlu Düz Topuklu Günlük Kadın Ayakkabı",
+    "colorVariants": [
+      {
+        "id": "LCW-5478946",
+        "color": "Siyah",
+        "photo": "/products/lcwaikiki/lcw-5478946/front.jpg"
+      }
+    ]
+  },
+  {
+    "id": "LCW-5478978",
+    "name": "Bordo Dalia Orta Topuklu Bilekten Bantlı Kadın Ayakkabı",
+    "price": 2389,
+    "gender": "kadin",
+    "type": "ayakkabi",
+    "photos": {
+      "front": "/products/lcwaikiki/lcw-5478978/front.jpg"
+    },
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "retailer": "lcwaikiki",
+    "deeplink": "https://www.lcw.com/dalia-orta-topuklu-bilekten-bantli-kadin-ayakkabi-bordo-o-5478978",
+    "color": "Bordo",
+    "baseName": "Dalia Orta Topuklu Bilekten Bantlı Kadın Ayakkabı"
   },
   {
     "id": "LCW-5480703",
