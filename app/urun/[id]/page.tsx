@@ -204,6 +204,43 @@ export default async function ProductDetail({
             productName={product.name}
           />
 
+          {/* Kombin CTA — sayfa açılınca hemen görünür (mobilde accent renkli) */}
+          <Link
+            href={`/kombin?baseProduct=${product.id}`}
+            className="group relative flex items-center justify-between px-5 py-4 transition-all overflow-hidden border-2"
+            style={{
+              backgroundColor: "var(--color-fg)",
+              borderColor: "var(--color-fg)",
+              color: "var(--color-bg)",
+            }}
+          >
+            {/* Sol taraf accent vurgu */}
+            <span
+              className="absolute left-0 top-0 bottom-0 w-1"
+              style={{ backgroundColor: "var(--color-accent)" }}
+            />
+            <div className="flex items-center gap-3 relative">
+              <span
+                className="w-10 h-10 flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              >
+                <Sparkles size={18} className="text-white" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold tracking-wide">
+                  AI ile Kombin Oluştur
+                </p>
+                <p className="text-xs opacity-70">
+                  Bu ürünle eşleşen kombini sana giydirelim
+                </p>
+              </div>
+            </div>
+            <ArrowRight
+              size={18}
+              className="group-hover:translate-x-1 transition-transform shrink-0"
+            />
+          </Link>
+
           {/* Açıklama */}
           {product.description && (
             <p className="text-sm text-[var(--color-fg-soft)] leading-relaxed">
@@ -234,27 +271,6 @@ export default async function ProductDetail({
               />
             </a>
           )}
-
-          {/* Kombin CTA */}
-          <Link
-            href={`/kombin?baseProduct=${product.id}`}
-            className="group flex items-center justify-between bg-[var(--color-bg-elev)] border border-[var(--color-line)] hover:border-[var(--color-fg)] px-5 py-4 transition-colors"
-          >
-            <div className="flex items-center gap-3">
-              <Sparkles size={18} className="text-[var(--color-accent)]" />
-              <div>
-                <p className="text-sm font-medium">Bu ürünle kombin öner</p>
-                <p className="text-xs text-[var(--color-muted)]">
-                  Yapay zeka destekli stil önerisi
-                </p>
-              </div>
-            </div>
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </Link>
-
 
         </div>
       </div>

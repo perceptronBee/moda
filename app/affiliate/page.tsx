@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { RETAILERS } from "@/lib/affiliate/retailers";
-import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
+import { PRODUCTS } from "@/lib/products";
+import { getCacheStatus } from "@/lib/affiliate/feedCache";
+import { RefreshPanel } from "@/components/affiliate/RefreshPanel";
 
 export const metadata = { title: "MODA Affiliate Network API" };
 
+export const dynamic = "force-dynamic"; // refresh state her zaman güncel olsun
+
 export default function AffiliateApiPage() {
-  const products = loadAllFeeds();
+  const products = PRODUCTS;
   const stats = Object.values(RETAILERS).map((r) => ({
     ...r,
     productCount: products.filter((p) => p.retailer === r.slug).length,
@@ -13,6 +17,7 @@ export default function AffiliateApiPage() {
 
   const totalProducts = products.length;
   const activeRetailers = stats.filter((s) => s.productCount > 0).length;
+  const feedStatus = getCacheStatus();
 
   return (
     <div className="px-6 lg:px-10 py-10 max-w-5xl mx-auto w-full">
@@ -30,6 +35,9 @@ export default function AffiliateApiPage() {
           kazanır.
         </p>
       </header>
+
+      {/* Canlı feed ingestion paneli — son refresh, countdown, manuel buton */}
+      <RefreshPanel initial={feedStatus} />
 
       <section className="grid grid-cols-3 gap-4 mb-12">
         <Stat label="AKTİF PERAKENDECİ" value={activeRetailers} />
@@ -81,6 +89,8 @@ export default function AffiliateApiPage() {
           API Endpoint'leri
         </h2>
         <div className="flex flex-col gap-2 font-mono text-sm">
+          <Endpoint method="GET" path="/api/affiliate/v1/status" />
+          <Endpoint method="POST" path="/api/affiliate/v1/refresh" />
           <Endpoint method="GET" path="/api/affiliate/v1/feeds" />
           <Endpoint method="GET" path="/api/affiliate/v1/feeds/{retailer}" />
           <Endpoint method="GET" path="/api/affiliate/v1/products" />
