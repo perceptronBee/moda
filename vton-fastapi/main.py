@@ -92,6 +92,7 @@ async def try_on(
                 "human_image_url": human_url,
                 "garment_image_url": garment_url,
                 "description": "A person wearing the selected garment, photorealistic, high quality",
+                "num_inference_steps": 20
             },
             timeout=120,
         )
