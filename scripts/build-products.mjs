@@ -12,10 +12,18 @@ const ROOT = path.join(__dirname, "..");
 const FEEDS_DIR = path.join(ROOT, "data", "feeds");
 const OUT_PATH = path.join(ROOT, "lib", "products.generated.json");
 
+// Build-time XML parse'ında güvenlik — XXE / Billion Laughs koruması.
+// CI/CD sunucusu hackathon feed'ini build ederken patlatılmasın.
+const MAX_FEED_BYTES = 50 * 1024 * 1024;
+
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: "@_",
   parseAttributeValue: true,
+  // External Entity processing kapalı — XXE/Billion Laughs vektörü
+  processEntities: false,
+  allowBooleanAttributes: false,
+  commentPropName: "",
   isArray: (tag) => tag === "product",
 });
 
@@ -34,12 +42,35 @@ function priceFromNode(node) {
 }
 
 function importFeed(filePath) {
+  // Dosya boyut check — devasa malicious feed CI sunucusunu çökertmesin
+  const stat = fs.statSync(filePath);
+  if (stat.size > MAX_FEED_BYTES) {
+    console.warn(`  ⚠ ${path.basename(filePath)} çok büyük (${stat.size}B), atlandı`);
+    return [];
+  }
+
   const xml = fs.readFileSync(filePath, "utf-8");
+
+  // DOCTYPE bloğu reddet — XXE / entity bomb ana vektörü
+  if (/<!DOCTYPE/i.test(xml.slice(0, 2048))) {
+    console.warn(`  ⚠ ${path.basename(filePath)} DOCTYPE içeriyor, atlandı`);
+    return [];
+  }
+
   const data = parser.parse(xml);
   const feed = data.feed;
   if (!feed) return [];
   const retailer = feed["@_retailer"];
-  if (!retailer || !KNOWN_RETAILERS.has(retailer)) {
+  // Prototype pollution koruması
+  if (
+    !retailer ||
+    typeof retailer !== "string" ||
+    !Object.prototype.hasOwnProperty.call(
+      Object.fromEntries([...KNOWN_RETAILERS].map((k) => [k, true])),
+      retailer,
+    ) ||
+    !KNOWN_RETAILERS.has(retailer)
+  ) {
     console.warn(`  ⚠ Bilinmeyen retailer: ${retailer} (${filePath})`);
     return [];
   }

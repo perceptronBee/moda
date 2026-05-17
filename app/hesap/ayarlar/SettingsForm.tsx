@@ -38,7 +38,7 @@ export function SettingsForm({ user }: { user: { name: string, email: string, ph
         </div>
       </form>
 
-      {/* Update Email Form */}
+      {/* Update Email Form — güvenlik için mevcut şifre zorunlu */}
       <form action={emailAction} className="space-y-4">
         <h2 className="font-display text-xl tracking-wide border-b border-[var(--color-line)] pb-2 mb-4">Giriş Bilgileri</h2>
         {emailState?.error && (
@@ -51,19 +51,38 @@ export function SettingsForm({ user }: { user: { name: string, email: string, ph
             {emailState.message}
           </div>
         )}
-        <div className="flex gap-4 items-end">
-          <div className="flex-1">
-            <label className="block text-sm font-medium mb-2">E-posta</label>
-            <input name="email" type="email" defaultValue={user.email} required className="w-full border border-[var(--color-line)] p-3 outline-none focus:border-[var(--color-fg)]" placeholder="E-posta adresiniz" />
-          </div>
-          <button 
-            type="submit" 
-            disabled={emailPending}
-            className="h-[50px] bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors px-6 font-medium tracking-wide disabled:opacity-50" 
-          >
-            {emailPending ? "..." : "GÜNCELLE"}
-          </button>
+        <div>
+          <label className="block text-sm font-medium mb-2">Yeni E-posta</label>
+          <input
+            name="email"
+            type="email"
+            defaultValue={user.email}
+            required
+            autoComplete="email"
+            className="w-full border border-[var(--color-line)] p-3 outline-none focus:border-[var(--color-fg)]"
+            placeholder="ornek@email.com"
+          />
         </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">
+            Mevcut Şifre <span className="text-[var(--color-muted)] text-xs">(güvenlik doğrulaması)</span>
+          </label>
+          <input
+            name="password"
+            type="password"
+            required
+            autoComplete="current-password"
+            className="w-full border border-[var(--color-line)] p-3 outline-none focus:border-[var(--color-fg)]"
+            placeholder="Şu anki şifren"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={emailPending}
+          className="h-[50px] bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors px-6 font-medium tracking-wide disabled:opacity-50"
+        >
+          {emailPending ? "..." : "E-POSTAYI GÜNCELLE"}
+        </button>
       </form>
 
       {/* Update Phone Form */}

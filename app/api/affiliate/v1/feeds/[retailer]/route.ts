@@ -1,7 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
-import fs from "node:fs";
+import fs from "node:fs/promises";
+import { createReadStream, existsSync } from "node:fs";
 import path from "node:path";
 import { RETAILERS } from "@/lib/affiliate/retailers";
+
+const MAX_FEED_BYTES = 50 * 1024 * 1024;
 
 // Prototype pollution koruması — __proto__, constructor gibi key'leri reddet
 function isKnownRetailer(slug: string): boolean {
@@ -39,17 +42,45 @@ export async function GET(
     "feeds",
     `${retailer}.xml`,
   );
-  if (!fs.existsSync(filePath)) {
+  if (!existsSync(filePath)) {
     return NextResponse.json(
       { error: "Bu retailer için henüz feed yok" },
       { status: 404 },
     );
   }
-  const xml = fs.readFileSync(filePath, "utf-8");
-  return new NextResponse(xml, {
+
+  // Boyut kontrolü — devasa malicious feed event loop'u kitlemesin
+  const stat = await fs.stat(filePath);
+  if (stat.size > MAX_FEED_BYTES) {
+    return NextResponse.json(
+      { error: "Feed dosyası boyut sınırını aşıyor" },
+      { status: 500 },
+    );
+  }
+
+  // Stream — büyük dosyada bile event loop bloklanmaz
+  const nodeStream = createReadStream(filePath);
+  // Node Readable → Web ReadableStream köprüsü
+  const webStream = new ReadableStream({
+    start(controller) {
+      nodeStream.on("data", (chunk) =>
+        controller.enqueue(
+          chunk instanceof Buffer ? new Uint8Array(chunk) : chunk,
+        ),
+      );
+      nodeStream.on("end", () => controller.close());
+      nodeStream.on("error", (err) => controller.error(err));
+    },
+    cancel() {
+      nodeStream.destroy();
+    },
+  });
+
+  return new NextResponse(webStream, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
       "Cache-Control": "public, max-age=300",
+      "Content-Length": String(stat.size),
     },
   });
 }
