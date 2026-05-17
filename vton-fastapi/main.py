@@ -1,27 +1,47 @@
 # Run locally: uvicorn main:app --reload
 import base64
 import os
+import io
 from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse
-import fal_client
+import requests as http_requests
 
 BASE_DIR = Path(__file__).resolve().parent
 ENV_FILE = BASE_DIR / ".env"
 load_dotenv(dotenv_path=ENV_FILE, override=True)
 
-# fal_client reads FAL_KEY from env automatically
-os.environ.setdefault("FAL_KEY", os.getenv("FAL_KEY", ""))
-
 app = FastAPI(title="VTON Hackathon API")
 INDEX_FILE = BASE_DIR / "index.html"
 
+FAL_API_URL = "https://queue.fal.run/fal-ai/idm-vton"
 
-def to_data_url(content: bytes, content_type: str) -> str:
-    """Convert raw bytes to a base64 data URL."""
-    b64 = base64.b64encode(content).decode("utf-8")
+
+def get_fal_key() -> str:
+    key = os.getenv("FAL_KEY")
+    if not key:
+        raise HTTPException(status_code=500, detail="FAL_KEY is missing.")
+    return key
+
+
+def upload_to_fal(data: bytes, content_type: str, fal_key: str) -> str:
+    """Upload a file to fal.ai storage and return the URL."""
+    resp = http_requests.post(
+        "https://fal.run/fal-ai/file-upload",
+        headers={
+            "Authorization": f"Key {fal_key}",
+            "Content-Type": content_type,
+        },
+        data=data,
+        timeout=30,
+    )
+    if resp.status_code == 200:
+        return resp.json().get("url", "")
+
+    # Fallback: use data URL if upload fails
+    b64 = base64.b64encode(data).decode("utf-8")
     return f"data:{content_type};base64,{b64}"
 
 
@@ -36,7 +56,7 @@ async def debug_env():
 @app.get("/")
 async def serve_index() -> FileResponse:
     if not INDEX_FILE.exists():
-        raise HTTPException(status_code=500, detail="index.html not found in project root.")
+        raise HTTPException(status_code=500, detail="index.html not found.")
     return FileResponse(INDEX_FILE)
 
 
@@ -45,8 +65,7 @@ async def try_on(
     request: Request,
     base_image: UploadFile = File(...),
 ):
-    if not os.getenv("FAL_KEY"):
-        raise HTTPException(status_code=500, detail="FAL_KEY is missing in environment variables.")
+    fal_key = get_fal_key()
 
     form = await request.form()
     item_fields: list[tuple[str, UploadFile]] = []
@@ -60,44 +79,75 @@ async def try_on(
     )
     item_uploads = [upload for _, upload in item_fields]
     if not item_uploads:
-        raise HTTPException(
-            status_code=400,
-            detail="At least one item image is required (item_1, item_2, ...).",
-        )
+        raise HTTPException(status_code=400, detail="At least one item image is required.")
 
     try:
-        # Convert human image to data URL (avoids fal storage upload 403)
+        # Read images
         human_content = await base_image.read()
-        human_data_url = to_data_url(human_content, base_image.content_type or "image/jpeg")
-
-        # Process the FIRST garment item (IDM-VTON works best with single garment)
         garment = item_uploads[0]
         garment_content = await garment.read()
-        garment_data_url = to_data_url(garment_content, garment.content_type or "image/jpeg")
 
-        # Call IDM-VTON via Fal.ai
-        result = fal_client.subscribe(
-            "fal-ai/idm-vton",
-            arguments={
-                "human_image_url": human_data_url,
-                "garment_image_url": garment_data_url,
+        # Upload to fal storage
+        human_url = upload_to_fal(human_content, base_image.content_type or "image/jpeg", fal_key)
+        garment_url = upload_to_fal(garment_content, garment.content_type or "image/jpeg", fal_key)
+
+        # Submit job to fal queue
+        submit_resp = http_requests.post(
+            FAL_API_URL,
+            headers={
+                "Authorization": f"Key {fal_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "human_image_url": human_url,
+                "garment_image_url": garment_url,
                 "description": "A person wearing the selected garment, photorealistic, high quality",
             },
+            timeout=120,
         )
+
+        if submit_resp.status_code != 200:
+            raise ValueError(f"Fal API error {submit_resp.status_code}: {submit_resp.text[:500]}")
+
+        result = submit_resp.json()
+
+        # Check for queued response (request_id)
+        if "request_id" in result:
+            req_id = result["request_id"]
+            # Poll for result
+            import time
+            for _ in range(60):  # max ~2 min polling
+                time.sleep(2)
+                status_resp = http_requests.get(
+                    f"https://queue.fal.run/fal-ai/idm-vton/requests/{req_id}/status",
+                    headers={"Authorization": f"Key {fal_key}"},
+                    timeout=10,
+                )
+                status_data = status_resp.json()
+                if status_data.get("status") == "COMPLETED":
+                    result_resp = http_requests.get(
+                        f"https://queue.fal.run/fal-ai/idm-vton/requests/{req_id}",
+                        headers={"Authorization": f"Key {fal_key}"},
+                        timeout=30,
+                    )
+                    result = result_resp.json()
+                    break
+                elif status_data.get("status") == "FAILED":
+                    raise ValueError(f"Fal job failed: {status_data}")
+            else:
+                raise ValueError("Fal job timed out after 2 minutes")
 
         # Extract result image
         if "image" in result and "url" in result["image"]:
             result_url = result["image"]["url"]
-            # Download and convert to base64 for frontend
-            import requests as req
-            resp = req.get(result_url, timeout=30)
-            if resp.status_code == 200:
-                image_b64 = base64.b64encode(resp.content).decode("utf-8")
+            img_resp = http_requests.get(result_url, timeout=30)
+            if img_resp.status_code == 200:
+                image_b64 = base64.b64encode(img_resp.content).decode("utf-8")
                 return {"result_image": f"data:image/png;base64,{image_b64}"}
             else:
                 return {"result_image": result_url}
         else:
-            raise ValueError(f"Model did not return an image. Response: {result}")
+            raise ValueError(f"No image in result: {result}")
 
     except HTTPException:
         raise

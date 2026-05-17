@@ -41,7 +41,7 @@ export async function callVtonTryOn(input: TryOnInput): Promise<TryOnResult> {
   });
 
   const ctrl = new AbortController();
-  const timeout = setTimeout(() => ctrl.abort(), 60_000); // 60 sn
+  const timeout = setTimeout(() => ctrl.abort(), 120_000); // 120 sn
 
   try {
     const res = await fetch(`${baseUrl.replace(/\/$/, "")}/api/try-on`, {
@@ -61,7 +61,7 @@ export async function callVtonTryOn(input: TryOnInput): Promise<TryOnResult> {
     }
 
     const data = (await res.json()) as { result_image?: string };
-    if (!data.result_image?.startsWith("data:image/")) {
+    if (!data.result_image) {
       return { ok: false, error: "Geçersiz cevap formatı" };
     }
     return { ok: true, resultDataUrl: data.result_image };
