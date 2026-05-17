@@ -1,7 +1,6 @@
 # Run locally: uvicorn main:app --reload
 import base64
 import os
-import tempfile
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -13,8 +12,17 @@ BASE_DIR = Path(__file__).resolve().parent
 ENV_FILE = BASE_DIR / ".env"
 load_dotenv(dotenv_path=ENV_FILE, override=True)
 
+# fal_client reads FAL_KEY from env automatically
+os.environ.setdefault("FAL_KEY", os.getenv("FAL_KEY", ""))
+
 app = FastAPI(title="VTON Hackathon API")
 INDEX_FILE = BASE_DIR / "index.html"
+
+
+def to_data_url(content: bytes, content_type: str) -> str:
+    """Convert raw bytes to a base64 data URL."""
+    b64 = base64.b64encode(content).decode("utf-8")
+    return f"data:{content_type};base64,{b64}"
 
 
 @app.get("/debug-env")
@@ -58,44 +66,37 @@ async def try_on(
         )
 
     try:
-        # Upload base human image to FAL temp storage
+        # Convert human image to data URL (avoids fal storage upload 403)
         human_content = await base_image.read()
-        human_url = fal_client.upload(human_content, base_image.content_type or "image/jpeg")
+        human_data_url = to_data_url(human_content, base_image.content_type or "image/jpeg")
 
-        # Process each clothing item sequentially (layering them on top of the human)
-        current_human_url = human_url
-        
-        for item in item_uploads:
-            garment_content = await item.read()
-            garment_url = fal_client.upload(garment_content, item.content_type or "image/jpeg")
-            
-            # Call IDM-VTON via Fal.ai
-            result = fal_client.subscribe(
-                "fal-ai/idm-vton",
-                arguments={
-                    "human_image_url": current_human_url,
-                    "garment_image_url": garment_url,
-                    # Category auto-detection is decent, but we can rely on IDM-VTON's robust processing
-                }
-            )
-            
-            if "image" in result and "url" in result["image"]:
-                # The output becomes the input for the next layer
-                current_human_url = result["image"]["url"]
+        # Process the FIRST garment item (IDM-VTON works best with single garment)
+        garment = item_uploads[0]
+        garment_content = await garment.read()
+        garment_data_url = to_data_url(garment_content, garment.content_type or "image/jpeg")
+
+        # Call IDM-VTON via Fal.ai
+        result = fal_client.subscribe(
+            "fal-ai/idm-vton",
+            arguments={
+                "human_image_url": human_data_url,
+                "garment_image_url": garment_data_url,
+            },
+        )
+
+        # Extract result image
+        if "image" in result and "url" in result["image"]:
+            result_url = result["image"]["url"]
+            # Download and convert to base64 for frontend
+            import requests as req
+            resp = req.get(result_url, timeout=30)
+            if resp.status_code == 200:
+                image_b64 = base64.b64encode(resp.content).decode("utf-8")
+                return {"result_image": f"data:image/png;base64,{image_b64}"}
             else:
-                raise ValueError("Model did not return an image url.")
-
-        # At the end of all passes, current_human_url holds the final image.
-        # We can just return the URL, or download it and return as base64.
-        # Returning base64 to match previous frontend expectations
-        import requests
-        final_img_resp = requests.get(current_human_url)
-        if final_img_resp.status_code == 200:
-            image_b64 = base64.b64encode(final_img_resp.content).decode("utf-8")
-            return {"result_image": f"data:image/jpeg;base64,{image_b64}"}
+                return {"result_image": result_url}
         else:
-            # Fallback to returning the URL directly if base64 conversion fails
-            return {"result_image": current_human_url}
+            raise ValueError(f"Model did not return an image. Response: {result}")
 
     except HTTPException:
         raise
