@@ -7,10 +7,17 @@ export type KombinSuggestion = {
   items: Product[];
 };
 
-// Fake combination suggestions. Backend gelince burası gerçek API call'a dönecek.
+/**
+ * Kombin önerisi — şimdilik mock.
+ *
+ * Gerçek AI bağlandığında imza aynı kalacak, sadece içerik gerçek model
+ * cevabıyla dolacak.
+ *
+ * Strateji: gerçek katalogtaki foto'lu ürünlerden 3 farklı kombin oluştur.
+ * Try-on adımı için ürünlerin `photos.front` URL'leri gerekli.
+ */
 export async function fetchKombinSuggestions(opts: {
   baseProductId?: string;
-  // userPhotoDataUrl is provided but not used in mock
   userPhotoDataUrl?: string;
 }): Promise<KombinSuggestion[]> {
   await delay(1400);
@@ -19,43 +26,61 @@ export async function fetchKombinSuggestions(opts: {
     ? PRODUCTS.find((p) => p.id === opts.baseProductId)
     : undefined;
 
-  // build 3 mock outfits
-  const pick = (ids: string[]) =>
-    ids.map((id) => PRODUCTS.find((p) => p.id === id)!).filter(Boolean);
+  // Foto'su olan ürünler — try-on için zorunlu
+  const withPhoto = PRODUCTS.filter((p) => p.photos?.front);
 
-  const suggestions: KombinSuggestion[] = [
-    {
-      id: "k1",
-      title: "MİNİMAL · GÜNDÜZ",
-      description: "Sade, akıcı, hafta içi için kolay.",
-      items: pick([base?.id ?? "02", "03", "07"]),
-    },
-    {
-      id: "k2",
-      title: "KATMANLI · AKŞAM",
-      description: "Üst üste katman, soğuk akşamlar için.",
-      items: pick([base?.id ?? "01", "04", "05", "08"]),
-    },
-    {
-      id: "k3",
-      title: "STATEMENT",
-      description: "Cesur, dikkat çekici parçalar.",
-      items: pick([base?.id ?? "06", "12", "10", "08"]),
-    },
+  function pickByType(
+    type: Product["type"],
+    gender?: Product["gender"],
+    excludeId?: string,
+  ): Product | undefined {
+    const pool = withPhoto.filter(
+      (p) =>
+        p.type === type &&
+        (!gender || p.gender === gender) &&
+        p.id !== excludeId,
+    );
+    if (pool.length === 0) return undefined;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  const gender = base?.gender;
+
+  // 3 farklı kombin: günlük / akşam / statement
+  function build(themeId: string, title: string, desc: string): KombinSuggestion {
+    const items: Product[] = [];
+    if (base) items.push(base);
+    const ust = pickByType("ust-giyim", gender, base?.id);
+    const alt = pickByType("alt-giyim", gender, base?.id);
+    const ayk = pickByType("ayakkabi", gender, base?.id);
+    if (ust && ust.type !== base?.type) items.push(ust);
+    if (alt && alt.type !== base?.type) items.push(alt);
+    if (ayk && ayk.type !== base?.type) items.push(ayk);
+    return {
+      id: themeId,
+      title,
+      description: desc,
+      items: items.slice(0, 4),
+    };
+  }
+
+  return [
+    build("k1", "MİNİMAL · GÜNDÜZ", "Sade, hafta içi için rahat kombin."),
+    build("k2", "KATMANLI · AKŞAM", "Soğuk akşamlar için katmanlı bir yaklaşım."),
+    build("k3", "STATEMENT", "Dikkat çekici parçalarla cesur bir kombin."),
   ];
-
-  return suggestions.map((s) => ({
-    ...s,
-    items: Array.from(new Map(s.items.map((i) => [i.id, i])).values()),
-  }));
 }
 
+/**
+ * @deprecated KombinFlow artık /api/ai/try-on endpoint'ini direkt çağırıyor.
+ * Geriye uyumluluk için bırakıldı; sadece dev mock olarak kullanıcının
+ * fotoğrafını "sonuç" diye geri döner.
+ */
 export async function generateTryOnImage(opts: {
   userPhotoDataUrl: string;
   outfitId: string;
 }): Promise<{ resultUrl: string }> {
   await delay(2200);
-  // Şimdilik kullanıcının kendi fotoğrafını "üretilmiş" gibi gösteriyoruz.
   return { resultUrl: opts.userPhotoDataUrl };
 }
 

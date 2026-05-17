@@ -1,8 +1,7 @@
 import { getProductById } from "@/lib/products";
 import { KombinFlow } from "./KombinFlow";
 
-// Server Component — lib/products burada import edilir,
-// client bundle'a sızmaz. Sadece gerekli minimal alanlar prop olarak geçer.
+// Server Component — lib/products burada import edilir, client bundle'a sızmaz.
 export default async function KombinPage({
   searchParams,
 }: {
@@ -16,6 +15,9 @@ export default async function KombinPage({
     <KombinFlow
       baseProductId={baseProduct?.id}
       baseProductName={baseProduct?.name}
+      baseProductImage={
+        baseProduct?.photos?.front ?? baseProduct?.photos?.garmentFront
+      }
     />
   );
 }

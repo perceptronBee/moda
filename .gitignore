@@ -34,6 +34,13 @@ yarn-error.log*
 .env*
 !.env*.example
 
+# Python servis local çalışırken üretilen şeyler
+vton-fastapi/.env
+vton-fastapi/__pycache__/
+vton-fastapi/.venv/
+vton-fastapi/*.json
+!vton-fastapi/requirements.json
+
 # vercel
 .vercel
 
