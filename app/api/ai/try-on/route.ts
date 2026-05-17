@@ -4,6 +4,8 @@ import { callVtonTryOn } from "@/lib/ai/vton";
 import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
 import { getClientIp } from "@/lib/security/ip";
 
+export const maxDuration = 60; // Allow more time for AI processing
+
 const MAX_FILES = 6;
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 30 * 1024 * 1024;
