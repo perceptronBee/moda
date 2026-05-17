@@ -1,11 +1,12 @@
 # Run locally: uvicorn main:app --reload
 import base64
+import hmac
 import os
 import tempfile
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, Header, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse
 import vertexai
 from vertexai.generative_models import GenerationConfig, GenerativeModel, Part
@@ -96,6 +97,16 @@ def generate_with_retry(model: GenerativeModel, parts: list[Part], prompt: str):
     return None, None, fallback_text
 
 
+@app.get("/debug-env")
+async def debug_env():
+    return {
+        "project": os.getenv("GCP_PROJECT_ID"),
+        "location": os.getenv("GCP_LOCATION"),
+        "model": os.getenv("VERTEX_MODEL_NAME", "gemini-2.5-flash-image"),
+        "creds_path": os.getenv("GOOGLE_APPLICATION_CREDENTIALS"),
+    }
+
+
 @app.get("/")
 async def serve_index() -> FileResponse:
     if not INDEX_FILE.exists():
@@ -103,11 +114,22 @@ async def serve_index() -> FileResponse:
     return FileResponse(INDEX_FILE)
 
 
+def _require_api_token(provided: str | None):
+    """Production'da VTON_API_TOKEN env'i set ise her istek bu token'ı taşımalı."""
+    expected = os.getenv("VTON_API_TOKEN", "").strip()
+    if not expected:
+        return  # local dev mode — auth devre dışı
+    if not provided or not hmac.compare_digest(expected, provided):
+        raise HTTPException(status_code=401, detail="Geçersiz veya eksik token")
+
+
 @app.post("/api/try-on")
 async def try_on(
     request: Request,
     base_image: UploadFile = File(...),
+    x_api_token: str | None = Header(default=None, alias="X-API-Token"),
 ):
+    _require_api_token(x_api_token)
     form = await request.form()
     item_fields: list[tuple[str, UploadFile]] = []
 
