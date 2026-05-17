@@ -17,8 +17,8 @@ load_dotenv(dotenv_path=ENV_FILE, override=True)
 app = FastAPI(title="VTON Hackathon API")
 INDEX_FILE = BASE_DIR / "index.html"
 
-# The user explicitly wants "nanobanana 2" which means gemini-2.0-flash-exp
-MODEL_NAME = "gemini-2.0-flash-exp"
+# The user explicitly wants "nanobanana 2" which means gemini-2.5-flash-image
+MODEL_NAME = "gemini-2.5-flash-image"
 
 PROMPT_TEMPLATE = (
     "Act as an expert stylist. Layer these {item_count} clothing items onto the "
