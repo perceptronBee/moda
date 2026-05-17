@@ -1,11 +1,16 @@
 /**
- * Güvenilir client IP çıkarımı.
+ * Güvenilir client IP çıkarımı — Vercel mimarisine özel.
  *
- * X-Forwarded-For ve diğer proxy header'larına SADECE production'da
- * (Vercel, Cloudflare gibi güvenilir proxy arkasında) güvenilir.
- * Aksi halde sahte IP kabul edilebilir. Dev'de header'a güvenme.
+ * Saldırgan kendi `X-Forwarded-For: 1.2.3.4` header'ı ekleyerek gelir.
+ * Vercel proxy bunu **append** eder, yani en sondaki IP gerçek client IP'sidir.
+ * Sıralama: [saldırganın_fake_ipsi, ..., GERÇEK_CLIENT_IP]
  *
- * Audit ile kayıt için: filtrelenmiş IPv4/IPv6 deseni ile uyuşmazsa null döner.
+ * Güvenilirlik sırası:
+ *   1. x-vercel-forwarded-for (Vercel'in kendi set ettiği, manipüle edilemez)
+ *   2. x-real-ip (proxy tarafından set edilir, sadece prod'da güven)
+ *   3. x-forwarded-for'un EN SAĞINDAKİ entry (Vercel'in eklediği)
+ *
+ * Dev'de header'a güvenmiyoruz.
  */
 const IPV4 = /^(\d{1,3}\.){3}\d{1,3}$/;
 const IPV6 = /^[0-9a-fA-F:]+$/;
@@ -17,18 +22,33 @@ function isValidIp(s: string): boolean {
 }
 
 export function getClientIp(headers: Headers): string | null {
-  // Production'da Vercel + Cloudflare proxy header'larına güvenebiliriz
   const trustProxy = process.env.NODE_ENV === "production";
   if (!trustProxy) return null;
 
-  // Vercel kendisi X-Forwarded-For'u set eder, en soldaki client IP'sidir
-  const xff = headers.get("x-forwarded-for");
-  if (xff) {
-    const first = xff.split(",")[0]?.trim() ?? "";
+  // 1. Vercel'in kendi başlığı — saldırgan ekleyemez, edge tarafından set edilir
+  const vercel = headers.get("x-vercel-forwarded-for");
+  if (vercel) {
+    const first = vercel.split(",")[0]?.trim() ?? "";
     if (isValidIp(first)) return first;
   }
+
+  // 2. x-real-ip — Vercel/Cloudflare tarafından set edilir
   const xrip = headers.get("x-real-ip");
   if (xrip && isValidIp(xrip.trim())) return xrip.trim();
+
+  // 3. x-forwarded-for'un EN SAĞINDAKİ entry — Vercel'in eklediği gerçek IP
+  // (saldırgan en soldakine sahte IP ekleyebilir)
+  const xff = headers.get("x-forwarded-for");
+  if (xff) {
+    const ips = xff
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    // En sağdaki güvenilir entry (Vercel'in eklediği son hop)
+    for (let i = ips.length - 1; i >= 0; i--) {
+      if (isValidIp(ips[i])) return ips[i];
+    }
+  }
 
   return null;
 }
