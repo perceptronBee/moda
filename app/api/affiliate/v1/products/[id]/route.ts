@@ -1,13 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
+import { isValidPublisherKey } from "@/lib/affiliate/auth";
 
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  if (!req.headers.get("x-publisher-key")) {
+  if (!isValidPublisherKey(req.headers.get("x-publisher-key"))) {
     return NextResponse.json(
-      { error: "X-Publisher-Key gerekli" },
+      { error: "Geçersiz X-Publisher-Key" },
       { status: 401 },
     );
   }

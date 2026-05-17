@@ -10,6 +10,9 @@ import {
   ResetRequestSchema,
   ResetSchema,
 } from "@/lib/validation/auth";
+import { getSiteUrl, safeNextPath } from "@/lib/security/siteUrl";
+import { getClientIp } from "@/lib/security/ip";
+import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
 
 export type ActionResult =
   | { ok: true }
@@ -26,6 +29,16 @@ function fieldErrorsFromZod(
   return out;
 }
 
+// Rate-limit key: trusted IP varsa onu, yoksa cookie ID hash'ini kullan.
+// Header'a güvenmeyiz; en kötü ihtimalle "anonymous" bucket'a düşer.
+async function rateLimitKey(prefix: string, email?: string): Promise<string> {
+  const reqHeaders = await headers();
+  const ip = getClientIp(reqHeaders);
+  // E-posta ile birlikte hash — aynı kullanıcının kaba kuvvet denemesini yakala
+  const emailKey = email ? `:${email.toLowerCase().slice(0, 64)}` : "";
+  return `${prefix}:${ip ?? "anon"}${emailKey}`;
+}
+
 export async function signup(
   _prev: ActionResult | null,
   formData: FormData,
@@ -40,14 +53,23 @@ export async function signup(
     };
   }
   const { fullName, email, password } = parsed.data;
+
+  // Rate limit — saatte 5 kayıt isteği
+  const limit = rateLimit(
+    await rateLimitKey("signup", email),
+    RATE_LIMITS.signup,
+  );
+  if (!limit.ok) {
+    return {
+      ok: false,
+      error: `Çok fazla kayıt denemesi. ${Math.ceil(limit.retryAfter / 60)} dakika sonra tekrar dene.`,
+    };
+  }
+
   const supabase = await createClient();
   const reqHeaders = await headers();
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? `http://${reqHeaders.get("host")}`;
-  const ip =
-    reqHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    reqHeaders.get("x-real-ip") ??
-    null;
+  const siteUrl = getSiteUrl(); // GÜVENLİ — host header DEĞİL
+  const ip = getClientIp(reqHeaders); // güvenilir IP veya null
 
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -61,9 +83,6 @@ export async function signup(
     return { ok: false, error: "Kayıt başarısız oldu. Lütfen tekrar dene." };
   }
 
-  // E-posta verify gerekiyorsa user var ama session yok.
-  // profiles satırını user_id ile yarat (signUp sonrası anon session olabilir; insert RLS auth.uid()=id ister)
-  // E-mail confirm kapalıysa session anında verilir; açıksa profil callback'te oluşturulur.
   if (data.user && data.session) {
     await supabase.from("profiles").insert({
       id: data.user.id,
@@ -81,11 +100,21 @@ export async function login(
 ): Promise<ActionResult> {
   const parsed = LoginSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) {
+    return { ok: false, error: "E-posta veya şifre geçersiz" };
+  }
+
+  // Rate limit — 15dk'da 8 deneme (IP + email kombo)
+  const limit = rateLimit(
+    await rateLimitKey("login", parsed.data.email),
+    RATE_LIMITS.login,
+  );
+  if (!limit.ok) {
     return {
       ok: false,
-      error: "E-posta veya şifre geçersiz",
+      error: `Çok fazla başarısız deneme. ${Math.ceil(limit.retryAfter / 60)} dakika sonra tekrar dene.`,
     };
   }
+
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
@@ -94,7 +123,9 @@ export async function login(
   if (error) {
     return { ok: false, error: "E-posta veya şifre geçersiz" };
   }
-  const next = (formData.get("next") as string) || "/";
+
+  // Open redirect koruması — sadece internal path
+  const next = safeNextPath(formData.get("next"), "/");
   redirect(next);
 }
 
@@ -113,14 +144,22 @@ export async function requestPasswordReset(
   if (!parsed.success) {
     return { ok: false, error: "Geçerli bir e-posta gir" };
   }
+
+  // Rate limit — e-mail bombing önle
+  const limit = rateLimit(
+    await rateLimitKey("reset", parsed.data.email),
+    RATE_LIMITS.passwordReset,
+  );
+  if (!limit.ok) {
+    // E-mail enumeration sızdırmamak için ok dön ama gönderme
+    return { ok: true };
+  }
+
   const supabase = await createClient();
-  const reqHeaders = await headers();
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? `http://${reqHeaders.get("host")}`;
+  const siteUrl = getSiteUrl();
   await supabase.auth.resetPasswordForEmail(parsed.data.email, {
     redirectTo: `${siteUrl}/auth/callback?next=/sifre-yenile`,
   });
-  // Her zaman ok dön — e-mail enumeration engellemek için
   return { ok: true };
 }
 

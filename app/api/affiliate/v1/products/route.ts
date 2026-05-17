@@ -1,32 +1,26 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
 import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
+import { isValidPublisherKey } from "@/lib/affiliate/auth";
 
-/**
- * GET /api/affiliate/v1/products
- *
- * Query parametreleri:
- *   ?retailer=lcwaikiki     — sadece bu mağaza
- *   ?gender=kadin|erkek|cocuk
- *   ?category=ust-giyim
- *   ?limit=50
- *   ?offset=0
- *
- * Cevap (JSON):
- * {
- *   "total": 123,
- *   "limit": 50,
- *   "offset": 0,
- *   "items": [Product, ...]
- * }
- *
- * Auth: header `X-Publisher-Key: <key>` — demo'da herhangi bir değer geçerli.
- */
+const MAX_LIMIT = 200;
+const MAX_OFFSET = 100_000;
+
+function clampInt(raw: string | null, def: number, min: number, max: number): number {
+  if (raw === null) return def;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || !Number.isInteger(n)) return def;
+  if (n < min) return min;
+  if (n > max) return max;
+  return n;
+}
+
 export async function GET(req: NextRequest) {
+  // Gerçek key doğrulama — sabit zamanlı karşılaştırma
   const publisherKey = req.headers.get("x-publisher-key");
-  if (!publisherKey) {
+  if (!isValidPublisherKey(publisherKey)) {
     return NextResponse.json(
-      { error: "X-Publisher-Key header gerekli" },
+      { error: "Geçersiz X-Publisher-Key" },
       { status: 401 },
     );
   }
@@ -35,8 +29,10 @@ export async function GET(req: NextRequest) {
   const retailer = searchParams.get("retailer") as RetailerSlug | null;
   const gender = searchParams.get("gender");
   const category = searchParams.get("category");
-  const limit = Math.min(Number(searchParams.get("limit") ?? 50), 200);
-  const offset = Number(searchParams.get("offset") ?? 0);
+
+  // Pagination — negatif/aşırı büyük değerlere karşı koruma
+  const limit = clampInt(searchParams.get("limit"), 50, 1, MAX_LIMIT);
+  const offset = clampInt(searchParams.get("offset"), 0, 0, MAX_OFFSET);
 
   let products = loadAllFeeds();
   if (retailer) {

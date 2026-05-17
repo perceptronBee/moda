@@ -1,30 +1,54 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
 import { RETAILERS } from "@/lib/affiliate/retailers";
+import { isValidPublisherKey } from "@/lib/affiliate/auth";
+
+/**
+ * Deeplink güvenli mi? — Sadece http/https, perakendecinin domain'i ile eşleşmeli.
+ * `javascript:`, `data:`, `file:` gibi protokolleri engelle (XSS/Phishing).
+ */
+function isSafeDeeplink(url: string, retailerDomain: string): boolean {
+  if (!url || typeof url !== "string") return false;
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return false;
+  }
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    return false;
+  }
+  // Host kontrolü — retailer domain'inin alt-domain'i olmalı veya tam eşleşmeli
+  const host = parsed.hostname.toLowerCase();
+  const expected = retailerDomain.toLowerCase().replace(/^www\./, "");
+  return host === expected || host.endsWith(`.${expected}`);
+}
 
 /**
  * POST /api/affiliate/v1/track/click
+ * Body: { productId, userId? }
+ * Auth: X-Publisher-Key header (publisher API key)
  *
- * Body: { productId, publisherKey, userId? }
- *
- * Publisher (örn. bizim site) ürün linkine tıklandığında bu endpoint'i çağırır.
- * Network burada:
- *   1. Click'i kaydeder (audit)
- *   2. Publisher'a kazanılacak komisyonu hesaplar
- *   3. Retailer'a yönlendirme URL'ini döner (genellikle imzalı bir tracking link)
- *
- * Demo'da: console'a log atar, hesaplanmış komisyonu cevapta döner.
+ * Click'i kaydeder, komisyon hesaplar, redirect URL döner.
+ * Redirect URL'i scheme + domain doğrulanmış güvenli URL'dir.
  */
 export async function POST(req: NextRequest) {
+  // Publisher auth — feed poisoning ile abuse önleme
+  if (!isValidPublisherKey(req.headers.get("x-publisher-key"))) {
+    return NextResponse.json(
+      { error: "Geçersiz X-Publisher-Key" },
+      { status: 401 },
+    );
+  }
+
   const body = (await req.json().catch(() => null)) as {
     productId?: string;
-    publisherKey?: string;
     userId?: string;
   } | null;
 
-  if (!body?.productId || !body?.publisherKey) {
+  if (!body?.productId || typeof body.productId !== "string") {
     return NextResponse.json(
-      { error: "productId ve publisherKey zorunlu" },
+      { error: "productId zorunlu" },
       { status: 400 },
     );
   }
@@ -35,16 +59,32 @@ export async function POST(req: NextRequest) {
   }
 
   const retailer = RETAILERS[product.retailer];
+  if (!retailer) {
+    return NextResponse.json(
+      { error: "Geçersiz retailer" },
+      { status: 400 },
+    );
+  }
+
+  // Deeplink güvenlik kontrolü — feed poisoning'e karşı
+  if (!isSafeDeeplink(product.deeplink, retailer.domain)) {
+    console.warn(
+      `[FEED POISONING?] product=${product.id} unsafe deeplink=${product.deeplink}`,
+    );
+    return NextResponse.json(
+      { error: "Güvensiz deeplink — kaynak feed kontrol edilmeli" },
+      { status: 502 },
+    );
+  }
+
   const estimatedCommission = product.price * retailer.commission;
   const clickId = `clk_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 
-  // Gerçek hayatta DB'ye yaz:
   console.log("[affiliate/click]", {
     clickId,
     productId: product.id,
     retailer: retailer.slug,
-    publisherKey: body.publisherKey.slice(0, 8) + "…",
-    userId: body.userId,
+    userId: body.userId ?? null,
     price: product.price,
     commission: estimatedCommission,
     at: new Date().toISOString(),
