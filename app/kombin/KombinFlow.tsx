@@ -153,7 +153,15 @@ export function KombinFlow({
     );
 
     try {
-      const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
+      // 1. Vercel timeout'u baypas etmek için Python sunucu URL'ini al
+      const urlRes = await fetch("/api/ai/vton-url").catch(() => null);
+      const urlConfig = urlRes ? await urlRes.json().catch(() => ({})) : {};
+      const directEndpoint = urlConfig.url 
+        ? `${urlConfig.url.replace(/\/$/, "")}/api/try-on` 
+        : "/api/ai/try-on";
+
+      // 2. Direkt Python backend'ine at
+      const res = await fetch(directEndpoint, { method: "POST", body: form });
       
       let data;
       const contentType = res.headers.get("content-type") || "";
@@ -164,12 +172,13 @@ export function KombinFlow({
         throw new Error(`Server returned ${res.status}: ${text.slice(0, 100)}...`);
       }
 
-      if (!res.ok || !data.resultImage) {
-        setError(data.error ?? "Try-on başarısız");
+      const resultImage = data.resultImage || data.result_image;
+      if (!res.ok || !resultImage) {
+        setError(data.error ?? data.detail ?? "Try-on başarısız.");
         setStage("pick");
         return;
       }
-      setResultUrl(data.resultImage);
+      setResultUrl(resultImage);
       setStage("result");
     } catch (e) {
       setError(`Try-on hatası: ${(e as Error).message}`);
