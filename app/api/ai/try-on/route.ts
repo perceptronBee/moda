@@ -105,10 +105,18 @@ export async function POST(req: NextRequest) {
   }
 
   // Python servisine forward
-  const result = await callVtonTryOn({
-    baseImage,
-    itemImages: items,
-  });
+  let result;
+  try {
+    result = await callVtonTryOn({
+      baseImage,
+      itemImages: items,
+    });
+  } catch (err: any) {
+    return NextResponse.json(
+      { error: "Python API Çağrısı Başarısız: " + (err.message || String(err)) },
+      { status: 500 }
+    );
+  }
 
   if (!result.ok) {
     return NextResponse.json(

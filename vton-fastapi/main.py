@@ -19,30 +19,20 @@ INDEX_FILE = BASE_DIR / "index.html"
 FAL_API_URL = "https://queue.fal.run/fal-ai/idm-vton"
 
 
+import fal_client
+
 def get_fal_key() -> str:
     key = os.getenv("FAL_KEY")
     if not key:
         raise HTTPException(status_code=500, detail="FAL_KEY is missing.")
+    # Ensure fal_client uses this key if not set inherently
+    os.environ["FAL_KEY"] = key
     return key
 
-
 def upload_to_fal(data: bytes, content_type: str, fal_key: str) -> str:
-    """Upload a file to fal.ai storage and return the URL."""
-    resp = http_requests.post(
-        "https://fal.run/fal-ai/file-upload",
-        headers={
-            "Authorization": f"Key {fal_key}",
-            "Content-Type": content_type,
-        },
-        data=data,
-        timeout=30,
-    )
-    if resp.status_code == 200:
-        return resp.json().get("url", "")
-
-    # Fallback: use data URL if upload fails
-    b64 = base64.b64encode(data).decode("utf-8")
-    return f"data:{content_type};base64,{b64}"
+    """Upload a file to fal.ai storage and return the URL using proper Fal Client."""
+    # This automatically uses the FAL_KEY env var
+    return fal_client.upload(data, content_type)
 
 
 @app.get("/debug-env")

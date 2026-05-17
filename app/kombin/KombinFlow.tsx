@@ -154,7 +154,16 @@ export function KombinFlow({
 
     try {
       const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
-      const data = await res.json();
+      
+      let data;
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(`Server returned ${res.status}: ${text.slice(0, 100)}...`);
+      }
+
       if (!res.ok || !data.resultImage) {
         setError(data.error ?? "Try-on başarısız");
         setStage("pick");
