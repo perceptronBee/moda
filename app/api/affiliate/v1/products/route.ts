@@ -2,9 +2,13 @@ import { NextResponse, type NextRequest } from "next/server";
 import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
 import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
 import { isValidPublisherKey } from "@/lib/affiliate/auth";
+import { rateLimit } from "@/lib/security/rateLimit";
+import { getClientIp } from "@/lib/security/ip";
 
 const MAX_LIMIT = 200;
 const MAX_OFFSET = 100_000;
+// Bulk listing daha pahalı, daha sıkı limit
+const LIST_LIMIT = { windowMs: 60_000, max: 60 } as const;
 
 function clampInt(raw: string | null, def: number, min: number, max: number): number {
   if (raw === null) return def;
@@ -22,6 +26,20 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       { error: "Geçersiz X-Publisher-Key" },
       { status: 401 },
+    );
+  }
+
+  // Scraping abuse koruması — publisher + IP başına dakikada 60 list
+  const ip = getClientIp(req.headers) ?? "anon";
+  const keyHash = (publisherKey ?? "").slice(0, 16);
+  const rl = rateLimit(`products:${keyHash}:${ip}`, LIST_LIMIT);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Çok fazla istek", retryAfter: rl.retryAfter },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rl.retryAfter) },
+      },
     );
   }
 

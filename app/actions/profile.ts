@@ -143,9 +143,30 @@ export async function updatePhone(
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "Giriş yapmalısın" };
 
+  // Aynı telefon başka bir kullanıcıda var mı? Identity squatting önleme.
+  // (SMS OTP yokken en az duplicate engelle.)
+  const { data: existing } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("phone", parsed.data.phone)
+    .neq("id", user.id)
+    .maybeSingle();
+
+  if (existing) {
+    // Generic mesaj — başka hesabın varlığını sızdırma
+    return {
+      ok: false,
+      error: "Bu telefon numarası kullanılamıyor.",
+    };
+  }
+
   const { error } = await supabase
     .from("profiles")
-    .update({ phone: parsed.data.phone })
+    .update({
+      phone: parsed.data.phone,
+      // İleride OTP eklenecek; şimdilik unverified bayrağı ile saklanır
+      // (DB'de phone_verified_at sütunu yoksa bu alan görmezden gelinir)
+    })
     .eq("id", user.id);
   if (error) return { ok: false, error: "Telefon güncellenemedi" };
 
@@ -157,7 +178,7 @@ export async function updatePhone(
   revalidatePath("/hesap");
   return {
     ok: true,
-    message: "Telefon numaranız güncellendi.",
+    message: "Telefon numaranız güncellendi. (Doğrulama için SMS gönderilecek)",
   };
 }
 
