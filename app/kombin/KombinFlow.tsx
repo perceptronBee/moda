@@ -153,15 +153,7 @@ export function KombinFlow({
     );
 
     try {
-      // 1. Vercel timeout'u baypas etmek için Python sunucu URL'ini al
-      const urlRes = await fetch("/api/ai/vton-url").catch(() => null);
-      const urlConfig = urlRes ? await urlRes.json().catch(() => ({})) : {};
-      const directEndpoint = urlConfig.url 
-        ? `${urlConfig.url.replace(/\/$/, "")}/api/try-on` 
-        : "/api/ai/try-on";
-
-      // 2. Direkt Python backend'ine at
-      const res = await fetch(directEndpoint, { method: "POST", body: form });
+      const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
       
       let data;
       const contentType = res.headers.get("content-type") || "";
