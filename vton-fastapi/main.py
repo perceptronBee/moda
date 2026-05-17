@@ -81,6 +81,7 @@ async def try_on(
             arguments={
                 "human_image_url": human_data_url,
                 "garment_image_url": garment_data_url,
+                "description": "A person wearing the selected garment, photorealistic, high quality",
             },
         )
 
