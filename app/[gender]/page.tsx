@@ -13,9 +13,10 @@ import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
 
 const VALID: Gender[] = ["kadin", "erkek"];
 
-export function generateStaticParams() {
-  return VALID.map((g) => ({ gender: g }));
-}
+// Static gen disabled — worker memory issue with large catalog
+// export function generateStaticParams() {
+//   return VALID.map((g) => ({ gender: g }));
+// }
 
 export default async function GenderPage({
   params,

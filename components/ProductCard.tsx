@@ -5,6 +5,7 @@ import { Heart } from "lucide-react";
 import type { Product } from "@/lib/products";
 import { RETAILERS } from "@/lib/affiliate/retailers";
 import { useFavorites } from "@/lib/favorites";
+import { safeProductPhoto } from "@/lib/security/siteUrl";
 
 export function ProductCard({
   product,
@@ -22,12 +23,13 @@ export function ProductCard({
   const { hasItem, toggleItem, mounted } = useFavorites();
   const isFavorite = mounted ? hasItem(product.id) : false;
 
-  // Ön model > Ön giyilmemiş > arka > arka giyilmemiş
-  const heroPhoto =
+  // Ön model > Ön giyilmemiş > arka > arka giyilmemiş, ve her durumda whitelist'le
+  const heroPhoto = safeProductPhoto(
     product.photos?.front ||
-    product.photos?.garmentFront ||
-    product.photos?.back ||
-    product.photos?.garmentBack;
+      product.photos?.garmentFront ||
+      product.photos?.back ||
+      product.photos?.garmentBack,
+  );
 
   return (
     <Link href={`/urun/${product.id}`} className="group block">

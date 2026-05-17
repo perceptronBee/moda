@@ -4,9 +4,10 @@ import { ProductCard } from "@/components/ProductCard";
 import { PRODUCTS, TYPE_LABELS, type ProductType, type Gender } from "@/lib/products";
 import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
 
-export function generateStaticParams() {
-  return Object.keys(RETAILERS).map((slug) => ({ slug }));
-}
+// Static gen disabled — worker memory issue with large catalog
+// export function generateStaticParams() {
+//   return Object.keys(RETAILERS).map((slug) => ({ slug }));
+// }
 
 export default async function StorePage({
   params,

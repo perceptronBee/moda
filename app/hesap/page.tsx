@@ -19,7 +19,7 @@ export default async function AccountPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("*")
+    .select("full_name, front_photo_path, back_photo_path, back_is_ai_generated")
     .eq("id", user.id)
     .maybeSingle();
 

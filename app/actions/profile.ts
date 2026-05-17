@@ -1,6 +1,7 @@
 "use server";
 
 import sharp from "sharp";
+import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -11,6 +12,8 @@ import {
   PHOTO_SLOTS,
   type PhotoSlot,
 } from "@/lib/validation/profile";
+import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
+import { getClientIp } from "@/lib/security/ip";
 
 const MAX_BYTES = 10 * 1024 * 1024;
 // Görüntü dekompresyon bombası önleme — pixel limiti
@@ -112,6 +115,10 @@ export async function updateEmail(
       error: "E-posta güncellenemedi, kullanılıyor olabilir.",
     };
   }
+
+  // Diğer cihazlardaki oturumları kapat — kritik kimlik değişikliği
+  await supabase.auth.signOut({ scope: "others" });
+
   return {
     ok: true,
     message:
@@ -192,6 +199,20 @@ export async function uploadUserPhoto(
   // Path traversal / arbitrary write koruması — side değerini whitelist'le
   if (!PHOTO_SLOTS.includes(side as PhotoSlot)) {
     return { ok: false, error: "Geçersiz foto slotu" };
+  }
+
+  // Rate limit — kullanıcı + IP başına dakikada 6 upload (Sharp CPU + storage kotası)
+  const supabaseEarly = await createClient();
+  const { data: { user: earlyUser } } = await supabaseEarly.auth.getUser();
+  const reqHeaders = await headers();
+  const ip = getClientIp(reqHeaders) ?? "anon";
+  const rlKey = earlyUser ? `upload:${earlyUser.id}` : `upload:ip:${ip}`;
+  const rl = rateLimit(rlKey, RATE_LIMITS.photoUpload);
+  if (!rl.ok) {
+    return {
+      ok: false,
+      error: `Çok hızlı yükleme yapıyorsun. ${rl.retryAfter} sn sonra dene.`,
+    };
   }
 
   const file = formData.get("photo") as File | null;
@@ -287,6 +308,15 @@ export async function requestAiBackGeneration(): Promise<UploadResult> {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "Önce giriş yap" };
+
+  // AI faturası — kullanıcı başına dakikada 5 istek
+  const rl = rateLimit(`ai:${user.id}`, RATE_LIMITS.aiRequest);
+  if (!rl.ok) {
+    return {
+      ok: false,
+      error: `AI isteği limiti aşıldı. ${rl.retryAfter} sn sonra dene.`,
+    };
+  }
 
   await supabase
     .from("profiles")

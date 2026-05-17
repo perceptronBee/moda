@@ -4,18 +4,44 @@ import { NextResponse, type NextRequest } from "next/server";
 const PROTECTED_PREFIXES = ["/hesap"];
 const AUTH_ONLY_PATHS = ["/giris", "/kayit"];
 
+const IS_PROD = process.env.NODE_ENV === "production";
+
 /**
- * Proxy session refresh — her istekte Supabase oturum cookie'sini tazeler
- * ve korumalı route'lar için yönlendirme yapar.
+ * Cookie güvenlik flag'lerini her durumda zorla — Supabase varsayılanlarına
+ * güvenme. HttpOnly XSS önler, Secure HTTPS zorlar, SameSite=Lax CSRF önler.
+ */
+function hardenCookieOptions(options: Record<string, unknown> | undefined) {
+  return {
+    ...options,
+    httpOnly: true,
+    secure: IS_PROD,
+    sameSite: "lax" as const,
+    path: "/",
+  };
+}
+
+/**
+ * Session refresh + route guard.
+ *
+ * GÜVENLİK: Supabase env yoksa public route'lar açık kalır AMA korumalı
+ * route'lar (`/hesap/*` vb.) /giris'e yönlendirilir — fail-closed.
  */
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
+  const path = request.nextUrl.pathname;
+  const isProtected = PROTECTED_PREFIXES.some((p) => path.startsWith(p));
 
-  // Supabase env'i yoksa auth devre dışı, normal devam et (geliştirme rahatlığı için)
+  // Env yoksa: korumalı path'leri kilitli tut, public'lere ses çıkarma
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   ) {
+    if (isProtected) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/giris";
+      url.searchParams.set("error", "config");
+      return NextResponse.redirect(url);
+    }
     return response;
   }
 
@@ -33,20 +59,17 @@ export async function updateSession(request: NextRequest) {
           });
           response = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) => {
-            response.cookies.set(name, value, options);
+            response.cookies.set(name, value, hardenCookieOptions(options));
           });
         },
       },
     },
   );
 
-  // getUser() session'ı sunucuda doğrular — getSession()'dan güvenli
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const path = request.nextUrl.pathname;
-  const isProtected = PROTECTED_PREFIXES.some((p) => path.startsWith(p));
   const isAuthOnly = AUTH_ONLY_PATHS.includes(path);
 
   if (!user && isProtected) {

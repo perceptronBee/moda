@@ -40,9 +40,43 @@ function KombinFlow() {
   const [chosen, setChosen] = useState<KombinSuggestion | null>(null);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
 
-  const handleFile = (file: File) => {
+  const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
+  const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
+  // Magic byte sniff — content-type'a güvenmek yerine ilk byte'lara bak
+  async function isRealImage(file: File): Promise<boolean> {
+    const blob = await file.slice(0, 12).arrayBuffer();
+    const b = new Uint8Array(blob);
+    // JPEG: FF D8 FF
+    if (b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return true;
+    // PNG: 89 50 4E 47
+    if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47)
+      return true;
+    // WebP: RIFF....WEBP
+    if (
+      b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46 &&
+      b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50
+    )
+      return true;
+    return false;
+  }
+
+  const handleFile = async (file: File) => {
+    if (file.size > MAX_FILE_BYTES) {
+      alert("Dosya 10 MB'ı aşamaz");
+      return;
+    }
+    if (!ALLOWED_TYPES.has(file.type)) {
+      alert("Sadece JPG, PNG veya WebP yükleyebilirsin");
+      return;
+    }
+    if (!(await isRealImage(file))) {
+      alert("Geçerli bir görsel dosyası değil");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => setPhoto(reader.result as string);
+    reader.onerror = () => alert("Görsel okunamadı");
     reader.readAsDataURL(file);
   };
 
@@ -50,6 +84,7 @@ function KombinFlow() {
     e.preventDefault();
     const f = e.dataTransfer.files?.[0];
     if (f) handleFile(f);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startSuggestions = async () => {

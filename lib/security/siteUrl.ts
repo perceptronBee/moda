@@ -40,6 +40,35 @@ export function safeNextPath(
 }
 
 /**
+ * Ürün foto'su güvenli mi? — Sadece kendi `/products/...` path'lerini ve
+ * Supabase Storage URL'lerini kabul et. Harici domain bir tracking pixel,
+ * SSRF veya SVG-XSS vektörü olabilir.
+ */
+export function safeProductPhoto(url: unknown): string | null {
+  if (typeof url !== "string" || !url) return null;
+
+  // Internal path — git'lediğimiz fotolar
+  if (url.startsWith("/products/") && !url.includes("..")) {
+    return url;
+  }
+
+  // Supabase Storage signed/public URL'leri
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "https:") return null;
+    const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+      : null;
+    if (supabaseHost && parsed.hostname === supabaseHost) {
+      return parsed.toString();
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+/**
  * Dış (perakendeci) URL'i sadece http/https'e izin verir.
  * `javascript:`, `data:`, `file:`, `vbscript:` gibi protokolleri engeller.
  * Feed poisoning sonrası render edilecek URL'lere uygulanır.
