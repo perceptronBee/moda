@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 
-const STORAGE_KEY = "moda-favorites";
+const STORAGE_PREFIX = "moda-favorites";
 const MAX_ITEMS = 500;
+
+function storageKey(): string {
+  if (typeof document === "undefined") return `${STORAGE_PREFIX}:guest`;
+  const m = document.cookie.match(/(?:^|;\s*)moda-uid=([^;]+)/);
+  const uid = m ? decodeURIComponent(m[1]).slice(0, 64) : "guest";
+  return `${STORAGE_PREFIX}:${uid}`;
+}
 
 function readSafe(): string[] {
   if (typeof window === "undefined") return [];
+  const key = storageKey();
   try {
-    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const raw = JSON.parse(localStorage.getItem(key) || "[]");
     if (!Array.isArray(raw)) {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(key);
       return [];
     }
     return raw
@@ -16,7 +24,7 @@ function readSafe(): string[] {
       .filter((x): x is string => typeof x === "string" && x.length > 0 && x.length <= 64);
   } catch {
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(key);
     } catch {}
     return [];
   }
@@ -24,7 +32,7 @@ function readSafe(): string[] {
 
 function writeSafe(items: string[]) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX_ITEMS)));
+    localStorage.setItem(storageKey(), JSON.stringify(items.slice(0, MAX_ITEMS)));
   } catch {}
 }
 
@@ -45,9 +53,7 @@ export const favoritesStore = {
     writeSafe(items);
     favoritesStore.emit();
   },
-  hasItem: (productId: string) => {
-    return readSafe().includes(productId);
-  },
+  hasItem: (productId: string) => readSafe().includes(productId),
   subscribe: (listener: Listener) => {
     listeners.add(listener);
     return () => listeners.delete(listener);
@@ -70,7 +76,7 @@ export function useFavorites() {
     });
 
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) {
+      if (e.key?.startsWith(STORAGE_PREFIX)) {
         setItems(favoritesStore.getItems());
       }
     };

@@ -1,8 +1,9 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { createHash } from "node:crypto";
 import { createClient } from "@/lib/supabase/server";
 import {
   SignupSchema,
@@ -31,6 +32,28 @@ function fieldErrorsFromZod(
 
 // Rate-limit key: trusted IP varsa onu, yoksa cookie ID hash'ini kullan.
 // Header'a güvenmeyiz; en kötü ihtimalle "anonymous" bucket'a düşer.
+// Kullanıcı parmak izi cookie'si — cart/favori storage'ı user-scoped tutmak için.
+// HttpOnly DEĞİL çünkü client JS okuyacak. Sadece bir hash, login state'i yansıtır.
+async function setUserScopeCookie(userId: string) {
+  const fp = createHash("sha256")
+    .update(userId + (process.env.NEXT_PUBLIC_SITE_URL ?? "moda"))
+    .digest("hex")
+    .slice(0, 16);
+  const c = await cookies();
+  c.set("moda-uid", fp, {
+    httpOnly: false,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 30,
+    path: "/",
+  });
+}
+
+async function clearUserScopeCookie() {
+  const c = await cookies();
+  c.delete("moda-uid");
+}
+
 async function rateLimitKey(prefix: string, email?: string): Promise<string> {
   const reqHeaders = await headers();
   const ip = getClientIp(reqHeaders);
@@ -116,13 +139,16 @@ export async function login(
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
     password: parsed.data.password,
   });
   if (error) {
     return { ok: false, error: "E-posta veya şifre geçersiz" };
   }
+
+  // Cart/favori storage isolation cookie'si
+  if (data.user) await setUserScopeCookie(data.user.id);
 
   // Open redirect koruması — sadece internal path
   const next = safeNextPath(formData.get("next"), "/");
@@ -132,6 +158,7 @@ export async function login(
 export async function logout() {
   const supabase = await createClient();
   await supabase.auth.signOut({ scope: "global" });
+  await clearUserScopeCookie();
   revalidatePath("/", "layout");
   redirect("/");
 }

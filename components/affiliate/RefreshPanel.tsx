@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import { RefreshCw, Clock, Check, Activity } from "lucide-react";
 import type { FeedStatus } from "@/lib/affiliate/feedCache";
+import { triggerFeedRefresh } from "@/app/actions/admin";
 
 function timeAgo(iso: string): string {
   const ms = Date.now() - new Date(iso).getTime();
@@ -38,11 +39,15 @@ export function RefreshPanel({ initial }: { initial: FeedStatus }) {
 
   const doRefresh = () => {
     startTransition(async () => {
-      const res = await fetch("/api/affiliate/v1/refresh", { method: "POST" });
-      const data: FeedStatus = await res.json();
-      setStatus(data);
-      setJustRefreshed(true);
-      setTimeout(() => setJustRefreshed(false), 2000);
+      // Server Action — Supabase user check + rate limit içeride
+      const result = await triggerFeedRefresh();
+      if (result.ok) {
+        setStatus(result.status);
+        setJustRefreshed(true);
+        setTimeout(() => setJustRefreshed(false), 2000);
+      } else {
+        console.error("[refresh] error:", result.error);
+      }
     });
   };
 

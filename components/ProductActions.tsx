@@ -3,7 +3,7 @@
 import { Heart, Check, ShoppingBag } from "lucide-react";
 import { cartStore } from "@/lib/cart";
 import { useFavorites } from "@/lib/favorites";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Props = {
   productId: string;
@@ -22,6 +22,14 @@ export function ProductActions({ productId, sizes, price, oldPrice, productName 
   const [showSheet, setShowSheet] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
 
+  // setTimeout ref'i — unmount'ta cleanup için (memory leak önle)
+  const justAddedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    return () => {
+      if (justAddedTimer.current) clearTimeout(justAddedTimer.current);
+    };
+  }, []);
+
   const addToCart = () => {
     if (sizes && sizes.length > 0 && !selectedSize) {
       setShowSheet(true);
@@ -30,7 +38,8 @@ export function ProductActions({ productId, sizes, price, oldPrice, productName 
     cartStore.addItem(productId, selectedSize);
     setJustAdded(true);
     setShowSheet(false);
-    setTimeout(() => setJustAdded(false), 2000);
+    if (justAddedTimer.current) clearTimeout(justAddedTimer.current);
+    justAddedTimer.current = setTimeout(() => setJustAdded(false), 2000);
   };
 
   return (
@@ -176,7 +185,12 @@ export function ProductActions({ productId, sizes, price, oldPrice, productName 
                     cartStore.addItem(productId, s);
                     setJustAdded(true);
                     setShowSheet(false);
-                    setTimeout(() => setJustAdded(false), 2000);
+                    if (justAddedTimer.current)
+                      clearTimeout(justAddedTimer.current);
+                    justAddedTimer.current = setTimeout(
+                      () => setJustAdded(false),
+                      2000,
+                    );
                   }}
                   className="min-h-[52px] border border-[var(--color-line)] hover:border-[var(--color-fg)] text-sm"
                 >

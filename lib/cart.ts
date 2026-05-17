@@ -6,14 +6,26 @@ export type CartItem = {
   quantity: number;
 };
 
-const STORAGE_KEY = "moda-cart";
+const STORAGE_PREFIX = "moda-cart";
+const GUEST_KEY = `${STORAGE_PREFIX}:guest`;
 const MAX_ITEMS = 100;
 const MAX_QUANTITY = 99;
 
 /**
- * Yerel storage'dan gelen veriyi doğrula. Saldırgan storage'a manuel
- * şey yazıp uygulamayı çökertmeye çalışabilir — defensive parse.
+ * Aktif kullanıcının storage anahtarı.
+ * Cookie'den Supabase user ID hash'i okunur — paylaşılan cihazlarda
+ * iki farklı kullanıcı birbirinin sepetini görmesin.
  */
+function storageKey(): string {
+  if (typeof document === "undefined") return GUEST_KEY;
+  // Basit bir kullanıcı parmak izi: Supabase auth cookie'sinin tag'ini al
+  // Bu cookie HttpOnly olmayan kısa bir parmak izi olabilir (örn. moda-uid)
+  // Yoksa guest'e düş
+  const m = document.cookie.match(/(?:^|;\s*)moda-uid=([^;]+)/);
+  const uid = m ? decodeURIComponent(m[1]).slice(0, 64) : "guest";
+  return `${STORAGE_PREFIX}:${uid}`;
+}
+
 function sanitizeItem(raw: unknown): CartItem | null {
   if (!raw || typeof raw !== "object") return null;
   const obj = raw as Record<string, unknown>;
@@ -29,20 +41,20 @@ function sanitizeItem(raw: unknown): CartItem | null {
 
 function readSafe(): CartItem[] {
   if (typeof window === "undefined") return [];
+  const key = storageKey();
   try {
-    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const raw = JSON.parse(localStorage.getItem(key) || "[]");
     if (!Array.isArray(raw)) {
-      // Yanlış tip → temizle
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(key);
       return [];
     }
     return raw
-      .slice(0, MAX_ITEMS) // 100'den fazlasını at
+      .slice(0, MAX_ITEMS)
       .map(sanitizeItem)
       .filter((x): x is CartItem => x !== null);
   } catch {
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(key);
     } catch {}
     return [];
   }
@@ -50,7 +62,7 @@ function readSafe(): CartItem[] {
 
 function writeSafe(items: CartItem[]) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX_ITEMS)));
+    localStorage.setItem(storageKey(), JSON.stringify(items.slice(0, MAX_ITEMS)));
   } catch {}
 }
 
@@ -87,10 +99,7 @@ export const cartStore = {
       cartStore.removeItem(productId, size);
       return;
     }
-    existing.quantity = Math.min(
-      Math.floor(quantity),
-      MAX_QUANTITY,
-    );
+    existing.quantity = Math.min(Math.floor(quantity), MAX_QUANTITY);
     writeSafe(items);
     cartStore.emit();
   },
@@ -103,7 +112,7 @@ export const cartStore = {
   },
   clear: () => {
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(storageKey());
     } catch {}
     cartStore.emit();
   },
@@ -129,7 +138,7 @@ export function useCart() {
     });
 
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) {
+      if (e.key?.startsWith(STORAGE_PREFIX)) {
         setItems(cartStore.getItems());
       }
     };
