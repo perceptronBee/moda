@@ -27,7 +27,7 @@ app.add_middleware(
 
 INDEX_FILE = BASE_DIR / "index.html"
 
-FAL_API_URL = "https://queue.fal.run/fal-ai/idm-vton"
+FAL_API_URL = "https://queue.fal.run/fal-ai/cat-vton"
 
 
 import fal_client
@@ -49,7 +49,7 @@ def upload_to_fal(data: bytes, content_type: str, fal_key: str) -> str:
 @app.get("/debug-env")
 async def debug_env():
     return {
-        "model": "fal-ai/idm-vton",
+        "model": "fal-ai/cat-vton",
         "api_key_set": bool(os.getenv("FAL_KEY")),
     }
 
@@ -102,8 +102,8 @@ async def try_on(
             json={
                 "human_image_url": human_url,
                 "garment_image_url": garment_url,
-                "description": "A person wearing the selected garment, photorealistic, high quality",
-                "num_inference_steps": 20
+                "cloth_type": "upper",
+                "num_inference_steps": 30
             },
             timeout=120,
         )
@@ -121,14 +121,14 @@ async def try_on(
             for _ in range(60):  # max ~2 min polling
                 time.sleep(2)
                 status_resp = http_requests.get(
-                    f"https://queue.fal.run/fal-ai/idm-vton/requests/{req_id}/status",
+                    f"https://queue.fal.run/fal-ai/cat-vton/requests/{req_id}/status",
                     headers={"Authorization": f"Key {fal_key}"},
                     timeout=10,
                 )
                 status_data = status_resp.json()
                 if status_data.get("status") == "COMPLETED":
                     result_resp = http_requests.get(
-                        f"https://queue.fal.run/fal-ai/idm-vton/requests/{req_id}",
+                        f"https://queue.fal.run/fal-ai/cat-vton/requests/{req_id}",
                         headers={"Authorization": f"Key {fal_key}"},
                         timeout=30,
                     )
