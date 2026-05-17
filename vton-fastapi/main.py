@@ -98,7 +98,10 @@ async def try_on(
                 tmp_file.write(content)
                 tmp_file.flush()
                 
-                gemini_file = client.files.upload(file=tmp_file.name, mime_type=upload.content_type or "image/png")
+                gemini_file = client.files.upload(
+                    file=tmp_file.name,
+                    config={"mime_type": upload.content_type or "image/png"}
+                )
                 uploaded_files.append(gemini_file)
                 contents.append(gemini_file)
                 
