@@ -76,4 +76,5 @@ export const RATE_LIMITS = {
   signup: { windowMs: 60 * 60_000, max: 5 }, // saatte 5 kayıt
   passwordReset: { windowMs: 60 * 60_000, max: 3 }, // saatte 3 sıfırlama isteği
   refresh: { windowMs: 60_000, max: 6 }, // dakikada 6 refresh
+  click: { windowMs: 60_000, max: 60 }, // dakikada 60 click (saniyede 1, click fraud)
 } as const;

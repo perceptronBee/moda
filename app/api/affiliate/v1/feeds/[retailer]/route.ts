@@ -1,7 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
-import { RETAILERS, type RetailerSlug } from "@/lib/affiliate/retailers";
+import { RETAILERS } from "@/lib/affiliate/retailers";
+
+// Prototype pollution koruması — __proto__, constructor gibi key'leri reddet
+function isKnownRetailer(slug: string): boolean {
+  return Object.prototype.hasOwnProperty.call(RETAILERS, slug);
+}
 
 /**
  * GET /api/affiliate/v1/feeds/{retailer}
@@ -15,9 +20,15 @@ export async function GET(
   { params }: { params: Promise<{ retailer: string }> },
 ) {
   const { retailer } = await params;
-  if (!RETAILERS[retailer as RetailerSlug]) {
+
+  // Prototype pollution + path traversal koruması
+  if (
+    typeof retailer !== "string" ||
+    !/^[a-z0-9_-]+$/i.test(retailer) ||
+    !isKnownRetailer(retailer)
+  ) {
     return NextResponse.json(
-      { error: `Bilinmeyen retailer: ${retailer}` },
+      { error: `Bilinmeyen retailer` },
       { status: 404 },
     );
   }

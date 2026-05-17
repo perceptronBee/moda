@@ -1,37 +1,60 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+
+const STORAGE_KEY = "moda-favorites";
+const MAX_ITEMS = 500;
+
+function readSafe(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    if (!Array.isArray(raw)) {
+      localStorage.removeItem(STORAGE_KEY);
+      return [];
+    }
+    return raw
+      .slice(0, MAX_ITEMS)
+      .filter((x): x is string => typeof x === "string" && x.length > 0 && x.length <= 64);
+  } catch {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {}
+    return [];
+  }
+}
+
+function writeSafe(items: string[]) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX_ITEMS)));
+  } catch {}
+}
 
 type Listener = () => void;
 const listeners = new Set<Listener>();
 
 export const favoritesStore = {
-  getItems: (): string[] => {
-    if (typeof window === 'undefined') return [];
-    try {
-      return JSON.parse(localStorage.getItem('moda-favorites') || '[]');
-    } catch {
-      return [];
-    }
-  },
+  getItems: (): string[] => readSafe(),
   toggleItem: (productId: string) => {
-    let items = favoritesStore.getItems();
+    if (typeof productId !== "string" || !productId || productId.length > 64)
+      return;
+    let items = readSafe();
     if (items.includes(productId)) {
-      items = items.filter(id => id !== productId);
+      items = items.filter((id) => id !== productId);
     } else {
       items.push(productId);
     }
-    localStorage.setItem('moda-favorites', JSON.stringify(items));
+    writeSafe(items);
     favoritesStore.emit();
   },
   hasItem: (productId: string) => {
-    return favoritesStore.getItems().includes(productId);
+    return readSafe().includes(productId);
   },
   subscribe: (listener: Listener) => {
     listeners.add(listener);
     return () => listeners.delete(listener);
   },
   emit: () => {
-    listeners.forEach(l => l());
-  }
+    listeners.forEach((l) => l());
+  },
 };
 
 export function useFavorites() {
@@ -41,28 +64,28 @@ export function useFavorites() {
   useEffect(() => {
     setMounted(true);
     setItems(favoritesStore.getItems());
-    
+
     const unsubscribe = favoritesStore.subscribe(() => {
       setItems(favoritesStore.getItems());
     });
-    
+
     const handleStorage = (e: StorageEvent) => {
-      if (e.key === 'moda-favorites') {
+      if (e.key === STORAGE_KEY) {
         setItems(favoritesStore.getItems());
       }
     };
-    window.addEventListener('storage', handleStorage);
-    
+    window.addEventListener("storage", handleStorage);
+
     return () => {
       unsubscribe();
-      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener("storage", handleStorage);
     };
   }, []);
 
-  return { 
-    items: mounted ? items : [], 
-    mounted, 
+  return {
+    items: mounted ? items : [],
+    mounted,
     toggleItem: favoritesStore.toggleItem,
-    hasItem: favoritesStore.hasItem
+    hasItem: favoritesStore.hasItem,
   };
 }

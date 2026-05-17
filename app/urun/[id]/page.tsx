@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProductById, PRODUCTS, MAIN_NAV, TYPE_LABELS } from "@/lib/products";
 import { RETAILERS } from "@/lib/affiliate/retailers";
+import { safeExternalUrl } from "@/lib/security/siteUrl";
 import { ArrowRight, Heart, Sparkles } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
 
@@ -52,9 +53,10 @@ function ProductPhoto({
 import { ProductActions } from "@/components/ProductActions";
 import { ProductGallery } from "@/components/ProductGallery";
 
-export async function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ id: p.id }));
-}
+// 1000+ ürün için statik gen worker'ı zorlar — runtime SSR daha iyi
+// export async function generateStaticParams() {
+//   return PRODUCTS.map((p) => ({ id: p.id }));
+// }
 
 export default async function ProductDetail({
   params,
@@ -248,29 +250,34 @@ export default async function ProductDetail({
             </p>
           )}
 
-          {/* Mağazada Satın Al (affiliate deeplink) */}
-          {product.deeplink && product.retailer && (
-            <a
-              href={product.deeplink}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="flex items-center justify-between border border-[var(--color-line)] hover:border-[var(--color-fg)] px-5 py-4 transition-colors group"
-              style={{ backgroundColor: "var(--color-bg-elev)" }}
-            >
-              <div>
-                <p className="text-sm font-medium">
-                  {RETAILERS[product.retailer].name}'de Satın Al
-                </p>
-                <p className="text-xs text-[var(--color-muted)]">
-                  Mağaza sayfasına yönlendirilirsin
-                </p>
-              </div>
-              <ArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </a>
-          )}
+          {/* Mağazada Satın Al — deeplink scheme/render-time validate edilir (XSS koruması) */}
+          {(() => {
+            const safeHref = safeExternalUrl(product.deeplink);
+            const retailerName = product.retailer
+              ? RETAILERS[product.retailer as keyof typeof RETAILERS]?.name
+              : null;
+            if (!safeHref || !retailerName) return null;
+            return (
+              <a
+                href={safeHref}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="flex items-center justify-between border border-[var(--color-line)] hover:border-[var(--color-fg)] px-5 py-4 transition-colors group"
+                style={{ backgroundColor: "var(--color-bg-elev)" }}
+              >
+                <div>
+                  <p className="text-sm font-medium">{retailerName}'de Satın Al</p>
+                  <p className="text-xs text-[var(--color-muted)]">
+                    Mağaza sayfasına yönlendirilirsin
+                  </p>
+                </div>
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </a>
+            );
+          })()}
 
         </div>
       </div>

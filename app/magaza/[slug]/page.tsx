@@ -18,7 +18,14 @@ export default async function StorePage({
   const { slug } = await params;
   const { tip, cinsiyet } = await searchParams;
 
-  if (!RETAILERS[slug as RetailerSlug]) notFound();
+  // Prototype pollution + format koruması
+  if (
+    typeof slug !== "string" ||
+    !/^[a-z0-9_-]+$/i.test(slug) ||
+    !Object.prototype.hasOwnProperty.call(RETAILERS, slug)
+  ) {
+    notFound();
+  }
   const retailer = RETAILERS[slug as RetailerSlug];
 
   let products = PRODUCTS.filter((p) => p.retailer === retailer.slug);

@@ -38,3 +38,21 @@ export function safeNextPath(
 
   return fallback;
 }
+
+/**
+ * Dış (perakendeci) URL'i sadece http/https'e izin verir.
+ * `javascript:`, `data:`, `file:`, `vbscript:` gibi protokolleri engeller.
+ * Feed poisoning sonrası render edilecek URL'lere uygulanır.
+ */
+export function safeExternalUrl(url: unknown): string | null {
+  if (typeof url !== "string" || !url.trim()) return null;
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+      return null;
+    }
+    return parsed.toString();
+  } catch {
+    return null;
+  }
+}

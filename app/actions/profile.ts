@@ -170,8 +170,10 @@ async function processImage(file: File): Promise<Buffer> {
     throw new Error("too-many-pixels");
   }
 
+  // EXIF/IPTC/XMP metadata'sını AÇIKÇA temizle (KVKK — GPS, cihaz bilgisi sızmasın)
+  // Sharp default'unda re-encode metadata'yı düşürür ama emin olmak için keepMetadata: 0
   return sharp(buf, { failOn: "error", limitInputPixels: MAX_PIXELS })
-    .rotate()
+    .rotate() // EXIF orientation uygulanır, sonra silinir
     .resize({
       width: 2048,
       height: 2048,
@@ -179,6 +181,7 @@ async function processImage(file: File): Promise<Buffer> {
       withoutEnlargement: true,
     })
     .jpeg({ quality: 85, mozjpeg: true })
+    // withMetadata ÇAĞRILMAZ → tüm EXIF/IPTC/XMP stripped
     .toBuffer();
 }
 

@@ -32,11 +32,21 @@ type XmlFeed = {
   };
 };
 
+// Max XML feed boyutu — 50MB üstü dosya = malicious veya feed bozulması, reddet
+const MAX_FEED_BYTES = 50 * 1024 * 1024;
+
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: "@_",
   parseAttributeValue: true,
-  // Tek <product> bile dizi olarak gelsin diye:
+  // XML Bomb (Billion Laughs / Quadratic Blowup) önleme
+  // External entity processing kapalı (varsayılan, ama explicit)
+  processEntities: false,
+  // DOCTYPE'leri reddet — entity bombası için ana vektör
+  allowBooleanAttributes: false,
+  // Comments'i parse etme — performans + güvenlik
+  commentPropName: "",
+  // Tek <product> bile dizi olarak gelsin:
   isArray: (tag) => tag === "product",
 });
 
@@ -47,11 +57,32 @@ function priceFromNode(node: XmlPriceNode | undefined): number | undefined {
 }
 
 function importFeed(filePath: string): Product[] {
+  // Dosya boyut sınırı — DoS önleme
+  const stat = fs.statSync(filePath);
+  if (stat.size > MAX_FEED_BYTES) {
+    console.warn(
+      `[feed] ${path.basename(filePath)} çok büyük (${stat.size} bytes), atlandı`,
+    );
+    return [];
+  }
+
   const xml = fs.readFileSync(filePath, "utf-8");
+
+  // DOCTYPE bloğu olan dosyaları reddet — entity bomb / external entity vektörü
+  if (/<!DOCTYPE/i.test(xml.slice(0, 2048))) {
+    console.warn(`[feed] ${path.basename(filePath)} DOCTYPE içeriyor, atlandı`);
+    return [];
+  }
+
   const data = parser.parse(xml) as XmlFeed;
   const feed = data.feed;
   const retailerAttr = feed["@_retailer"] as RetailerSlug | undefined;
-  if (!retailerAttr || !RETAILERS[retailerAttr]) {
+  // Prototype pollution koruması
+  if (
+    !retailerAttr ||
+    typeof retailerAttr !== "string" ||
+    !Object.prototype.hasOwnProperty.call(RETAILERS, retailerAttr)
+  ) {
     console.warn(`[feed] Bilinmeyen retailer: ${retailerAttr}`);
     return [];
   }

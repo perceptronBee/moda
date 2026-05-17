@@ -2,6 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { loadAllFeeds } from "@/lib/affiliate/feedImporter";
 import { RETAILERS } from "@/lib/affiliate/retailers";
 import { isValidPublisherKey } from "@/lib/affiliate/auth";
+import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
+import { getClientIp } from "@/lib/security/ip";
 
 /**
  * Deeplink güvenli mi? — Sadece http/https, perakendecinin domain'i ile eşleşmeli.
@@ -38,6 +40,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { error: "Geçersiz X-Publisher-Key" },
       { status: 401 },
+    );
+  }
+
+  // Click fraud koruması — IP başına dakikada 60 click
+  const ip = getClientIp(req.headers) ?? "anon";
+  const limit = rateLimit(`click:${ip}`, RATE_LIMITS.click);
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "Çok fazla click", retryAfter: limit.retryAfter },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limit.retryAfter) },
+      },
     );
   }
 

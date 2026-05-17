@@ -180,5 +180,10 @@ export async function updatePassword(
     password: parsed.data.password,
   });
   if (error) return { ok: false, error: "Şifre güncellenemedi" };
+
+  // Diğer cihazlardaki oturumları kapat — eski erişim çalınmış olabilir
+  // scope:'others' = bu device hariç tüm refresh token'ları geçersiz kıl
+  await supabase.auth.signOut({ scope: "others" });
+
   redirect("/hesap");
 }

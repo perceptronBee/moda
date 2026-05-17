@@ -31,12 +31,10 @@ const cspDirectives = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
-  // Hackathon: TypeScript ve ESLint hatalarını build'de görmezden gel
+  // Hackathon: TypeScript hatalarını build'de görmezden gel
+  // (Next.js 16'da `eslint` config kalktı — ESLint ayrı CLI olarak çalışır)
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   async headers() {
     return [
