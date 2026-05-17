@@ -22,6 +22,8 @@ type Stage = "upload" | "pick" | "loading-tryon" | "result";
 type Props = {
   groupedProducts: Record<string, PickableProduct[]>;
   categoryLabels: Record<string, string>;
+  preselectId?: string;
+  preselectCategory?: string;
 };
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -48,15 +50,34 @@ const CATEGORY_ICONS: Record<string, typeof Shirt> = {
   aksesuar: Sparkles,
 };
 
-export function KombinFlow({ groupedProducts, categoryLabels }: Props) {
+export function KombinFlow({
+  groupedProducts,
+  categoryLabels,
+  preselectId,
+  preselectCategory,
+}: Props) {
   const router = useRouter();
 
   const [stage, setStage] = useState<Stage>("upload");
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
-  const [selected, setSelected] = useState<Map<string, PickableProduct>>(new Map());
+
+  // preselectId varsa, o ürün başlangıçta seçili gelir
+  const [selected, setSelected] = useState<Map<string, PickableProduct>>(() => {
+    if (!preselectId) return new Map();
+    const m = new Map<string, PickableProduct>();
+    for (const list of Object.values(groupedProducts)) {
+      const found = list.find((p) => p.id === preselectId);
+      if (found) {
+        m.set(found.id, found);
+        break;
+      }
+    }
+    return m;
+  });
+
   const [activeCategory, setActiveCategory] = useState<string>(
-    Object.keys(groupedProducts)[0] ?? "ust-giyim",
+    preselectCategory ?? Object.keys(groupedProducts)[0] ?? "ust-giyim",
   );
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
