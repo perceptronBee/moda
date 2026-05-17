@@ -1,109 +1,45 @@
 # Run locally: uvicorn main:app --reload
 import base64
-import hmac
 import os
 import tempfile
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Header, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse
-import vertexai
-from vertexai.generative_models import GenerationConfig, GenerativeModel, Part
+from google import genai
+from google.genai import types
 
 BASE_DIR = Path(__file__).resolve().parent
 ENV_FILE = BASE_DIR / ".env"
 load_dotenv(dotenv_path=ENV_FILE, override=True)
 
-# Cloud deploy desteği — credential JSON'u env var olarak geliyorsa dosyaya yaz
-_creds_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
-if _creds_json and not os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
-    _creds_path = BASE_DIR / "credentials_runtime.json"
-    _creds_path.write_text(_creds_json)
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(_creds_path)
-
-PROMPT_TEMPLATE = (
-    "Act as an expert stylist. Seamlessly layer these {item_count} clothing items onto the "
-    "base person. Maintain exact original identity, lighting, background, and realistic "
-    "fabric physics."
-)
-MODEL_NAME = os.getenv("VERTEX_MODEL_NAME", "gemini-2.5-flash-image")
-OUTPUT_ONLY_IMAGE_INSTRUCTION = (
-    "Return exactly one edited photorealistic image and no explanatory text."
-)
 app = FastAPI(title="VTON Hackathon API")
 INDEX_FILE = BASE_DIR / "index.html"
 
+# The user explicitly wants "nanobanana 2" which means gemini-2.0-flash-exp
+MODEL_NAME = "gemini-2.0-flash-exp"
 
-def get_vertex_model() -> GenerativeModel:
-    project_id = os.getenv("GCP_PROJECT_ID")
-    location = os.getenv("GCP_LOCATION", "us-central1")
-    if not project_id:
-        raise RuntimeError("GCP_PROJECT_ID is missing. Add it to your .env file.")
-
-    vertexai.init(project=project_id, location=location, api_transport="rest")
-    return GenerativeModel(MODEL_NAME)
-
-
-def extract_generated_image(response) -> tuple[bytes, str] | tuple[None, None]:
-    candidates = getattr(response, "candidates", []) or []
-    for candidate in candidates:
-        content = getattr(candidate, "content", None)
-        parts = getattr(content, "parts", []) or []
-        for part in parts:
-            inline_data = getattr(part, "inline_data", None)
-            if inline_data and getattr(inline_data, "data", None) is not None:
-                data = inline_data.data
-                if isinstance(data, str):
-                    data = base64.b64decode(data)
-                mime_type = getattr(inline_data, "mime_type", "image/png")
-                return data, mime_type
-    return None, None
+PROMPT_TEMPLATE = (
+    "Act as an expert stylist. Layer these {item_count} clothing items onto the "
+    "base person. You MUST output ONLY the resulting photorealistic image using "
+    "response modalities. Maintain exact original identity, lighting, background."
+)
 
 
-def extract_response_text(response) -> str:
-    candidates = getattr(response, "candidates", []) or []
-    for candidate in candidates:
-        content = getattr(candidate, "content", None)
-        parts = getattr(content, "parts", []) or []
-        for part in parts:
-            text = getattr(part, "text", None)
-            if text:
-                return text.strip()
-    return ""
-
-
-def generate_with_retry(model: GenerativeModel, parts: list[Part], prompt: str):
-    # First pass: normal prompt with image-only response modality.
-    response = model.generate_content(
-        [*parts, prompt],
-        generation_config=GenerationConfig(response_modalities=["IMAGE"]),
-    )
-    image_bytes, mime_type = extract_generated_image(response)
-    if image_bytes:
-        return image_bytes, mime_type, ""
-
-    # Retry once with a stricter instruction to avoid text-only responses.
-    strict_prompt = f"{prompt} {OUTPUT_ONLY_IMAGE_INSTRUCTION}"
-    retry_response = model.generate_content(
-        [*parts, strict_prompt],
-        generation_config=GenerationConfig(response_modalities=["IMAGE"]),
-    )
-    retry_image_bytes, retry_mime_type = extract_generated_image(retry_response)
-    if retry_image_bytes:
-        return retry_image_bytes, retry_mime_type, ""
-
-    fallback_text = extract_response_text(retry_response) or extract_response_text(response)
-    return None, None, fallback_text
+def get_genai_client() -> genai.Client:
+    # Use the GEMINI_API_KEY from environment
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is missing. Add it to your .env file or environment.")
+    return genai.Client(api_key=api_key)
 
 
 @app.get("/debug-env")
 async def debug_env():
     return {
-        "project": os.getenv("GCP_PROJECT_ID"),
-        "location": os.getenv("GCP_LOCATION"),
-        "model": os.getenv("VERTEX_MODEL_NAME", "gemini-2.5-flash-image"),
-        "creds_path": os.getenv("GOOGLE_APPLICATION_CREDENTIALS"),
+        "model": MODEL_NAME,
+        "api_key_set": bool(os.getenv("GEMINI_API_KEY")),
     }
 
 
@@ -114,22 +50,11 @@ async def serve_index() -> FileResponse:
     return FileResponse(INDEX_FILE)
 
 
-def _require_api_token(provided: str | None):
-    """Production'da VTON_API_TOKEN env'i set ise her istek bu token'ı taşımalı."""
-    expected = os.getenv("VTON_API_TOKEN", "").strip()
-    if not expected:
-        return  # local dev mode — auth devre dışı
-    if not provided or not hmac.compare_digest(expected, provided):
-        raise HTTPException(status_code=401, detail="Geçersiz veya eksik token")
-
-
 @app.post("/api/try-on")
 async def try_on(
     request: Request,
     base_image: UploadFile = File(...),
-    x_api_token: str | None = Header(default=None, alias="X-API-Token"),
 ):
-    _require_api_token(x_api_token)
     form = await request.form()
     item_fields: list[tuple[str, UploadFile]] = []
 
@@ -149,12 +74,14 @@ async def try_on(
 
     uploads = [base_image, *item_uploads]
     styling_prompt = PROMPT_TEMPLATE.format(item_count=len(item_uploads))
-    temp_paths: list[str] = []
 
+    client = get_genai_client()
+    contents = []
+
+    # Upload files using genai.Client
+    uploaded_files = []
     try:
-        model = get_vertex_model()
-        content_parts = []
-
+        # Upload all images directly to Gemini Files API
         for upload in uploads:
             if not upload.filename:
                 raise HTTPException(status_code=400, detail="Each upload must include a file.")
@@ -169,36 +96,48 @@ async def try_on(
             suffix = Path(upload.filename).suffix or ".png"
             with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp_file:
                 tmp_file.write(content)
-                temp_paths.append(tmp_file.name)
-                content_parts.append(
-                    Part.from_data(data=content, mime_type=upload.content_type or "image/png")
-                )
+                tmp_file.flush()
+                
+                gemini_file = client.files.upload(file=tmp_file.name, mime_type=upload.content_type or "image/png")
+                uploaded_files.append(gemini_file)
+                contents.append(gemini_file)
+                
+                os.remove(tmp_file.name)
+        
+        # Add the text prompt at the end
+        contents.append(styling_prompt)
 
-        image_bytes, mime_type, fallback_text = generate_with_retry(
-            model=model,
-            parts=content_parts,
-            prompt=styling_prompt,
+        # Generate content with IMAGE response modality
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=contents,
+            config=types.GenerateContentConfig(
+                response_modalities=["IMAGE"],
+            )
         )
-        if not image_bytes:
-            detail = "Model returned no image output. Try different source images."
-            if fallback_text:
-                detail = f"{detail} Model text: {fallback_text[:300]}"
+
+        if not response.generated_images:
+            fallback = response.text if response.text else "No image was generated."
             raise HTTPException(
                 status_code=502,
-                detail=detail,
+                detail=f"Model returned no image output. Text: {fallback[:300]}",
             )
 
+        # Get the first generated image
+        generated_image = response.generated_images[0]
+        image_bytes = generated_image.image.image_bytes
+        
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
-        return {"result_image": f"data:{mime_type};base64,{image_b64}"}
+        return {"result_image": f"data:image/jpeg;base64,{image_b64}"}
 
     except HTTPException:
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Try-on generation failed: {exc}") from exc
     finally:
-        for tmp_path in temp_paths:
+        # Cleanup uploaded files from Gemini
+        for g_file in uploaded_files:
             try:
-                os.remove(tmp_path)
-            except OSError:
+                client.files.delete(name=g_file.name)
+            except Exception:
                 pass
-
