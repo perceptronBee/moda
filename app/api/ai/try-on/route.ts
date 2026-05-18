@@ -4,7 +4,7 @@ import { callVtonTryOn } from "@/lib/ai/vton";
 import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
 import { getClientIp } from "@/lib/security/ip";
 
-export const maxDuration = 60; // Allow more time for AI processing
+export const maxDuration = 300; // Lokal'de uzun süreli idm-vton için (Vercel Pro: 300sn, Hobby: 60sn ile sınırlı)
 
 const MAX_FILES = 6;
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
