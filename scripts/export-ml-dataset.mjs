@@ -110,7 +110,8 @@ const KEYWORD_RULES = [
   { match: w("şapka|bere|kep|kasket|fötr|panama|beanie|baret|hat|cap"), class: "hat" },
   { match: w("bandana|saç\\s*bandı|saç\\s*tokası|saç\\s*aksesuar|taç|toka|headband"), class: "headband" },
   { match: w("kravat|papyon|bow\\s*tie|bowtie"), class: "tie" },
-  { match: w("atkı|fular|şal|eşarp|scarf"), class: "scarf" },
+  // "fular yaka" = bluz yaka detayı, scarf değil → negative lookahead ile dışla
+  { match: w("atkı|fular(?!\\s*yaka)|şal|eşarp|scarf"), class: "scarf" },
   { match: w("çorap|sock|patik"), class: "sock" },
 ];
 

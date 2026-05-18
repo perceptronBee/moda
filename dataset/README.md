@@ -15,7 +15,7 @@ node scripts/build-imagefolder.mjs
 
 ```
 data/ml-dataset/
-├── shirt_top/                ← 777 foto
+├── shirt_top/                ← 781 foto
 │   ├── LCW-3422865_front.jpg
 │   ├── LCW-3422865_back.jpg   (varsa)
 │   ├── LCW-xxxxxxx_front.jpg
@@ -25,11 +25,10 @@ data/ml-dataset/
 ├── shorts/                   ← 86 foto
 ├── skirt/                    ← 66 foto
 ├── dress_jumpsuit/           ← 64 foto
-├── shoe/                     ← 251 foto
-└── scarf/                    ← 4 foto
+└── shoe/                     ← 251 foto
 ```
 
-**Boş class'lar yok** — `hat`, `headband`, `tie`, `tights`, `sock`, `bag_wallet` LCW feed'inde olmadığı için klasör de oluşmuyor.
+**Boş class'lar yok** — `hat`, `headband`, `tie`, `tights`, `sock`, `bag_wallet`, `scarf` LCW feed'inde olmadığı için klasör de oluşmuyor.
 
 ## Foto isimlendirme
 
@@ -104,14 +103,13 @@ Default: hardlink (Windows) veya symlink (Unix) — ~0 byte ekstra disk.
 
 | Class | Foto | Not |
 |---|---:|---|
-| shirt_top | 777 | tişört/gömlek/sweatshirt/bluz/tunik |
+| shirt_top | 781 | tişört/gömlek/sweatshirt/bluz/tunik |
 | pants | 354 | pantolon/jean/eşofman |
 | outerwear | 320 | mont/kaban/yelek/ceket/cardigan/yağmurluk |
 | shoe | 251 | ayakkabı/bot/sandalet |
 | shorts | 86 | şort/bermuda |
 | skirt | 66 | etek |
 | dress_jumpsuit | 64 | elbise/tulum/salopet |
-| scarf | 4 | atkı/fular/şal |
 | **Toplam foto** | **1922** | 1099 üründen |
 
 ## Meta dosyalar

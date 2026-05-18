@@ -1,6 +1,6 @@
 {
   "base_url": "https://moda-ruby.vercel.app",
-  "generated_at": "2026-05-18T20:18:08.126Z",
+  "generated_at": "2026-05-18T20:55:06.124Z",
   "taxonomy": [
     "shirt_top",
     "outerwear",
@@ -22,7 +22,7 @@
   "skipped_no_photo": 12,
   "skipped_no_class": 0,
   "by_class": {
-    "shirt_top": 394,
+    "shirt_top": 396,
     "outerwear": 162,
     "pants": 183,
     "shorts": 45,
@@ -35,11 +35,11 @@
     "sock": 0,
     "shoe": 247,
     "bag_wallet": 0,
-    "scarf": 2
+    "scarf": 0
   },
   "by_source": {
-    "keyword": 275,
-    "type_default": 824,
+    "keyword": 273,
+    "type_default": 826,
     "unmatched": 0
   },
   "by_gender": {
