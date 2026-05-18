@@ -1,0 +1,8 @@
+# Build çıktısı — `node scripts/build-photo-folders.mjs` ile lokal oluşur
+/data/ml-dataset/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
