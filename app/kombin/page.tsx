@@ -20,12 +20,15 @@ export type PickableProduct = {
 export default async function KombinPage({
   searchParams,
 }: {
-  searchParams: Promise<{ baseProduct?: string }>;
+  searchParams: Promise<{ baseProduct?: string; mode?: string }>;
 }) {
   const sp = await searchParams;
   const baseProduct = sp.baseProduct
     ? getProductById(sp.baseProduct)
     : undefined;
+  // "tryon-only" — baseProduct ile birlikte gelir, ürün seçim aşaması atlanır
+  const mode: "pick" | "tryon-only" =
+    sp.mode === "tryon-only" && baseProduct ? "tryon-only" : "pick";
 
   // Her kategoriden en fazla 12 ürün (fotosu olan), client'a serializable obje
   const grouped: Record<string, PickableProduct[]> = {};
@@ -80,6 +83,7 @@ export default async function KombinPage({
       categoryLabels={categoryLabels}
       preselectId={preselect?.id ?? undefined}
       preselectCategory={preselect?.type ?? undefined}
+      mode={mode}
     />
   );
 }

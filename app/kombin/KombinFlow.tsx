@@ -24,6 +24,12 @@ type Props = {
   categoryLabels: Record<string, string>;
   preselectId?: string;
   preselectCategory?: string;
+  /**
+   * "tryon-only": ürün önceden seçili, fotoğraf yüklenince direkt try-on'a geç.
+   *               Çoklu seçim UI'sı gizlenir.
+   * "pick"      : klasik akış — fotoğraf yükle → ürün seç → giydir.
+   */
+  mode?: "pick" | "tryon-only";
 };
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -55,6 +61,7 @@ export function KombinFlow({
   categoryLabels,
   preselectId,
   preselectCategory,
+  mode = "pick",
 }: Props) {
   const router = useRouter();
 
@@ -153,15 +160,8 @@ export function KombinFlow({
     );
 
     try {
-      // 1. Vercel timeout'u baypas etmek için Python sunucu URL'ini al
-      const urlRes = await fetch("/api/ai/vton-url").catch(() => null);
-      const urlConfig = urlRes ? await urlRes.json().catch(() => ({})) : {};
-      const directEndpoint = urlConfig.url 
-        ? `${urlConfig.url.replace(/\/$/, "")}/api/try-on` 
-        : "/api/ai/try-on";
-
-      // 2. Direkt Python backend'ine at
-      const res = await fetch(directEndpoint, { method: "POST", body: form });
+      // Tek endpoint: Next route → Gemini 2.5 Flash Image (Nano Banana)
+      const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
       
       let data;
       const contentType = res.headers.get("content-type") || "";
@@ -216,13 +216,15 @@ export function KombinFlow({
               YAPAY ZEKA ASİSTAN
             </p>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-wide">
-              Parça Parça Giydirme
+              {mode === "tryon-only" ? "Üstümde Dene" : "Parça Parça Giydirme"}
             </h1>
             <p className="text-sm text-[var(--color-muted)] mt-2">
-              Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin.
+              {mode === "tryon-only"
+                ? "Fotoğrafını yükle, seçtiğin ürünü AI sana giydirsin."
+                : "Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin."}
             </p>
           </div>
-          <Stepper stage={stage} />
+          <Stepper stage={stage} mode={mode} />
         </div>
       </header>
 
@@ -244,7 +246,15 @@ export function KombinFlow({
           photo={photo}
           onFile={handlePhotoFile}
           onDrop={onDrop}
-          onContinue={() => setStage("pick")}
+          onContinue={() => {
+            // tryon-only modunda: ürün zaten preselect, picker'a uğramadan direkt giydirme
+            if (mode === "tryon-only" && selected.size > 0) {
+              tryOn();
+            } else {
+              setStage("pick");
+            }
+          }}
+          ctaLabel={mode === "tryon-only" ? "Üstümde Dene" : "Devam Et"}
         />
       )}
 
@@ -288,9 +298,18 @@ export function KombinFlow({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-function Stepper({ stage }: { stage: Stage }) {
-  const steps = ["Fotoğraf", "Parça Seç", "Sonuç"];
-  const idx = stage === "upload" ? 0 : stage === "pick" ? 1 : 2;
+function Stepper({ stage, mode = "pick" }: { stage: Stage; mode?: "pick" | "tryon-only" }) {
+  const steps = mode === "tryon-only" ? ["Fotoğraf", "Sonuç"] : ["Fotoğraf", "Parça Seç", "Sonuç"];
+  const idx =
+    mode === "tryon-only"
+      ? stage === "upload"
+        ? 0
+        : 1
+      : stage === "upload"
+        ? 0
+        : stage === "pick"
+          ? 1
+          : 2;
 
   return (
     <div className="hidden md:flex items-center gap-3">
@@ -327,11 +346,13 @@ function UploadStage({
   onFile,
   onDrop,
   onContinue,
+  ctaLabel = "PARÇA SEÇ",
 }: {
   photo: string | null;
   onFile: (f: File) => void;
   onDrop: (e: React.DragEvent) => void;
   onContinue: () => void;
+  ctaLabel?: string;
 }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
@@ -392,7 +413,7 @@ function UploadStage({
           disabled={!photo}
           className="w-full bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors py-4 text-sm font-medium tracking-wide flex items-center justify-center gap-2"
         >
-          PARÇA SEÇ
+          {ctaLabel}
           <ArrowRight size={16} />
         </button>
       </div>

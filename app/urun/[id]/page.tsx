@@ -197,6 +197,86 @@ export default async function ProductDetail({
             </div>
           )}
 
+          {/* AI CTA'ları — mobilde grid (yan yana), lg'de stack (üst üste detaylı) */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <Sparkles size={14} className="text-[var(--color-accent)]" />
+              <span className="meta">YAPAY ZEKA</span>
+            </div>
+
+            {/* Mobil: 2 sütunlu grid — ikisi de fold üstünde */}
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+              {/* 1) Üstümde Dene — primary */}
+              <Link
+                href={`/kombin?baseProduct=${product.id}&mode=tryon-only`}
+                className="group relative flex items-center justify-between gap-2 lg:px-5 px-3 py-3 lg:py-4 transition-all overflow-hidden border-2"
+                style={{
+                  backgroundColor: "var(--color-fg)",
+                  borderColor: "var(--color-fg)",
+                  color: "var(--color-bg)",
+                }}
+              >
+                <span
+                  className="absolute left-0 top-0 bottom-0 w-1"
+                  style={{ backgroundColor: "var(--color-accent)" }}
+                />
+                <div className="flex items-center gap-2 lg:gap-3 relative min-w-0">
+                  <span
+                    className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "var(--color-accent)" }}
+                  >
+                    <Sparkles size={16} className="text-white" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs lg:text-sm font-semibold tracking-wide truncate">
+                      Üstümde Dene
+                    </p>
+                    <p className="hidden lg:block text-xs opacity-70">
+                      Fotoğrafını yükle, sadece bu ürünü AI ile giydirelim
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform shrink-0"
+                />
+              </Link>
+
+              {/* 2) Kombin Oluştur — secondary */}
+              <Link
+                href={`/kombin?baseProduct=${product.id}`}
+                className="group relative flex items-center justify-between gap-2 lg:px-5 px-3 py-3 lg:py-4 transition-all overflow-hidden border"
+                style={{
+                  backgroundColor: "var(--color-bg-elev)",
+                  borderColor: "var(--color-line-strong)",
+                  color: "var(--color-fg)",
+                }}
+              >
+                <div className="flex items-center gap-2 lg:gap-3 relative min-w-0">
+                  <span
+                    className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center shrink-0 border"
+                    style={{ borderColor: "var(--color-line-strong)" }}
+                  >
+                    <Sparkles size={16} className="text-[var(--color-accent)]" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs lg:text-sm font-semibold tracking-wide truncate">
+                      <span className="lg:hidden">Kombin Öner</span>
+                      <span className="hidden lg:inline">AI ile Kombin Oluştur</span>
+                    </p>
+                    <p className="hidden lg:block text-xs text-[var(--color-fg-soft)]">
+                      Bu ürünle eşleşen tam kombini sana giydirelim
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform shrink-0"
+                />
+              </Link>
+            </div>
+          </div>
+
           {/* Actions: beden seçici + sepete ekle (mobilde sticky alt bar) */}
           <ProductActions
             productId={product.id}
@@ -205,43 +285,6 @@ export default async function ProductDetail({
             oldPrice={product.oldPrice}
             productName={product.name}
           />
-
-          {/* Kombin CTA — sayfa açılınca hemen görünür (mobilde accent renkli) */}
-          <Link
-            href={`/kombin?baseProduct=${product.id}`}
-            className="group relative flex items-center justify-between px-5 py-4 transition-all overflow-hidden border-2"
-            style={{
-              backgroundColor: "var(--color-fg)",
-              borderColor: "var(--color-fg)",
-              color: "var(--color-bg)",
-            }}
-          >
-            {/* Sol taraf accent vurgu */}
-            <span
-              className="absolute left-0 top-0 bottom-0 w-1"
-              style={{ backgroundColor: "var(--color-accent)" }}
-            />
-            <div className="flex items-center gap-3 relative">
-              <span
-                className="w-10 h-10 flex items-center justify-center shrink-0"
-                style={{ backgroundColor: "var(--color-accent)" }}
-              >
-                <Sparkles size={18} className="text-white" />
-              </span>
-              <div>
-                <p className="text-sm font-semibold tracking-wide">
-                  AI ile Kombin Oluştur
-                </p>
-                <p className="text-xs opacity-70">
-                  Bu ürünle eşleşen kombini sana giydirelim
-                </p>
-              </div>
-            </div>
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform shrink-0"
-            />
-          </Link>
 
           {/* Açıklama */}
           {product.description && (
