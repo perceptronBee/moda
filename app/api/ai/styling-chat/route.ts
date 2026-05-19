@@ -12,13 +12,18 @@ import {
 } from "@/lib/products";
 import { safeProductPhoto } from "@/lib/security/siteUrl";
 
-export const maxDuration = 60;
+export const maxDuration = 90; // Pro modeli için pay
 
 const MAX_TEXT_LEN = 1000;
 const MAX_HISTORY_TURNS = 12;
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
-const GEMINI_MODEL = "gemini-2.5-flash";
+
+// Env ile değiştirilebilir — Pro daha güçlü reasoning, Flash daha hızlı/ucuz
+//   gemini-2.5-pro        → en iyi kalite (~5-15 sn, ~$0.04/req)
+//   gemini-2.5-flash      → dengeli (~2-4 sn, ~$0.003/req)
+//   gemini-2.5-flash-lite → en hızlı (~1-2 sn, ~$0.001/req)
+const GEMINI_MODEL = process.env.GEMINI_CHAT_MODEL ?? "gemini-2.5-pro";
 
 // Gemini'ye gönderilen catalog subset — token bütçesini kontrol et
 const MAX_CATALOG_ITEMS = 300;
