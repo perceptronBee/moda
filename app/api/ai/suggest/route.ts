@@ -154,7 +154,7 @@ function buildSuggestions(
  * bu endpoint o modeli çağıracak. UI sözleşmesi (Suggestion[]) korunacak.
  */
 export async function POST(req: NextRequest) {
-  // Auth opsiyonel olabilir ama rate limit için user/IP gerek
+  // Auth zorunlu — AI özellikleri sadece giriş yapmış kullanıcılar için
   let supabase;
   try {
     supabase = await createClient();
@@ -167,10 +167,14 @@ export async function POST(req: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  // Suggest şu an mock — ama gerçek modele (Gemini text) bağlanınca aynı
-  // koruma katmanları çalışmaya devam etsin diye katmanlı kuruyoruz.
+  if (!user) {
+    return NextResponse.json(
+      { error: "Önce giriş yapmalısın" },
+      { status: 401 },
+    );
+  }
   const ip = getClientIp(req.headers) ?? "anon";
-  const scope = user?.id ?? `anon:${ip}`;
+  const scope = user.id;
   const rl = rateLimitMulti([
     { key: `suggest:user:${scope}:min`, config: RATE_LIMITS.aiRequest }, // 5/dk
     { key: `suggest:ip:${ip}:min`, config: RATE_LIMITS.aiRequest }, // IP başına 5/dk (kullanıcı spam'i)

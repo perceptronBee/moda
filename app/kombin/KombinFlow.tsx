@@ -1522,14 +1522,24 @@ function ChatStage({
   const router = useRouter();
   const { addItem } = useCart();
 
+  // URL'den gender geldiyse onu kullan, gelmediyse kullanıcıya sor
+  const initialChatGender: "kadin" | "erkek" | null =
+    gender === "kadin" || gender === "erkek" ? gender : null;
+  const [chatGender, setChatGender] = useState<"kadin" | "erkek" | null>(
+    initialChatGender,
+  );
+
   const greetingId = useRef(`greet-${Date.now()}`).current;
   const [messages, setMessages] = useState<ChatMessage[]>(() => [
     {
       id: greetingId,
       role: "assistant",
-      content: initialAnchor
-        ? `Merhaba! "${initialAnchor.name}" ile uyumlu bir kombin için ne tür bir tarz istersin? Yağmurlu hava, ofis, düğün — ne aklında varsa söyle.`
-        : "Merhaba! Sana özel bir kombin hazırlayayım. Nereye gidiyorsun, nasıl bir tarz istersin? Yazıp gönder, istersen bir kıyafet fotoğrafı da ekle.",
+      content:
+        initialChatGender === null
+          ? "Merhaba! Önce kısa bir soru: sana göre öneri yapayım — kadın için mi, erkek için mi?"
+          : initialAnchor
+            ? `Merhaba! "${initialAnchor.name}" ile uyumlu bir kombin için ne tür bir tarz istersin? Yağmurlu hava, ofis, düğün — ne aklında varsa söyle.`
+            : "Merhaba! Sana özel bir kombin hazırlayayım. Nereye gidiyorsun, nasıl bir tarz istersin? Yazıp gönder, istersen bir kıyafet fotoğrafı da ekle.",
       timestamp: Date.now(),
     },
   ]);
@@ -1537,6 +1547,23 @@ function ChatStage({
   const [pendingImage, setPendingImage] = useState<{ file: File; preview: string } | null>(null);
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
+
+  // Kullanıcı cinsiyet seçince welcome mesajını da güncelle
+  function pickGender(g: "kadin" | "erkek") {
+    setChatGender(g);
+    setMessages((prev) =>
+      prev.map((m) =>
+        m.id === greetingId
+          ? {
+              ...m,
+              content: initialAnchor
+                ? `Harika. "${initialAnchor.name}" ile uyumlu bir kombin için ne tarz istersin? Yağmurlu hava, ofis, düğün — ne aklında varsa söyle.`
+                : "Harika. Sana özel bir kombin hazırlayayım. Nereye gidiyorsun, nasıl bir tarz istersin? Yazıp gönder, istersen bir kıyafet fotoğrafı da ekle.",
+            }
+          : m,
+      ),
+    );
+  }
 
   const scrollAnchorRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -1587,9 +1614,15 @@ function ChatStage({
     setPendingImage(null);
 
     // İlk turdaysak cinsiyet ipucunu history'ye gizlice ekle (backend extraction yakalar)
+    const effectiveGender = chatGender ?? "kadin";
     const historyForBackend = [
       ...(messages.length === 1
-        ? [{ role: "user", content: `Ben ${gender === "erkek" ? "erkeğim" : "kadınım"}.` }]
+        ? [
+            {
+              role: "user",
+              content: `Ben ${effectiveGender === "erkek" ? "erkeğim" : "kadınım"}.`,
+            },
+          ]
         : []),
       ...messages
         .filter((m) => m.id !== greetingId)
@@ -1645,8 +1678,27 @@ function ChatStage({
         </div>
       )}
 
-      {/* Quick prompts — sadece henüz mesaj atılmadıysa */}
-      {messages.length === 1 && (
+      {/* Gender seçimi — cinsiyet bilinmiyorsa ilk önce sor */}
+      {chatGender === null && messages.length === 1 && (
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <p className="text-xs text-[var(--color-muted)] mr-1">
+            Cinsiyetin:
+          </p>
+          {(["kadin", "erkek"] as const).map((g) => (
+            <button
+              key={g}
+              type="button"
+              onClick={() => pickGender(g)}
+              className="text-sm font-medium px-5 py-2.5 bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors flex items-center gap-2"
+            >
+              {g === "kadin" ? "Kadın" : "Erkek"}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Quick prompts — gender seçildikten sonra, sadece ilk mesaj */}
+      {chatGender !== null && messages.length === 1 && (
         <div className="mb-4 flex flex-wrap gap-2">
           {QUICK_PROMPTS.map((q) => (
             <button
@@ -1732,9 +1784,13 @@ function ChatStage({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKeyDown}
-            disabled={sending}
+            disabled={sending || chatGender === null}
             rows={1}
-            placeholder="Bir mesaj yaz… örn. 'yağmurlu hava için kombin öner'"
+            placeholder={
+              chatGender === null
+                ? "Önce cinsiyetini seç…"
+                : "Bir mesaj yaz… örn. 'yağmurlu hava için kombin öner'"
+            }
             className="flex-1 bg-transparent outline-none text-sm py-2 resize-none leading-relaxed disabled:opacity-50 placeholder:text-[var(--color-muted)]"
             style={{ maxHeight: 140 }}
           />
@@ -1742,7 +1798,11 @@ function ChatStage({
           <button
             type="button"
             onClick={() => send()}
-            disabled={sending || (!input.trim() && !pendingImage)}
+            disabled={
+              sending ||
+              chatGender === null ||
+              (!input.trim() && !pendingImage)
+            }
             aria-label="Gönder"
             className="shrink-0 w-9 h-9 flex items-center justify-center bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >

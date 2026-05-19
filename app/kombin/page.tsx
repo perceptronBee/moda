@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import {
   PRODUCTS,
   TYPE_LABELS,
@@ -7,6 +8,7 @@ import {
   type Gender,
 } from "@/lib/products";
 import { safeProductPhoto } from "@/lib/security/siteUrl";
+import { createClient } from "@/lib/supabase/server";
 import { KombinFlow } from "./KombinFlow";
 
 export type PickableProduct = {
@@ -39,6 +41,27 @@ export default async function KombinPage({
   }>;
 }) {
   const sp = await searchParams;
+
+  // ── Auth gate: AI özellikleri sadece giriş yapmış kullanıcılara ──
+  // Anonim trafik Gemini bütçesini şişirmesin + kişiselleştirme için kayıt şart.
+  let user: { id: string } | null = null;
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.auth.getUser();
+    user = data.user;
+  } catch {
+    // Supabase env yok — fail-closed, giriş'e at
+  }
+  if (!user) {
+    const qs = new URLSearchParams();
+    if (sp.mode) qs.set("mode", sp.mode);
+    if (sp.baseProduct) qs.set("baseProduct", sp.baseProduct);
+    if (sp.baseProducts) qs.set("baseProducts", sp.baseProducts);
+    if (sp.gender) qs.set("gender", sp.gender);
+    const dest = qs.toString() ? `/kombin?${qs.toString()}` : "/kombin";
+    redirect(`/giris?next=${encodeURIComponent(dest)}`);
+  }
+
 
   // Anchors: baseProducts=a,b,c veya baseProduct=a (geriye uyumlu)
   const anchorIds: string[] = [];

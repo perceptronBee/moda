@@ -32,7 +32,7 @@ const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
  *   }
  */
 export async function POST(req: NextRequest) {
-  // ── Auth (opsiyonel — anon da kullanabilir, ama rate limit user-scope'lu) ──
+  // ── Auth zorunlu (Gemini bütçe + kişiselleştirme) ──
   let supabase;
   try {
     supabase = await createClient();
@@ -45,10 +45,16 @@ export async function POST(req: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json(
+      { error: "Önce giriş yapmalısın" },
+      { status: 401 },
+    );
+  }
 
   // ── Rate limit (Gemini her chat turn'inde de çağrılıyor → koruma şart) ──
   const ip = getClientIp(req.headers) ?? "anon";
-  const scope = user?.id ?? `anon:${ip}`;
+  const scope = user.id;
   const rl = rateLimitMulti([
     { key: `chat:user:${scope}:min`, config: RATE_LIMITS.aiRequest },
     { key: `chat:ip:${ip}:min`, config: RATE_LIMITS.aiRequest },
