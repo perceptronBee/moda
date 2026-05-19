@@ -323,14 +323,14 @@ export function KombinFlow({
         <ArrowLeft size={14} /> Geri
       </button>
 
-      <header className="mb-8 pb-6 border-b border-[var(--color-line)]">
+      <header className={`${mode === "chat" ? "mb-4 pb-4" : "mb-8 pb-6"} border-b border-[var(--color-line)]`}>
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
             <p className="meta mb-2 flex items-center gap-2">
               <Sparkles size={14} className="text-[var(--color-accent)]" />
               YAPAY ZEKA ASİSTAN
             </p>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-wide">
+            <h1 className={`font-display tracking-wide ${mode === "chat" ? "text-2xl sm:text-3xl" : "text-3xl sm:text-4xl lg:text-5xl"}`}>
               {mode === "chat"
                 ? "AI Stilist"
                 : mode === "suggest"
@@ -1503,7 +1503,7 @@ type ChatMessage = {
   /** Try-on sonucu image data URL — bubble içinde render edilir */
   tryonResultUrl?: string;
   /** Bu mesaj için try-on durumu (loading bubble göstermek için) */
-  tryonState?: "loading" | "done" | "error";
+  tryonState?: "needs-photo" | "loading" | "done" | "error";
   tryonError?: string;
   timestamp: number;
 };
@@ -1527,9 +1527,10 @@ function ChatStage({
   const router = useRouter();
   const { addItem } = useCart();
 
-  // URL'den gender geldiyse onu kullan, gelmediyse kullanıcıya sor
-  const initialChatGender: "kadin" | "erkek" | null =
-    gender === "kadin" || gender === "erkek" ? gender : null;
+  // Her sohbete girişinde mutlaka cinsiyet sor — URL'den geliyor olsa bile.
+  // Profile'da gender alanı yok, demo sırasında jüri de farklı senaryoları
+  // test edebilsin (kullanıcı erkek hesabıyla kadın için öneri isteyebilir vb.)
+  const initialChatGender: "kadin" | "erkek" | null = null;
   const [chatGender, setChatGender] = useState<"kadin" | "erkek" | null>(
     initialChatGender,
   );
@@ -1676,14 +1677,21 @@ function ChatStage({
 
   // ── Chat içinde try-on ──
   // 1) AI mesajındaki "Bu kombini üstümde dene" butonuna tıklandığında çağrılır
-  // 2) Foto yoksa file picker tetiklenir; yüklenince otomatik tryon başlar
-  // 3) Sonuç bubble içine image olarak yansır
+  // 2) Foto yoksa bubble içinde drop-zone UI gösterilir (needs-photo state)
+  // 3) Foto upload edilince otomatik try-on başlar
+  // 4) Sonuç aynı bubble'a image olarak yansır
   async function tryOnInChat(messageId: string, items: ChatItem[]) {
     if (items.length === 0) return;
     if (!userPhoto) {
-      // Foto yok → upload tetikle, callback'te tryon devam edecek
+      // Foto yok → mesajda upload paneli aç
       pendingTryonRef.current = { messageId, items };
-      tryonFileInputRef.current?.click();
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === messageId
+            ? { ...m, tryonState: "needs-photo", tryonError: undefined }
+            : m,
+        ),
+      );
       return;
     }
     await runTryon(messageId, items, userPhoto.file);
@@ -1782,7 +1790,7 @@ function ChatStage({
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-220px)] min-h-[500px] max-h-[800px]">
+    <div className="flex flex-col h-[calc(100dvh-260px)] min-h-[420px] max-h-[760px]">
       {chatError && (
         <div
           className="mb-3 p-3 text-sm border-l-2"
@@ -1852,6 +1860,15 @@ function ChatStage({
                 router.push(`/kombin?baseProduct=${id}&mode=tryon`)
               }
               onTryOnAll={tryOnInChat}
+              onPhotoSelectForTryon={handleTryonPhotoUpload}
+              onCancelTryonUpload={(messageId) => {
+                pendingTryonRef.current = null;
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === messageId ? { ...m, tryonState: undefined } : m,
+                  ),
+                );
+              }}
             />
           ))}
           {sending && <TypingBubble />}
@@ -1961,12 +1978,16 @@ function ChatBubble({
   onRouteToProduct,
   onTryOn,
   onTryOnAll,
+  onPhotoSelectForTryon,
+  onCancelTryonUpload,
 }: {
   message: ChatMessage;
   onAddToCart: (item: ChatItem) => void;
   onRouteToProduct: (id: string) => void;
   onTryOn: (id: string) => void;
   onTryOnAll: (messageId: string, items: ChatItem[]) => void;
+  onPhotoSelectForTryon: (file: File) => void;
+  onCancelTryonUpload: (messageId: string) => void;
 }) {
   const isUser = message.role === "user";
   const hasItems =
@@ -2021,17 +2042,27 @@ function ChatBubble({
             </div>
 
             {/* Bütün kombini üstümde dene — try-on entegrasyonu */}
-            {!message.tryonResultUrl && message.tryonState !== "loading" && (
-              <button
-                type="button"
-                onClick={() =>
-                  onTryOnAll(message.id, message.suggestedItems!.slice(0, 6))
-                }
-                className="self-start mt-1 inline-flex items-center gap-2 text-xs font-medium px-4 py-2.5 bg-[var(--color-accent)] text-white hover:opacity-90 transition-opacity"
-              >
-                <Sparkles size={13} />
-                Bu Kombini Üstümde Dene
-              </button>
+            {!message.tryonResultUrl &&
+              message.tryonState !== "loading" &&
+              message.tryonState !== "needs-photo" && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    onTryOnAll(message.id, message.suggestedItems!.slice(0, 6))
+                  }
+                  className="self-start mt-1 inline-flex items-center gap-2 text-xs font-medium px-4 py-2.5 bg-[var(--color-accent)] text-white hover:opacity-90 transition-opacity"
+                >
+                  <Sparkles size={13} />
+                  Bu Kombini Üstümde Dene
+                </button>
+              )}
+
+            {/* Foto yoksa: chat içinde drop-zone paneli */}
+            {message.tryonState === "needs-photo" && (
+              <PhotoUploadPanel
+                onSelect={onPhotoSelectForTryon}
+                onCancel={() => onCancelTryonUpload(message.id)}
+              />
             )}
 
             {message.tryonState === "loading" && (
@@ -2193,6 +2224,97 @@ function ProductRecommendCard({
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+function PhotoUploadPanel({
+  onSelect,
+  onCancel,
+}: {
+  onSelect: (file: File) => void;
+  onCancel: () => void;
+}) {
+  const [dragOver, setDragOver] = useState(false);
+
+  function handleFiles(files: FileList | null) {
+    const f = files?.[0];
+    if (f) onSelect(f);
+  }
+
+  return (
+    <div className="mt-2 flex flex-col gap-3 border-l-2 border-[var(--color-accent)] pl-4 py-3">
+      <div className="flex items-start gap-2">
+        <Upload size={16} className="text-[var(--color-accent)] shrink-0 mt-0.5" />
+        <div className="flex-1">
+          <p className="text-sm font-medium">
+            Üstüne giydirebilmem için fotoğrafını gönder
+          </p>
+          <p className="text-xs text-[var(--color-muted)] mt-0.5">
+            Önden çekilmiş net bir fotoğrafın olsun, arka plan sade olursa daha
+            iyi sonuç çıkar.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onCancel}
+          aria-label="İptal"
+          className="text-[var(--color-muted)] hover:text-[var(--color-fg)] transition-colors"
+        >
+          <X size={14} />
+        </button>
+      </div>
+
+      <label
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragOver(true);
+        }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragOver(false);
+          handleFiles(e.dataTransfer.files);
+        }}
+        className={`block cursor-pointer border-2 border-dashed transition-all py-8 px-4 text-center ${
+          dragOver
+            ? "border-[var(--color-fg)] bg-[var(--color-bg-elev)]"
+            : "border-[var(--color-line-strong)] hover:border-[var(--color-fg-soft)] bg-[var(--color-bg)]"
+        }`}
+      >
+        <input
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          className="hidden"
+          onChange={(e) => handleFiles(e.target.files)}
+        />
+        <div className="flex flex-col items-center gap-2 text-[var(--color-muted)]">
+          <ImageIcon size={28} />
+          <p className="text-sm font-medium text-[var(--color-fg)]">
+            Fotoğraf seç veya buraya sürükle
+          </p>
+          <p className="text-[10px] uppercase tracking-wider">
+            JPG · PNG · WEBP · max 8 MB
+          </p>
+        </div>
+      </label>
+
+      <ul className="flex flex-col gap-1.5 text-xs text-[var(--color-fg-soft)]">
+        <li className="flex items-center gap-2">
+          <Check size={12} className="text-[var(--color-accent)] shrink-0" />
+          Tek kişi, önden çekilmiş
+        </li>
+        <li className="flex items-center gap-2">
+          <Check size={12} className="text-[var(--color-accent)] shrink-0" />
+          Düz arka plan tercih edilir
+        </li>
+        <li className="flex items-center gap-2">
+          <Check size={12} className="text-[var(--color-accent)] shrink-0" />
+          Fotoğraf yalnızca giydirmek için kullanılır
+        </li>
+      </ul>
     </div>
   );
 }
