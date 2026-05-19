@@ -70,19 +70,24 @@ export async function Navbar() {
         </nav>
 
         {/* Search */}
-        <div className="hidden lg:flex flex-1 max-w-md">
+        <form action="/arama" method="get" role="search" className="hidden lg:flex flex-1 max-w-md">
           <div className="relative w-full">
-            <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
-              size={16}
-            />
+            <button
+              type="submit"
+              aria-label="Ara"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)] hover:text-[var(--color-fg)] transition-colors"
+            >
+              <Search size={16} />
+            </button>
             <input
-              type="text"
+              type="search"
+              name="q"
               placeholder="Ürün, marka veya kategori ara"
+              autoComplete="off"
               className="w-full bg-[var(--color-bg)] border border-[var(--color-line)] focus:border-[var(--color-fg)] outline-none py-2.5 pl-10 pr-3 text-sm transition-colors"
             />
           </div>
-        </div>
+        </form>
 
         {/* Actions */}
         <div className="flex items-center gap-4 md:gap-5 shrink-0">

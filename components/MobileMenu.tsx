@@ -153,7 +153,7 @@ export function MobileMenu({ isLoggedIn, displayName, onLogout }: Props) {
         <div className="flex-1 overflow-y-auto">
           {/* AI Asistan vurgusu */}
           <Link
-            href="/kombin"
+            href="/kombin?mode=suggest"
             className="flex items-center gap-3 px-6 py-4 active:opacity-70"
             style={{ backgroundColor: "var(--color-bg-soft)" }}
           >

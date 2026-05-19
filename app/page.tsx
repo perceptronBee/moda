@@ -99,7 +99,7 @@ export default function HomePage() {
       {/* AI Kombin CTA banner */}
       <section className="px-4 sm:px-6 lg:px-10 my-8 max-w-7xl mx-auto w-full">
         <Link
-          href="/kombin"
+          href="/kombin?mode=suggest"
           className="relative block overflow-hidden group"
           style={{
             background:
@@ -302,7 +302,7 @@ export default function HomePage() {
         </div>
 
         <Link
-          href="/kombin"
+          href="/kombin?mode=suggest"
           className="mt-4 flex items-center justify-center gap-2 bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors py-4 text-sm font-medium tracking-wide"
         >
           <Sparkles size={16} /> Şimdi Dene

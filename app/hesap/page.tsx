@@ -110,7 +110,7 @@ export default async function AccountPage() {
               desc="Takip ettiğiniz markalar"
             />
             <AccountLink
-              href="/kombin"
+              href="/kombin?mode=suggest"
               icon={<Sparkles size={18} />}
               title="Kombin Öner"
               desc="Yapay zekadan kombin önerisi al"

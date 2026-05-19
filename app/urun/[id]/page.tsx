@@ -208,7 +208,7 @@ export default async function ProductDetail({
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
               {/* 1) Üstümde Dene — primary */}
               <Link
-                href={`/kombin?baseProduct=${product.id}&mode=tryon-only`}
+                href={`/kombin?baseProduct=${product.id}&mode=tryon`}
                 className="group relative flex items-center justify-between gap-2 lg:px-5 px-3 py-3 lg:py-4 transition-all overflow-hidden border-2"
                 style={{
                   backgroundColor: "var(--color-fg)",
@@ -232,7 +232,7 @@ export default async function ProductDetail({
                       Üstümde Dene
                     </p>
                     <p className="hidden lg:block text-xs opacity-70">
-                      Fotoğrafını yükle, sadece bu ürünü AI ile giydirelim
+                      Bu ürünü ve istediğin ek parçaları üstüne giydirelim
                     </p>
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export default async function ProductDetail({
 
               {/* 2) Kombin Oluştur — secondary */}
               <Link
-                href={`/kombin?baseProduct=${product.id}`}
+                href={`/kombin?baseProduct=${product.id}&mode=suggest`}
                 className="group relative flex items-center justify-between gap-2 lg:px-5 px-3 py-3 lg:py-4 transition-all overflow-hidden border"
                 style={{
                   backgroundColor: "var(--color-bg-elev)",
@@ -265,7 +265,7 @@ export default async function ProductDetail({
                       <span className="hidden lg:inline">AI ile Kombin Oluştur</span>
                     </p>
                     <p className="hidden lg:block text-xs text-[var(--color-fg-soft)]">
-                      Bu ürünle eşleşen tam kombini sana giydirelim
+                      AI bu ürüne yakışan kombinler önersin
                     </p>
                   </div>
                 </div>
