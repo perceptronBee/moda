@@ -142,34 +142,21 @@ export default function HomePage() {
             </h2>
 
             <p className="text-white/70 text-sm sm:text-base max-w-md mb-8 leading-relaxed">
-              İki yol var: AI sana 3 hazır kombin önersin, veya sohbet ederek
-              <span className="text-white"> tam istediğin tarzı</span> tarif et.
+              Sohbet ederek <span className="text-white">tam istediğin tarzı</span>
+              {" "}tarif et, AI sana özel kombin önersin.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/kombin?mode=suggest"
-                className="group/btn inline-flex items-center gap-2 bg-white text-black hover:bg-[var(--color-accent)] hover:text-white transition-colors px-6 py-3.5 text-sm font-medium tracking-wide"
-              >
-                <Wand2 size={16} />
-                Hazır Öneri Al
-                <ArrowRight
-                  size={16}
-                  className="group-hover/btn:translate-x-1 transition-transform"
-                />
-              </Link>
-              <Link
-                href="/kombin?mode=chat"
-                className="group/btn inline-flex items-center gap-2 bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-colors px-6 py-3.5 text-sm font-medium tracking-wide"
-              >
-                <Sparkles size={16} />
-                Stilist'le Sohbet Et
-                <ArrowRight
-                  size={16}
-                  className="group-hover/btn:translate-x-1 transition-transform"
-                />
-              </Link>
-            </div>
+            <Link
+              href="/kombin?mode=chat"
+              className="group/btn inline-flex items-center gap-2 bg-white text-black hover:bg-[var(--color-accent)] hover:text-white transition-colors px-6 py-3.5 text-sm font-medium tracking-wide"
+            >
+              <Sparkles size={16} />
+              Stilist'le Sohbet Et
+              <ArrowRight
+                size={16}
+                className="group-hover/btn:translate-x-1 transition-transform"
+              />
+            </Link>
           </div>
         </div>
       </section>
