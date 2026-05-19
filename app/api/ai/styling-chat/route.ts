@@ -1,8 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
+import sharp from "sharp";
+import { GoogleGenAI, Type } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
 import { rateLimitMulti, RATE_LIMITS } from "@/lib/security/rateLimit";
 import { getClientIp } from "@/lib/security/ip";
-import { PRODUCTS, getProductById } from "@/lib/products";
+import {
+  PRODUCTS,
+  getProductById,
+  type Product,
+  type ProductType,
+} from "@/lib/products";
 import { safeProductPhoto } from "@/lib/security/siteUrl";
 
 export const maxDuration = 60;
@@ -11,28 +18,20 @@ const MAX_TEXT_LEN = 1000;
 const MAX_HISTORY_TURNS = 12;
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const GEMINI_MODEL = "gemini-2.5-flash";
+
+// Gemini'ye gönderilen catalog subset — token bütçesini kontrol et
+const MAX_CATALOG_ITEMS = 300;
 
 /**
- * Chat-style styling assistant.
+ * POST /api/ai/styling-chat
  *
- * Vercel'den arkadaşın Pipeline FastAPI'sine proxy yapar.
- * STYLING_API_URL env'i ngrok URL'ini gösterir (örn https://abc.ngrok-free.app).
- * URL yoksa veya patliyorsa, demo kırılmasın diye basit bir mock cevap döner.
- *
- * Request (multipart/form-data):
- *   user_text: string
- *   chat_history: string (JSON [{role, content}, ...])
- *   image: File (opsiyonel)
- *
- * Response (JSON):
- *   {
- *     ai_response: string (Türkçe),
- *     suggested_items: Array<{id, name, deeplink, similarity_score, photo?, price?, ...}>,
- *     vision_debug?: any[],
- *   }
+ * Eğer arkadaşın Python pipeline'ı STYLING_API_URL'de canlıysa oraya proxy yapar
+ * (CLIP retrieval + Gemini reasoning). Aksi takdirde Gemini 2.5 Flash'i doğrudan
+ * çağırıp katalogdan structured JSON ile öneri alır.
  */
 export async function POST(req: NextRequest) {
-  // ── Auth zorunlu (Gemini bütçe + kişiselleştirme) ──
+  // Auth
   let supabase;
   try {
     supabase = await createClient();
@@ -52,11 +51,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // ── Rate limit (Gemini her chat turn'inde de çağrılıyor → koruma şart) ──
+  // Rate limit
   const ip = getClientIp(req.headers) ?? "anon";
-  const scope = user.id;
   const rl = rateLimitMulti([
-    { key: `chat:user:${scope}:min`, config: RATE_LIMITS.aiRequest },
+    { key: `chat:user:${user.id}:min`, config: RATE_LIMITS.aiRequest },
     { key: `chat:ip:${ip}:min`, config: RATE_LIMITS.aiRequest },
     { key: `chat:global:hr`, config: RATE_LIMITS.tryonGlobalPerHour },
   ]);
@@ -67,7 +65,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // ── Form parse + validate ──
+  // Form parse
   let form: FormData;
   try {
     form = await req.formData();
@@ -75,7 +73,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Geçersiz form" }, { status: 400 });
   }
 
-  const userText = (form.get("user_text") as string | null)?.slice(0, MAX_TEXT_LEN) ?? "";
+  const userText =
+    (form.get("user_text") as string | null)?.slice(0, MAX_TEXT_LEN) ?? "";
   if (!userText.trim()) {
     return NextResponse.json({ error: "Mesaj boş olamaz" }, { status: 400 });
   }
@@ -85,56 +84,296 @@ export async function POST(req: NextRequest) {
   try {
     historyParsed = JSON.parse(historyRaw);
   } catch {
-    return NextResponse.json({ error: "Geçersiz chat_history" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Geçersiz chat_history" },
+      { status: 400 },
+    );
   }
   if (!Array.isArray(historyParsed)) {
-    return NextResponse.json({ error: "chat_history dizi olmalı" }, { status: 400 });
+    return NextResponse.json(
+      { error: "chat_history dizi olmalı" },
+      { status: 400 },
+    );
   }
-  // History'i sanitize et: son N tur, sadece role + content
-  const sanitizedHistory = historyParsed
-    .filter(
-      (m): m is { role: string; content: string } =>
-        m !== null &&
-        typeof m === "object" &&
-        typeof (m as { role?: unknown }).role === "string" &&
-        typeof (m as { content?: unknown }).content === "string",
-    )
-    .slice(-MAX_HISTORY_TURNS)
-    .map((m) => ({
-      role: m.role === "user" ? "user" : "assistant",
-      content: m.content.slice(0, MAX_TEXT_LEN),
-    }));
+  const sanitizedHistory: Array<{ role: "user" | "assistant"; content: string }> =
+    (historyParsed as Array<unknown>)
+      .filter(
+        (m): m is { role: string; content: string } =>
+          m !== null &&
+          typeof m === "object" &&
+          typeof (m as { role?: unknown }).role === "string" &&
+          typeof (m as { content?: unknown }).content === "string",
+      )
+      .slice(-MAX_HISTORY_TURNS)
+      .map((m) => ({
+        role: m.role === "user" ? "user" : "assistant",
+        content: m.content.slice(0, MAX_TEXT_LEN),
+      }));
 
-  const image = form.get("image");
-  if (image instanceof Blob) {
-    if (image.size > MAX_IMAGE_BYTES) {
-      return NextResponse.json({ error: "Görsel 8 MB'ı aşamaz" }, { status: 413 });
+  const imageBlob = form.get("image");
+  if (imageBlob instanceof Blob) {
+    if (imageBlob.size > MAX_IMAGE_BYTES) {
+      return NextResponse.json(
+        { error: "Görsel 8 MB'ı aşamaz" },
+        { status: 413 },
+      );
     }
-    if (image.type && !ALLOWED_TYPES.has(image.type)) {
-      return NextResponse.json({ error: "Sadece JPG/PNG/WEBP" }, { status: 415 });
+    if (imageBlob.type && !ALLOWED_TYPES.has(imageBlob.type)) {
+      return NextResponse.json(
+        { error: "Sadece JPG/PNG/WEBP" },
+        { status: 415 },
+      );
     }
   }
 
-  // ── Backend'e proxy ──
+  // Backend (arkadaşın FastAPI) deploy edildiyse oraya proxy
   const backendUrl = process.env.STYLING_API_URL;
-
-  if (!backendUrl) {
-    // Backend deploy edilmediyse → demo kırılmasın diye basit deterministik mock
-    return NextResponse.json(mockChatResponse(userText, sanitizedHistory));
+  if (backendUrl) {
+    return proxyToBackend(backendUrl, userText, sanitizedHistory, imageBlob);
   }
 
-  // Forward to backend
+  // Yoksa direkt Gemini ile çalış
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json(
+      { error: "GEMINI_API_KEY ayarlı değil — admin'e bildir" },
+      { status: 500 },
+    );
+  }
+
+  try {
+    const result = await runGeminiStylist({
+      apiKey,
+      userText,
+      history: sanitizedHistory,
+      image: imageBlob instanceof Blob && imageBlob.size > 0 ? imageBlob : null,
+    });
+    return NextResponse.json(result);
+  } catch (e) {
+    const msg = (e as Error).message || "Stilist hatası";
+    console.error("[styling-chat] gemini error:", msg);
+    return NextResponse.json(
+      { error: `Stilist yanıt veremedi: ${msg}` },
+      { status: 502 },
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GEMINI — direkt RAG (catalog → prompt → structured JSON)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const SYSTEM_PROMPT = `Sen profesyonel bir AI moda stilistisin. Kullanıcı ile her zaman Türkçe ve samimi bir dille konuş.
+
+KURALLAR:
+1. Yalnızca sana verilen CATALOG listesindeki ID'lerden ürün önerebilirsin. Asla katalog dışı ürün uydurma.
+2. Kullanıcının mesajı bir kombin/stil talebi değilse (selam, teşekkür, sohbet, alakasız konu) ürün önerme — kısa bir cevap ver ve kullanıcıyı modaya yönlendir.
+3. Ürün önerirken her parçanın ID'sini "suggested_item_ids" dizisinde döndür. ai_response içinde ürün adlarını insanca yaz (LCW-xxxxx ID gösterme).
+4. Bir kombinde 2-4 farklı kategoriden parça kullan (üst + alt + ayakkabı gibi). Aynı kategoriden 2 parça önerme.
+5. Cinsiyet kuralı: kullanıcı ne istediğini her zaman söylüyor — verdiğin önerideki ürünler kullanıcının cinsiyetine uygun olmalı.
+6. Renk uyumu, etkinlik bağlamı, mevsim — bunları dikkate al. Sadece adında "renkli" geçen ürünü seçmek yetmez; gerçekten o etkinliğe / havaya uygun mu bak.
+7. Çıktın MUTLAKA verilen JSON şemasında olmalı. Başka bir şey yazma.`;
+
+function buildCatalogContext(gender: "kadin" | "erkek"): string {
+  // Gender'a göre filtrele + her kategoriden makul sayıda örnek
+  const buckets: Record<ProductType, Product[]> = {
+    "ust-giyim": [],
+    "alt-giyim": [],
+    "dis-giyim": [],
+    ayakkabi: [],
+    aksesuar: [],
+  };
+  for (const p of PRODUCTS) {
+    if (p.gender !== gender || !p.photos?.front) continue;
+    buckets[p.type]?.push(p);
+  }
+
+  // Her kategoriden N tane, toplam MAX_CATALOG_ITEMS'ı geçmesin
+  const perCategory = Math.floor(MAX_CATALOG_ITEMS / 5);
+  const flat: Product[] = [];
+  for (const arr of Object.values(buckets)) {
+    flat.push(...arr.slice(0, perCategory));
+  }
+
+  // Compact format: ID | type | name (renk + parça tipi name'in içinde zaten)
+  return flat
+    .map((p) => `${p.id}|${p.type}|${p.name}`)
+    .join("\n");
+}
+
+function extractGender(
+  history: Array<{ role: string; content: string }>,
+  userText: string,
+): "kadin" | "erkek" {
+  const combined = [...history.map((h) => h.content), userText]
+    .join("\n")
+    .toLowerCase();
+  if (/\b(erkeğim|erkegim|erkek için|bay\b)\b/.test(combined)) return "erkek";
+  return "kadin";
+}
+
+async function imageToInlinePart(image: Blob) {
+  const buf = Buffer.from(await image.arrayBuffer());
+  const jpeg = await sharp(buf)
+    .rotate()
+    .resize(1024, 1024, { fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 85 })
+    .toBuffer();
+  return {
+    inlineData: {
+      mimeType: "image/jpeg",
+      data: jpeg.toString("base64"),
+    },
+  };
+}
+
+type StylistResult = {
+  ai_response: string;
+  suggested_items: EnrichedItem[];
+  _via: "gemini" | "backend";
+};
+
+async function runGeminiStylist({
+  apiKey,
+  userText,
+  history,
+  image,
+}: {
+  apiKey: string;
+  userText: string;
+  history: Array<{ role: "user" | "assistant"; content: string }>;
+  image: Blob | null;
+}): Promise<StylistResult> {
+  const gender = extractGender(history, userText);
+  const catalog = buildCatalogContext(gender);
+
+  const ai = new GoogleGenAI({ apiKey });
+
+  // Conversation history → Gemini Content formatı (greeting bubble'ı zaten history'de yok)
+  const contents: Array<{
+    role: "user" | "model";
+    parts: Array<
+      | { text: string }
+      | { inlineData: { mimeType: string; data: string } }
+    >;
+  }> = [];
+
+  for (const m of history) {
+    contents.push({
+      role: m.role === "user" ? "user" : "model",
+      parts: [{ text: m.content }],
+    });
+  }
+
+  // Son user turn'ü: image (varsa) + text + catalog context
+  const lastUserParts: Array<
+    { text: string } | { inlineData: { mimeType: string; data: string } }
+  > = [];
+  if (image) {
+    lastUserParts.push(await imageToInlinePart(image));
+    lastUserParts.push({
+      text: "Yukarıdaki fotoğraftaki kıyafetimi/kıyafetini analiz et ve uyumlu kombin öner.",
+    });
+  }
+  lastUserParts.push({
+    text:
+      `Kullanıcı mesajı: ${userText}\n` +
+      `Kullanıcı cinsiyeti: ${gender}\n\n` +
+      `CATALOG (yalnızca buradan ID seç — format: id|kategori|isim):\n${catalog}`,
+  });
+  contents.push({ role: "user", parts: lastUserParts });
+
+  const result = await ai.models.generateContent({
+    model: GEMINI_MODEL,
+    contents,
+    config: {
+      systemInstruction: SYSTEM_PROMPT,
+      temperature: 0.6,
+      responseMimeType: "application/json",
+      responseSchema: {
+        type: Type.OBJECT,
+        properties: {
+          ai_response: {
+            type: Type.STRING,
+            description:
+              "Kullanıcıya dönecek Türkçe samimi cevap. Ürün adlarını insanca yaz, ID gösterme.",
+          },
+          suggested_item_ids: {
+            type: Type.ARRAY,
+            description:
+              "Önerilen ürünlerin ID'leri (catalog'tan birebir). Sohbet/selamlama ise boş dizi.",
+            items: { type: Type.STRING },
+          },
+        },
+        required: ["ai_response", "suggested_item_ids"],
+      },
+    },
+  });
+
+  const text = result.text ?? "";
+  let parsed: { ai_response?: unknown; suggested_item_ids?: unknown };
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    throw new Error("Gemini geçersiz JSON döndü");
+  }
+
+  const aiResponse =
+    typeof parsed.ai_response === "string"
+      ? parsed.ai_response
+      : "Üzgünüm, şu an cevap üretemiyorum.";
+  const rawIds = Array.isArray(parsed.suggested_item_ids)
+    ? (parsed.suggested_item_ids.filter((x) => typeof x === "string") as string[])
+    : [];
+
+  // ID'leri katalogdan zenginleştir + cinsiyet uyumsuzlarını ele
+  const enriched: EnrichedItem[] = [];
+  const seen = new Set<string>();
+  for (const id of rawIds) {
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const p = getProductById(id);
+    if (!p) continue;
+    if (p.gender !== gender) continue; // güvenlik: yanlış gender'a düşmesin
+    enriched.push({
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      type: p.type,
+      gender: p.gender,
+      photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
+      deeplink: p.deeplink ?? null,
+    });
+    if (enriched.length >= 6) break;
+  }
+
+  return {
+    ai_response: aiResponse,
+    suggested_items: enriched,
+    _via: "gemini",
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BACKEND PROXY (arkadaşın FastAPI'si)
+// ─────────────────────────────────────────────────────────────────────────────
+
+async function proxyToBackend(
+  backendUrl: string,
+  userText: string,
+  history: Array<{ role: string; content: string }>,
+  imageBlob: FormDataEntryValue | null,
+) {
   const backendForm = new FormData();
   backendForm.append("user_text", userText);
-  backendForm.append("chat_history", JSON.stringify(sanitizedHistory));
-  if (image instanceof Blob && image.size > 0) {
-    backendForm.append("image", image, "user_image.jpg");
+  backendForm.append("chat_history", JSON.stringify(history));
+  if (imageBlob instanceof Blob && imageBlob.size > 0) {
+    backendForm.append("image", imageBlob, "user_image.jpg");
   }
 
   try {
     const ctrl = new AbortController();
     const timeout = setTimeout(() => ctrl.abort(), 55_000);
-
     const res = await fetch(`${backendUrl.replace(/\/$/, "")}/api/chat`, {
       method: "POST",
       body: backendForm,
@@ -144,25 +383,26 @@ export async function POST(req: NextRequest) {
 
     if (!res.ok) {
       const text = await res.text().catch(() => "");
-      console.error("[styling-chat] backend error", res.status, text.slice(0, 200));
+      console.error(
+        "[styling-chat] backend error",
+        res.status,
+        text.slice(0, 200),
+      );
       return NextResponse.json(
-        { error: `Stilist servisi şu an yanıt vermiyor (${res.status})` },
+        { error: `Stilist servisi yanıt vermedi (${res.status})` },
         { status: 502 },
       );
     }
 
     const data = await res.json();
-
-    // Enrich suggested_items with our catalog data (photo, price, type)
-    // — backend sadece id + deeplink + name döndürüyor olabilir
     const enriched = Array.isArray(data?.suggested_items)
-      ? data.suggested_items.map(enrichItem).filter(Boolean)
+      ? data.suggested_items.map(enrichBackendItem).filter(Boolean)
       : [];
 
     return NextResponse.json({
       ai_response: typeof data?.ai_response === "string" ? data.ai_response : "",
       suggested_items: enriched,
-      vision_debug: data?.vision_debug ?? null,
+      _via: "backend",
     });
   } catch (e) {
     const msg = (e as Error).name === "AbortError" ? "Zaman aşımı" : (e as Error).message;
@@ -187,21 +427,15 @@ type EnrichedItem = {
   colors?: Array<{ hex: string; percentage: number }>;
 };
 
-function enrichItem(raw: unknown): EnrichedItem | null {
+function enrichBackendItem(raw: unknown): EnrichedItem | null {
   if (!raw || typeof raw !== "object") return null;
   const r = raw as Record<string, unknown>;
   const id = typeof r.id === "string" ? r.id : null;
   if (!id) return null;
-
-  // Catalog'tan tam ürünü çek (foto + fiyat lazım)
   const product = getProductById(id);
-
   return {
     id,
-    name:
-      typeof r.name === "string"
-        ? r.name
-        : product?.name ?? id,
+    name: typeof r.name === "string" ? r.name : product?.name ?? id,
     price: product?.price ?? null,
     type: product?.type ?? (typeof r.class === "string" ? r.class : null),
     gender: product?.gender ?? (typeof r.gender === "string" ? r.gender : null),
@@ -209,16 +443,13 @@ function enrichItem(raw: unknown): EnrichedItem | null {
       product?.photos?.garmentFront || product?.photos?.front,
     ),
     deeplink:
-      typeof r.deeplink === "string"
-        ? r.deeplink
-        : product?.deeplink ?? null,
+      typeof r.deeplink === "string" ? r.deeplink : product?.deeplink ?? null,
     similarity_score:
       typeof r.similarity_score === "number" ? r.similarity_score : undefined,
     colors: Array.isArray(r.colors)
       ? (r.colors as Array<Record<string, unknown>>)
           .filter(
-            (c) =>
-              typeof c.hex === "string" && typeof c.percentage === "number",
+            (c) => typeof c.hex === "string" && typeof c.percentage === "number",
           )
           .slice(0, 3)
           .map((c) => ({
@@ -226,182 +457,5 @@ function enrichItem(raw: unknown): EnrichedItem | null {
             percentage: c.percentage as number,
           }))
       : undefined,
-  };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-/**
- * Backend yokken kullanılan mock — demo akışı yine de gösterilir.
- * Önce intent detect: kullanıcı sohbet mi ediyor yoksa öneri mi istiyor?
- * - SOHBET → moda dışı/küçük konuşma → ürün döndürme, modaya yönlendir
- * - OFF-TOPIC → "ben moda stilistiyim" cevabı
- * - ARAMA → keyword-eşleştir, kategoriden ürün dön
- */
-
-const GREETING_PATTERNS = [
-  /\b(merhaba|selam|selamlar|naber|nbr|ne haber|nasılsın|nasılsin|nasilsin|iyimisin|iyi misin|hey|hi|hello|hola|sa|aleyküm|aleykum|günaydın|gunaydin|akşamlar|aksamlar|tünaydın|gece)\b/i,
-];
-
-const ACK_PATTERNS = [
-  /^\s*(teşekkür|tesekkur|sağol|sagol|saol|saolasın|thanks|ty|tnx|ok|tamam|peki|anladım|anladim|harika|süper|super|olur|yes|yok|hayır|hayir|no)[\s.!?]*$/i,
-];
-
-const OFF_TOPIC_PATTERNS = [
-  /\b(kimsin|nesin|ne yapıyorsun|adın ne|hava nasıl|hava durumu|yemek|tarif|haber|maç|futbol|şarkı|film|dizi|kitap|tatil|tatile|cumhurba|seçim|sınav|matematik|kod|python|javascript|whatsapp|instagram)\b/i,
-];
-
-function detectIntent(text: string): "greeting" | "ack" | "off_topic" | "search" {
-  const t = text.trim();
-  if (!t) return "search"; // boş → varsayılan
-  if (ACK_PATTERNS.some((p) => p.test(t))) return "ack";
-  if (GREETING_PATTERNS.some((p) => p.test(t))) return "greeting";
-  if (OFF_TOPIC_PATTERNS.some((p) => p.test(t))) return "off_topic";
-  return "search";
-}
-
-function extractGenderFromHistory(
-  history: Array<{ role: string; content: string }>,
-): "kadin" | "erkek" {
-  for (let i = history.length - 1; i >= 0; i--) {
-    const c = history[i].content.toLowerCase();
-    if (/\b(erkeğim|erkegim|erkek|bay\b|adam)\b/.test(c)) return "erkek";
-    if (/\b(kadınım|kadinim|kadın|kadin|bayan|kız|kiz)\b/.test(c)) return "kadin";
-  }
-  return "kadin"; // default
-}
-
-// Deterministik shuffle — aynı seed aynı sıra üretir
-function seededShuffle<T>(arr: T[], seed: number): T[] {
-  const a = [...arr];
-  let s = seed || 1;
-  for (let i = a.length - 1; i > 0; i--) {
-    s = (s * 9301 + 49297) % 233280;
-    const j = Math.floor((s / 233280) * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function mockChatResponse(
-  userText: string,
-  history: Array<{ role: string; content: string }>,
-) {
-  const intent = detectIntent(userText);
-
-  if (intent === "greeting") {
-    return {
-      ai_response:
-        "Selam! Ben bir AI moda stilistiyim, sana uygun kombin önerileri sunabilirim. Nereye gidiyorsun, nasıl bir tarz istersin? Mesela 'yağmurlu hava için' veya 'ofise uygun' diyebilirsin.",
-      suggested_items: [],
-      vision_debug: null,
-      _mock: true,
-      _intent: intent,
-    };
-  }
-
-  if (intent === "ack") {
-    return {
-      ai_response:
-        "Başka bir kombin önermemi ister misin? Tarz ya da etkinlik söyle, ona göre çıkarayım.",
-      suggested_items: [],
-      vision_debug: null,
-      _mock: true,
-      _intent: intent,
-    };
-  }
-
-  if (intent === "off_topic") {
-    return {
-      ai_response:
-        "Ben bir AI moda stilistiyim, sadece kıyafet ve kombin önerileri konusunda yardımcı olabilirim. Hangi tür bir kombin arıyorsun? Yağmurlu hava, ofis, düğün, spor — ne istersen söyle.",
-      suggested_items: [],
-      vision_debug: null,
-      _mock: true,
-      _intent: intent,
-    };
-  }
-
-  // ── ARAMA: kombin öneri akışı ──
-  const lowered = userText.toLowerCase();
-  const gender = extractGenderFromHistory(history);
-
-  // Kullanıcı belirli kategori istediyse onları kullan
-  const requestedCategories: string[] = [];
-  if (/üst\s*giy|tişört|gömlek|sweat|bluz/i.test(lowered))
-    requestedCategories.push("ust-giyim");
-  if (/alt\s*giy|pantolon|jean|şort|etek/i.test(lowered))
-    requestedCategories.push("alt-giyim");
-  if (/dış\s*giy|mont|kaban|ceket|yağmurluk/i.test(lowered))
-    requestedCategories.push("dis-giyim");
-  if (/ayakkabı|bot|spor ayakkabı|sneaker/i.test(lowered))
-    requestedCategories.push("ayakkabi");
-
-  const intentMap: Array<{ patterns: RegExp[]; types: string[]; label: string }> = [
-    { patterns: [/yağmur|yağışlı/], types: ["dis-giyim", "alt-giyim", "ayakkabi"], label: "yağmurlu hava" },
-    { patterns: [/kış|kar|soğuk/], types: ["dis-giyim", "ust-giyim", "alt-giyim"], label: "kışlık" },
-    { patterns: [/düğün|davet|özel|şık|akşam/], types: ["ust-giyim", "alt-giyim"], label: "şık" },
-    { patterns: [/spor|koş|fitness|antren/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "sportif" },
-    { patterns: [/iş|ofis|toplantı/], types: ["ust-giyim", "alt-giyim"], label: "iş" },
-    { patterns: [/yaz|sıcak|plaj|deniz/], types: ["ust-giyim", "alt-giyim"], label: "yazlık" },
-    { patterns: [/kampüs|üniversite|okul/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "kampüs" },
-    { patterns: [/renkli|canlı|şen/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "renkli" },
-    { patterns: [/günlük|rahat|gündelik/], types: ["ust-giyim", "alt-giyim"], label: "günlük" },
-  ];
-
-  const matched = intentMap.find((i) => i.patterns.some((p) => p.test(lowered)));
-  const types =
-    requestedCategories.length > 0
-      ? requestedCategories
-      : matched?.types ?? ["ust-giyim", "alt-giyim", "ayakkabi"];
-
-  // Deterministik shuffle ile her query farklı sonuç versin —
-  // ama aynı query aynı sonuç (cacheable). Seed: userText + gender + history length
-  const seed =
-    [...userText].reduce((s, c) => s + c.charCodeAt(0), 0) +
-    history.length * 31 +
-    (gender === "erkek" ? 7 : 11);
-
-  const items: EnrichedItem[] = [];
-  for (const t of types) {
-    const pool = PRODUCTS.filter(
-      (p) => p.type === t && p.gender === gender && p.photos?.front,
-    );
-    if (pool.length === 0) continue;
-    const shuffled = seededShuffle(pool, seed + t.length * 13);
-    const p = shuffled[0];
-    items.push({
-      id: p.id,
-      name: p.name,
-      price: p.price,
-      type: p.type,
-      gender: p.gender,
-      photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
-      deeplink: p.deeplink ?? null,
-    });
-  }
-
-  // Cevap metnini items'a göre dinamik ve doğal kur — hard-coded suffix yok
-  let aiResponse: string;
-  if (items.length === 0) {
-    aiResponse = "Bu istek için katalogda uygun ürün bulamadım. Başka bir tarz veya kategori söyler misin?";
-  } else if (items.length === 1) {
-    aiResponse = `${matched ? matched.label.charAt(0).toUpperCase() + matched.label.slice(1) + " için" : "Sana"} ${items[0].name} önerebilirim. Eşlik edecek başka parça istersen söyle.`;
-  } else {
-    const labelPart = matched
-      ? `${matched.label.charAt(0).toUpperCase() + matched.label.slice(1)} bir kombin için`
-      : "Sana uygun bir kombin için";
-    const namesList =
-      items.length === 2
-        ? `${items[0].name} ve ${items[1].name}`
-        : `${items.slice(0, -1).map((i) => i.name).join(", ")} ve ${items[items.length - 1].name}`;
-    aiResponse = `${labelPart} ${namesList} birlikte güzel duruyor. Beğenmediğin parça olursa söyle, alternatif önereyim.`;
-  }
-
-  return {
-    ai_response: aiResponse,
-    suggested_items: items,
-    vision_debug: null,
-    _mock: true,
-    _intent: intent,
   };
 }
