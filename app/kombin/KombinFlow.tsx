@@ -1500,6 +1500,11 @@ type ChatMessage = {
   content: string;
   suggestedItems?: ChatItem[];
   imagePreview?: string;
+  /** Try-on sonucu image data URL — bubble içinde render edilir */
+  tryonResultUrl?: string;
+  /** Bu mesaj için try-on durumu (loading bubble göstermek için) */
+  tryonState?: "loading" | "done" | "error";
+  tryonError?: string;
   timestamp: number;
 };
 
@@ -1548,6 +1553,12 @@ function ChatStage({
   const [sending, setSending] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
 
+  // Try-on için kullanıcının fotoğrafını sakla — chat boyunca aynı foto reusable
+  const [userPhoto, setUserPhoto] = useState<{ file: File; preview: string } | null>(null);
+  // Try-on tetiklerken hangi mesaja sonucu yazacağımızı bil
+  const pendingTryonRef = useRef<{ messageId: string; items: ChatItem[] } | null>(null);
+  const tryonFileInputRef = useRef<HTMLInputElement>(null);
+
   // Kullanıcı cinsiyet seçince welcome mesajını da güncelle
   function pickGender(g: "kadin" | "erkek") {
     setChatGender(g);
@@ -1589,7 +1600,14 @@ function ChatStage({
       return;
     }
     const reader = new FileReader();
-    reader.onload = () => setPendingImage({ file, preview: reader.result as string });
+    reader.onload = () => {
+      const preview = reader.result as string;
+      setPendingImage({ file, preview });
+      // Bu foto kullanıcının kendi fotosuysa try-on için de sakla
+      // (chat akışında ayırt etmek zor — kullanıcı zaten "üstümde dene" derken
+      //  son yüklediğini kullanmasını bekler)
+      setUserPhoto({ file, preview });
+    };
     reader.readAsDataURL(file);
   }
 
@@ -1654,6 +1672,106 @@ function ChatStage({
     } finally {
       setSending(false);
     }
+  }
+
+  // ── Chat içinde try-on ──
+  // 1) AI mesajındaki "Bu kombini üstümde dene" butonuna tıklandığında çağrılır
+  // 2) Foto yoksa file picker tetiklenir; yüklenince otomatik tryon başlar
+  // 3) Sonuç bubble içine image olarak yansır
+  async function tryOnInChat(messageId: string, items: ChatItem[]) {
+    if (items.length === 0) return;
+    if (!userPhoto) {
+      // Foto yok → upload tetikle, callback'te tryon devam edecek
+      pendingTryonRef.current = { messageId, items };
+      tryonFileInputRef.current?.click();
+      return;
+    }
+    await runTryon(messageId, items, userPhoto.file);
+  }
+
+  async function runTryon(messageId: string, items: ChatItem[], photoFile: File) {
+    // Bubble'a loading state yaz
+    setMessages((prev) =>
+      prev.map((m) =>
+        m.id === messageId
+          ? { ...m, tryonState: "loading", tryonError: undefined }
+          : m,
+      ),
+    );
+
+    try {
+      // Ürün fotolarını blob olarak indir
+      const itemBlobs: Blob[] = [];
+      for (const item of items) {
+        if (!item.photo) continue;
+        try {
+          const r = await fetch(item.photo);
+          if (r.ok) itemBlobs.push(await r.blob());
+        } catch { /* atla */ }
+      }
+      if (itemBlobs.length === 0) {
+        throw new Error("Seçilen ürünlerin fotoğrafları yüklenemedi");
+      }
+
+      const form = new FormData();
+      form.append("base_image", photoFile);
+      itemBlobs.forEach((b, i) =>
+        form.append(`item_${i + 1}`, b, `item_${i + 1}.jpg`),
+      );
+
+      const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
+      const data = await res.json();
+      const resultImage = data.resultImage || data.result_image;
+      if (!res.ok || !resultImage) {
+        throw new Error(data.error ?? "Try-on başarısız");
+      }
+
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === messageId
+            ? { ...m, tryonState: "done", tryonResultUrl: resultImage }
+            : m,
+        ),
+      );
+    } catch (e) {
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === messageId
+            ? {
+                ...m,
+                tryonState: "error",
+                tryonError: (e as Error).message,
+              }
+            : m,
+        ),
+      );
+    }
+  }
+
+  async function handleTryonPhotoUpload(file: File) {
+    if (file.size > 8 * 1024 * 1024) {
+      setChatError("Görsel 8 MB'ı aşamaz");
+      return;
+    }
+    if (!ALLOWED_TYPES.has(file.type)) {
+      setChatError("Sadece JPG/PNG/WEBP");
+      return;
+    }
+    if (!(await isRealImage(file))) {
+      setChatError("Geçerli bir görsel değil");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUserPhoto({ file, preview: reader.result as string });
+      // Bekleyen try-on varsa başlat
+      const pending = pendingTryonRef.current;
+      if (pending) {
+        pendingTryonRef.current = null;
+        runTryon(pending.messageId, pending.items, file);
+      }
+    };
+    reader.readAsDataURL(file);
   }
 
   function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -1733,12 +1851,27 @@ function ChatStage({
               onTryOn={(id) =>
                 router.push(`/kombin?baseProduct=${id}&mode=tryon`)
               }
+              onTryOnAll={tryOnInChat}
             />
           ))}
           {sending && <TypingBubble />}
           <div ref={scrollAnchorRef} />
         </div>
       </div>
+
+      {/* Gizli try-on foto upload input — "Bu Kombini Üstümde Dene" tetiklerse açılır */}
+      <input
+        ref={tryonFileInputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        className="hidden"
+        onChange={(e) => {
+          const f = e.target.files?.[0];
+          if (f) handleTryonPhotoUpload(f);
+          // input reset — aynı dosya tekrar seçilebilsin
+          e.target.value = "";
+        }}
+      />
 
       {/* Input alanı */}
       <div className="mt-3 border-t border-[var(--color-line)] pt-3">
@@ -1827,13 +1960,17 @@ function ChatBubble({
   onAddToCart,
   onRouteToProduct,
   onTryOn,
+  onTryOnAll,
 }: {
   message: ChatMessage;
   onAddToCart: (item: ChatItem) => void;
   onRouteToProduct: (id: string) => void;
   onTryOn: (id: string) => void;
+  onTryOnAll: (messageId: string, items: ChatItem[]) => void;
 }) {
   const isUser = message.role === "user";
+  const hasItems =
+    !isUser && message.suggestedItems && message.suggestedItems.length > 0;
 
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} gap-2`}>
@@ -1865,14 +2002,14 @@ function ChatBubble({
           <p className="whitespace-pre-wrap">{message.content}</p>
         </div>
 
-        {!isUser && message.suggestedItems && message.suggestedItems.length > 0 && (
+        {hasItems && (
           <div className="flex flex-col gap-2">
             <p className="meta flex items-center gap-1.5 text-[var(--color-muted)]">
               <Sparkles size={11} className="text-[var(--color-accent)]" />
               ÖNERILEN PARÇALAR
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {message.suggestedItems.slice(0, 6).map((item) => (
+              {message.suggestedItems!.slice(0, 6).map((item) => (
                 <ProductRecommendCard
                   key={item.id}
                   item={item}
@@ -1882,6 +2019,65 @@ function ChatBubble({
                 />
               ))}
             </div>
+
+            {/* Bütün kombini üstümde dene — try-on entegrasyonu */}
+            {!message.tryonResultUrl && message.tryonState !== "loading" && (
+              <button
+                type="button"
+                onClick={() =>
+                  onTryOnAll(message.id, message.suggestedItems!.slice(0, 6))
+                }
+                className="self-start mt-1 inline-flex items-center gap-2 text-xs font-medium px-4 py-2.5 bg-[var(--color-accent)] text-white hover:opacity-90 transition-opacity"
+              >
+                <Sparkles size={13} />
+                Bu Kombini Üstümde Dene
+              </button>
+            )}
+
+            {message.tryonState === "loading" && (
+              <div className="self-start mt-1 inline-flex items-center gap-2 text-xs px-4 py-2.5 border border-[var(--color-line)] bg-[var(--color-bg-elev)]">
+                <Loader2 size={13} className="animate-spin text-[var(--color-accent)]" />
+                Üstünde nasıl duracağına bakıyorum… (30-60 sn)
+              </div>
+            )}
+
+            {message.tryonState === "error" && message.tryonError && (
+              <div className="mt-1 text-xs px-3 py-2 border-l-2 border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent)]">
+                Try-on yapılamadı: {message.tryonError}
+                <button
+                  type="button"
+                  onClick={() =>
+                    onTryOnAll(message.id, message.suggestedItems!.slice(0, 6))
+                  }
+                  className="ml-2 underline"
+                >
+                  Tekrar dene
+                </button>
+              </div>
+            )}
+
+            {message.tryonResultUrl && (
+              <div className="mt-2 flex flex-col gap-2">
+                <p className="meta flex items-center gap-1.5 text-[var(--color-muted)]">
+                  <Sparkles size={11} className="text-[var(--color-accent)]" />
+                  ÜSTÜNDE NASIL DURUYOR
+                </p>
+                <div
+                  className="relative max-w-md border border-[var(--color-line)]"
+                  style={{ backgroundColor: "var(--color-bg-elev)" }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={message.tryonResultUrl}
+                    alt="Try-on sonucu"
+                    className="block w-full h-auto"
+                  />
+                  <span className="absolute top-2 left-2 bg-[var(--color-fg)] text-[var(--color-bg)] text-[10px] font-medium px-1.5 py-0.5">
+                    AI TRY-ON
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
