@@ -6,10 +6,16 @@ LCWaikiki ürün feed'inden üretilmiş, **giyilmiş (worn)** fotoğraflarla cla
 
 ```bash
 git checkout dataset-only
-node scripts/build-imagefolder.mjs
 ```
 
-Çıktı: `data/ml-dataset/` altında her class kendi klasöründe, içinde o sınıfa ait worn fotolar.
+Klasör yapısı **hazır** — `data/ml-dataset/` altında 7 class kendi klasöründe, içinde worn fotolar. Direkt PyTorch ile yükleyebilirsin:
+
+```python
+from torchvision.datasets import ImageFolder
+ds = ImageFolder("data/ml-dataset/")
+```
+
+(Yeniden üretmek istersen: `node scripts/build-imagefolder.mjs`)
 
 ## Klasör yapısı (ImageFolder uyumlu)
 
