@@ -77,6 +77,36 @@ export const RATE_LIMITS = {
   passwordReset: { windowMs: 60 * 60_000, max: 3 }, // saatte 3 sıfırlama isteği
   refresh: { windowMs: 60_000, max: 6 }, // dakikada 6 refresh
   click: { windowMs: 60_000, max: 60 }, // dakikada 60 click (saniyede 1, click fraud)
-  aiRequest: { windowMs: 60_000, max: 5 }, // dakikada 5 AI isteği (kombin/try-on)
+  aiRequest: { windowMs: 60_000, max: 5 }, // dakikada 5 AI isteği (mock kombin önerisi)
+  // Try-on Gemini'ye gerçek istek atıyor → katmanlı koruma
+  tryonPerMinute: { windowMs: 60_000, max: 3 }, // dakikada 3 (insan davranışı sınırı)
+  tryonPerHour: { windowMs: 60 * 60_000, max: 15 }, // saatte 15 (1 user/1 IP)
+  tryonPerDay: { windowMs: 24 * 60 * 60_000, max: 40 }, // günde 40 (~$10 Gemini bütçesi/user)
+  // GLOBAL bütçe — tüm kullanıcıların toplam tavanı (API key kapı bekçisi)
+  tryonGlobalPerHour: { windowMs: 60 * 60_000, max: 120 },
+  tryonGlobalPerDay: { windowMs: 24 * 60 * 60_000, max: 800 },
   photoUpload: { windowMs: 60_000, max: 6 }, // dakikada 6 foto upload (CPU + storage)
 } as const;
+
+/**
+ * Birden fazla limit'i sırayla kontrol eder. İlk başarısız olanı döner.
+ * Hepsi geçerse en sıkı remaining'i içeren sonucu döner.
+ */
+export function rateLimitMulti(
+  checks: Array<{ key: string; config: RateLimitConfig }>,
+): RateLimitResult {
+  let strictest: RateLimitResult | null = null;
+  for (const { key, config } of checks) {
+    const r = rateLimit(key, config);
+    if (!r.ok) return r;
+    if (!strictest || r.remaining < strictest.remaining) strictest = r;
+  }
+  return (
+    strictest ?? {
+      ok: true,
+      remaining: Infinity,
+      resetAt: Date.now(),
+      retryAfter: 0,
+    }
+  );
+}

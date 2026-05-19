@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { callVtonTryOn } from "@/lib/ai/vton";
-import { rateLimit, RATE_LIMITS } from "@/lib/security/rateLimit";
+import { rateLimitMulti, RATE_LIMITS } from "@/lib/security/rateLimit";
 import { getClientIp } from "@/lib/security/ip";
 
 export const maxDuration = 300; // Lokal'de uzun süreli idm-vton için (Vercel Pro: 300sn, Hobby: 60sn ile sınırlı)
@@ -39,13 +39,33 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Önce giriş yap" }, { status: 401 });
   }
 
-  // Rate limit — AI bedelli, kullanıcı başına sıkı
+  // Rate limit — KATMANLI (Gemini API key bütçe koruması)
+  //   1. dakikada 3   (bot spam)
+  //   2. saatte 15    (kullanıcı başına makul üst sınır)
+  //   3. günde 40     (~$10 Gemini bütçesi/user)
+  //   4. saatte 120   (GLOBAL — tüm kullanıcıların toplam tavanı)
+  //   5. günde 800    (GLOBAL — günlük API key bütçesi)
   const ip = getClientIp(req.headers) ?? "anon";
-  const rl = rateLimit(`tryon:${user.id}:${ip}`, RATE_LIMITS.aiRequest);
+  const userScope = `tryon:user:${user.id}`;
+  const ipScope = `tryon:ip:${ip}`;
+  const rl = rateLimitMulti([
+    { key: `${userScope}:min`, config: RATE_LIMITS.tryonPerMinute },
+    { key: `${ipScope}:min`, config: RATE_LIMITS.tryonPerMinute },
+    { key: `${userScope}:hr`, config: RATE_LIMITS.tryonPerHour },
+    { key: `${userScope}:day`, config: RATE_LIMITS.tryonPerDay },
+    { key: `tryon:global:hr`, config: RATE_LIMITS.tryonGlobalPerHour },
+    { key: `tryon:global:day`, config: RATE_LIMITS.tryonGlobalPerDay },
+  ]);
   if (!rl.ok) {
     return NextResponse.json(
       { error: `AI limiti aşıldı, ${rl.retryAfter} sn sonra dene` },
-      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(rl.retryAfter),
+          "X-RateLimit-Remaining": "0",
+        },
+      },
     );
   }
 
