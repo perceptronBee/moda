@@ -60,14 +60,17 @@ export default async function KombinPage({
 
   // mode:
   //   "tryon"   = manuel pick + try-on (preselected + ekstra) — anchor zorunlu
-  //   "suggest" = AI 3 kombin önersin — anchor opsiyonel (yoksa sıfırdan kurar)
+  //   "suggest" = AI 3 kombin önersin — anchor opsiyonel
+  //   "chat"    = serbest sohbet AI stilisti — anchor opsiyonel
   //   "pick"    = default
-  const mode: "pick" | "tryon" | "suggest" =
-    sp.mode === "suggest"
-      ? "suggest"
-      : sp.mode === "tryon" && baseProduct
-        ? "tryon"
-        : "pick";
+  const mode: "pick" | "tryon" | "suggest" | "chat" =
+    sp.mode === "chat"
+      ? "chat"
+      : sp.mode === "suggest"
+        ? "suggest"
+        : sp.mode === "tryon" && baseProduct
+          ? "tryon"
+          : "pick";
 
   // Cinsiyet filtresi: önce URL param, sonra baseProduct'tan, sonra default "kadin"
   const gender: Gender = isValidGender(sp.gender)

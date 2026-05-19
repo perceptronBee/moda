@@ -16,7 +16,13 @@ import {
   Footprints,
   Plus,
   Search,
+  Send,
+  Image as ImageIcon,
+  ShoppingBag,
+  Heart,
+  ExternalLink,
 } from "lucide-react";
+import { useCart } from "@/lib/cart";
 import type { PickableProduct } from "./page";
 
 type Stage =
@@ -25,6 +31,7 @@ type Stage =
   | "suggest-categories" // suggest modunda: hangi kategorileri istediğini sor
   | "loading-suggest"    // AI öneriler üretiliyor
   | "suggest-pick"       // AI önerilerinden seç
+  | "chat"               // mode=chat: serbest sohbet UI
   | "loading-tryon"
   | "result";
 
@@ -44,8 +51,9 @@ type Props = {
    * "pick"    : klasik akış — fotoğraf yükle → ürün seç → giydir.
    * "tryon"   : preselected ürünle + manuel ekstra seçim → giydir.
    * "suggest" : AI 3 kombin önersin → kullanıcı seçsin → giydir.
+   * "chat"    : serbest sohbet AI stilisti, inline ürün kartları.
    */
-  mode?: "pick" | "tryon" | "suggest";
+  mode?: "pick" | "tryon" | "suggest" | "chat";
   /** Aktif cinsiyet filtresi — kategori bazında ürünler bu cinsiyete göre filtrelendi */
   gender?: "kadin" | "erkek" | "cocuk";
 };
@@ -82,6 +90,7 @@ export function KombinFlow({
   gender = "kadin",
 }: Props) {
   const _isSuggest = mode === "suggest";
+  const _isChat = mode === "chat";
   const router = useRouter();
 
   // Anchor'lar client state — kullanıcı + ile yenisini ekler, × ile çıkarır
@@ -105,7 +114,8 @@ export function KombinFlow({
     window.history.replaceState(null, "", `/kombin?${params.toString()}`);
   }, [anchors, _isSuggest]);
 
-  const [stage, setStage] = useState<Stage>("upload");
+  // chat mode: upload aşaması yok, direkt sohbet ekranı
+  const [stage, setStage] = useState<Stage>(_isChat ? "chat" : "upload");
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -321,23 +331,27 @@ export function KombinFlow({
               YAPAY ZEKA ASİSTAN
             </p>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-wide">
-              {mode === "suggest"
-                ? "AI Kombin Önerisi"
-                : mode === "tryon"
-                  ? "Üstümde Dene"
-                  : "Parça Parça Giydirme"}
+              {mode === "chat"
+                ? "AI Stilist"
+                : mode === "suggest"
+                  ? "AI Kombin Önerisi"
+                  : mode === "tryon"
+                    ? "Üstümde Dene"
+                    : "Parça Parça Giydirme"}
             </h1>
             <p className="text-sm text-[var(--color-muted)] mt-2">
-              {mode === "suggest"
-                ? preselectId
-                  ? "Seçtiğin ürüne AI birkaç kombin önersin, beğendiğini giydirelim."
-                  : "AI sana sıfırdan birkaç kombin önersin, beğendiğini giydirelim."
-                : mode === "tryon"
-                  ? "Seçili ürünü ve istediğin ek parçaları üstüne giydirelim."
-                  : "Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin."}
+              {mode === "chat"
+                ? "Ne tür bir kombin istediğini yaz, stiliste sor — sana özel ürünler önersin."
+                : mode === "suggest"
+                  ? preselectId
+                    ? "Seçtiğin ürüne AI birkaç kombin önersin, beğendiğini giydirelim."
+                    : "AI sana sıfırdan birkaç kombin önersin, beğendiğini giydirelim."
+                  : mode === "tryon"
+                    ? "Seçili ürünü ve istediğin ek parçaları üstüne giydirelim."
+                    : "Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin."}
             </p>
           </div>
-          <Stepper stage={stage} mode={mode} />
+          {mode !== "chat" && <Stepper stage={stage} mode={mode} />}
         </div>
       </header>
 
@@ -438,6 +452,13 @@ export function KombinFlow({
           resultUrl={resultUrl}
           onRestart={restart}
           onBack={() => setStage(_isSuggest ? "suggest-pick" : "pick")}
+        />
+      )}
+
+      {stage === "chat" && (
+        <ChatStage
+          gender={gender}
+          initialAnchor={anchors[0]}
         />
       )}
     </div>
@@ -1451,6 +1472,490 @@ function AnchorPickerModal({
               ))}
             </div>
           )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CHAT STAGE — serbest sohbet ile AI stilist
+// ─────────────────────────────────────────────────────────────────────────────
+
+type ChatItem = {
+  id: string;
+  name: string;
+  price: number | null;
+  type: string | null;
+  gender: string | null;
+  photo: string | null;
+  deeplink: string | null;
+  similarity_score?: number;
+  colors?: Array<{ hex: string; percentage: number }>;
+};
+
+type ChatMessage = {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  suggestedItems?: ChatItem[];
+  imagePreview?: string;
+  timestamp: number;
+};
+
+const QUICK_PROMPTS = [
+  { label: "Yağmurlu hava", prompt: "Yağmurlu bir gün için kombin öner" },
+  { label: "Düğüne uygun", prompt: "Bir akşam düğününe gideceğim, şık bir kombin öner" },
+  { label: "Ofis", prompt: "Ofiste giyebileceğim akıllı casual bir kombin" },
+  { label: "Spor", prompt: "Spor yapmak için rahat bir kombin" },
+  { label: "Kampüs", prompt: "Üniversiteye gideceğim, rahat ama şık bir kombin" },
+  { label: "Hafta sonu", prompt: "Hafta sonu dışarısı için günlük bir kombin" },
+];
+
+function ChatStage({
+  gender,
+  initialAnchor,
+}: {
+  gender: "kadin" | "erkek" | "cocuk";
+  initialAnchor?: PickableProduct;
+}) {
+  const router = useRouter();
+  const { addItem } = useCart();
+
+  const greetingId = useRef(`greet-${Date.now()}`).current;
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [
+    {
+      id: greetingId,
+      role: "assistant",
+      content: initialAnchor
+        ? `Merhaba! "${initialAnchor.name}" ile uyumlu bir kombin için ne tür bir tarz istersin? Yağmurlu hava, ofis, düğün — ne aklında varsa söyle.`
+        : "Merhaba! Sana özel bir kombin hazırlayayım. Nereye gidiyorsun, nasıl bir tarz istersin? Yazıp gönder, istersen bir kıyafet fotoğrafı da ekle.",
+      timestamp: Date.now(),
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const [pendingImage, setPendingImage] = useState<{ file: File; preview: string } | null>(null);
+  const [sending, setSending] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
+
+  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    scrollAnchorRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, sending]);
+
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 140)}px`;
+  }, [input]);
+
+  async function handleImageFile(file: File) {
+    if (file.size > 8 * 1024 * 1024) {
+      setChatError("Görsel 8 MB'ı aşamaz");
+      return;
+    }
+    if (!ALLOWED_TYPES.has(file.type)) {
+      setChatError("Sadece JPG/PNG/WEBP");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => setPendingImage({ file, preview: reader.result as string });
+    reader.readAsDataURL(file);
+  }
+
+  async function send(textOverride?: string) {
+    const text = (textOverride ?? input).trim();
+    if (!text && !pendingImage) return;
+    if (sending) return;
+
+    setChatError(null);
+    setSending(true);
+
+    const userMsg: ChatMessage = {
+      id: `m-${Date.now()}-u`,
+      role: "user",
+      content: text || "(görsel ile sordu)",
+      imagePreview: pendingImage?.preview,
+      timestamp: Date.now(),
+    };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    const imageToSend = pendingImage?.file ?? null;
+    setPendingImage(null);
+
+    // İlk turdaysak cinsiyet ipucunu history'ye gizlice ekle (backend extraction yakalar)
+    const historyForBackend = [
+      ...(messages.length === 1
+        ? [{ role: "user", content: `Ben ${gender === "erkek" ? "erkeğim" : "kadınım"}.` }]
+        : []),
+      ...messages
+        .filter((m) => m.id !== greetingId)
+        .map((m) => ({ role: m.role, content: m.content })),
+    ];
+
+    try {
+      const form = new FormData();
+      form.append("user_text", text || "Bu kıyafete uygun bir kombin önerir misin?");
+      form.append("chat_history", JSON.stringify(historyForBackend));
+      if (imageToSend) form.append("image", imageToSend, "user_image.jpg");
+
+      const res = await fetch("/api/ai/styling-chat", { method: "POST", body: form });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error ?? `Hata ${res.status}`);
+      }
+
+      const aiMsg: ChatMessage = {
+        id: `m-${Date.now()}-a`,
+        role: "assistant",
+        content: typeof data.ai_response === "string" ? data.ai_response : "",
+        suggestedItems: Array.isArray(data.suggested_items) ? data.suggested_items : [],
+        timestamp: Date.now(),
+      };
+      setMessages((prev) => [...prev, aiMsg]);
+    } catch (e) {
+      setChatError(`Stilist yanıt veremedi: ${(e as Error).message}`);
+    } finally {
+      setSending(false);
+    }
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  }
+
+  return (
+    <div className="flex flex-col h-[calc(100vh-220px)] min-h-[500px] max-h-[800px]">
+      {chatError && (
+        <div
+          className="mb-3 p-3 text-sm border-l-2"
+          style={{
+            borderColor: "var(--color-accent)",
+            backgroundColor: "var(--color-accent-soft)",
+            color: "var(--color-accent)",
+          }}
+        >
+          {chatError}
+        </div>
+      )}
+
+      {/* Quick prompts — sadece henüz mesaj atılmadıysa */}
+      {messages.length === 1 && (
+        <div className="mb-4 flex flex-wrap gap-2">
+          {QUICK_PROMPTS.map((q) => (
+            <button
+              key={q.label}
+              type="button"
+              onClick={() => send(q.prompt)}
+              disabled={sending}
+              className="text-xs px-3 py-2 border border-[var(--color-line)] hover:border-[var(--color-fg)] hover:bg-[var(--color-bg-elev)] transition-colors disabled:opacity-50"
+            >
+              {q.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Chat scroll area */}
+      <div
+        className="flex-1 overflow-y-auto pr-1 sm:pr-2 -mr-1 sm:-mr-2"
+        style={{ scrollbarWidth: "thin" }}
+      >
+        <div className="flex flex-col gap-4 pb-4">
+          {messages.map((m) => (
+            <ChatBubble
+              key={m.id}
+              message={m}
+              onAddToCart={(item) => {
+                if (item.price !== null) {
+                  addItem(item.id);
+                }
+              }}
+              onRouteToProduct={(id) => router.push(`/urun/${id}`)}
+              onTryOn={(id) =>
+                router.push(`/kombin?baseProduct=${id}&mode=tryon`)
+              }
+            />
+          ))}
+          {sending && <TypingBubble />}
+          <div ref={scrollAnchorRef} />
+        </div>
+      </div>
+
+      {/* Input alanı */}
+      <div className="mt-3 border-t border-[var(--color-line)] pt-3">
+        {pendingImage && (
+          <div className="mb-2 inline-flex items-center gap-2 bg-[var(--color-bg-elev)] border border-[var(--color-line)] pl-1 pr-2 py-1 text-xs">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={pendingImage.preview}
+              alt=""
+              className="w-8 h-10 object-cover"
+            />
+            <span>Görsel hazır</span>
+            <button
+              type="button"
+              onClick={() => setPendingImage(null)}
+              aria-label="Görseli kaldır"
+              className="text-[var(--color-muted)] hover:text-[var(--color-accent)]"
+            >
+              <X size={12} />
+            </button>
+          </div>
+        )}
+
+        <div className="flex items-end gap-2 border border-[var(--color-line)] focus-within:border-[var(--color-fg)] transition-colors bg-[var(--color-bg)] p-1.5">
+          <label
+            className="shrink-0 w-9 h-9 flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-fg)] cursor-pointer transition-colors"
+            title="Görsel ekle"
+          >
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) handleImageFile(f);
+              }}
+            />
+            <ImageIcon size={18} />
+          </label>
+
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={onKeyDown}
+            disabled={sending}
+            rows={1}
+            placeholder="Bir mesaj yaz… örn. 'yağmurlu hava için kombin öner'"
+            className="flex-1 bg-transparent outline-none text-sm py-2 resize-none leading-relaxed disabled:opacity-50 placeholder:text-[var(--color-muted)]"
+            style={{ maxHeight: 140 }}
+          />
+
+          <button
+            type="button"
+            onClick={() => send()}
+            disabled={sending || (!input.trim() && !pendingImage)}
+            aria-label="Gönder"
+            className="shrink-0 w-9 h-9 flex items-center justify-center bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            {sending ? (
+              <Loader2 size={16} className="animate-spin" />
+            ) : (
+              <Send size={16} />
+            )}
+          </button>
+        </div>
+        <p className="text-[10px] text-[var(--color-muted)] mt-1.5 px-1">
+          Shift+Enter ile satır atla · Enter ile gönder · Foto eklersen üzerindeki kıyafetleri analiz eder
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+function ChatBubble({
+  message,
+  onAddToCart,
+  onRouteToProduct,
+  onTryOn,
+}: {
+  message: ChatMessage;
+  onAddToCart: (item: ChatItem) => void;
+  onRouteToProduct: (id: string) => void;
+  onTryOn: (id: string) => void;
+}) {
+  const isUser = message.role === "user";
+
+  return (
+    <div className={`flex ${isUser ? "justify-end" : "justify-start"} gap-2`}>
+      {!isUser && (
+        <div
+          className="w-8 h-8 shrink-0 flex items-center justify-center text-white"
+          style={{ backgroundColor: "var(--color-accent)" }}
+        >
+          <Sparkles size={14} />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-2 max-w-[88%] sm:max-w-[80%]">
+        <div
+          className={`px-4 py-3 text-sm leading-relaxed ${
+            isUser
+              ? "bg-[var(--color-fg)] text-[var(--color-bg)]"
+              : "bg-[var(--color-bg-elev)] border border-[var(--color-line)] text-[var(--color-fg)]"
+          }`}
+        >
+          {message.imagePreview && isUser && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={message.imagePreview}
+              alt="yüklenen"
+              className="block max-w-[200px] mb-2 border border-white/20"
+            />
+          )}
+          <p className="whitespace-pre-wrap">{message.content}</p>
+        </div>
+
+        {!isUser && message.suggestedItems && message.suggestedItems.length > 0 && (
+          <div className="flex flex-col gap-2">
+            <p className="meta flex items-center gap-1.5 text-[var(--color-muted)]">
+              <Sparkles size={11} className="text-[var(--color-accent)]" />
+              ÖNERILEN PARÇALAR
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {message.suggestedItems.slice(0, 6).map((item) => (
+                <ProductRecommendCard
+                  key={item.id}
+                  item={item}
+                  onAddToCart={() => onAddToCart(item)}
+                  onView={() => onRouteToProduct(item.id)}
+                  onTryOn={() => onTryOn(item.id)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+function ProductRecommendCard({
+  item,
+  onAddToCart,
+  onView,
+  onTryOn,
+}: {
+  item: ChatItem;
+  onAddToCart: () => void;
+  onView: () => void;
+  onTryOn: () => void;
+}) {
+  const [added, setAdded] = useState(false);
+
+  return (
+    <div
+      className="group flex gap-3 border border-[var(--color-line)] hover:border-[var(--color-fg)] transition-colors p-2"
+      style={{ backgroundColor: "var(--color-bg)" }}
+    >
+      <button
+        type="button"
+        onClick={onView}
+        aria-label={item.name}
+        className="relative w-16 h-20 shrink-0 overflow-hidden bg-[var(--color-bg-elev)]"
+      >
+        {item.photo ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={item.photo}
+            alt={item.name}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-[10px] text-[var(--color-muted)]">
+            Foto yok
+          </div>
+        )}
+      </button>
+
+      <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+        <button
+          type="button"
+          onClick={onView}
+          className="text-xs font-medium leading-tight line-clamp-2 text-left hover:underline"
+        >
+          {item.name}
+        </button>
+        <div className="flex items-center gap-2">
+          {item.price !== null && (
+            <span className="text-xs font-semibold">
+              {item.price.toLocaleString("tr-TR")} TL
+            </span>
+          )}
+          {item.similarity_score !== undefined && (
+            <span className="text-[10px] text-[var(--color-muted)]">
+              {Math.round(item.similarity_score * 100)}% uyum
+            </span>
+          )}
+        </div>
+
+        {item.colors && item.colors.length > 0 && (
+          <div className="flex items-center gap-1">
+            {item.colors.slice(0, 3).map((c, i) => (
+              <span
+                key={i}
+                className="w-3 h-3 border border-[var(--color-line)]"
+                style={{ backgroundColor: c.hex }}
+                title={`${c.hex} ${Math.round(c.percentage)}%`}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-1.5 mt-auto">
+          <button
+            type="button"
+            onClick={() => {
+              onAddToCart();
+              setAdded(true);
+              setTimeout(() => setAdded(false), 1500);
+            }}
+            disabled={item.price === null}
+            className={`flex-1 text-[11px] font-medium px-2 py-1.5 transition-colors flex items-center justify-center gap-1 ${
+              added
+                ? "bg-[var(--color-accent)] text-white"
+                : "bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)]"
+            } disabled:opacity-30 disabled:cursor-not-allowed`}
+          >
+            {added ? (
+              <>
+                <Check size={11} /> Eklendi
+              </>
+            ) : (
+              <>
+                <ShoppingBag size={11} /> Sepete
+              </>
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={onTryOn}
+            title="Üstümde dene"
+            className="text-[11px] font-medium px-2 py-1.5 border border-[var(--color-line-strong)] hover:border-[var(--color-fg)] transition-colors flex items-center justify-center"
+          >
+            <Sparkles size={11} className="text-[var(--color-accent)]" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+function TypingBubble() {
+  return (
+    <div className="flex justify-start gap-2">
+      <div
+        className="w-8 h-8 shrink-0 flex items-center justify-center text-white"
+        style={{ backgroundColor: "var(--color-accent)" }}
+      >
+        <Sparkles size={14} />
+      </div>
+      <div className="bg-[var(--color-bg-elev)] border border-[var(--color-line)] px-4 py-3">
+        <div className="flex items-center gap-1">
+          <span className="w-1.5 h-1.5 bg-[var(--color-fg-soft)] rounded-full animate-pulse" />
+          <span className="w-1.5 h-1.5 bg-[var(--color-fg-soft)] rounded-full animate-pulse [animation-delay:200ms]" />
+          <span className="w-1.5 h-1.5 bg-[var(--color-fg-soft)] rounded-full animate-pulse [animation-delay:400ms]" />
         </div>
       </div>
     </div>

@@ -98,9 +98,8 @@ export default function HomePage() {
 
       {/* AI Kombin CTA banner */}
       <section className="px-4 sm:px-6 lg:px-10 my-8 max-w-7xl mx-auto w-full">
-        <Link
-          href="/kombin?mode=suggest"
-          className="relative block overflow-hidden group"
+        <div
+          className="relative block overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg, #0f0f0f 0%, #1c1c1c 55%, #2a2a2a 100%)",
@@ -115,7 +114,6 @@ export default function HomePage() {
                   "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
               }}
             />
-            {/* Noktalar */}
             <span className="absolute top-10 right-16 w-1.5 h-1.5 bg-white opacity-30" />
             <span className="absolute top-24 right-32 w-2.5 h-2.5 bg-white opacity-20" />
             <span className="absolute top-40 right-12 w-1 h-1 bg-white opacity-40" />
@@ -144,19 +142,36 @@ export default function HomePage() {
             </h2>
 
             <p className="text-white/70 text-sm sm:text-base max-w-md mb-8 leading-relaxed">
-              Fotoğrafını yükle, yapay zeka stiline uygun kombini hazırlasın
-              ve <span className="text-white">üzerine giydirsin</span>.
+              İki yol var: AI sana 3 hazır kombin önersin, veya sohbet ederek
+              <span className="text-white"> tam istediğin tarzı</span> tarif et.
             </p>
 
-            <div className="inline-flex items-center gap-3 bg-white text-black group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors px-6 py-3.5 text-sm font-medium tracking-wide">
-              Hemen Dene
-              <ArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/kombin?mode=suggest"
+                className="group/btn inline-flex items-center gap-2 bg-white text-black hover:bg-[var(--color-accent)] hover:text-white transition-colors px-6 py-3.5 text-sm font-medium tracking-wide"
+              >
+                <Wand2 size={16} />
+                Hazır Öneri Al
+                <ArrowRight
+                  size={16}
+                  className="group-hover/btn:translate-x-1 transition-transform"
+                />
+              </Link>
+              <Link
+                href="/kombin?mode=chat"
+                className="group/btn inline-flex items-center gap-2 bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-colors px-6 py-3.5 text-sm font-medium tracking-wide"
+              >
+                <Sparkles size={16} />
+                Stilist'le Sohbet Et
+                <ArrowRight
+                  size={16}
+                  className="group-hover/btn:translate-x-1 transition-transform"
+                />
+              </Link>
             </div>
           </div>
-        </Link>
+        </div>
       </section>
 
       {/* Kategoriden Seç */}
