@@ -18,7 +18,10 @@ export type PickableProduct = {
   photo: string | null;
 };
 
-const MAX_PER_CATEGORY = 60; // Kombin önericinin yelpazesi yeterince geniş
+// Pratik olarak sınır yok — feed'deki en kalabalık kategori bile bunun altında.
+// Bu sayı sadece bug/feed-poisoning karşı koruma; client'a ürünler [kadın, erkek]
+// sırayla iniyor, kullanıcı gender toggle ile ayırıyor.
+const MAX_PER_CATEGORY = 500;
 
 function isValidGender(v: string | undefined): v is Gender {
   return v === "kadin" || v === "erkek" || v === "cocuk";
