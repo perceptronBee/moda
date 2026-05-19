@@ -28,18 +28,43 @@ const GEMINI_MODEL = "gemini-2.5-flash-image";
 
 // ──────────────────────────────────────────────────────────────────────────
 // Resize → JPEG → base64 (Gemini inlineData için)
+// Person foto: 3:4 portre kanvasa pad et (Gemini kırpma yapmasın diye).
+// Garment fotoları: resize yeter, ratio dokunulmaz.
 // ──────────────────────────────────────────────────────────────────────────
 async function blobToParts(
   blob: Blob,
-  maxDim = 1024,
-): Promise<{ mimeType: string; data: string }> {
+  opts: { padToPortrait?: boolean; maxDim?: number } = {},
+): Promise<{
+  part: { mimeType: string; data: string };
+  width: number;
+  height: number;
+}> {
+  const { padToPortrait = false, maxDim = 1024 } = opts;
   const inputBuf = Buffer.from(await blob.arrayBuffer());
-  const resized = await sharp(inputBuf)
-    .rotate()
-    .resize(maxDim, maxDim, { fit: "inside", withoutEnlargement: true })
-    .jpeg({ quality: 88 })
-    .toBuffer();
-  return { mimeType: "image/jpeg", data: resized.toString("base64") };
+  let pipeline = sharp(inputBuf).rotate();
+
+  if (padToPortrait) {
+    const targetW = 768;
+    const targetH = 1024;
+    pipeline = pipeline.resize(targetW, targetH, {
+      fit: "contain",
+      background: { r: 240, g: 240, b: 240 },
+      withoutEnlargement: false,
+    });
+  } else {
+    pipeline = pipeline.resize(maxDim, maxDim, {
+      fit: "inside",
+      withoutEnlargement: true,
+    });
+  }
+
+  const out = await pipeline.jpeg({ quality: 88 }).toBuffer();
+  const meta = await sharp(out).metadata();
+  return {
+    part: { mimeType: "image/jpeg", data: out.toString("base64") },
+    width: meta.width ?? maxDim,
+    height: meta.height ?? maxDim,
+  };
 }
 
 // ──────────────────────────────────────────────────────────────────────────
@@ -135,10 +160,15 @@ export async function callVtonTryOn(input: TryOnInput): Promise<TryOnResult> {
 
   try {
     // 1. Tüm görselleri Gemini parts formatına çevir
-    const personPart = await blobToParts(input.baseImage);
-    const garmentParts = await Promise.all(
+    //    Person fotoğrafı 3:4 portre kanvasa pad — Gemini başı kırpmasın
+    const personResult = await blobToParts(input.baseImage, {
+      padToPortrait: true,
+    });
+    const personPart = personResult.part;
+    const garmentResults = await Promise.all(
       input.itemImages.map((b) => blobToParts(b)),
     );
+    const garmentParts = garmentResults.map((g) => g.part);
 
     // 2. Garment tiplerini sınıflandır
     const garmentTypes = await Promise.all(
