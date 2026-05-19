@@ -14,22 +14,40 @@ import {
   X,
   Shirt,
   Footprints,
+  Plus,
+  Search,
 } from "lucide-react";
 import type { PickableProduct } from "./page";
 
-type Stage = "upload" | "pick" | "loading-tryon" | "result";
+type Stage =
+  | "upload"
+  | "pick"
+  | "suggest-categories" // suggest modunda: hangi kategorileri istediğini sor
+  | "loading-suggest"    // AI öneriler üretiliyor
+  | "suggest-pick"       // AI önerilerinden seç
+  | "loading-tryon"
+  | "result";
+
+type Suggestion = {
+  id: string;
+  title: string;
+  reasoning: string;
+  items: PickableProduct[];
+};
 
 type Props = {
   groupedProducts: Record<string, PickableProduct[]>;
   categoryLabels: Record<string, string>;
-  preselectId?: string;
-  preselectCategory?: string;
+  /** URL'den gelen başlangıç parçaları — suggest modda anchor olarak kullanılır */
+  anchors?: PickableProduct[];
   /**
-   * "tryon-only": ürün önceden seçili, fotoğraf yüklenince direkt try-on'a geç.
-   *               Çoklu seçim UI'sı gizlenir.
-   * "pick"      : klasik akış — fotoğraf yükle → ürün seç → giydir.
+   * "pick"    : klasik akış — fotoğraf yükle → ürün seç → giydir.
+   * "tryon"   : preselected ürünle + manuel ekstra seçim → giydir.
+   * "suggest" : AI 3 kombin önersin → kullanıcı seçsin → giydir.
    */
-  mode?: "pick" | "tryon-only";
+  mode?: "pick" | "tryon" | "suggest";
+  /** Aktif cinsiyet filtresi — kategori bazında ürünler bu cinsiyete göre filtrelendi */
+  gender?: "kadin" | "erkek" | "cocuk";
 };
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -59,35 +77,70 @@ const CATEGORY_ICONS: Record<string, typeof Shirt> = {
 export function KombinFlow({
   groupedProducts,
   categoryLabels,
-  preselectId,
-  preselectCategory,
+  anchors: initialAnchors = [],
   mode = "pick",
+  gender = "kadin",
 }: Props) {
+  const _isSuggest = mode === "suggest";
   const router = useRouter();
+
+  // Anchor'lar client state — kullanıcı + ile yenisini ekler, × ile çıkarır
+  const [anchors, setAnchors] = useState<PickableProduct[]>(initialAnchors);
+
+  const preselectId = anchors[0]?.id;
+  const preselectCategory = anchors[0]?.type;
+
+  // URL'yi anchor değişimine göre senkronla (paylaşılabilirlik için)
+  useEffect(() => {
+    if (!_isSuggest) return;
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    params.set("mode", "suggest");
+    params.delete("baseProduct");
+    if (anchors.length > 0) {
+      params.set("baseProducts", anchors.map((a) => a.id).join(","));
+    } else {
+      params.delete("baseProducts");
+    }
+    window.history.replaceState(null, "", `/kombin?${params.toString()}`);
+  }, [anchors, _isSuggest]);
 
   const [stage, setStage] = useState<Stage>("upload");
   const [photo, setPhoto] = useState<string | null>(null);
   const [photoFile, setPhotoFile] = useState<File | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
 
-  // preselectId varsa, o ürün başlangıçta seçili gelir
+  // Anchor'lar başlangıçta seçili gelir (tryon/pick için)
   const [selected, setSelected] = useState<Map<string, PickableProduct>>(() => {
-    if (!preselectId) return new Map();
     const m = new Map<string, PickableProduct>();
-    for (const list of Object.values(groupedProducts)) {
-      const found = list.find((p) => p.id === preselectId);
-      if (found) {
-        m.set(found.id, found);
-        break;
-      }
-    }
+    for (const a of initialAnchors) m.set(a.id, a);
     return m;
   });
 
   const [activeCategory, setActiveCategory] = useState<string>(
     preselectCategory ?? Object.keys(groupedProducts)[0] ?? "ust-giyim",
   );
-  const [resultUrl, setResultUrl] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+
+  function addAnchor(p: PickableProduct) {
+    setAnchors((prev) => {
+      if (prev.find((a) => a.id === p.id)) return prev;
+      // Aynı kategoriden 2. parça engelle
+      if (prev.find((a) => a.type === p.type)) {
+        setError(
+          `${categoryLabels[p.type] ?? p.type} kategorisinden zaten bir başlangıç parçan var. Önce onu çıkar.`,
+        );
+        setTimeout(() => setError(null), 3500);
+        return prev;
+      }
+      if (prev.length >= 5) return prev;
+      return [...prev, p];
+    });
+  }
+  function removeAnchor(id: string) {
+    setAnchors((prev) => prev.filter((a) => a.id !== id));
+  }
 
   const abortRef = useRef<AbortController | null>(null);
   useEffect(() => {
@@ -113,6 +166,53 @@ export function KombinFlow({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // ─── AI suggestion fetch ───────────────────────────────────────────
+  async function fetchSuggestions(categories: string[]) {
+    if (categories.length === 0) {
+      setError("En az bir kategori seç");
+      return;
+    }
+    setStage("loading-suggest");
+    setError(null);
+    try {
+      const res = await fetch("/api/ai/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          baseProductIds: anchors.map((a) => a.id),
+          gender,
+          categories,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "AI öneri alınamadı");
+        setStage("upload");
+        return;
+      }
+      const list: Suggestion[] = Array.isArray(data.suggestions)
+        ? data.suggestions
+        : [];
+      if (list.length === 0) {
+        setError("Bu seçimlere uygun kombin bulunamadı");
+        setStage("upload");
+        return;
+      }
+      setSuggestions(list);
+      setStage("suggest-pick");
+    } catch (e) {
+      setError(`Öneri hatası: ${(e as Error).message}`);
+      setStage("upload");
+    }
+  }
+
+  function chooseSuggestion(s: Suggestion) {
+    const m = new Map<string, PickableProduct>();
+    for (const it of s.items) m.set(it.id, it);
+    setSelected(m); // ResultStage'in görmesi için
+    tryOn(s.items); // Race condition önlemek için direkt items ile çağır
+  }
+
   // ─── Ürün seçimi ───────────────────────────────────────────────────
   function toggleProduct(p: PickableProduct) {
     setSelected((prev) => {
@@ -120,6 +220,12 @@ export function KombinFlow({
       if (next.has(p.id)) {
         next.delete(p.id);
       } else {
+        // Aynı kategoriden (type) başka bir ürün varsa onu kaldır
+        for (const [existingId, existingItem] of next.entries()) {
+          if (existingItem.type === p.type) {
+            next.delete(existingId);
+          }
+        }
         if (next.size >= 5) {
           setError("En fazla 5 parça seçebilirsin");
           return prev;
@@ -132,13 +238,14 @@ export function KombinFlow({
   }
 
   // ─── Try-on ────────────────────────────────────────────────────────
-  async function tryOn() {
-    if (!photoFile || selected.size === 0) return;
+  async function tryOn(itemsOverride?: PickableProduct[]) {
+    const items = Array.isArray(itemsOverride)
+      ? itemsOverride
+      : Array.from(selected.values());
+    if (!photoFile || items.length === 0) return;
     setStage("loading-tryon");
     setError(null);
 
-    // Seçilen ürünlerin fotolarını blob olarak indir
-    const items = Array.from(selected.values());
     const itemBlobs: Blob[] = [];
     for (const item of items) {
       if (!item.photo) continue;
@@ -160,9 +267,8 @@ export function KombinFlow({
     );
 
     try {
-      // Tek endpoint: Next route → Gemini 2.5 Flash Image (Nano Banana)
       const res = await fetch("/api/ai/try-on", { method: "POST", body: form });
-      
+
       let data;
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
@@ -195,7 +301,6 @@ export function KombinFlow({
     setError(null);
   }
 
-  // ─── Seçili ürünlerin toplamı ──────────────────────────────────────
   const selectedItems = Array.from(selected.values());
   const totalPrice = selectedItems.reduce((acc, p) => acc + p.price, 0);
 
@@ -216,12 +321,20 @@ export function KombinFlow({
               YAPAY ZEKA ASİSTAN
             </p>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl tracking-wide">
-              {mode === "tryon-only" ? "Üstümde Dene" : "Parça Parça Giydirme"}
+              {mode === "suggest"
+                ? "AI Kombin Önerisi"
+                : mode === "tryon"
+                  ? "Üstümde Dene"
+                  : "Parça Parça Giydirme"}
             </h1>
             <p className="text-sm text-[var(--color-muted)] mt-2">
-              {mode === "tryon-only"
-                ? "Fotoğrafını yükle, seçtiğin ürünü AI sana giydirsin."
-                : "Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin."}
+              {mode === "suggest"
+                ? preselectId
+                  ? "Seçtiğin ürüne AI birkaç kombin önersin, beğendiğini giydirelim."
+                  : "AI sana sıfırdan birkaç kombin önersin, beğendiğini giydirelim."
+                : mode === "tryon"
+                  ? "Seçili ürünü ve istediğin ek parçaları üstüne giydirelim."
+                  : "Kategorilerden dilediğin parçaları seç, AI üzerine giydirsin."}
             </p>
           </div>
           <Stepper stage={stage} mode={mode} />
@@ -247,14 +360,46 @@ export function KombinFlow({
           onFile={handlePhotoFile}
           onDrop={onDrop}
           onContinue={() => {
-            // tryon-only modunda: ürün zaten preselect, picker'a uğramadan direkt giydirme
-            if (mode === "tryon-only" && selected.size > 0) {
-              tryOn();
+            if (_isSuggest) {
+              setStage("suggest-categories");
             } else {
               setStage("pick");
             }
           }}
-          ctaLabel={mode === "tryon-only" ? "Üstümde Dene" : "Devam Et"}
+          ctaLabel={_isSuggest ? "DEVAM ET" : "PARÇA SEÇ"}
+        />
+      )}
+
+      {stage === "suggest-categories" && (
+        <SuggestCategoriesStage
+          photo={photo!}
+          categoryLabels={categoryLabels}
+          availableCategories={Object.keys(groupedProducts)}
+          groupedProducts={groupedProducts}
+          anchors={anchors}
+          gender={gender}
+          onAddAnchor={addAnchor}
+          onRemoveAnchor={removeAnchor}
+          onBack={() => setStage("upload")}
+          onSubmit={(cats) => fetchSuggestions(cats)}
+        />
+      )}
+
+      {stage === "loading-suggest" && (
+        <div className="flex flex-col items-center justify-center min-h-[60vh] gap-5">
+          <Loader2 className="animate-spin text-[var(--color-accent)]" size={42} />
+          <p className="text-sm font-medium text-center">
+            Yapay zeka sana uygun kombinleri hazırlıyor…
+          </p>
+        </div>
+      )}
+
+      {stage === "suggest-pick" && (
+        <SuggestPickStage
+          photo={photo!}
+          suggestions={suggestions}
+          onChoose={chooseSuggestion}
+          onBack={() => setStage("suggest-categories")}
         />
       )}
 
@@ -269,8 +414,10 @@ export function KombinFlow({
           toggleProduct={toggleProduct}
           selectedItems={selectedItems}
           totalPrice={totalPrice}
-          onTryOn={tryOn}
+          onTryOn={() => tryOn()}
           onBack={() => setStage("upload")}
+          onClearSelected={() => setSelected(new Map())}
+          gender={gender}
         />
       )}
 
@@ -290,7 +437,7 @@ export function KombinFlow({
           totalPrice={totalPrice}
           resultUrl={resultUrl}
           onRestart={restart}
-          onBack={() => setStage("pick")}
+          onBack={() => setStage(_isSuggest ? "suggest-pick" : "pick")}
         />
       )}
     </div>
@@ -298,18 +445,31 @@ export function KombinFlow({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-function Stepper({ stage, mode = "pick" }: { stage: Stage; mode?: "pick" | "tryon-only" }) {
-  const steps = mode === "tryon-only" ? ["Fotoğraf", "Sonuç"] : ["Fotoğraf", "Parça Seç", "Sonuç"];
-  const idx =
-    mode === "tryon-only"
-      ? stage === "upload"
-        ? 0
-        : 1
-      : stage === "upload"
-        ? 0
-        : stage === "pick"
-          ? 1
-          : 2;
+function Stepper({
+  stage,
+  mode = "pick",
+}: {
+  stage: Stage;
+  mode?: "pick" | "tryon" | "suggest";
+}) {
+  const steps =
+    mode === "suggest"
+      ? ["Fotoğraf", "AI Önerisi", "Sonuç"]
+      : ["Fotoğraf", "Parça Seç", "Sonuç"];
+
+  let idx = 0;
+  if (mode === "suggest") {
+    if (
+      stage === "suggest-categories" ||
+      stage === "loading-suggest" ||
+      stage === "suggest-pick"
+    )
+      idx = 1;
+    else if (stage === "loading-tryon" || stage === "result") idx = 2;
+  } else {
+    if (stage === "pick") idx = 1;
+    else if (stage === "loading-tryon" || stage === "result") idx = 2;
+  }
 
   return (
     <div className="hidden md:flex items-center gap-3">
@@ -384,7 +544,9 @@ function UploadStage({
         <label
           onDragOver={(e) => e.preventDefault()}
           onDrop={onDrop}
-          className="block border-2 border-dashed border-[var(--color-line-strong)] hover:border-[var(--color-fg)] transition-colors aspect-[3/4] max-h-[480px] relative cursor-pointer"
+          className={`block border-2 border-dashed border-[var(--color-line-strong)] hover:border-[var(--color-fg)] transition-colors relative cursor-pointer ${
+            photo ? "" : "aspect-[3/4] max-h-[480px]"
+          }`}
           style={{ backgroundColor: "var(--color-bg-elev)" }}
         >
           <input
@@ -398,7 +560,11 @@ function UploadStage({
           />
           {photo ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={photo} alt="yüklenen" className="absolute inset-0 w-full h-full object-cover" />
+            <img
+              src={photo}
+              alt="yüklenen"
+              className="block w-full h-auto max-h-[600px] object-contain"
+            />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-[var(--color-muted)]">
               <Upload size={32} />
@@ -422,6 +588,351 @@ function UploadStage({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+function SuggestCategoriesStage({
+  photo,
+  categoryLabels,
+  availableCategories,
+  groupedProducts,
+  anchors,
+  gender,
+  onAddAnchor,
+  onRemoveAnchor,
+  onBack,
+  onSubmit,
+}: {
+  photo: string;
+  categoryLabels: Record<string, string>;
+  availableCategories: string[];
+  groupedProducts: Record<string, PickableProduct[]>;
+  anchors: PickableProduct[];
+  gender: "kadin" | "erkek" | "cocuk";
+  onAddAnchor: (p: PickableProduct) => void;
+  onRemoveAnchor: (id: string) => void;
+  onBack: () => void;
+  onSubmit: (categories: string[]) => void;
+}) {
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const anchorCategorySet = new Set<string>(anchors.map((a) => a.type));
+  const selectable = availableCategories;
+
+  // Default: anchor kategorileri hariç tümü seçili
+  const [selected, setSelected] = useState<Set<string>>(
+    () => new Set(selectable.filter((c) => !anchorCategorySet.has(c))),
+  );
+
+  function toggle(cat: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
+  }
+
+  const allSelected = selected.size === selectable.length && selectable.length > 0;
+  function toggleAll() {
+    setSelected((prev) =>
+      prev.size === selectable.length ? new Set() : new Set(selectable),
+    );
+  }
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+      {/* Sol: fotoğraf */}
+      <div className="lg:w-80 shrink-0 flex flex-col gap-3">
+        <button
+          onClick={onBack}
+          className="text-sm text-[var(--color-muted)] hover:text-[var(--color-fg)] flex items-center gap-2 self-start py-2"
+        >
+          <ArrowLeft size={14} /> Fotoğrafı Değiştir
+        </button>
+        <div
+          className="relative w-full aspect-[3/4] max-h-[60vh] lg:max-h-none overflow-hidden"
+          style={{ backgroundColor: "var(--color-bg-elev)" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={photo}
+            alt="sen"
+            className="absolute inset-0 w-full h-full object-contain"
+          />
+          <span className="absolute top-3 left-3 bg-[var(--color-fg)] text-[var(--color-bg)] text-[10px] font-medium tracking-wider px-2 py-1">
+            SENİN FOTOĞRAFIN
+          </span>
+        </div>
+      </div>
+
+      {/* Sağ: kategori seçimi */}
+      <div className="flex-1 min-w-0 flex flex-col gap-5 lg:gap-6">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div className="min-w-0 flex-1">
+            <h2 className="font-display text-xl sm:text-2xl tracking-wide leading-tight mb-2">
+              Hangi parçalar için öneri istiyorsun?
+            </h2>
+            <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+              Seçtiğin kategorilere göre AI sana 3 farklı kombin önerecek.
+            </p>
+          </div>
+          {selectable.length > 1 && (
+            <button
+              onClick={toggleAll}
+              className="text-xs text-[var(--color-fg-soft)] hover:text-[var(--color-fg)] underline decoration-[var(--color-line)] underline-offset-4 transition-colors whitespace-nowrap shrink-0"
+            >
+              {allSelected ? "Tümünü Kaldır" : "Tümünü Seç"}
+            </button>
+          )}
+        </div>
+
+        {/* Anchor (başlangıç parçaları) chips + ekleme butonu */}
+        <div
+          className="border-l-2 px-4 py-3 flex flex-col gap-3"
+          style={{
+            backgroundColor:
+              anchors.length > 0
+                ? "var(--color-accent-soft)"
+                : "var(--color-bg-elev)",
+            borderColor:
+              anchors.length > 0
+                ? "var(--color-accent)"
+                : "var(--color-line-strong)",
+          }}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <p className="text-xs sm:text-sm">
+              <Sparkles
+                size={14}
+                className="inline mr-1.5 -mt-0.5 text-[var(--color-accent)]"
+              />
+              <span className="font-semibold">
+                {anchors.length === 0
+                  ? "Elinde bir parça var mı?"
+                  : anchors.length === 1
+                    ? "Başlangıç parçan"
+                    : `${anchors.length} başlangıç parçan`}
+              </span>
+              <span className="text-[var(--color-fg-soft)] ml-1.5">
+                {anchors.length === 0
+                  ? "— eklersen AI kombini etrafında kurar"
+                  : "— her kombinde yer alacak"}
+              </span>
+            </p>
+            <button
+              type="button"
+              onClick={() => setPickerOpen(true)}
+              disabled={anchors.length >= 5}
+              className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-[var(--color-fg)] hover:text-[var(--color-accent)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
+            >
+              <Plus size={14} strokeWidth={2.5} />
+              Parça Ekle
+            </button>
+          </div>
+
+          {anchors.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {anchors.map((a) => (
+                <span
+                  key={a.id}
+                  className="inline-flex items-center gap-2 bg-white border border-[var(--color-line)] pl-1 pr-2 py-1 text-xs"
+                >
+                  {a.photo && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={a.photo}
+                      alt=""
+                      className="w-7 h-9 object-cover"
+                    />
+                  )}
+                  <span className="font-medium max-w-[140px] truncate">
+                    {a.name}
+                  </span>
+                  <span className="text-[var(--color-muted)] text-[10px] uppercase tracking-wider hidden sm:inline">
+                    {categoryLabels[a.type] ?? a.type}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onRemoveAnchor(a.id)}
+                    aria-label={`${a.name} parçasını çıkar`}
+                    className="ml-1 text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors"
+                  >
+                    <X size={12} />
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {pickerOpen && (
+          <AnchorPickerModal
+            groupedProducts={groupedProducts}
+            categoryLabels={categoryLabels}
+            gender={gender}
+            existingIds={new Set(anchors.map((a) => a.id))}
+            usedCategories={new Set(anchors.map((a) => a.type))}
+            onPick={(p) => {
+              onAddAnchor(p);
+              setPickerOpen(false);
+            }}
+            onClose={() => setPickerOpen(false)}
+          />
+        )}
+
+        {/* Kategori grid */}
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+          {selectable.map((cat) => {
+            const isSelected = selected.has(cat);
+            const hasAnchor = anchorCategorySet.has(cat);
+            const Icon = CATEGORY_ICONS[cat] ?? Shirt;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => toggle(cat)}
+                className={`relative flex flex-col items-start gap-3 p-3 sm:p-4 border text-left transition-all min-h-[100px] sm:min-h-[120px] ${
+                  isSelected
+                    ? "border-[var(--color-fg)] bg-[var(--color-bg-elev)] shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+                    : "border-[var(--color-line)] hover:border-[var(--color-fg-soft)] active:border-[var(--color-fg)]"
+                }`}
+              >
+                <div className="w-full flex items-center justify-between">
+                  <span
+                    className={`w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0 transition-colors ${
+                      isSelected
+                        ? "bg-[var(--color-fg)] text-[var(--color-bg)]"
+                        : "bg-[var(--color-bg-soft)] text-[var(--color-fg-soft)]"
+                    }`}
+                  >
+                    <Icon size={16} />
+                  </span>
+                  <span
+                    className={`w-5 h-5 border-2 flex items-center justify-center shrink-0 transition-all ${
+                      isSelected
+                        ? "bg-[var(--color-accent)] border-[var(--color-accent)] text-white"
+                        : "border-[var(--color-line-strong)]"
+                    }`}
+                  >
+                    {isSelected && <Check size={12} strokeWidth={3} />}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm sm:text-base font-medium leading-tight">
+                    {categoryLabels[cat] ?? cat}
+                  </span>
+                  {hasAnchor && (
+                    <span className="text-[10px] uppercase tracking-wider text-[var(--color-muted)]">
+                      Elinde var · alternatif öner
+                    </span>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-2 lg:mt-4">
+          <button
+            onClick={() => onSubmit(Array.from(selected))}
+            disabled={selected.size === 0}
+            className="w-full bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-all py-4 text-sm font-medium tracking-wide flex items-center justify-center gap-2"
+          >
+            <Sparkles size={16} />
+            {selected.size > 0
+              ? `${selected.size} KATEGORİ İÇİN KOMBİN ÖNER`
+              : "EN AZ 1 KATEGORİ SEÇ"}
+          </button>
+          <p className="text-[11px] text-[var(--color-muted)] text-center mt-2">
+            AI önerilerini 5-10 saniye içinde göreceksin
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+function SuggestPickStage({
+  photo,
+  suggestions,
+  onChoose,
+  onBack,
+}: {
+  photo: string;
+  suggestions: Suggestion[];
+  onChoose: (s: Suggestion) => void;
+  onBack: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-6 lg:gap-8">
+      <div className="flex items-end justify-between mb-2 flex-wrap gap-4">
+        <div>
+          <button
+            onClick={onBack}
+            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-fg)] flex items-center gap-2 mb-4"
+          >
+            <ArrowLeft size={14} /> Geri Dön
+          </button>
+          <h2 className="font-display text-2xl tracking-wide flex items-center gap-2">
+            <Sparkles size={20} className="text-[var(--color-accent)]" />
+            AI Kombin Önerileri
+          </h2>
+          <p className="text-sm text-[var(--color-muted)] mt-1">
+            Beğendiğin kombini seç, üzerinde deneyelim.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {suggestions.map((s) => (
+          <div
+            key={s.id}
+            className="border border-[var(--color-line)] p-5 flex flex-col h-full hover:border-[var(--color-fg)] transition-colors"
+            style={{ backgroundColor: "var(--color-bg-elev)" }}
+          >
+            <h3 className="font-display text-xl mb-2">{s.title}</h3>
+            <p className="text-xs text-[var(--color-muted)] mb-6 min-h-[3rem]">
+              {s.reasoning}
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {s.items.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative aspect-[3/4] border border-[var(--color-line)] bg-[var(--color-bg)]"
+                >
+                  {item.photo ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={item.photo}
+                      alt={item.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-line)] text-xs text-[var(--color-muted)]">
+                      Foto Yok
+                    </div>
+                  )}
+                  <span className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-[10px] truncate px-1.5 py-1 text-center">
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => onChoose(s)}
+              className="mt-auto w-full bg-[var(--color-fg)] text-[var(--color-bg)] py-3.5 text-sm font-medium tracking-wide hover:bg-[var(--color-accent)] transition-colors"
+            >
+              BU KOMBİNİ GİYDİR
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 function PickStage({
   photo,
   groupedProducts,
@@ -434,6 +945,8 @@ function PickStage({
   totalPrice,
   onTryOn,
   onBack,
+  onClearSelected,
+  gender,
 }: {
   photo: string;
   groupedProducts: Record<string, PickableProduct[]>;
@@ -446,9 +959,18 @@ function PickStage({
   totalPrice: number;
   onTryOn: () => void;
   onBack: () => void;
+  onClearSelected: () => void;
+  gender: "kadin" | "erkek" | "cocuk";
 }) {
   const categories = Object.keys(groupedProducts);
-  const currentProducts = groupedProducts[activeCategory] ?? [];
+  const [activeGender, setActiveGender] = useState<"kadin" | "erkek">(
+    gender === "erkek" ? "erkek" : "kadin",
+  );
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const currentProducts = (groupedProducts[activeCategory] ?? [])
+    .filter((p) => p.gender === activeGender)
+    .filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
@@ -466,25 +988,40 @@ function PickStage({
           style={{ backgroundColor: "var(--color-bg-elev)" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={photo} alt="sen" className="absolute inset-0 w-full h-full object-cover" />
+          <img
+            src={photo}
+            alt="sen"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <span className="absolute top-2 left-2 bg-[var(--color-fg)] text-[var(--color-bg)] text-[10px] font-medium px-1.5 py-0.5">
             SENİN FOTOĞRAFIN
           </span>
         </div>
 
-        {/* Seçilen parçalar listesi */}
         {selectedItems.length > 0 && (
           <div
             className="border border-[var(--color-line)] p-3"
             style={{ backgroundColor: "var(--color-bg-elev)" }}
           >
-            <p className="meta mb-2">SEÇİLEN PARÇALAR ({selectedItems.length}/5)</p>
+            <div className="flex items-center justify-between mb-3">
+              <p className="meta mb-0">SEÇİLENLER ({selectedItems.length}/5)</p>
+              <button
+                onClick={onClearSelected}
+                className="text-xs text-[var(--color-muted)] hover:text-[var(--color-fg)] transition-colors underline decoration-[var(--color-line)] underline-offset-2"
+              >
+                Temizle
+              </button>
+            </div>
             <ul className="flex flex-col gap-2">
               {selectedItems.map((p) => (
                 <li key={p.id} className="flex items-center gap-2 text-xs">
                   {p.photo && (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={p.photo} alt="" className="w-8 h-10 object-cover shrink-0" />
+                    <img
+                      src={p.photo}
+                      alt=""
+                      className="w-8 h-10 object-cover shrink-0"
+                    />
                   )}
                   <span className="flex-1 truncate">{p.name}</span>
                   <button
@@ -503,7 +1040,6 @@ function PickStage({
           </div>
         )}
 
-        {/* GİYDİR butonu */}
         <button
           onClick={onTryOn}
           disabled={selectedItems.length === 0}
@@ -516,24 +1052,51 @@ function PickStage({
         </button>
       </div>
 
-      {/* Sağ: kategori tab + ürün grid */}
+      {/* Sağ */}
       <div className="flex-1 min-w-0">
-        <h2 className="font-display text-2xl tracking-wide mb-1">
-          2. Parça Seç
-        </h2>
-        <p className="text-sm text-[var(--color-muted)] mb-5">
-          Kategorilerden istediğin kıyafetleri seç, AI hepsini üzerine giydirecek.
-        </p>
+        <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
+          <div>
+            <h2 className="font-display text-2xl tracking-wide mb-1">2. Parça Seç</h2>
+            <p className="text-sm text-[var(--color-muted)]">
+              Kategorilerden istediğin kıyafetleri seç, AI hepsini üzerine giydirecek.
+            </p>
+          </div>
 
-        {/* Kategori tabları */}
+          <div
+            className="flex items-stretch border border-[var(--color-line)] shrink-0"
+            role="group"
+            aria-label="Cinsiyet filtresi"
+          >
+            {(["kadin", "erkek"] as const).map((g) => {
+              const isActive = g === activeGender;
+              return (
+                <button
+                  key={g}
+                  onClick={() => setActiveGender(g)}
+                  className={`px-4 py-2 text-sm font-medium tracking-wide transition-colors ${
+                    isActive
+                      ? "bg-[var(--color-fg)] text-[var(--color-bg)]"
+                      : "text-[var(--color-fg-soft)] hover:text-[var(--color-fg)]"
+                  }`}
+                >
+                  {g === "kadin" ? "Kadın" : "Erkek"}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="flex gap-2 overflow-x-auto pb-3 mb-5 border-b border-[var(--color-line)]">
           {categories.map((cat) => {
-            const Icon = CATEGORY_ICONS[cat] ?? Shirt;
-            const isActive = cat === activeCategory;
-            const count = groupedProducts[cat]?.length ?? 0;
+            const count = (groupedProducts[cat] ?? []).filter(
+              (p) => p.gender === activeGender,
+            ).length;
             const selectedInCat = (groupedProducts[cat] ?? []).filter((p) =>
               selected.has(p.id),
             ).length;
+
+            const Icon = CATEGORY_ICONS[cat] ?? Shirt;
+            const isActive = cat === activeCategory;
 
             return (
               <button
@@ -549,22 +1112,26 @@ function PickStage({
                 {categoryLabels[cat] ?? cat}
                 <span className="text-xs opacity-60">({count})</span>
                 {selectedInCat > 0 && (
-                  <span
-                    className="w-5 h-5 text-[10px] font-bold flex items-center justify-center rounded-full"
-                    style={{
-                      backgroundColor: isActive ? "var(--color-accent)" : "var(--color-fg)",
-                      color: "var(--color-bg)",
-                    }}
-                  >
-                    {selectedInCat}
-                  </span>
+                  <Check
+                    size={14}
+                    style={{ color: isActive ? "var(--color-accent)" : "var(--color-fg)" }}
+                  />
                 )}
               </button>
             );
           })}
         </div>
 
-        {/* Ürün grid */}
+        <div className="mb-5 relative">
+          <input
+            type="text"
+            placeholder={`${categoryLabels[activeCategory] ?? activeCategory} içinde ara...`}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[var(--color-bg-elev)] border border-[var(--color-line)] text-sm px-4 py-3 outline-none focus:border-[var(--color-fg)] transition-colors placeholder:text-[var(--color-muted)]"
+          />
+        </div>
+
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {currentProducts.map((p) => {
             const isSelected = selected.has(p.id);
@@ -646,15 +1213,11 @@ function ResultStage({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div
-          className="relative aspect-[3/4]"
+          className="relative w-full"
           style={{ backgroundColor: "var(--color-bg-elev)" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={resultUrl}
-            alt="sonuç"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <img src={resultUrl} alt="sonuç" className="block w-full h-auto" />
           <span className="absolute top-3 left-3 bg-[var(--color-fg)] text-[var(--color-bg)] text-xs font-medium px-2 py-1">
             AI Try-On
           </span>
@@ -705,6 +1268,189 @@ function ResultStage({
               Alışverişe Dön
             </Link>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+function AnchorPickerModal({
+  groupedProducts,
+  categoryLabels,
+  gender,
+  existingIds,
+  usedCategories,
+  onPick,
+  onClose,
+}: {
+  groupedProducts: Record<string, PickableProduct[]>;
+  categoryLabels: Record<string, string>;
+  gender: "kadin" | "erkek" | "cocuk";
+  existingIds: Set<string>;
+  usedCategories: Set<string>;
+  onPick: (p: PickableProduct) => void;
+  onClose: () => void;
+}) {
+  // Sadece anchor'ı olmayan kategorileri göster
+  const categories = Object.keys(groupedProducts).filter(
+    (c) => !usedCategories.has(c),
+  );
+  const [activeCategory, setActiveCategory] = useState<string>(
+    categories[0] ?? "ust-giyim",
+  );
+  const [activeGender, setActiveGender] = useState<"kadin" | "erkek">(
+    gender === "erkek" ? "erkek" : "kadin",
+  );
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  const list = (groupedProducts[activeCategory] ?? [])
+    .filter((p) => p.gender === activeGender)
+    .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
+    .filter((p) => !existingIds.has(p.id));
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-stretch sm:items-center justify-center bg-black/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-[var(--color-bg)] w-full sm:max-w-3xl sm:max-h-[85vh] sm:m-4 flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-label="Başlangıç parçası seç"
+      >
+        <div className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 border-b border-[var(--color-line)]">
+          <div className="min-w-0">
+            <h3 className="font-display text-xl tracking-wide truncate">
+              Başlangıç Parçası Ekle
+            </h3>
+            <p className="text-xs text-[var(--color-muted)] mt-0.5">
+              Seçtiğin parça her AI önerisinde yer alacak
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Kapat"
+            className="w-9 h-9 flex items-center justify-center hover:bg-[var(--color-bg-elev)] transition-colors shrink-0"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="px-5 sm:px-6 py-3 border-b border-[var(--color-line)] flex flex-col sm:flex-row gap-3">
+          <div
+            className="flex items-stretch border border-[var(--color-line)] self-start"
+            role="group"
+          >
+            {(["kadin", "erkek"] as const).map((g) => (
+              <button
+                key={g}
+                onClick={() => setActiveGender(g)}
+                className={`px-4 py-2 text-xs font-medium tracking-wide transition-colors ${
+                  g === activeGender
+                    ? "bg-[var(--color-fg)] text-[var(--color-bg)]"
+                    : "text-[var(--color-fg-soft)] hover:text-[var(--color-fg)]"
+                }`}
+              >
+                {g === "kadin" ? "Kadın" : "Erkek"}
+              </button>
+            ))}
+          </div>
+          <div className="relative flex-1">
+            <Search
+              size={14}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
+            />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={`${categoryLabels[activeCategory] ?? activeCategory} içinde ara…`}
+              className="w-full bg-[var(--color-bg-elev)] border border-[var(--color-line)] focus:border-[var(--color-fg)] outline-none pl-9 pr-3 py-2 text-sm transition-colors"
+            />
+          </div>
+        </div>
+
+        <div className="flex gap-2 overflow-x-auto px-5 sm:px-6 py-3 border-b border-[var(--color-line)] scrollbar-hidden">
+          {categories.map((cat) => {
+            const Icon = CATEGORY_ICONS[cat] ?? Shirt;
+            const isActive = cat === activeCategory;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`flex items-center gap-2 px-3 py-2 text-xs font-medium whitespace-nowrap transition-colors shrink-0 ${
+                  isActive
+                    ? "bg-[var(--color-fg)] text-[var(--color-bg)]"
+                    : "border border-[var(--color-line)] hover:border-[var(--color-fg)] text-[var(--color-fg-soft)]"
+                }`}
+              >
+                <Icon size={14} />
+                {categoryLabels[cat] ?? cat}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4">
+          {categories.length === 0 ? (
+            <div className="text-center py-12 text-sm text-[var(--color-muted)]">
+              Tüm kategorilerden başlangıç parçası eklemişsin.
+              <br />
+              Yenisini eklemek için önce mevcutlardan birini çıkar.
+            </div>
+          ) : list.length === 0 ? (
+            <div className="text-center py-12 text-sm text-[var(--color-muted)]">
+              Eşleşen ürün bulunamadı
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {list.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => onPick(p)}
+                  className="group text-left transition-all hover:ring-1 hover:ring-[var(--color-fg)]"
+                  style={{ backgroundColor: "var(--color-bg-elev)" }}
+                >
+                  <div className="aspect-[3/4] relative overflow-hidden">
+                    {p.photo && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={p.photo}
+                        alt={p.name}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-[var(--color-fg)]/0 group-hover:bg-[var(--color-fg)]/10 transition-colors flex items-end justify-center pb-3">
+                      <span className="bg-[var(--color-fg)] text-[var(--color-bg)] text-[10px] font-medium tracking-wider px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        + EKLE
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-2">
+                    <p className="text-xs truncate">{p.name}</p>
+                    <p className="text-xs font-semibold mt-0.5">
+                      {p.price.toLocaleString("tr-TR")} TL
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

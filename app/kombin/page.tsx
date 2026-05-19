@@ -4,6 +4,7 @@ import {
   VISIBLE_TYPES,
   getProductById,
   type ProductType,
+  type Gender,
 } from "@/lib/products";
 import { safeProductPhoto } from "@/lib/security/siteUrl";
 import { KombinFlow } from "./KombinFlow";
@@ -13,63 +14,113 @@ export type PickableProduct = {
   name: string;
   price: number;
   type: ProductType;
+  gender: Gender;
   photo: string | null;
 };
 
-// Server Component — ürün listesini kategorilere göre hazırla, client bundle'a tam katalog sızmaz
+const MAX_PER_CATEGORY = 60; // Kombin önericinin yelpazesi yeterince geniş
+
+function isValidGender(v: string | undefined): v is Gender {
+  return v === "kadin" || v === "erkek" || v === "cocuk";
+}
+
+// Server Component — ürün listesini kategorilere göre hazırla
 export default async function KombinPage({
   searchParams,
 }: {
-  searchParams: Promise<{ baseProduct?: string; mode?: string }>;
+  searchParams: Promise<{
+    baseProduct?: string;
+    baseProducts?: string;
+    mode?: string;
+    gender?: string;
+  }>;
 }) {
   const sp = await searchParams;
-  const baseProduct = sp.baseProduct
-    ? getProductById(sp.baseProduct)
-    : undefined;
-  // "tryon-only" — baseProduct ile birlikte gelir, ürün seçim aşaması atlanır
-  const mode: "pick" | "tryon-only" =
-    sp.mode === "tryon-only" && baseProduct ? "tryon-only" : "pick";
 
-  // Her kategoriden en fazla 12 ürün (fotosu olan), client'a serializable obje
+  // Anchors: baseProducts=a,b,c veya baseProduct=a (geriye uyumlu)
+  const anchorIds: string[] = [];
+  if (sp.baseProducts) {
+    for (const raw of sp.baseProducts
+      .split(",")
+      .map((s) => s.trim())
+      .slice(0, 5)) {
+      if (raw && !anchorIds.includes(raw)) anchorIds.push(raw);
+    }
+  }
+  if (sp.baseProduct && !anchorIds.includes(sp.baseProduct)) {
+    anchorIds.unshift(sp.baseProduct);
+  }
+  const anchorProducts = anchorIds
+    .map((id) => getProductById(id))
+    .filter((p): p is NonNullable<ReturnType<typeof getProductById>> => Boolean(p));
+  const baseProduct = anchorProducts[0]; // tryon mode + gender default için
+
+  // mode:
+  //   "tryon"   = manuel pick + try-on (preselected + ekstra) — anchor zorunlu
+  //   "suggest" = AI 3 kombin önersin — anchor opsiyonel (yoksa sıfırdan kurar)
+  //   "pick"    = default
+  const mode: "pick" | "tryon" | "suggest" =
+    sp.mode === "suggest"
+      ? "suggest"
+      : sp.mode === "tryon" && baseProduct
+        ? "tryon"
+        : "pick";
+
+  // Cinsiyet filtresi: önce URL param, sonra baseProduct'tan, sonra default "kadin"
+  const gender: Gender = isValidGender(sp.gender)
+    ? sp.gender
+    : (baseProduct?.gender ?? "kadin");
+
   const grouped: Record<string, PickableProduct[]> = {};
 
   for (const t of VISIBLE_TYPES) {
-    const items = PRODUCTS.filter((p) => p.type === t && p.photos?.front)
-      .slice(0, 12)
-      .map((p): PickableProduct => ({
+    const kadinItems = PRODUCTS.filter(
+      (p) => p.type === t && p.gender === "kadin" && p.photos?.front,
+    ).slice(0, MAX_PER_CATEGORY);
+
+    const erkekItems = PRODUCTS.filter(
+      (p) => p.type === t && p.gender === "erkek" && p.photos?.front,
+    ).slice(0, MAX_PER_CATEGORY);
+
+    const items = [...kadinItems, ...erkekItems].map(
+      (p): PickableProduct => ({
         id: p.id,
         name: p.name,
         price: p.price,
         type: p.type,
+        gender: p.gender,
         photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
-      }));
+      }),
+    );
+
     if (items.length > 0) {
       grouped[t] = items;
     }
   }
 
-  // baseProduct varsa, kendi kategorisinde başa koy (yoksa ekle)
-  let preselect: PickableProduct | null = null;
-  if (baseProduct && baseProduct.photos?.front) {
-    preselect = {
-      id: baseProduct.id,
-      name: baseProduct.name,
-      price: baseProduct.price,
-      type: baseProduct.type,
-      photo: safeProductPhoto(
-        baseProduct.photos.garmentFront || baseProduct.photos.front,
-      ),
-    };
-    const list = grouped[baseProduct.type] ?? [];
-    const exists = list.findIndex((p) => p.id === baseProduct.id);
+  // Tüm anchor ürünlerini PickableProduct'a çevir
+  const anchors: PickableProduct[] = anchorProducts
+    .filter((p) => p.photos?.front)
+    .map((p) => ({
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      type: p.type,
+      gender: p.gender,
+      photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
+    }));
+
+  // Anchor ürünlerini kendi kategorilerinde listenin başına koy
+  for (const a of anchors) {
+    const list = grouped[a.type] ?? [];
+    const exists = list.findIndex((p) => p.id === a.id);
     if (exists >= 0) {
-      // başa al
       const [item] = list.splice(exists, 1);
       list.unshift(item);
     } else {
-      list.unshift(preselect);
+      list.unshift(a);
     }
-    grouped[baseProduct.type] = list.slice(0, 12);
+    grouped[a.type] = list.slice(0, MAX_PER_CATEGORY * 2);
   }
 
   const categoryLabels: Record<string, string> = {};
@@ -81,9 +132,9 @@ export default async function KombinPage({
     <KombinFlow
       groupedProducts={grouped}
       categoryLabels={categoryLabels}
-      preselectId={preselect?.id ?? undefined}
-      preselectCategory={preselect?.type ?? undefined}
+      anchors={anchors}
       mode={mode}
+      gender={gender}
     />
   );
 }
