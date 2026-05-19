@@ -1,35 +1,44 @@
 # MODA Fashion Dataset
 
-> Bu branch sadece **dataset** için. App kodu yok, sadece görseller + metadata + build script'leri.
+> Bu branch sadece **dataset** içerir. App kodu yok, sadece görseller + metadata.
 > Ana proje için `main` branch'ine bak.
 
 ## Hızlı başlangıç
 
 ```bash
 git checkout dataset-only
-node scripts/build-photo-folders.mjs
 ```
 
-Çıktı: `data/ml-dataset/` altında 3 klasör — her ürün kendi alt-klasöründe, foto'ları açıklayıcı isimlerle.
+Hepsi hazır — `data/ml-dataset/` altında 7 class kendi klasöründe, içinde worn (giyilmiş) fotolar.
 
-Tam dokümantasyon: **[`dataset/README.md`](dataset/README.md)**
+```python
+from torchvision.datasets import ImageFolder
+ds = ImageFolder("data/ml-dataset/")
+print(ds.classes)   # ['dress_jumpsuit', 'outerwear', 'pants', 'shirt_top', 'shoe', 'shorts', 'skirt']
+print(len(ds))      # 1922
+```
+
+Detaylı kullanım: **[`dataset/README.md`](dataset/README.md)**
 
 ## İçerik
 
 | Yol | İçerik |
 |---|---|
-| `data/ml-dataset.jsonl` | 1099 ürünün metadata'sı (id, class, gender, foto URL'leri, deeplink) |
+| `data/ml-dataset/{class}/` | **ImageFolder uyumlu dataset** — class başına bir klasör, içinde `{id}_front.jpg` ve `{id}_back.jpg` |
+| `data/ml-dataset.jsonl` | Her ürünün metadata'sı (id, class, gender, deeplink) — meta lookup için |
 | `data/ml-dataset.csv` | Aynı veri Excel/pandas için |
-| `data/ml-dataset-stats.json` | Class dağılımı + breakdown |
-| `data/ml-dataset-README.md` | Şema dokümantasyonu |
-| `dataset/README.md` | **Asıl kullanım rehberi** |
-| `scripts/export-ml-dataset.mjs` | Metadata üreten script |
-| `scripts/build-photo-folders.mjs` | Klasör yapısı kuran script |
-| `public/products/` | 1100+ ürün fotoğrafı |
+| `data/ml-dataset-stats.json` | Class dağılımı |
+| `public/products/` | Kaynak fotolar (1100+ ürün) |
 
-## Notlar
+## Class dağılımı
 
-- `data/ml-dataset/` (build çıktısı) `.gitignore`'da — script çalıştırınca lokal oluşur
-- Build hardlink kullanır, disk şişmez (~0 byte ekstra)
-- Foto-availability bazlı 3 grup: `01_flatlay_full`, `02_flatlay_front_only`, `03_no_flatlay`
-- 14-class taxonomy de mevcut (`INDEX.jsonl` içinde `class` alanı), opsiyonel
+| Class | Foto |
+|---|---:|
+| shirt_top | 781 |
+| pants | 354 |
+| outerwear | 320 |
+| shoe | 251 |
+| shorts | 86 |
+| skirt | 66 |
+| dress_jumpsuit | 64 |
+| **Toplam** | **1922** |

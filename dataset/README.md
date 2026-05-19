@@ -2,21 +2,6 @@
 
 LCWaikiki ürün feed'inden üretilmiş, **giyilmiş (worn)** fotoğraflarla class-based eğitim dataset'i. Flat-lay (giyilmemiş) fotolar dataset'e dahil edilmez.
 
-## Hızlı başlangıç
-
-```bash
-git checkout dataset-only
-```
-
-Klasör yapısı **hazır** — `data/ml-dataset/` altında 7 class kendi klasöründe, içinde worn fotolar. Direkt PyTorch ile yükleyebilirsin:
-
-```python
-from torchvision.datasets import ImageFolder
-ds = ImageFolder("data/ml-dataset/")
-```
-
-(Yeniden üretmek istersen: `node scripts/build-imagefolder.mjs`)
-
 ## Klasör yapısı (ImageFolder uyumlu)
 
 ```
@@ -24,7 +9,6 @@ data/ml-dataset/
 ├── shirt_top/                ← 781 foto
 │   ├── LCW-3422865_front.jpg
 │   ├── LCW-3422865_back.jpg   (varsa)
-│   ├── LCW-xxxxxxx_front.jpg
 │   └── ...
 ├── outerwear/                ← 320 foto
 ├── pants/                    ← 354 foto
@@ -34,7 +18,7 @@ data/ml-dataset/
 └── shoe/                     ← 251 foto
 ```
 
-**Boş class'lar yok** — `hat`, `headband`, `tie`, `tights`, `sock`, `bag_wallet`, `scarf` LCW feed'inde olmadığı için klasör de oluşmuyor.
+LCW feed'inde aksesuar olmadığı için `hat`, `headband`, `tie`, `tights`, `sock`, `bag_wallet`, `scarf` klasörleri yok.
 
 ## Foto isimlendirme
 
@@ -60,7 +44,7 @@ tf = transforms.Compose([
 ])
 
 ds = ImageFolder("data/ml-dataset/", transform=tf)
-print(ds.classes)   # ['dress_jumpsuit', 'outerwear', 'pants', 'scarf', 'shirt_top', 'shoe', 'shorts', 'skirt']
+print(ds.classes)   # ['dress_jumpsuit', 'outerwear', 'pants', 'shirt_top', 'shoe', 'shorts', 'skirt']
 print(len(ds))      # 1922
 ```
 
@@ -90,24 +74,9 @@ print(meta[product_id]["gender"])       # "kadin"
 print(meta[product_id]["deeplink"])     # affiliate link
 ```
 
-## Build seçenekleri
-
-```bash
-# Sadece belirli class'lar
-node scripts/build-imagefolder.mjs --classes shirt_top,outerwear,pants,shoe
-
-# Sadece yüksek-güven sınıflandırma (keyword match)
-node scripts/build-imagefolder.mjs --source-only keyword
-
-# Gerçek dosya kopyası (taşınabilir, ~500MB+ disk)
-node scripts/build-imagefolder.mjs --copy
-```
-
-Default: hardlink (Windows) veya symlink (Unix) — ~0 byte ekstra disk.
-
 ## Class dağılımı
 
-| Class | Foto | Not |
+| Class | Foto | İçerik |
 |---|---:|---|
 | shirt_top | 781 | tişört/gömlek/sweatshirt/bluz/tunik |
 | pants | 354 | pantolon/jean/eşofman |
@@ -116,7 +85,7 @@ Default: hardlink (Windows) veya symlink (Unix) — ~0 byte ekstra disk.
 | shorts | 86 | şort/bermuda |
 | skirt | 66 | etek |
 | dress_jumpsuit | 64 | elbise/tulum/salopet |
-| **Toplam foto** | **1922** | 1099 üründen |
+| **Toplam** | **1922** | 1099 üründen |
 
 ## Meta dosyalar
 
@@ -126,21 +95,29 @@ Default: hardlink (Windows) veya symlink (Unix) — ~0 byte ekstra disk.
 | `data/ml-dataset.csv` | Aynı veri Excel/pandas için |
 | `data/ml-dataset-stats.json` | Class dağılımı + breakdown |
 
-## Yeniden üretim
+## JSONL şeması (her satır)
 
-```bash
-node scripts/export-ml-dataset.mjs        # JSONL'i yeniden üret
-node scripts/build-imagefolder.mjs        # klasör yapısını yeniden kur
+```json
+{
+  "id": "LCW-3422865",
+  "class": "shoe",
+  "image_path": "public/products/lcwaikiki/lcw-3422865/front.jpg",
+  "image_url": "https://moda-ruby.vercel.app/products/lcwaikiki/lcw-3422865/front.jpg",
+  "name": "Kahverengi TABA Hakiki Deri Küt Burun ...",
+  "category": "ayakkabi",
+  "gender": "kadin",
+  "retailer": "lcwaikiki",
+  "deeplink": "https://www.lcw.com/...",
+  "classification_source": "type_default"
+}
 ```
+
+`classification_source`:
+- `keyword` (275 satır) — Türkçe regex eşleşti, yüksek güven
+- `type_default` (824 satır) — coarse kategori default'una düştü, orta güven
 
 ## Sınıflandırma doğruluğu
 
 Manuel sample audit ile:
 - shoe ~%100, shirt_top ~%98, pants ~%97, outerwear ~%97
-- shorts/skirt/dress_jumpsuit ~%95-97 (keyword-based)
-
-Her JSONL satırında `classification_source` alanı var:
-- `keyword` (yüksek güven, Türkçe regex ile yakalandı)
-- `type_default` (orta güven, coarse kategori default'una düştü)
-
-`--source-only keyword` ile sadece yüksek-güveni dahil et.
+- shorts/skirt/dress_jumpsuit ~%95-97 (keyword bazlı)
