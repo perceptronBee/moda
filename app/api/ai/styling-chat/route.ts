@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
 
   if (!backendUrl) {
     // Backend deploy edilmediyse → demo kırılmasın diye basit deterministik mock
-    return NextResponse.json(mockChatResponse(userText));
+    return NextResponse.json(mockChatResponse(userText, sanitizedHistory));
   }
 
   // Forward to backend
@@ -259,10 +259,35 @@ function detectIntent(text: string): "greeting" | "ack" | "off_topic" | "search"
   return "search";
 }
 
-function mockChatResponse(userText: string) {
+function extractGenderFromHistory(
+  history: Array<{ role: string; content: string }>,
+): "kadin" | "erkek" {
+  for (let i = history.length - 1; i >= 0; i--) {
+    const c = history[i].content.toLowerCase();
+    if (/\b(erkeğim|erkegim|erkek|bay\b|adam)\b/.test(c)) return "erkek";
+    if (/\b(kadınım|kadinim|kadın|kadin|bayan|kız|kiz)\b/.test(c)) return "kadin";
+  }
+  return "kadin"; // default
+}
+
+// Deterministik shuffle — aynı seed aynı sıra üretir
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const a = [...arr];
+  let s = seed || 1;
+  for (let i = a.length - 1; i > 0; i--) {
+    s = (s * 9301 + 49297) % 233280;
+    const j = Math.floor((s / 233280) * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function mockChatResponse(
+  userText: string,
+  history: Array<{ role: string; content: string }>,
+) {
   const intent = detectIntent(userText);
 
-  // Sohbet / küçük konuşma — ürün döndürme
   if (intent === "greeting") {
     return {
       ai_response:
@@ -298,37 +323,79 @@ function mockChatResponse(userText: string) {
 
   // ── ARAMA: kombin öneri akışı ──
   const lowered = userText.toLowerCase();
+  const gender = extractGenderFromHistory(history);
+
+  // Kullanıcı belirli kategori istediyse onları kullan
+  const requestedCategories: string[] = [];
+  if (/üst\s*giy|tişört|gömlek|sweat|bluz/i.test(lowered))
+    requestedCategories.push("ust-giyim");
+  if (/alt\s*giy|pantolon|jean|şort|etek/i.test(lowered))
+    requestedCategories.push("alt-giyim");
+  if (/dış\s*giy|mont|kaban|ceket|yağmurluk/i.test(lowered))
+    requestedCategories.push("dis-giyim");
+  if (/ayakkabı|bot|spor ayakkabı|sneaker/i.test(lowered))
+    requestedCategories.push("ayakkabi");
+
   const intentMap: Array<{ patterns: RegExp[]; types: string[]; label: string }> = [
-    { patterns: [/yağmur|kar|kış|soğuk/], types: ["dis-giyim", "ayakkabi"], label: "yağmurlu/soğuk hava" },
-    { patterns: [/düğün|davet|özel|şık/], types: ["ust-giyim", "alt-giyim"], label: "şık" },
-    { patterns: [/spor|koş|fitness|rahat/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "sportif" },
+    { patterns: [/yağmur|yağışlı/], types: ["dis-giyim", "alt-giyim", "ayakkabi"], label: "yağmurlu hava" },
+    { patterns: [/kış|kar|soğuk/], types: ["dis-giyim", "ust-giyim", "alt-giyim"], label: "kışlık" },
+    { patterns: [/düğün|davet|özel|şık|akşam/], types: ["ust-giyim", "alt-giyim"], label: "şık" },
+    { patterns: [/spor|koş|fitness|antren/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "sportif" },
     { patterns: [/iş|ofis|toplantı/], types: ["ust-giyim", "alt-giyim"], label: "iş" },
     { patterns: [/yaz|sıcak|plaj|deniz/], types: ["ust-giyim", "alt-giyim"], label: "yazlık" },
-    { patterns: [/kampüs|üniversite|okul|günlük/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "günlük" },
+    { patterns: [/kampüs|üniversite|okul/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "kampüs" },
+    { patterns: [/renkli|canlı|şen/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "renkli" },
+    { patterns: [/günlük|rahat|gündelik/], types: ["ust-giyim", "alt-giyim"], label: "günlük" },
   ];
 
   const matched = intentMap.find((i) => i.patterns.some((p) => p.test(lowered)));
-  const types = matched?.types ?? ["ust-giyim", "alt-giyim"];
+  const types =
+    requestedCategories.length > 0
+      ? requestedCategories
+      : matched?.types ?? ["ust-giyim", "alt-giyim", "ayakkabi"];
+
+  // Deterministik shuffle ile her query farklı sonuç versin —
+  // ama aynı query aynı sonuç (cacheable). Seed: userText + gender + history length
+  const seed =
+    [...userText].reduce((s, c) => s + c.charCodeAt(0), 0) +
+    history.length * 31 +
+    (gender === "erkek" ? 7 : 11);
 
   const items: EnrichedItem[] = [];
   for (const t of types) {
-    const p = PRODUCTS.find((p) => p.type === t && p.photos?.front);
-    if (p) {
-      items.push({
-        id: p.id,
-        name: p.name,
-        price: p.price,
-        type: p.type,
-        gender: p.gender,
-        photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
-        deeplink: p.deeplink ?? null,
-      });
-    }
+    const pool = PRODUCTS.filter(
+      (p) => p.type === t && p.gender === gender && p.photos?.front,
+    );
+    if (pool.length === 0) continue;
+    const shuffled = seededShuffle(pool, seed + t.length * 13);
+    const p = shuffled[0];
+    items.push({
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      type: p.type,
+      gender: p.gender,
+      photo: safeProductPhoto(p.photos?.garmentFront || p.photos?.front),
+      deeplink: p.deeplink ?? null,
+    });
   }
 
-  const aiResponse = matched
-    ? `${matched.label.charAt(0).toUpperCase() + matched.label.slice(1)} bir kombin için şunları öneriyorum. ${items[0]?.name} ile ${items[1]?.name} birbirine çok yakışır${items[2] ? `, üzerine ${items[2].name} de ekleyebilirsin` : ""}.`
-    : `Senin için katalogdan birkaç parça çıkardım. ${items.map((i) => i.name).join(", ")} bir araya gelince hoş bir kombin oluşturuyor. Daha spesifik bir şey istersen (örneğin "ofise uygun" veya "yağmurlu hava için") söyle, ona göre öneririm.`;
+  // Cevap metnini items'a göre dinamik ve doğal kur — hard-coded suffix yok
+  let aiResponse: string;
+  if (items.length === 0) {
+    aiResponse = "Bu istek için katalogda uygun ürün bulamadım. Başka bir tarz veya kategori söyler misin?";
+  } else if (items.length === 1) {
+    aiResponse = `${matched ? matched.label.charAt(0).toUpperCase() + matched.label.slice(1) + " için" : "Sana"} ${items[0].name} önerebilirim. Eşlik edecek başka parça istersen söyle.`;
+  } else {
+    const labelPart = matched
+      ? `${matched.label.charAt(0).toUpperCase() + matched.label.slice(1)} bir kombin için`
+      : "Sana uygun bir kombin için";
+    const namesList =
+      items.length === 2
+        ? `${items[0].name} ve ${items[1].name}`
+        : `${items.slice(0, -1).map((i) => i.name).join(", ")} ve ${items[items.length - 1].name}`;
+    aiResponse = `${labelPart} ${namesList} birlikte güzel duruyor. Beğenmediğin parça olursa söyle, alternatif önereyim.`;
+  }
 
   return {
     ai_response: aiResponse,
