@@ -14,7 +14,7 @@ export function FloatingKombinButton() {
 
   return (
     <Link
-      href="/kombin?mode=suggest"
+      href="/kombin?mode=chat"
       aria-label="Kombin Öner"
       className={`${
         onProductDetail ? "hidden lg:flex" : "flex"

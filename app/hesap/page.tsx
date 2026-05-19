@@ -110,10 +110,10 @@ export default async function AccountPage() {
               desc="Takip ettiğiniz markalar"
             />
             <AccountLink
-              href="/kombin?mode=suggest"
+              href="/kombin?mode=chat"
               icon={<Sparkles size={18} />}
-              title="Kombin Öner"
-              desc="Yapay zekadan kombin önerisi al"
+              title="AI Stilist'e Sor"
+              desc="Sohbet ederek kombin önerisi al"
             />
             <AccountLink
               href="/sepet"

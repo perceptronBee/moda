@@ -317,7 +317,7 @@ export default function HomePage() {
         </div>
 
         <Link
-          href="/kombin?mode=suggest"
+          href="/kombin?mode=chat"
           className="mt-4 flex items-center justify-center gap-2 bg-[var(--color-fg)] text-[var(--color-bg)] hover:bg-[var(--color-accent)] transition-colors py-4 text-sm font-medium tracking-wide"
         >
           <Sparkles size={16} /> Şimdi Dene

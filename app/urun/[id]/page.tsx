@@ -242,9 +242,9 @@ export default async function ProductDetail({
                 />
               </Link>
 
-              {/* 2) Kombin Oluştur — secondary */}
+              {/* 2) AI Stilist'e Sor — secondary */}
               <Link
-                href={`/kombin?baseProduct=${product.id}&mode=suggest`}
+                href={`/kombin?baseProduct=${product.id}&mode=chat`}
                 className="group relative flex items-center justify-between gap-2 lg:px-5 px-3 py-3 lg:py-4 transition-all overflow-hidden border"
                 style={{
                   backgroundColor: "var(--color-bg-elev)",
@@ -261,11 +261,11 @@ export default async function ProductDetail({
                   </span>
                   <div className="min-w-0">
                     <p className="text-xs lg:text-sm font-semibold tracking-wide truncate">
-                      <span className="lg:hidden">Kombin Öner</span>
-                      <span className="hidden lg:inline">AI ile Kombin Oluştur</span>
+                      <span className="lg:hidden">AI Stilist'e Sor</span>
+                      <span className="hidden lg:inline">AI Stilist'e Sor</span>
                     </p>
                     <p className="hidden lg:block text-xs text-[var(--color-fg-soft)]">
-                      AI bu ürüne yakışan kombinler önersin
+                      Sohbet ederek bu ürüne kombin önersin
                     </p>
                   </div>
                 </div>
