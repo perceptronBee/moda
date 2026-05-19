@@ -175,10 +175,14 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {VISIBLE_TYPES.filter((t) => byType[t]).map((t) => {
               const p = byType[t]!;
+              // Ürünün cinsiyetine göre yönlendir — kartta erkek fotosu görünüyorsa
+              // /erkek'e, kadın fotosu görünüyorsa /kadin'e atsın
+              const targetGender =
+                p.gender === "erkek" ? "erkek" : "kadin";
               return (
                 <Link
                   key={t}
-                  href={`/kadin?tip=${t}`}
+                  href={`/${targetGender}?tip=${t}`}
                   className="relative aspect-[3/4] overflow-hidden group"
                   style={{ background: "#f0f0f0" }}
                 >
