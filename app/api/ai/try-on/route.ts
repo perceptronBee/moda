@@ -5,6 +5,7 @@ import { rateLimitMulti, RATE_LIMITS } from "@/lib/security/rateLimit";
 import { getClientIp } from "@/lib/security/ip";
 
 export const maxDuration = 300; // Lokal'de uzun süreli idm-vton için (Vercel Pro: 300sn, Hobby: 60sn ile sınırlı)
+const ALLOW_DEV_ANON = process.env.NODE_ENV !== "production";
 
 const MAX_FILES = 6;
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -22,20 +23,25 @@ const ALLOWED = new Set(["image/jpeg", "image/png", "image/webp"]);
  * Rate limit: kullanıcı başına dakikada 5 (AI fatura koruması)
  */
 export async function POST(req: NextRequest) {
-  // Auth
-  let supabase;
+  const ip = getClientIp(req.headers) ?? "anon";
+
+  // Auth (dev'de geçici anon kullanım serbest)
+  let user: { id: string } | null = null;
   try {
-    supabase = await createClient();
+    const supabase = await createClient();
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    user = authUser;
   } catch {
-    return NextResponse.json(
-      { error: "Sistem yapılandırması eksik" },
-      { status: 500 },
-    );
+    if (!ALLOW_DEV_ANON) {
+      return NextResponse.json(
+        { error: "Sistem yapılandırması eksik" },
+        { status: 500 },
+      );
+    }
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) {
+  if (!user && !ALLOW_DEV_ANON) {
     return NextResponse.json({ error: "Önce giriş yap" }, { status: 401 });
   }
 
@@ -45,8 +51,7 @@ export async function POST(req: NextRequest) {
   //   3. günde 40     (~$10 Gemini bütçesi/user)
   //   4. saatte 120   (GLOBAL — tüm kullanıcıların toplam tavanı)
   //   5. günde 800    (GLOBAL — günlük API key bütçesi)
-  const ip = getClientIp(req.headers) ?? "anon";
-  const userScope = `tryon:user:${user.id}`;
+  const userScope = `tryon:user:${user?.id ?? `anon:${ip}`}`;
   const ipScope = `tryon:ip:${ip}`;
   const rl = rateLimitMulti([
     { key: `${userScope}:min`, config: RATE_LIMITS.tryonPerMinute },

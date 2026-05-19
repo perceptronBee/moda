@@ -1,7 +1,7 @@
 /**
- * Virtual Try-On client — Gemini 2.5 Flash Image (Nano Banana)
+ * Virtual Try-On client — Gemini 3.1 Flash Image
  *
- * Aktif model: Google AI Studio üzerinden Gemini 2.5 Flash Image
+ * Aktif model: Google AI Studio üzerinden Gemini 3.1 Flash Image
  *   - Multi-garment tek istekte
  *   - Prompt-based talimat kabul eder
  *   - 5-10sn tipik
@@ -24,7 +24,8 @@ export type TryOnResult =
   | { ok: true; resultDataUrl: string }
   | { ok: false; error: string };
 
-const GEMINI_MODEL = "gemini-2.5-flash-image";
+const GEMINI_MODEL =
+  process.env.GEMINI_TRYON_MODEL ?? "gemini-3.1-flash-image";
 
 // ──────────────────────────────────────────────────────────────────────────
 // Resize → JPEG → base64 (Gemini inlineData için)
@@ -140,7 +141,7 @@ function buildPrompt(itemCount: number, garmentTypes: string[]): string {
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// Main call — Gemini 2.5 Flash Image
+// Main call — Gemini 3.1 Flash Image
 // ──────────────────────────────────────────────────────────────────────────
 export async function callVtonTryOn(input: TryOnInput): Promise<TryOnResult> {
   const apiKey = process.env.GEMINI_API_KEY;

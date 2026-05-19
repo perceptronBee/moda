@@ -60,6 +60,28 @@ type Props = {
 
 const MAX_FILE_BYTES = 10 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const TRYON_TYPE_PRIORITY: Record<string, number> = {
+  "dis-giyim": 1,
+  "ust-giyim": 2,
+  "alt-giyim": 3,
+  ayakkabi: 4,
+  aksesuar: 5,
+};
+
+function selectTryOnItems<T extends { type?: string | null }>(items: T[], max = 3): T[] {
+  const uniqByType = new Map<string, T>();
+  for (const item of items) {
+    const t = item.type ?? "other";
+    if (!uniqByType.has(t)) uniqByType.set(t, item);
+  }
+  return Array.from(uniqByType.values())
+    .sort((a, b) => {
+      const pa = TRYON_TYPE_PRIORITY[a.type ?? "other"] ?? 99;
+      const pb = TRYON_TYPE_PRIORITY[b.type ?? "other"] ?? 99;
+      return pa - pb;
+    })
+    .slice(0, max);
+}
 
 async function isRealImage(file: File): Promise<boolean> {
   const blob = await file.slice(0, 12).arrayBuffer();
@@ -249,9 +271,10 @@ export function KombinFlow({
 
   // ─── Try-on ────────────────────────────────────────────────────────
   async function tryOn(itemsOverride?: PickableProduct[]) {
-    const items = Array.isArray(itemsOverride)
+    const selectedItemsForTryOn = Array.isArray(itemsOverride)
       ? itemsOverride
       : Array.from(selected.values());
+    const items = selectTryOnItems(selectedItemsForTryOn, 3);
     if (!photoFile || items.length === 0) return;
     setStage("loading-tryon");
     setError(null);
@@ -1698,6 +1721,7 @@ function ChatStage({
   }
 
   async function runTryon(messageId: string, items: ChatItem[], photoFile: File) {
+    const selectedItemsForTryOn = selectTryOnItems(items, 3);
     // Bubble'a loading state yaz
     setMessages((prev) =>
       prev.map((m) =>
@@ -1710,7 +1734,7 @@ function ChatStage({
     try {
       // Ürün fotolarını blob olarak indir
       const itemBlobs: Blob[] = [];
-      for (const item of items) {
+      for (const item of selectedItemsForTryOn) {
         if (!item.photo) continue;
         try {
           const r = await fetch(item.photo);

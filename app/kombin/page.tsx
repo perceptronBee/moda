@@ -24,6 +24,7 @@ export type PickableProduct = {
 // Bu sayı sadece bug/feed-poisoning karşı koruma; client'a ürünler [kadın, erkek]
 // sırayla iniyor, kullanıcı gender toggle ile ayırıyor.
 const MAX_PER_CATEGORY = 500;
+const ALLOW_DEV_ANON = process.env.NODE_ENV !== "production";
 
 function isValidGender(v: string | undefined): v is Gender {
   return v === "kadin" || v === "erkek" || v === "cocuk";
@@ -50,9 +51,9 @@ export default async function KombinPage({
     const { data } = await supabase.auth.getUser();
     user = data.user;
   } catch {
-    // Supabase env yok — fail-closed, giriş'e at
+    // Dev'de anon erişime izin ver; prod'da fail-closed.
   }
-  if (!user) {
+  if (!user && !ALLOW_DEV_ANON) {
     const qs = new URLSearchParams();
     if (sp.mode) qs.set("mode", sp.mode);
     if (sp.baseProduct) qs.set("baseProduct", sp.baseProduct);

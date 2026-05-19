@@ -13,6 +13,7 @@ import {
 import { safeProductPhoto } from "@/lib/security/siteUrl";
 
 export const maxDuration = 90; // Pro modeli için pay
+const ALLOW_DEV_ANON = process.env.NODE_ENV !== "production";
 
 const MAX_TEXT_LEN = 1000;
 const MAX_HISTORY_TURNS = 12;
@@ -26,7 +27,36 @@ const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 const GEMINI_MODEL = process.env.GEMINI_CHAT_MODEL ?? "gemini-2.5-pro";
 
 // Gemini'ye gönderilen catalog subset — token bütçesini kontrol et
-const MAX_CATALOG_ITEMS = 300;
+const MAX_CATALOG_ITEMS = 180;
+
+function normalizeGeminiError(message: string): string {
+  if (/API_KEY_INVALID|API key not valid/i.test(message)) {
+    return "GEMINI_API_KEY gecersiz. Lutfen .env.local icine gecerli bir Gemini API key koy.";
+  }
+  if (/PERMISSION_DENIED|forbidden|not enabled/i.test(message)) {
+    return "Gemini erisim izni yok. API key izinlerini ve Generative Language API ayarini kontrol et.";
+  }
+  if (/UNAVAILABLE|high demand|503/i.test(message)) {
+    return "Gemini su anda yogun. Birazdan tekrar dene (sistem ayni modelde otomatik retry denedi).";
+  }
+  return message;
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function backoffMs(attempt: number): number {
+  const base = 450 * 2 ** attempt;
+  const jitter = Math.floor(Math.random() * 250);
+  return Math.min(base + jitter, 3000);
+}
+
+function isTransientGeminiError(message: string): boolean {
+  return /fetch failed|network|ECONNRESET|ETIMEDOUT|timeout|socket hang up|UNAVAILABLE|high demand|503/i.test(
+    message,
+  );
+}
 
 /**
  * POST /api/ai/styling-chat
@@ -36,20 +66,23 @@ const MAX_CATALOG_ITEMS = 300;
  * çağırıp katalogdan structured JSON ile öneri alır.
  */
 export async function POST(req: NextRequest) {
-  // Auth
-  let supabase;
+  // Auth (dev'de geçici anon kullanım serbest)
+  let user: { id: string } | null = null;
   try {
-    supabase = await createClient();
+    const supabase = await createClient();
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    user = authUser;
   } catch {
-    return NextResponse.json(
-      { error: "Sistem yapılandırması eksik" },
-      { status: 500 },
-    );
+    if (!ALLOW_DEV_ANON) {
+      return NextResponse.json(
+        { error: "Sistem yapılandırması eksik" },
+        { status: 500 },
+      );
+    }
   }
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) {
+  if (!user && !ALLOW_DEV_ANON) {
     return NextResponse.json(
       { error: "Önce giriş yapmalısın" },
       { status: 401 },
@@ -59,7 +92,7 @@ export async function POST(req: NextRequest) {
   // Rate limit
   const ip = getClientIp(req.headers) ?? "anon";
   const rl = rateLimitMulti([
-    { key: `chat:user:${user.id}:min`, config: RATE_LIMITS.aiRequest },
+    { key: `chat:user:${user?.id ?? `anon:${ip}`}:min`, config: RATE_LIMITS.aiRequest },
     { key: `chat:ip:${ip}:min`, config: RATE_LIMITS.aiRequest },
     { key: `chat:global:hr`, config: RATE_LIMITS.tryonGlobalPerHour },
   ]);
@@ -138,7 +171,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Yoksa direkt Gemini ile çalış
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = (process.env.GEMINI_API_KEY ?? process.env.GOOGLE_API_KEY ?? "").trim();
   if (!apiKey) {
     return NextResponse.json(
       { error: "GEMINI_API_KEY ayarlı değil — admin'e bildir" },
@@ -155,10 +188,11 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json(result);
   } catch (e) {
-    const msg = (e as Error).message || "Stilist hatası";
+    const raw = (e as Error).message || "Stilist hatasi";
+    const msg = normalizeGeminiError(raw);
     console.error("[styling-chat] gemini error:", msg);
     return NextResponse.json(
-      { error: `Stilist yanıt veremedi: ${msg}` },
+      { error: msg },
       { status: 502 },
     );
   }
@@ -288,32 +322,54 @@ async function runGeminiStylist({
   });
   contents.push({ role: "user", parts: lastUserParts });
 
-  const result = await ai.models.generateContent({
-    model: GEMINI_MODEL,
-    contents,
-    config: {
-      systemInstruction: SYSTEM_PROMPT,
-      temperature: 0.6,
-      responseMimeType: "application/json",
-      responseSchema: {
-        type: Type.OBJECT,
-        properties: {
-          ai_response: {
-            type: Type.STRING,
-            description:
-              "Kullanıcıya dönecek Türkçe samimi cevap. Ürün adlarını insanca yaz, ID gösterme.",
-          },
-          suggested_item_ids: {
-            type: Type.ARRAY,
-            description:
-              "Önerilen ürünlerin ID'leri (catalog'tan birebir). Sohbet/selamlama ise boş dizi.",
-            items: { type: Type.STRING },
-          },
+  const baseConfig = {
+    systemInstruction: SYSTEM_PROMPT,
+    temperature: 0.6,
+    responseMimeType: "application/json" as const,
+    responseSchema: {
+      type: Type.OBJECT,
+      properties: {
+        ai_response: {
+          type: Type.STRING,
+          description:
+            "Kullanıcıya dönecek Türkçe samimi cevap. Ürün adlarını insanca yaz, ID gösterme.",
         },
-        required: ["ai_response", "suggested_item_ids"],
+        suggested_item_ids: {
+          type: Type.ARRAY,
+          description:
+            "Önerilen ürünlerin ID'leri (catalog'tan birebir). Sohbet/selamlama ise boş dizi.",
+          items: { type: Type.STRING },
+        },
       },
+      required: ["ai_response", "suggested_item_ids"],
     },
-  });
+  };
+
+  let result: Awaited<ReturnType<typeof ai.models.generateContent>> | null = null;
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    try {
+      result = await ai.models.generateContent({
+        model: GEMINI_MODEL,
+        contents,
+        config: {
+          ...baseConfig,
+          maxOutputTokens: 420,
+        },
+      });
+      lastError = null;
+      break;
+    } catch (err) {
+      const e = err as Error;
+      lastError = e;
+      if (!isTransientGeminiError(e.message) || attempt === 3) break;
+      await sleep(backoffMs(attempt));
+    }
+  }
+
+  if (!result) {
+    throw lastError ?? new Error("Gemini yanit uretemedi");
+  }
 
   const text = result.text ?? "";
   let parsed: { ai_response?: unknown; suggested_item_ids?: unknown };
