@@ -232,24 +232,84 @@ function enrichItem(raw: unknown): EnrichedItem | null {
 // ─────────────────────────────────────────────────────────────────────────────
 /**
  * Backend yokken kullanılan mock — demo akışı yine de gösterilir.
- * Kullanıcı'nın metnine göre keyword match'le ürün seçer.
+ * Önce intent detect: kullanıcı sohbet mi ediyor yoksa öneri mi istiyor?
+ * - SOHBET → moda dışı/küçük konuşma → ürün döndürme, modaya yönlendir
+ * - OFF-TOPIC → "ben moda stilistiyim" cevabı
+ * - ARAMA → keyword-eşleştir, kategoriden ürün dön
  */
-function mockChatResponse(userText: string) {
-  const lowered = userText.toLowerCase();
 
-  // Basit intent → kategori eşleme
+const GREETING_PATTERNS = [
+  /\b(merhaba|selam|selamlar|naber|nbr|ne haber|nasılsın|nasılsin|nasilsin|iyimisin|iyi misin|hey|hi|hello|hola|sa|aleyküm|aleykum|günaydın|gunaydin|akşamlar|aksamlar|tünaydın|gece)\b/i,
+];
+
+const ACK_PATTERNS = [
+  /^\s*(teşekkür|tesekkur|sağol|sagol|saol|saolasın|thanks|ty|tnx|ok|tamam|peki|anladım|anladim|harika|süper|super|olur|yes|yok|hayır|hayir|no)[\s.!?]*$/i,
+];
+
+const OFF_TOPIC_PATTERNS = [
+  /\b(kimsin|nesin|ne yapıyorsun|adın ne|hava nasıl|hava durumu|yemek|tarif|haber|maç|futbol|şarkı|film|dizi|kitap|tatil|tatile|cumhurba|seçim|sınav|matematik|kod|python|javascript|whatsapp|instagram)\b/i,
+];
+
+function detectIntent(text: string): "greeting" | "ack" | "off_topic" | "search" {
+  const t = text.trim();
+  if (!t) return "search"; // boş → varsayılan
+  if (ACK_PATTERNS.some((p) => p.test(t))) return "ack";
+  if (GREETING_PATTERNS.some((p) => p.test(t))) return "greeting";
+  if (OFF_TOPIC_PATTERNS.some((p) => p.test(t))) return "off_topic";
+  return "search";
+}
+
+function mockChatResponse(userText: string) {
+  const intent = detectIntent(userText);
+
+  // Sohbet / küçük konuşma — ürün döndürme
+  if (intent === "greeting") {
+    return {
+      ai_response:
+        "Selam! Ben bir AI moda stilistiyim, sana uygun kombin önerileri sunabilirim. Nereye gidiyorsun, nasıl bir tarz istersin? Mesela 'yağmurlu hava için' veya 'ofise uygun' diyebilirsin.",
+      suggested_items: [],
+      vision_debug: null,
+      _mock: true,
+      _intent: intent,
+    };
+  }
+
+  if (intent === "ack") {
+    return {
+      ai_response:
+        "Başka bir kombin önermemi ister misin? Tarz ya da etkinlik söyle, ona göre çıkarayım.",
+      suggested_items: [],
+      vision_debug: null,
+      _mock: true,
+      _intent: intent,
+    };
+  }
+
+  if (intent === "off_topic") {
+    return {
+      ai_response:
+        "Ben bir AI moda stilistiyim, sadece kıyafet ve kombin önerileri konusunda yardımcı olabilirim. Hangi tür bir kombin arıyorsun? Yağmurlu hava, ofis, düğün, spor — ne istersen söyle.",
+      suggested_items: [],
+      vision_debug: null,
+      _mock: true,
+      _intent: intent,
+    };
+  }
+
+  // ── ARAMA: kombin öneri akışı ──
+  const lowered = userText.toLowerCase();
   const intentMap: Array<{ patterns: RegExp[]; types: string[]; label: string }> = [
     { patterns: [/yağmur|kar|kış|soğuk/], types: ["dis-giyim", "ayakkabi"], label: "yağmurlu/soğuk hava" },
     { patterns: [/düğün|davet|özel|şık/], types: ["ust-giyim", "alt-giyim"], label: "şık" },
     { patterns: [/spor|koş|fitness|rahat/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "sportif" },
     { patterns: [/iş|ofis|toplantı/], types: ["ust-giyim", "alt-giyim"], label: "iş" },
     { patterns: [/yaz|sıcak|plaj|deniz/], types: ["ust-giyim", "alt-giyim"], label: "yazlık" },
+    { patterns: [/kampüs|üniversite|okul|günlük/], types: ["ust-giyim", "alt-giyim", "ayakkabi"], label: "günlük" },
   ];
 
   const matched = intentMap.find((i) => i.patterns.some((p) => p.test(lowered)));
   const types = matched?.types ?? ["ust-giyim", "alt-giyim"];
 
-  // İlgili kategorilerden ilk birkaç ürün
   const items: EnrichedItem[] = [];
   for (const t of types) {
     const p = PRODUCTS.find((p) => p.type === t && p.photos?.front);
@@ -267,7 +327,7 @@ function mockChatResponse(userText: string) {
   }
 
   const aiResponse = matched
-    ? `${matched.label.charAt(0).toUpperCase() + matched.label.slice(1)} bir kombin için şunları öneriyorum. ${items[0]?.name} ile ${items[1]?.name} birbirine çok yakışır — kemerli görünüm istersen üstüne bir mont da ekleyebilirsin.`
+    ? `${matched.label.charAt(0).toUpperCase() + matched.label.slice(1)} bir kombin için şunları öneriyorum. ${items[0]?.name} ile ${items[1]?.name} birbirine çok yakışır${items[2] ? `, üzerine ${items[2].name} de ekleyebilirsin` : ""}.`
     : `Senin için katalogdan birkaç parça çıkardım. ${items.map((i) => i.name).join(", ")} bir araya gelince hoş bir kombin oluşturuyor. Daha spesifik bir şey istersen (örneğin "ofise uygun" veya "yağmurlu hava için") söyle, ona göre öneririm.`;
 
   return {
@@ -275,5 +335,6 @@ function mockChatResponse(userText: string) {
     suggested_items: items,
     vision_debug: null,
     _mock: true,
+    _intent: intent,
   };
 }
